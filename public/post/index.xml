@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Posts on Albert Rapp</title>
+    <link>https://albert-rapp.de/post/</link>
+    <description>Recent content in Posts on Albert Rapp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
+    <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
+    <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
+    <lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <sy:updatePeriod>daily</sy:updatePeriod>
+    
+        <atom:link href="https://albert-rapp.de/post/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>Animating kernel density estimators</title>
+        <link>https://albert-rapp.de/post/visualize-kernel-density-estimation/</link>
+        <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Wed, 14 Jul 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/visualize-kernel-density-estimation/</guid>
+        <description>For my first post on this blog I decided to create an animation using the animation package. To give this animation some purpose let me demonstrate how kernel density estimators work with the help of an animation.
+In general, kernel density estimators are, as is kind of obvious by the name, used to estimate the underlying density of a random sample. For instance, imagine that we have a sample drawn from an some unknown distribution.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>statistics</category>
+            
+          
+            
+              <category>visualization</category>
+            
+          
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

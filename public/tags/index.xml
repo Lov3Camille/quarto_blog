@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Tags on Albert Rapp</title>
+    <link>https://albert-rapp.de/tags/</link>
+    <description>Recent content in Tags on Albert Rapp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
+    <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
+    <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
+    <lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <sy:updatePeriod>daily</sy:updatePeriod>
+    
+        <atom:link href="https://albert-rapp.de/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>statistics</title>
+        <link>https://albert-rapp.de/tags/statistics/</link>
+        <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        
+        <guid>https://albert-rapp.de/tags/statistics/</guid>
+        <description></description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>visualization</title>
+        <link>https://albert-rapp.de/tags/visualization/</link>
+        <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        
+        <guid>https://albert-rapp.de/tags/visualization/</guid>
+        <description></description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

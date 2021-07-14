@@ -1,0 +1,25 @@
+{
+    "id": "3F1CB50D",
+    "path": "D:/Local R Projects/Blogdown/Blog2/config/_default/params.toml",
+    "project_path": "config/_default/params.toml",
+    "type": "toml",
+    "hash": "837289117",
+    "contents": "",
+    "dirty": false,
+    "created": 1625835077943.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "cursorPosition": "25,8",
+        "scrollLine": "0",
+        "marks": "<:5,29\n>:5,62"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1626117968,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1626117968916,
+    "read_only": false,
+    "read_only_alternatives": []
+}
