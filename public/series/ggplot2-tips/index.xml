@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>ggplot2-tips on Albert Rapp</title>
+    <link>https://albert-rapp.de/series/ggplot2-tips/</link>
+    <description>Recent content in ggplot2-tips on Albert Rapp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
+    <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
+    <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
+    <lastBuildDate>Sat, 07 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <sy:updatePeriod>daily</sy:updatePeriod>
+    
+        <atom:link href="https://albert-rapp.de/series/ggplot2-tips/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>Beginning a ggplot2 Series: Logarithmize Your Scales</title>
+        <link>https://albert-rapp.de/post/2021-08-07-a-few-ggplot-tips/</link>
+        <pubDate>Sat, 07 Aug 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Sat, 07 Aug 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-08-07-a-few-ggplot-tips/</guid>
+        <description>It is not that long ago when I first encountered ggplot2 and decided to learn how to use it1. By no means do I think that I have sufficiently mastered this package yet but as time has passed I have certainly picked up a few tips on my journey to get better at creating more meaningful visualizations. So, in order to remind myself of and share what I learned, I decided to create a sort of series containing tips that enhanced my visualization skills.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>visualization</category>
+            
+          
+        
+        
+        
+          
+            
+              <category>ggplot2-tips</category>
+            
+          
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

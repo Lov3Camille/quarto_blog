@@ -3,21 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://albert-rapp.de/</loc>
-    <lastmod>2021-07-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2021-08-07-a-few-ggplot-tips/</loc>
+    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/series/ggplot2-tips/</loc>
+    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/</loc>
+    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/series/</loc>
+    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/tags/</loc>
+    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/tags/visualization/</loc>
+    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2021-07-26-luck-vs-skill/</loc>
+    <lastmod>2021-07-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/tags/simulation/</loc>
+    <lastmod>2021-07-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/post/visualize-kernel-density-estimation/</loc>
     <lastmod>2021-07-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://albert-rapp.de/post/</loc>
-    <lastmod>2021-07-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://albert-rapp.de/tags/statistics/</loc>
-    <lastmod>2021-07-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://albert-rapp.de/tags/</loc>
-    <lastmod>2021-07-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://albert-rapp.de/tags/visualization/</loc>
     <lastmod>2021-07-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/about/</loc>
@@ -42,7 +57,5 @@
     <lastmod>2019-10-19T11:44:14+09:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/categories/</loc>
-  </url><url>
-    <loc>https://albert-rapp.de/series/</loc>
   </url>
 </urlset>

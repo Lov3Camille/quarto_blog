@@ -71,7 +71,7 @@ link = "https://albert-rapp.de"
 
 # sidebar
 enableBio = true
-enableBioImage = false
+enableBioImage = true
 enableSidebar = true
 enableSidebarTags = true
 enableSidebarSeries = true
@@ -165,7 +165,7 @@ commento = false
   email = "mailto:blog@albert-rapp.de"
   phone = ""
   facebook = ""
-  twitter = ""
+  twitter = "https://twitter.com/rappa753"
   github = "https://github.com/AlbertRapp"
   stack-overflow = "https://stackexchange.com/users/18760932/albertrapp?tab=accounts"
   instagram = ""
