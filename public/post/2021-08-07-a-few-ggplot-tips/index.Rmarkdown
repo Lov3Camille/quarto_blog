@@ -47,8 +47,8 @@ data(ames)
 # I like to clean names s.t. no capital letters are used in the variable names
 ames <- ames %>% janitor::clean_names()
 
-ames %>% 
- ggplot(aes(x = sale_price)) +
+ames %>%
+  ggplot(aes(x = sale_price)) +
   geom_histogram()
 ```
 
@@ -60,8 +60,8 @@ It does not really matter which logarithm you use but since we like to work in a
 Let's see how this changes the picture.
 
 ```{r, message = F}
-ames %>% 
- ggplot(aes(x = log(sale_price, 10))) +
+ames %>%
+  ggplot(aes(x = log(sale_price, 10))) +
   geom_histogram()
 ```
 
@@ -83,8 +83,8 @@ Honestly, I don't know why but for a long time I have logarithmized data for vis
 Take a look what happens if I add this particular layer to our initial plot instead of logarithmizing manually.
 
 ```{r, message = F}
-ames %>% 
- ggplot(aes(x = sale_price)) +
+ames %>%
+  ggplot(aes(x = sale_price)) +
   geom_histogram() +
   scale_x_log10() 
 ```
@@ -106,8 +106,8 @@ In fact, this can make it somewhat comfortable to quickly adjust axis labels by 
 Here, we may simply use `label_number()` to get rid of the scientific notation.
 
 ```{r, message = F}
-ames %>% 
- ggplot(aes(x = sale_price)) +
+ames %>%
+  ggplot(aes(x = sale_price)) +
   geom_histogram() +
   scale_x_log10(labels = scales::label_number()) 
 ```
@@ -115,8 +115,8 @@ ames %>%
 Even better, `scales` has a lot of functions that are useful for specific units such as dollar or week, month, year (in case you are working with time data whose labels can be a special kind of pain).
 
 ```{r, message = F}
-ames %>% 
- ggplot(aes(x = sale_price)) +
+ames %>%
+  ggplot(aes(x = sale_price)) +
   geom_histogram() +
   scale_x_log10(labels = scales::label_dollar()) 
 ```
@@ -125,8 +125,8 @@ Of course, the same thing works not only for the x-axis scale but for all kinds 
 For instance, if you want to plot the same histogram but oriented vertically, you can simply change the `x`-aesthetic to be the `y`-aesthetic which means that you will need to adjust the `y` scale then.
 
 ```{r, message = F}
-ames %>% 
- ggplot(aes(y = sale_price)) +
+ames %>%
+  ggplot(aes(y = sale_price)) +
   geom_histogram() +
   scale_y_log10(labels = scales::label_dollar()) 
 ```

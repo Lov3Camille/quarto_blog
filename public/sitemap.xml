@@ -3,24 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://albert-rapp.de/</loc>
-    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://albert-rapp.de/post/2021-08-07-a-few-ggplot-tips/</loc>
-    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://albert-rapp.de/series/ggplot2-tips/</loc>
-    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+    <loc>https://albert-rapp.de/post/2021-09-11-position-adjustment/</loc>
+    <lastmod>2021-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/post/</loc>
-    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://albert-rapp.de/series/</loc>
-    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/tags/</loc>
-    <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/tags/visualization/</loc>
+    <lastmod>2021-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2021-08-19-aesthetic-labels/</loc>
+    <lastmod>2021-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/series/ggplot2-tips/</loc>
+    <lastmod>2021-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/series/</loc>
+    <lastmod>2021-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2021-08-07-a-few-ggplot-tips/</loc>
     <lastmod>2021-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/post/2021-07-26-luck-vs-skill/</loc>

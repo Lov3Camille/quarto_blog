@@ -1720,8 +1720,8 @@ This variable contains the sale price of 2930 properties in <a href="https://en.
 <span class="c1"># I like to clean names s.t. no capital letters are used in the variable names</span>
 <span class="n">ames</span> <span class="o">&lt;-</span> <span class="n">ames</span> <span class="o">%&gt;%</span> <span class="n">janitor</span><span class="o">::</span><span class="nf">clean_names</span><span class="p">()</span>
 
-<span class="n">ames</span> <span class="o">%&gt;%</span> 
- <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
+<span class="n">ames</span> <span class="o">%&gt;%</span>
+  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
   <span class="nf">geom_histogram</span><span class="p">()</span>
 </code></pre></td></tr></table>
 </div>
@@ -1738,8 +1738,8 @@ Let&rsquo;s see how this changes the picture.</p>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span> 
- <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="nf">log</span><span class="p">(</span><span class="n">sale_price</span><span class="p">,</span> <span class="m">10</span><span class="p">)))</span> <span class="o">+</span>
+<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span>
+  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="nf">log</span><span class="p">(</span><span class="n">sale_price</span><span class="p">,</span> <span class="m">10</span><span class="p">)))</span> <span class="o">+</span>
   <span class="nf">geom_histogram</span><span class="p">()</span>
 </code></pre></td></tr></table>
 </div>
@@ -1764,8 +1764,8 @@ Take a look what happens if I add this particular layer to our initial plot inst
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span> 
- <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
+<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span>
+  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
   <span class="nf">geom_histogram</span><span class="p">()</span> <span class="o">+</span>
   <span class="nf">scale_x_log10</span><span class="p">()</span> 
 </code></pre></td></tr></table>
@@ -1791,8 +1791,8 @@ Here, we may simply use <code>label_number()</code> to get rid of the scientific
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span> 
- <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
+<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span>
+  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
   <span class="nf">geom_histogram</span><span class="p">()</span> <span class="o">+</span>
   <span class="nf">scale_x_log10</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">label_number</span><span class="p">())</span> 
 </code></pre></td></tr></table>
@@ -1807,8 +1807,8 @@ Here, we may simply use <code>label_number()</code> to get rid of the scientific
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span> 
- <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
+<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span>
+  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
   <span class="nf">geom_histogram</span><span class="p">()</span> <span class="o">+</span>
   <span class="nf">scale_x_log10</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">label_dollar</span><span class="p">())</span> 
 </code></pre></td></tr></table>
@@ -1824,8 +1824,8 @@ For instance, if you want to plot the same histogram but oriented vertically, yo
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span> 
- <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
+<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ames</span> <span class="o">%&gt;%</span>
+  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">sale_price</span><span class="p">))</span> <span class="o">+</span>
   <span class="nf">geom_histogram</span><span class="p">()</span> <span class="o">+</span>
   <span class="nf">scale_y_log10</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">label_dollar</span><span class="p">())</span> 
 </code></pre></td></tr></table>
@@ -2241,6 +2241,13 @@ In any case, I look forward to see you in the next installment of this series.</
       </a>
     
     <div class="grow"></div>
+    
+      <a href="https://albert-rapp.de/post/2021-08-19-aesthetic-labels/" class="pagination-single__right">      
+        <div class="pagination-single__right-title">ggplot tips: Assigning Labels to an Aesthetic</div>
+        <div class="pagination-single__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
+        </div>
+      </a>
     
   
 </nav>

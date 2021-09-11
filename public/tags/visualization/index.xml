@@ -14,12 +14,68 @@
     <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
     <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
     <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
-    <lastBuildDate>Sat, 07 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Sep 2021 00:00:00 +0000</lastBuildDate>
     <sy:updatePeriod>daily</sy:updatePeriod>
     
         <atom:link href="https://albert-rapp.de/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
     
 
+      
+      <item>
+        <title>ggplot tips: Using position_stack() for Individual Positioning</title>
+        <link>https://albert-rapp.de/post/2021-09-11-position-adjustment/</link>
+        <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Sat, 11 Sep 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-09-11-position-adjustment/</guid>
+        <description>For a long time I have wondered why some people would use position_stack() for position alignment instead of the simpler version position = &amp;quot;stack&amp;quot;. Recently, though, I learned the purpose of the former approach when I tried to add data labels to a stacked bar chart for better legibility.
+Further, I decided that this knowledge is a good addition to this ggplot2-tips series, so let&amp;rsquo;s see what position_stack() can do. To achieve this, let us create a small dummy data set.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>visualization</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>ggplot tips: Assigning Labels to an Aesthetic</title>
+        <link>https://albert-rapp.de/post/2021-08-19-aesthetic-labels/</link>
+        <pubDate>Thu, 19 Aug 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Thu, 19 Aug 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-08-19-aesthetic-labels/</guid>
+        <description>This blog post is part of a series I am creating where I collect tips I found useful when I first learned to work with ggplot2. All posts which are part of this series can be found here. In this post I want to deal with how to manually or automatically create labels for some aesthetic.
+Manually Assigning Labels Assigning labels by hand, e.g. via col = &amp;quot;some label&amp;quot;, can be a great idea in some instances.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>visualization</category>
+            
+          
+        
+        
+        
+          
+            
+              <category>ggplot2-tips</category>
+            
+          
+        
+      </item>
       
       <item>
         <title>Beginning a ggplot2 Series: Logarithmize Your Scales</title>
