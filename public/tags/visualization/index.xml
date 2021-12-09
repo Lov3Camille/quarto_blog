@@ -14,12 +14,72 @@
     <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
     <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
     <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
-    <lastBuildDate>Sat, 11 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Oct 2021 00:00:00 +0000</lastBuildDate>
     <sy:updatePeriod>daily</sy:updatePeriod>
     
         <atom:link href="https://albert-rapp.de/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
     
 
+      
+      <item>
+        <title>ggplot tips: Arranging plots</title>
+        <link>https://albert-rapp.de/post/2021-10-28-extend-plot-variety/</link>
+        <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Thu, 28 Oct 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-10-28-extend-plot-variety/</guid>
+        <description>In this week&amp;rsquo;s TidyTuesday, I noticed that I am frequently not using only ggplot2 to create plots. In fact, it has become essential to me to leverage the powers of other great additional packages that align well with ggplot2. Therefore, I decided to extend my ggplot2-tips series by introducing a few packages I use quite often.
+In this post, I want to cover how to arrange multiple plots. In particular, I will talk about the fantastic patchwork package by Thomas Lin Pedersen which helps to arrange plots quite intuitively.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>visualization</category>
+            
+          
+        
+        
+        
+          
+            
+              <category>ggplot2-tips</category>
+            
+          
+        
+      </item>
+      
+      <item>
+        <title>An Exploratory Introduction to the Plotly Package</title>
+        <link>https://albert-rapp.de/post/2021-10-16-exploratory-intro-plotly/</link>
+        <pubDate>Sat, 16 Oct 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Sat, 16 Oct 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-10-16-exploratory-intro-plotly/</guid>
+        <description>Currently, I am quite curious about interactive plots which is why I am reading Scott Murray&amp;rsquo;s highly recommendable book on D3. For those of you who don&amp;rsquo;t know it, D3.js is a JavaScript library that is great for creating amazing interactive Data-Driven-Documents on the web.
+Unfortunately, compared to ggplot2, D3&amp;rsquo;s learning curve feels quite steep and I am not yet able to work with it yet. Fortunately, there are other interactive graphing libraries out there that I can use to get a first feel for creating interactive plots.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>visualization</category>
+            
+          
+            
+              <category>exploratory-intro</category>
+            
+          
+        
+        
+        
+      </item>
       
       <item>
         <title>ggplot tips: Using position_stack() for Individual Positioning</title>
@@ -43,6 +103,12 @@ Further, I decided that this knowledge is a good addition to this ggplot2-tips s
           
         
         
+        
+          
+            
+              <category>ggplot2-tips</category>
+            
+          
         
       </item>
       

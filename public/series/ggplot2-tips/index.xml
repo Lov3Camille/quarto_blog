@@ -14,12 +14,74 @@
     <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
     <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
     <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
-    <lastBuildDate>Thu, 19 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Oct 2021 00:00:00 +0000</lastBuildDate>
     <sy:updatePeriod>daily</sy:updatePeriod>
     
         <atom:link href="https://albert-rapp.de/series/ggplot2-tips/index.xml" rel="self" type="application/rss+xml" />
     
 
+      
+      <item>
+        <title>ggplot tips: Arranging plots</title>
+        <link>https://albert-rapp.de/post/2021-10-28-extend-plot-variety/</link>
+        <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Thu, 28 Oct 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-10-28-extend-plot-variety/</guid>
+        <description>In this week&amp;rsquo;s TidyTuesday, I noticed that I am frequently not using only ggplot2 to create plots. In fact, it has become essential to me to leverage the powers of other great additional packages that align well with ggplot2. Therefore, I decided to extend my ggplot2-tips series by introducing a few packages I use quite often.
+In this post, I want to cover how to arrange multiple plots. In particular, I will talk about the fantastic patchwork package by Thomas Lin Pedersen which helps to arrange plots quite intuitively.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>visualization</category>
+            
+          
+        
+        
+        
+          
+            
+              <category>ggplot2-tips</category>
+            
+          
+        
+      </item>
+      
+      <item>
+        <title>ggplot tips: Using position_stack() for Individual Positioning</title>
+        <link>https://albert-rapp.de/post/2021-09-11-position-adjustment/</link>
+        <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Sat, 11 Sep 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-09-11-position-adjustment/</guid>
+        <description>For a long time I have wondered why some people would use position_stack() for position alignment instead of the simpler version position = &amp;quot;stack&amp;quot;. Recently, though, I learned the purpose of the former approach when I tried to add data labels to a stacked bar chart for better legibility.
+Further, I decided that this knowledge is a good addition to this ggplot2-tips series, so let&amp;rsquo;s see what position_stack() can do. To achieve this, let us create a small dummy data set.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>visualization</category>
+            
+          
+        
+        
+        
+          
+            
+              <category>ggplot2-tips</category>
+            
+          
+        
+      </item>
       
       <item>
         <title>ggplot tips: Assigning Labels to an Aesthetic</title>

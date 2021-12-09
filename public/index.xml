@@ -14,7 +14,7 @@
     <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
     <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
     <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
-    <lastBuildDate>Sat, 11 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Dec 2021 00:00:00 +0000</lastBuildDate>
     <sy:updatePeriod>daily</sy:updatePeriod>
     
         <atom:link href="https://albert-rapp.de/index.xml" rel="self" type="application/rss+xml" />
@@ -43,6 +43,121 @@
 
       
       <item>
+        <title>6 simple Shiny things I have learned from creating a somewhat small app</title>
+        <link>https://albert-rapp.de/post/2021-11-21-a-few-learnings-from-a-simple-shiny-app/</link>
+        <pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Thu, 09 Dec 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-11-21-a-few-learnings-from-a-simple-shiny-app/</guid>
+        <description>A couple of weeks back, I wanted to explain to my student what I mean when I talk about the &amp;ldquo;variance of the sample variance&amp;rdquo;. In my head, this term sounds quite confusing and contains the word &amp;ldquo;variance&amp;rdquo; at least one too many times. But as I was not sure whether my subsequent explanation really came through, I decided to let my students explore the notion on their own through a Shiny app.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>ggplot tips: Arranging plots</title>
+        <link>https://albert-rapp.de/post/2021-10-28-extend-plot-variety/</link>
+        <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Thu, 28 Oct 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-10-28-extend-plot-variety/</guid>
+        <description>In this week&amp;rsquo;s TidyTuesday, I noticed that I am frequently not using only ggplot2 to create plots. In fact, it has become essential to me to leverage the powers of other great additional packages that align well with ggplot2. Therefore, I decided to extend my ggplot2-tips series by introducing a few packages I use quite often.
+In this post, I want to cover how to arrange multiple plots. In particular, I will talk about the fantastic patchwork package by Thomas Lin Pedersen which helps to arrange plots quite intuitively.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>visualization</category>
+            
+          
+        
+        
+        
+          
+            
+              <category>ggplot2-tips</category>
+            
+          
+        
+      </item>
+      
+      <item>
+        <title>An Exploratory Introduction to the Plotly Package</title>
+        <link>https://albert-rapp.de/post/2021-10-16-exploratory-intro-plotly/</link>
+        <pubDate>Sat, 16 Oct 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Sat, 16 Oct 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-10-16-exploratory-intro-plotly/</guid>
+        <description>Currently, I am quite curious about interactive plots which is why I am reading Scott Murray&amp;rsquo;s highly recommendable book on D3. For those of you who don&amp;rsquo;t know it, D3.js is a JavaScript library that is great for creating amazing interactive Data-Driven-Documents on the web.
+Unfortunately, compared to ggplot2, D3&amp;rsquo;s learning curve feels quite steep and I am not yet able to work with it yet. Fortunately, there are other interactive graphing libraries out there that I can use to get a first feel for creating interactive plots.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>visualization</category>
+            
+          
+            
+              <category>exploratory-intro</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Did German Voters Become More Impulsive?</title>
+        <link>https://albert-rapp.de/post/2021-10-03-sonntagsfrage/</link>
+        <pubDate>Sun, 03 Oct 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Sun, 03 Oct 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-10-03-sonntagsfrage/</guid>
+        <description>A bit more than two weeks ago, Germany held a federal election and, naturally, this is always reason for a lot of discussions and subjective truths. One subjective truth I encountered myself related to how fast the party CDU/CSU was able to collect and lose votes according to polls right before the election.
+According to the Allensbach Institute, a private polling institute based in Allensbach, Baden-Württemberg, on July 20th, approximately three months before the official election, the CDU/CSU could get 31.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Writing Versatile Functions with R</title>
+        <link>https://albert-rapp.de/post/2021-09-16-similar-data-and-list-like-columns/</link>
+        <pubDate>Thu, 16 Sep 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        <atom:modified>Thu, 16 Sep 2021 00:00:00 +0000</atom:modified>
+        <guid>https://albert-rapp.de/post/2021-09-16-similar-data-and-list-like-columns/</guid>
+        <description>This week, I had to deal with two very similar tasks on two very similar but not identical data sets that required me to write a function that is versatile enough to deal with both data sets despite their subtle differences. The differences that had to be accounted for mainly related to using functions in the two cases that relied on differently many arguments. Also, some of the column names were different which meant that I could not hard-code the column names into the function I was creating.</description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
         <title>ggplot tips: Using position_stack() for Individual Positioning</title>
         <link>https://albert-rapp.de/post/2021-09-11-position-adjustment/</link>
         <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
@@ -64,6 +179,12 @@ Further, I decided that this knowledge is a good addition to this ggplot2-tips s
           
         
         
+        
+          
+            
+              <category>ggplot2-tips</category>
+            
+          
         
       </item>
       

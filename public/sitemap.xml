@@ -3,27 +3,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://albert-rapp.de/</loc>
-    <lastmod>2021-09-11T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2021-11-21-a-few-learnings-from-a-simple-shiny-app/</loc>
+    <lastmod>2021-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/</loc>
+    <lastmod>2021-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2021-10-28-extend-plot-variety/</loc>
+    <lastmod>2021-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/series/ggplot2-tips/</loc>
+    <lastmod>2021-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/series/</loc>
+    <lastmod>2021-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/tags/</loc>
+    <lastmod>2021-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/tags/visualization/</loc>
+    <lastmod>2021-10-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2021-10-16-exploratory-intro-plotly/</loc>
+    <lastmod>2021-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/tags/exploratory-intro/</loc>
+    <lastmod>2021-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2021-10-03-sonntagsfrage/</loc>
+    <lastmod>2021-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2021-09-16-similar-data-and-list-like-columns/</loc>
+    <lastmod>2021-09-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/post/2021-09-11-position-adjustment/</loc>
     <lastmod>2021-09-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://albert-rapp.de/post/</loc>
-    <lastmod>2021-09-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://albert-rapp.de/tags/</loc>
-    <lastmod>2021-09-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://albert-rapp.de/tags/visualization/</loc>
-    <lastmod>2021-09-11T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://albert-rapp.de/post/2021-08-19-aesthetic-labels/</loc>
-    <lastmod>2021-08-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://albert-rapp.de/series/ggplot2-tips/</loc>
-    <lastmod>2021-08-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://albert-rapp.de/series/</loc>
     <lastmod>2021-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/post/2021-08-07-a-few-ggplot-tips/</loc>

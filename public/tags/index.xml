@@ -14,7 +14,7 @@
     <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
     <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
     <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
-    <lastBuildDate>Sat, 11 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Oct 2021 00:00:00 +0000</lastBuildDate>
     <sy:updatePeriod>daily</sy:updatePeriod>
     
         <atom:link href="https://albert-rapp.de/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -24,10 +24,28 @@
       <item>
         <title>visualization</title>
         <link>https://albert-rapp.de/tags/visualization/</link>
-        <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
+        <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
         <author>blog@albert-rapp.de (Albert Rapp)</author>
         
         <guid>https://albert-rapp.de/tags/visualization/</guid>
+        <description></description>
+        
+        <dc:creator>Albert Rapp</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>exploratory-intro</title>
+        <link>https://albert-rapp.de/tags/exploratory-intro/</link>
+        <pubDate>Sat, 16 Oct 2021 00:00:00 +0000</pubDate>
+        <author>blog@albert-rapp.de (Albert Rapp)</author>
+        
+        <guid>https://albert-rapp.de/tags/exploratory-intro/</guid>
         <description></description>
         
         <dc:creator>Albert Rapp</dc:creator>

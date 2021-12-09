@@ -15,7 +15,7 @@ tocLevels:
   - h2
   - h3
   - h4
-series: ~
+series: ["ggplot2-tips"]
 image: ~
 libraries:
   - mathjax
