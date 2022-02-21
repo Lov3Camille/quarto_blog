@@ -4,7 +4,7 @@ author: ''
 date: '2021-12-09'
 slug: []
 categories: []
-tags: []
+tags: ["shiny"]
 description: "I recently built a small Shiny app where I had to search for how to do a lot of things. Here are 6 things I learned doing that. Maybe a Shiny beginner will find something useful in here."
 hideToc: no
 enableToc: yes

@@ -1,0 +1,13 @@
+name: interactive-ggplot
+title: interactive-ggplot
+username:
+account: rappa
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5460211
+bundleId: 5480430
+url: https://rappa.shinyapps.io/interactive-ggplot/
+when: 1642500781.74779
+lastSyncTime: 1642500781.74779
+asMultiple: FALSE
+asStatic: FALSE

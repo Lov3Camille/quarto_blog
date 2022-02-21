@@ -1,99 +1,65 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" 
-  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
-  xmlns:dc="http://purl.org/dc/elements/1.1/" 
-  xmlns:atom="http://www.w3.org/2005/Atom" 
-  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
-  xmlns:media="http://search.yahoo.com/mrss/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Albert Rapp</title>
     <link>https://albert-rapp.de/tags/</link>
     <description>Recent content in Tags on Albert Rapp</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
-    <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
-    <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
-    <lastBuildDate>Thu, 28 Oct 2021 00:00:00 +0000</lastBuildDate>
-    <sy:updatePeriod>daily</sy:updatePeriod>
+    <copyright>&amp;copy;{year}, This work is licensed under a [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).</copyright>
+    <lastBuildDate>Mon, 17 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shiny</title>
+      <link>https://albert-rapp.de/tags/shiny/</link>
+      <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://albert-rapp.de/tags/shiny/</guid>
+      <description></description>
+    </item>
     
-        <atom:link href="https://albert-rapp.de/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>opinion</title>
+      <link>https://albert-rapp.de/tags/opinion/</link>
+      <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://albert-rapp.de/tags/opinion/</guid>
+      <description></description>
+    </item>
     
-
+    <item>
+      <title>visualization</title>
+      <link>https://albert-rapp.de/tags/visualization/</link>
+      <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
       
-      <item>
-        <title>visualization</title>
-        <link>https://albert-rapp.de/tags/visualization/</link>
-        <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
-        <author>blog@albert-rapp.de (Albert Rapp)</author>
-        
-        <guid>https://albert-rapp.de/tags/visualization/</guid>
-        <description></description>
-        
-        <dc:creator>Albert Rapp</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
+      <guid>https://albert-rapp.de/tags/visualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>exploratory-intro</title>
+      <link>https://albert-rapp.de/tags/exploratory-intro/</link>
+      <pubDate>Sat, 16 Oct 2021 00:00:00 +0000</pubDate>
       
-      <item>
-        <title>exploratory-intro</title>
-        <link>https://albert-rapp.de/tags/exploratory-intro/</link>
-        <pubDate>Sat, 16 Oct 2021 00:00:00 +0000</pubDate>
-        <author>blog@albert-rapp.de (Albert Rapp)</author>
-        
-        <guid>https://albert-rapp.de/tags/exploratory-intro/</guid>
-        <description></description>
-        
-        <dc:creator>Albert Rapp</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
+      <guid>https://albert-rapp.de/tags/exploratory-intro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>simulation</title>
+      <link>https://albert-rapp.de/tags/simulation/</link>
+      <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
       
-      <item>
-        <title>simulation</title>
-        <link>https://albert-rapp.de/tags/simulation/</link>
-        <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
-        <author>blog@albert-rapp.de (Albert Rapp)</author>
-        
-        <guid>https://albert-rapp.de/tags/simulation/</guid>
-        <description></description>
-        
-        <dc:creator>Albert Rapp</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
+      <guid>https://albert-rapp.de/tags/simulation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>statistics</title>
+      <link>https://albert-rapp.de/tags/statistics/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
-      <item>
-        <title>statistics</title>
-        <link>https://albert-rapp.de/tags/statistics/</link>
-        <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
-        <author>blog@albert-rapp.de (Albert Rapp)</author>
-        
-        <guid>https://albert-rapp.de/tags/statistics/</guid>
-        <description></description>
-        
-        <dc:creator>Albert Rapp</dc:creator>
-        
-        
-        
-        
-        
-        
-      </item>
-      
-
+      <guid>https://albert-rapp.de/tags/statistics/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

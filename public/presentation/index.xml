@@ -1,147 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" 
-  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
-  xmlns:dc="http://purl.org/dc/elements/1.1/" 
-  xmlns:atom="http://www.w3.org/2005/Atom" 
-  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
-  xmlns:media="http://search.yahoo.com/mrss/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Presentations on Albert Rapp</title>
     <link>https://albert-rapp.de/presentation/</link>
     <description>Recent content in Presentations on Albert Rapp</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <managingEditor>blog@albert-rapp.de (Albert Rapp)</managingEditor>
-    <webMaster>blog@albert-rapp.de (Albert Rapp)</webMaster>
-    <copyright>©2021, This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 license</a>.</copyright>
-    <lastBuildDate>Wed, 30 Oct 2019 20:48:10 +0900</lastBuildDate>
-    <sy:updatePeriod>daily</sy:updatePeriod>
+    <copyright>&amp;copy;{year}, This work is licensed under a [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).</copyright>
+    <lastBuildDate>Wed, 30 Oct 2019 20:48:10 +0900</lastBuildDate><atom:link href="https://albert-rapp.de/presentation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fourth</title>
+      <link>https://albert-rapp.de/presentation/dir/fourth/</link>
+      <pubDate>Wed, 30 Oct 2019 20:48:10 +0900</pubDate>
+      
+      <guid>https://albert-rapp.de/presentation/dir/fourth/</guid>
+      <description></description>
+    </item>
     
-        <atom:link href="https://albert-rapp.de/presentation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Third</title>
+      <link>https://albert-rapp.de/presentation/third/</link>
+      <pubDate>Wed, 30 Oct 2019 20:46:30 +0900</pubDate>
+      
+      <guid>https://albert-rapp.de/presentation/third/</guid>
+      <description></description>
+    </item>
     
-
+    <item>
+      <title>Second</title>
+      <link>https://albert-rapp.de/presentation/second/</link>
+      <pubDate>Wed, 30 Oct 2019 20:45:24 +0900</pubDate>
       
-      <item>
-        <title>Fourth</title>
-        <link>https://albert-rapp.de/presentation/dir/fourth/</link>
-        <pubDate>Wed, 30 Oct 2019 20:48:10 +0900</pubDate>
-        <author>blog@albert-rapp.de (Albert Rapp)</author>
-        <atom:modified>Wed, 30 Oct 2019 20:48:10 +0900</atom:modified>
-        <guid>https://albert-rapp.de/presentation/dir/fourth/</guid>
-        <description></description>
-        
-        <dc:creator>Albert Rapp</dc:creator>
-        <media:content url="https://albert-rapp.de/images/feature1/number-four.png" medium="image"><media:title type="html">featured image</media:title></media:content>
-        
-        
-        
-          
-            
-          
-        
-        
-          
-            
-          
-        
-        
-          
-            
-          
-        
-      </item>
+      <guid>https://albert-rapp.de/presentation/second/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>First</title>
+      <link>https://albert-rapp.de/presentation/first/</link>
+      <pubDate>Wed, 30 Oct 2019 19:45:20 +0900</pubDate>
       
-      <item>
-        <title>Third</title>
-        <link>https://albert-rapp.de/presentation/third/</link>
-        <pubDate>Wed, 30 Oct 2019 20:46:30 +0900</pubDate>
-        <author>blog@albert-rapp.de (Albert Rapp)</author>
-        <atom:modified>Wed, 30 Oct 2019 20:46:30 +0900</atom:modified>
-        <guid>https://albert-rapp.de/presentation/third/</guid>
-        <description></description>
-        
-        <dc:creator>Albert Rapp</dc:creator>
-        <media:content url="https://albert-rapp.de/images/feature1/number-three.png" medium="image"><media:title type="html">featured image</media:title></media:content>
-        
-        
-        
-          
-            
-          
-        
-        
-          
-            
-          
-        
-        
-          
-            
-          
-        
-      </item>
-      
-      <item>
-        <title>Second</title>
-        <link>https://albert-rapp.de/presentation/second/</link>
-        <pubDate>Wed, 30 Oct 2019 20:45:24 +0900</pubDate>
-        <author>blog@albert-rapp.de (Albert Rapp)</author>
-        <atom:modified>Wed, 30 Oct 2019 20:45:24 +0900</atom:modified>
-        <guid>https://albert-rapp.de/presentation/second/</guid>
-        <description></description>
-        
-        <dc:creator>Albert Rapp</dc:creator>
-        <media:content url="https://albert-rapp.de/images/feature1/number-two.png" medium="image"><media:title type="html">featured image</media:title></media:content>
-        
-        
-        
-          
-            
-          
-        
-        
-          
-            
-          
-        
-        
-          
-            
-          
-        
-      </item>
-      
-      <item>
-        <title>First</title>
-        <link>https://albert-rapp.de/presentation/first/</link>
-        <pubDate>Wed, 30 Oct 2019 19:45:20 +0900</pubDate>
-        <author>blog@albert-rapp.de (Albert Rapp)</author>
-        <atom:modified>Wed, 30 Oct 2019 19:45:20 +0900</atom:modified>
-        <guid>https://albert-rapp.de/presentation/first/</guid>
-        <description></description>
-        
-        <dc:creator>Albert Rapp</dc:creator>
-        <media:content url="https://albert-rapp.de/images/feature1/number-one.png" medium="image"><media:title type="html">featured image</media:title></media:content>
-        
-        
-        
-          
-            
-          
-        
-        
-          
-            
-          
-        
-        
-          
-            
-          
-        
-      </item>
-      
-
+      <guid>https://albert-rapp.de/presentation/first/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

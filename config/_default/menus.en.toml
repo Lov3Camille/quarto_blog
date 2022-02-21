@@ -2,16 +2,37 @@
   identifier = "about"
   name = "About"
   url = "about"
-  weight = 2
+  weight = 3
 
 [[main]]
   identifier = "archive"
   name = "Archive"
   url = "archive"
-  weight = 3
+  weight = 4
 
 [[main]]
   identifier = "posts"
   name = "Posts"
   url = "post"
   weight = 1
+
+[[main]]
+  identifier = "YARDS"
+  name = "YARDS"
+  url = "https://yards.albert-rapp.de/"
+  weight = 2
+  
+[[main]]
+  identifier = "ressources"
+  name = "Ressources"
+  weight = 5
+  
+[[main]]
+  parent = "ressources"
+  name = "R weekly"
+  url = "https://rweekly.org/"
+  
+[[main]]
+  parent = "ressources"
+  name = "R bloggers"
+  url = "https://www.r-bloggers.com"
