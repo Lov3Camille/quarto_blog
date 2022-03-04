@@ -1,24 +1,24 @@
 ---
-title: '4 Ways to use colors in ggplot more efficiently'
+title: "4 Ways to use colors in ggplot more efficiently"
 author: ''
 date: '2022-02-19'
-slug: []
 categories: []
 tags: []
-description: 'Inspired by a datawrapper blogpost, we explore how to work with fewer colors in ggplot.'
+description: Inspired by a datawrapper blogpost, we explore how to work with fewer
+  colors in ggplot.
 hideToc: no
 enableToc: yes
 enableTocContent: no
 tocFolding: no
 tocPosition: inner
 tocLevels:
-  - h2
-  - h3
-  - h4
-series: ['ggplot2-tips']
-image: ~
-libraries:
-  - mathjax
+- h2
+- h3
+- h4
+series: ggplot2-tips
+image: null
+libraries: mathjax
+slug: []
 ---
 
 ```{r, echo = F}
