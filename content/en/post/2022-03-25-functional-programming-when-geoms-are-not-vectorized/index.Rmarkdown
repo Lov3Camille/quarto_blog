@@ -204,8 +204,8 @@ Can it handle arbitrarily many curves?
 n_curves <- 50
 curve_layers <- tibble(
     x = runif(n_curves),
-    y = runif(n_curves),
     xend = runif(n_curves),
+    y = runif(n_curves),
     yend = runif(n_curves),
     size = runif(n_curves, 0, 2), 
     curvature = runif(n_curves, -1, 1)
