@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Albert Rapp</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy;{year}, This work is licensed under a [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).</copyright>
-    <lastBuildDate>Mon, 17 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>API</title>
+      <link>https://albert-rapp.de/tags/api/</link>
+      <pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://albert-rapp.de/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>automatization</title>
+      <link>https://albert-rapp.de/tags/automatization/</link>
+      <pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://albert-rapp.de/tags/automatization/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>shiny</title>
       <link>https://albert-rapp.de/tags/shiny/</link>

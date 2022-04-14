@@ -3,12 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://albert-rapp.de/</loc>
-    <lastmod>2022-03-29T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://albert-rapp.de/series/ggplot2-tips/</loc>
-    <lastmod>2022-03-29T00:00:00+00:00</lastmod>
+    <loc>https://albert-rapp.de/tags/api/</loc>
+    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/tags/automatization/</loc>
+    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2022-04-11-get-twitter-posts-into-your-notetaking-system/</loc>
+    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/post/</loc>
+    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/tags/</loc>
+    <lastmod>2022-04-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/series/ggplot2-tips/</loc>
     <lastmod>2022-03-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/post/2022-03-29-recreating-the-swd-look/</loc>
@@ -30,9 +42,6 @@
     <lastmod>2022-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/tags/shiny/</loc>
-    <lastmod>2022-01-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://albert-rapp.de/tags/</loc>
     <lastmod>2022-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/post/2022-01-12-janitor-showcase/</loc>
