@@ -6,7 +6,437 @@
     <description>Recent content on Albert Rapp</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy;{year}, This work is licensed under a [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).</copyright>
-    <lastBuildDate>Thu, 14 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>6 Lessons that I learned from teaching R to non-programmers</title>
+      <link>https://albert-rapp.de/post/2022-04-15-lessons-learned-from-teaching-nonprogrammers/</link>
+      <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://albert-rapp.de/post/2022-04-15-lessons-learned-from-teaching-nonprogrammers/</guid>
+      <description>&lt;p&gt;Last week, I gave a short workshop teaching R to Economics students
+without prior programming experience. &lt;a href=&#34;https://twitter.com/rappa753/status/1516497080201904129&#34;&gt;On
+Twitter&lt;/a&gt;, I
+shared six lessons that I wish I had learnt before. This blog post is a
+more detailed account of my experience. Additionally, I incorporated
+many excellent suggestions from others on Twitter into this blog post.&lt;/p&gt;
+&lt;h2 id=&#34;do-less&#34;&gt;Do less&lt;/h2&gt;
+&lt;p&gt;The first and most important lesson is that I have to plan to do less.
+This is probably the trickiest part for me. Usually, I like to create an
+ambitious curriculum for my students. For example, in my semester-long
+&lt;a href=&#34;https://yards.albert-rapp.de/&#34;&gt;YARDS course&lt;/a&gt; for mathematicians, I
+introduce many topics like&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;data viz and wrangling with &lt;code&gt;ggplot2&lt;/code&gt; and &lt;code&gt;dplyr&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;if-conditions and for-loops (yes, I think everyone should be
+familiar with for-loops),&lt;/li&gt;
+&lt;li&gt;model building with &lt;code&gt;tidymodels&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;functional programming with &lt;code&gt;purrr&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;creating and sharing content with &lt;code&gt;Rmarkdown&lt;/code&gt; and&lt;/li&gt;
+&lt;li&gt;interactive web apps with &lt;code&gt;shiny&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In that course, students already came with at least a basic
+understanding of programming. Most of the time, I only had to lay out a
+few code examples. Then, I quickly made students work on assignments. As
+students already knew how to read code and debug, they knew how to get
+themselves unstuck. This was nice as it enabled my ambitious curriculum.
+Though, I never fully appreciated how much easier this made teaching.&lt;/p&gt;
+&lt;h3 id=&#34;scaling-down-for-the-workshop&#34;&gt;Scaling down for the workshop&lt;/h3&gt;
+&lt;p&gt;Of course, I knew that I needed to scale down in a 4x3h workshop. And I
+thought I did that. But I was in for a surprise because there was a
+crucial issue:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Things that are obvious to someone with programming experience are not
+obvious to non-programmers at all.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let&amp;rsquo;s go through an example. Imagine students already had seen the
+following fictitious code chunks.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;year&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1995&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; 
+    &lt;span class=&#34;nf&#34;&gt;geom_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapping&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;In one exercise, the students were supposed to plot not the whole data
+set &lt;code&gt;dat&lt;/code&gt; but a filtered version of it. So, I thought that - having seen
+the code chunks and heard explanations - students would &amp;ldquo;intuitively&amp;rdquo;
+know to combine the chunks like so&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;year&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1994&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; 
+    &lt;span class=&#34;nf&#34;&gt;geom_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapping&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;But this was not the case. Students were so unfamiliar with code that
+they were hesitant to &amp;ldquo;stick together&amp;rdquo; the two building blocks.
+Unfortunately, I did not anticipate this. And without any programming
+experience, students will get stuck in even more unexpected places.
+Therefore, be sure to have time for detours. And the only way I see how
+that&amp;rsquo;s possible is to plan to do less.&lt;/p&gt;
+&lt;h2 id=&#34;teach-through-typing&#34;&gt;Teach through typing&lt;/h2&gt;
+&lt;p&gt;So, providing students with building blocks was not enough. At least in
+their learning stage it wasn&amp;rsquo;t. Students were just too unfamiliar with
+code. Fortunately, it turns out that it does not take a huge effort to
+familiarize students with code. Think: What&amp;rsquo;s the fastest way to learn
+to write code? Well, write a lot of code.&lt;/p&gt;
+&lt;p&gt;And that&amp;rsquo;s exactly what I tried with them. Instead of doing demos where
+only I typed code, I made students type along. And I know this sounds
+silly. But to my surprise, it helped. It helped a lot!&lt;/p&gt;
+&lt;p&gt;In the end, students had the same building block as if I had done the
+demo alone. Yet, students were more willing to experiment with the code
+they have written themselves. In my book, that&amp;rsquo;s a huge step on anyone&amp;rsquo;s
+programming journey.&lt;/p&gt;
+&lt;h3 id=&#34;make-time-for-typing&#34;&gt;Make time for typing&lt;/h3&gt;
+&lt;p&gt;On Twitter, &lt;a href=&#34;https://twitter.com/kotton_king/status/1516540525050056705&#34;&gt;Trader
+Vix&lt;/a&gt;
+disagreed with this typing along approach. It is a fair point to say
+that not everyone can type &amp;ldquo;sufficiently&amp;rdquo; fast. Subsequently, some
+students may fall behind. In this case, I argued that even more students
+struggled without this typing approach. This way though, students were
+not falling behind. Instead, they didn&amp;rsquo;t know how to get started.&lt;/p&gt;
+&lt;p&gt;Of course, you will have to make time for students to type. Once again:
+Plan to do less as students will be slower than you are. Also, make sure
+to ask students if they can execute the code. This can even have
+additional benefits. In one case, the students couldn&amp;rsquo;t execute the code
+we typed. From their description, I could tell that they forgot quotes
+as in &lt;code&gt;x == &#39;text&#39;&lt;/code&gt;. Thus, typing together can also generate teachable
+moments.&lt;/p&gt;
+&lt;h2 id=&#34;start-with-ggplot&#34;&gt;Start with ggplot&lt;/h2&gt;
+&lt;p&gt;Some say vector manipulation should be the first thing to teach. I
+didn&amp;rsquo;t and this was one of the few things I wouldn&amp;rsquo;t change. My
+non-statistically inclined students seemed to find visual results more
+engaging than number/vector crunching. And once students can create
+graphics, the nice thing is that you can always refer back to that for
+motivation. Let me elaborate.&lt;/p&gt;
+&lt;p&gt;Shockingly, data wrangling does not have value in itself. I know that as
+mathematicians/statisticians/number crunchers it is hard to imagine
+that. However, incorporating a calculated value in a visualizations can
+generate insights. And many people find that more valuable. Take a look
+at two examples that use this idea. Both consider the &lt;code&gt;ames&lt;/code&gt; data from
+&lt;code&gt;{modeldata}&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tidyverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ames&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;modeldata&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ames&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;n&#34;&gt;janitor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;clean_names&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lot_area&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sale_price&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neighborhood&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## # A tibble: 2,930 x 3&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##    lot_area sale_price neighborhood&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##       &amp;lt;int&amp;gt;      &amp;lt;int&amp;gt; &amp;lt;fct&amp;gt;       &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  1    31770     215000 North_Ames  &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  2    11622     105000 North_Ames  &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  3    14267     172000 North_Ames  &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  4    11160     244000 North_Ames  &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  5    13830     189900 Gilbert     &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  6     9978     195500 Gilbert     &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  7     4920     213500 Stone_Brook &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  8     5005     191500 Stone_Brook &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  9     5389     236500 Stone_Brook &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 10     7500     189000 Gilbert     &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## # ... with 2,920 more rows&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;slice-for-highlighting&#34;&gt;Slice for highlighting&lt;/h3&gt;
+&lt;p&gt;Why would you want to extract specific rows from a data set? Here, we
+use it to highlight specific houses.&lt;/p&gt;
+&lt;p&gt;How do we do that? We extract the rows and throw that into another point
+layer.&lt;/p&gt;
+&lt;p&gt;Now, come up with an artificial story why house 1, 5, 7 and 10 may be
+important. Bam! You now have a visual motivation for why slicing data is
+a neat technique to master.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lot_area&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sale_price&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;geom_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;grey80&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;geom_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;slice&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;red&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;scale_x_log10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;scale_y_log10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;theme_minimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;index_files/figure-gfm/unnamed-chunk-10-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;summaries-for-context&#34;&gt;Summaries for context&lt;/h3&gt;
+&lt;p&gt;The same can be done to motivate vector calculations. Why is it good to
+extract a vector and compute its median? To put your other data into
+context. Let&amp;rsquo;s try that out for the sale prices in &lt;code&gt;dat&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sale_price&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;med&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;median&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;geom_jitter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alpha&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;geom_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;med&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;red&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;scale_x_log10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;labs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;Sale price&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;theme_minimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;index_files/figure-gfm/unnamed-chunk-12-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For a more elaborate case, you can do the same for each neighborhood.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;summaries&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;group_by&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neighborhood&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;summarise&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;med&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;median&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sale_price&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+&lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sale_price&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neighborhood&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;geom_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;alpha&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;geom_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;summaries&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;med&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;red&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;scale_x_log10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;theme_minimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;index_files/figure-gfm/unnamed-chunk-14-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;is-ggplot-too-hard&#34;&gt;Is ggplot too hard?&lt;/h2&gt;
+&lt;p&gt;So, why didn&amp;rsquo;t I use the &lt;code&gt;plot()&lt;/code&gt; function instead of ggplot? That&amp;rsquo;s
+because most people (including myself) would agree that ggplot&amp;rsquo;s
+defaults are visually more pleasing. But the more pressing question is:
+Was ggplot too hard for the students? Let&amp;rsquo;s take a step back on this
+one.&lt;/p&gt;
+&lt;h3 id=&#34;every-new-syntax-is-confusing&#34;&gt;Every new syntax is confusing&lt;/h3&gt;
+&lt;p&gt;Take a look at the following quote.&lt;/p&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;
+&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;
+When teaching, be careful not to mix up \&#34;I learned this a long time
+ago\&#34; with \&#34;This is
+simple\&#34;&lt;a href=&#34;https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;\#rstats&lt;/a&gt;
+&lt;/p&gt;
+--- David Robinson (@drob)
+&lt;a href=&#34;https://twitter.com/drob/status/722806375005302785?ref_src=twsrc%5Etfw&#34;&gt;April
+20, 2016&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;p&gt;In the same spirit, let me say:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When teaching, be careful not to mix up &amp;ldquo;I learned this only fairly
+recently&amp;rdquo; with &amp;ldquo;This is pretty advanced stuff and better not taught
+early on&amp;rdquo;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Personally, I have encountered ggplot and the tidyverse only late in my
+programming game. Therefore, I have refrained from teaching it to
+students for some time. Honestly though, this was also due to my own
+lack of wanting to learn new &amp;ldquo;complicated&amp;rdquo; syntax. As David Robinson
+states in his insightful &lt;a href=&#34;http://varianceexplained.org/r/teach-tidyverse/&#34;&gt;&amp;ldquo;Teach the tidyverse to
+beginners&amp;rdquo;&lt;/a&gt; essay:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;quot;&amp;hellip;all programming syntax is confusing for non-programmers.&amp;quot;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In my case, I was not a non-programmer. But ggplot has its own ecosystem
+with its own syntax. Thus, it is easy to say that ggplot is way too hard
+for beginners. But the truth is:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Every syntax is confusing to the uninitiated.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;so-did-students-cope-with-ggplot-or-not&#34;&gt;So, did students cope with ggplot or not?&lt;/h3&gt;
+&lt;p&gt;Coming back to my students, this long-winded detour explains why they
+did surprisingly well with ggplot. Sure, the intricacies of &lt;code&gt;aes()&lt;/code&gt; are
+probably not fully understood after this workshop. But having no prior
+experience in programming whatsoever, they were surprisingly willing to
+accept that &lt;code&gt;aes()&lt;/code&gt; is just a necessary fact of &lt;del&gt;life&lt;/del&gt; ggplot.&lt;/p&gt;
+&lt;p&gt;As a mathematician, I like to compare this to integral notation $
+\int_0^1 f(x)\, \mathrm{d}x $. In high school, I did not fully grasp
+the meaning of $ \mathrm{d}x $. But I accepted its presence and
+treated it like a delimiter for what&amp;rsquo;s inside and outside the integral.
+Clearly, this is far from understanding the meaning of this notation.
+Yet, it enabled me to do what I needed to do.&lt;/p&gt;
+&lt;p&gt;Overall, students would sometimes forget to put e.g. &lt;code&gt;col =&lt;/code&gt; into the
+correct place. For most parts, though, the students accepted the syntax
+just the way it is and understood that within &lt;code&gt;aes()&lt;/code&gt; we refer to the
+columns in &lt;code&gt;data&lt;/code&gt;. And what may sound even more surprising:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Students fared better with &lt;code&gt;ggplot()&lt;/code&gt; than with other functions like
+&lt;code&gt;filter()&lt;/code&gt;, &lt;code&gt;slice()&lt;/code&gt; or &lt;code&gt;mutate()&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I suspect that is because ggplot is its own ecosystem and each plot
+follows the same template. But &lt;code&gt;filter()&lt;/code&gt;, &lt;code&gt;slice()&lt;/code&gt; and &lt;code&gt;mutate()&lt;/code&gt; each
+work differently. One wants a conditional statement, one wants row
+indices and one wants a new column name plus its &amp;ldquo;formula&amp;rdquo;.&lt;/p&gt;
+&lt;h2 id=&#34;stress-to-save-variables-before-using-them&#34;&gt;Stress to save variables before using them&lt;/h2&gt;
+&lt;p&gt;This was another surprising moments for me. Apparently, if you have
+never programmed, it is not obvious to save results. Therefore, make
+sure that students understand that calculations can only be used later
+if they are saved into a variable. But this variable-saving line has to
+be executed for the actual saving to happen. Often, students would have
+a code chunk like this&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ames&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Sale_Price&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;200000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;geom_point&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapping&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Lot_Area&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Sale_Price&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;But then, they would only execute the second line. More often than not,
+there was no previous &lt;code&gt;dat&lt;/code&gt; variable in the environment and students
+would get an error. This was confusing because the &lt;code&gt;dat &amp;lt;-&lt;/code&gt; line is
+right there. Of course, that does not mean the line was executed.
+Unfortunately, you will likely have to mention this multiple times
+before it sticks.&lt;/p&gt;
+&lt;h2 id=&#34;teach-named-functions&#34;&gt;Teach named functions&lt;/h2&gt;
+&lt;p&gt;The symbols&lt;code&gt;$&lt;/code&gt;, &lt;code&gt;[&lt;/code&gt; and &lt;code&gt;]&lt;/code&gt; all have their rightful place in R. However,
+students unanimously found using memorable function names like &lt;code&gt;pull()&lt;/code&gt;
+or &lt;code&gt;select()&lt;/code&gt; easier to learn. But remember: Do less. I tried to show
+students multiple ways to get a job done using e.g. &lt;code&gt;$&lt;/code&gt; or &lt;code&gt;pull()&lt;/code&gt;.
+This only caused confusion. So, use only one approach.&lt;/p&gt;
+&lt;p&gt;Though, in this specific case I would likely go with &lt;code&gt;$&lt;/code&gt; instead of
+&lt;code&gt;pull()&lt;/code&gt;. Of course, &lt;code&gt;pull()&lt;/code&gt; is nice but chances are that students will
+encounter &lt;code&gt;$&lt;/code&gt; at some point. Thus, see this as an investment into
+enabling students to read more code. For the same reason, &lt;a href=&#34;https://twitter.com/nikita_telkar/status/1516726552213426181&#34;&gt;Nikita Telkar
+suggested&lt;/a&gt;
+to teach the full name notation, e.g. &lt;code&gt;dplyr::select()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Personally, I would not use full names all the time though. But one
+particular use case comes to mind. After experiencing a few errors due
+to not using capital letters in column names, the students were more
+than willing to use &lt;code&gt;clean_names()&lt;/code&gt; from
+&lt;a href=&#34;https://albert-rapp.de/post/2022-01-12-janitor-showcase/&#34;&gt;{janitor}&lt;/a&gt;.
+So, &lt;code&gt;janitor::clean_names()&lt;/code&gt; may be a good showcase for the full name
+notation.&lt;/p&gt;
+&lt;h2 id=&#34;use-pipes&#34;&gt;Use pipes&lt;/h2&gt;
+&lt;p&gt;As mentioned, saving variables felt foreign to students at first. The
+same was true for nesting functions. Consequently, two step processes
+like selecting and filtering were hard. Here, pipes helped.&lt;/p&gt;
+&lt;p&gt;Though I&amp;rsquo;ve had Math students complain that pipes feel wrong, for the
+Economics students it was just the right thing. In fact, the pipe often
+mimicked what students wanted to do anyway. Frequently, students knew
+that they want to e.g. filter data. So they typed &lt;code&gt;filter(year &amp;gt; 1999)&lt;/code&gt;.
+Of course, this misses the data. It seems like students were so caught
+up in what they wanted to &lt;strong&gt;do&lt;/strong&gt; that they forgot to tell R what data to
+use. But chaining multiple function calls circumvented that (modulo at
+the beginning of the chain).&lt;/p&gt;
+&lt;p&gt;Additionally, let me mention that there were great contributions on
+Twitter by &lt;a href=&#34;https://twitter.com/dtoher/status/1516501635706597381&#34;&gt;Deidre
+Toher&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/ludictech/status/1516523771573776395&#34;&gt;Fran
+Barton&lt;/a&gt;.
+Deidre Toher suggested reading pipes as &amp;lsquo;then&amp;rsquo; and Fran Barton
+pronounced conditions like &lt;code&gt;x[x &amp;gt; 5]&lt;/code&gt; as &amp;lsquo;such that&amp;rsquo;. This kind of
+reading code aloud, could go a long way to make code feel more natural
+for beginners.&lt;/p&gt;
+&lt;h2 id=&#34;other-reactions&#34;&gt;Other reactions&lt;/h2&gt;
+&lt;p&gt;These were my six lessons. All of them were enhanced by a lot of great
+suggestions from Twitter. But not all suggestions fit into the previous
+text. So, let me mention a few more contributors.&lt;/p&gt;
+&lt;h3 id=&#34;tidyverseskeptic&#34;&gt;TidyverseSkeptic&lt;/h3&gt;
+&lt;p&gt;I don&amp;rsquo;t want to give the impression that I filtered out &amp;ldquo;negative&amp;rdquo;
+comments. So, let me point out that &lt;a href=&#34;https://twitter.com/matloff/status/1516531433539399681&#34;&gt;Prof. Norm
+Matloff&lt;/a&gt; chimed
+in and advocated against using pipes. For his elaborate reasons see the
+&lt;a href=&#34;https://github.com/matloff/TidyverseSkeptic&#34;&gt;TidyverseSkeptic essay&lt;/a&gt;.
+That being said, I do not agree with many statements in his tweet or his
+essay (though I agree that for-loops should not be a reason to feel
+ashamed).&lt;/p&gt;
+&lt;p&gt;Having gotten this off my chest, I really do not want to comment more on
+the artificial fight between base-R and the tidyverse. To me, a lot of
+this dispute feels like a &lt;strong&gt;highly subjective&lt;/strong&gt; back-and-forth between
+both sides anyway. I do like parts of both worlds and I don&amp;rsquo;t want to
+throw my own subjective two cents into the mix.&lt;/p&gt;
+&lt;h3 id=&#34;miscellaneous-tips&#34;&gt;Miscellaneous tips&lt;/h3&gt;
+&lt;p&gt;So, let me close this post on a lighter note with the remaining
+contributions.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/remington_moll/status/1516764933601460224&#34;&gt;Remington
+Moll&lt;/a&gt;
+suggested to use data sets that students care about. This could
+encompass letting students choose a data set from five prepared data
+sets. Of course, this could potentially take up a huge amount of
+preparation time. But maybe skimming a few data sets in advance
+could be enough for demos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/FadelMegahed/status/1516784428109901826&#34;&gt;Fadel
+Megahed&lt;/a&gt;
+shared some of his own course material. In his slides, he uses
+timers and I like the idea. This way, in-class time management may
+become easier. I always struggle with sticking to the allotted time
+during a set of exercises.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/rmflight/status/1516763348343398406&#34;&gt;Dr. Robert M
+Flight&lt;/a&gt;
+shared the datacarpentry lessons. I have only skimmed them but I&amp;rsquo;ve
+heard people praise these lessons multiple times already.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;closing&#34;&gt;Closing&lt;/h2&gt;
+&lt;p&gt;This concludes my blog post. Thanks to everyone on Twitter for
+contributing. It pleased me to see that many people in the R community
+are passionate about teaching. If you liked this essay, then consider
+following me on &lt;a href=&#34;https://twitter.com/rappa753&#34;&gt;Twitter&lt;/a&gt; and/or
+subscribing to my &lt;a href=&#34;https://albert-rapp.de/index.xml&#34;&gt;RSS feed&lt;/a&gt;. See you
+next time!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>How to collect dataviz from Twitter into your note-taking system</title>
       <link>https://albert-rapp.de/post/2022-04-11-get-twitter-posts-into-your-notetaking-system/</link>
