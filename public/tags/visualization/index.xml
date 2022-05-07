@@ -6,7 +6,505 @@
     <description>Recent content in visualization on Albert Rapp</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy;{year}, This work is licensed under a [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).</copyright>
-    <lastBuildDate>Mon, 10 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Analyze your Twitter timeline with {rtweet} and {lubridate}</title>
+      <link>https://albert-rapp.de/post/2022-05-06-track-twitter-follower/</link>
+      <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://albert-rapp.de/post/2022-05-06-track-twitter-follower/</guid>
+      <description>&lt;p&gt;This week, I am oddly proud to announce that I have reached 1000
+followers on &lt;a href=&#34;https://twitter.com/rappa753&#34;&gt;Twitter&lt;/a&gt;. Check out the
+visualization that I have created for this joyous occasion.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;final_viz.png&#34; width=&#34;1754&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;To me, my rising follower count and the somewhat regular mails that I
+receive are a sign that people like to read my blog. And to thank you
+all for following my work, let me give you a quick intro to the packages
+&lt;code&gt;rtweet&lt;/code&gt; and &lt;code&gt;lubridate&lt;/code&gt;. These were instrumental in creating the above
+visual.&lt;/p&gt;
+&lt;h2 id=&#34;working-with-rtweet&#34;&gt;Working with rtweet&lt;/h2&gt;
+&lt;p&gt;At the end of February 2022, I wondered how my follower count evolves
+over time. Unfortunately, this is not something Twitter shows you by
+default. The Analytics page only shows me the change within my last 28
+days. To overcome this drawback, I consulted the &lt;code&gt;rtweet&lt;/code&gt; package which
+is a fabulous package that lets you interact with Twitter&amp;rsquo;s API through
+R.&lt;/p&gt;
+&lt;p&gt;In my case, I only do rudimentary work with it and track my followers
+over time. For this to work, I have set up an R script that runs every
+hour to download a list of my followers. Each hour, the list&amp;rsquo;s length
+tells me how many followers I have.&lt;/p&gt;
+&lt;p&gt;If you want to do the same, install the package first. Make sure to
+install the development version from GitHub, though.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;remotes&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;install_github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;rOpenSci/rtweet&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;basic-functionalities&#34;&gt;Basic functionalities&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;rtweet&lt;/code&gt; comes with a lot of convenient function. Most of these start
+with &lt;code&gt;get_&lt;/code&gt;. For instance, there are&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;get_followers()&lt;/code&gt;: This is the function to get a list of an
+account&amp;rsquo;s followers.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_timeline()&lt;/code&gt;: This gives you the a user&amp;rsquo;s timeline like tweets,
+replies and mentions.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;get_retweets()&lt;/code&gt;: This gives you the most recent retweets of a given
+tweet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;My aforementioned R script just runs &lt;code&gt;get_followers()&lt;/code&gt; and computes the
+number of rows of the resulting tibble.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rtweet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;tib&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;get_followers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;rappa753&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;tib&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## # A tibble: 1,018 x 1&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##    user_id            &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##    &amp;lt;chr&amp;gt;              &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  1 778980355457941504 &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  2 561505786          &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  3 1265356152507940870&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  4 1095327279536730117&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  5 2508861812         &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  6 253373869          &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  7 2287065422         &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  8 1491615200         &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  9 1192011365243871232&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 10 1522471850177093632&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## # ... with 1,008 more rows&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;nrow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tib&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] 1018&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;For my above visualization, I used &lt;code&gt;get_timeline()&lt;/code&gt; to extract my five
+most popular tweets. Here, I ranked the popularity by the count of likes
+resp. &amp;ldquo;favorites&amp;rdquo; as &lt;code&gt;rtweet&lt;/code&gt; likes to call it.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tidyverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;tl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;get_timeline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;rappa753&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;tl_slice&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;slice_max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;favorite_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;created_at&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;full_text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;favorite_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;retweet_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+&lt;span class=&#34;n&#34;&gt;tl_slice&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## # A tibble: 5 x 4&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   created_at                     full_text          favorite_count retweet_count&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   &amp;lt;chr&amp;gt;                          &amp;lt;chr&amp;gt;                       &amp;lt;dbl&amp;gt;         &amp;lt;dbl&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 1 Sat Mar 05 20:56:33 +0000 2022 &amp;#34;The fun thing ab~            508            83&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2 Sat Feb 19 17:32:23 +0000 2022 &amp;#34;Ever wanted to u~            342            56&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 3 Wed Mar 30 10:25:48 +0000 2022 &amp;#34;From standard ou~            336            58&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 4 Tue Apr 19 19:20:53 +0000 2022 &amp;#34;Last week, I hel~            287            46&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 5 Sat Nov 06 16:16:05 +0000 2021 &amp;#34;I tried to expla~            273            38&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Notice that I tweeted two of these before I started tracking my
+followers. Consequently, I ignored them for my visualization. That&amp;rsquo;s a
+bit of a shame because my most popular tweet is in that timeframe. It
+was about a &lt;a href=&#34;https://twitter.com/rappa753/status/1500213701370171392&#34;&gt;fun R
+infographic&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Unfortunately, the &lt;code&gt;rtweet&lt;/code&gt; package cannot do everything. For example,
+the snapshot functionality &lt;code&gt;tweet_shot()&lt;/code&gt; does not work anymore. I think
+that&amp;rsquo;s because the Twitter API changed.&lt;/p&gt;
+&lt;p&gt;This bothered me during the &lt;a href=&#34;https://twitter.com/30DayChartChall&#34;&gt;30 day chart
+challenge&lt;/a&gt; in April because I
+wanted to automatically extract great visualizations from Twitter. But
+as &lt;code&gt;tweet_shot()&lt;/code&gt; was not working, I had to call Twitter&amp;rsquo;s API manually
+without &lt;code&gt;rtweet&lt;/code&gt;. If you&amp;rsquo;re curious about how that works, check out my
+&lt;a href=&#34;https://albert-rapp.de/post/2022-04-11-get-twitter-posts-into-your-notetaking-system/&#34;&gt;corresponding blog
+post&lt;/a&gt;.
+There, I&amp;rsquo;ve also explained how to set up a script that gets executed,
+say, every hour automatically.&lt;/p&gt;
+&lt;h3 id=&#34;setting-up-a-twitter-app&#34;&gt;Setting up a Twitter app&lt;/h3&gt;
+&lt;p&gt;This pretty much explains how &lt;code&gt;rtweet&lt;/code&gt; works. In general, it is really
+easy to use. And if you only want to use it only occasionally, there is
+not much more to it.&lt;/p&gt;
+&lt;p&gt;However, if you want to use the package more often - as in calling the
+API every hour - then you need to set up a Twitter app. You can read up
+on how that works in the &amp;ldquo;Preparations&amp;rdquo; section of the &lt;a href=&#34;https://albert-rapp.de/post/2022-04-11-get-twitter-posts-into-your-notetaking-system/#preparations&#34;&gt;above blog
+post&lt;/a&gt;.
+Once you&amp;rsquo;ve got that down, your &lt;code&gt;rtweet&lt;/code&gt; calls can be authenticated
+through your Twitter app like so.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;auth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rtweet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;rtweet_app&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;bearer_token&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;keyring&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;key_get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;twitter-bearer-token&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;auth_as&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;auth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Here, I have used the &lt;code&gt;keyring&lt;/code&gt; package to hide the bearer token of my
+Twitter app. If that doesn&amp;rsquo;t mean anything to you, let me once again
+refer to the &lt;a href=&#34;https://albert-rapp.de/post/2022-04-11-get-twitter-posts-into-your-notetaking-system/#preparations&#34;&gt;above blog
+post&lt;/a&gt;.
+The important thing is that after these lines ran your &lt;code&gt;rtweet&lt;/code&gt; calls
+get funneled through your own Twitter app.&lt;/p&gt;
+&lt;h2 id=&#34;working-with-lubridate&#34;&gt;Working with lubridate&lt;/h2&gt;
+&lt;p&gt;As you saw above, the timeline that we extracted and saved in &lt;code&gt;rtweet&lt;/code&gt;
+contains time data. Here it is once again.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;tl_slice&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## # A tibble: 5 x 4&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   created_at                     full_text          favorite_count retweet_count&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   &amp;lt;chr&amp;gt;                          &amp;lt;chr&amp;gt;                       &amp;lt;dbl&amp;gt;         &amp;lt;dbl&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 1 Sat Mar 05 20:56:33 +0000 2022 &amp;#34;The fun thing ab~            508            83&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2 Sat Feb 19 17:32:23 +0000 2022 &amp;#34;Ever wanted to u~            342            56&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 3 Wed Mar 30 10:25:48 +0000 2022 &amp;#34;From standard ou~            336            58&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 4 Tue Apr 19 19:20:53 +0000 2022 &amp;#34;Last week, I hel~            287            46&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 5 Sat Nov 06 16:16:05 +0000 2021 &amp;#34;I tried to expla~            273            38&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Sadly, working with times and dates is rarely pleasant. But we can make
+our life a bit easier by using the &lt;code&gt;lubridate&lt;/code&gt; package which was made
+for that. To show you how it works, it is probably best to show you a
+couple of use cases.&lt;/p&gt;
+&lt;p&gt;All of these will be taken from what I had to deal with to create my
+celebratory visualization. But I simplified it to minimal examples for
+this blog post. More use cases can be found in the &lt;a href=&#34;https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf&#34;&gt;lubridate
+cheatsheet&lt;/a&gt;
+or the &lt;a href=&#34;https://bookdown.org/Tazinho/Tidyverse-Cookbook/dates-and-times.html&#34;&gt;tidyverse cookbook
+ressource&lt;/a&gt;
+by Malte Grosser.&lt;/p&gt;
+&lt;h3 id=&#34;parse-dates-and-times&#34;&gt;Parse dates and times&lt;/h3&gt;
+&lt;p&gt;First, I needed to convert the &lt;code&gt;created_at&lt;/code&gt; column from &lt;code&gt;character&lt;/code&gt; to
+&lt;code&gt;datetime&lt;/code&gt; format. The easiest way to do that gets rid of &lt;code&gt;+0000&lt;/code&gt; in the
+character vector and then parses the vector into the right format via
+&lt;code&gt;parse_date_time()&lt;/code&gt;. But there is a catch. Check out what happens if I
+try this on my computer.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lubridate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;tl_slice&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;mutate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;created_at&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;parse_date_time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;str_remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;created_at&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;\\+0000&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# remove the +0000 &lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;orders&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;a b d H:M:S Y&amp;#39;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## # A tibble: 5 x 4&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   created_at full_text                              favorite_count retweet_count&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   &amp;lt;dttm&amp;gt;     &amp;lt;chr&amp;gt;                                           &amp;lt;dbl&amp;gt;         &amp;lt;dbl&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 1 NA         &amp;#34;The fun thing about getting better a~            508            83&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2 NA         &amp;#34;Ever wanted to use colors in #ggplot~            342            56&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 3 NA         &amp;#34;From standard output to powerful sto~            336            58&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 4 NA         &amp;#34;Last week, I held a short workshop t~            287            46&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 5 NA         &amp;#34;I tried to explain the variance of t~            273            38&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;See how all values in &lt;code&gt;created_at&lt;/code&gt; are &lt;code&gt;NA&lt;/code&gt; now? That&amp;rsquo;s a problem. And
+we will solve it very soon. But first, let me explain how the function
+call works.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;orders&lt;/code&gt; argument specifies how the vector &lt;code&gt;created_at&lt;/code&gt; (without
+&lt;code&gt;+0000&lt;/code&gt;) is to be understood. We clarify that &lt;code&gt;created_at&lt;/code&gt; contains (in
+the order of appearance)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;abbreviated week day names (&lt;code&gt;a&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;abbreviated month names (&lt;code&gt;b&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;the day of the month as decimals (&lt;code&gt;d&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;and so on&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Where do these abbreviations &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;, &lt;code&gt;d&lt;/code&gt;, etc. come from? They are
+defined in the help page of &lt;code&gt;parse_date_time()&lt;/code&gt;. You can find them in
+the section &amp;ldquo;Details&amp;rdquo;. But why does the code not work? Why do we always
+get an &lt;code&gt;NA&lt;/code&gt;? For once, my computer is truly the problem. Or rather, its
+settings.&lt;/p&gt;
+&lt;p&gt;By default, my computer is set to German. But even if RStudio or R&amp;rsquo;s
+error messages are set to English, my computer&amp;rsquo;s so-called &amp;ldquo;locale&amp;rdquo; may
+be still be set to German. That&amp;rsquo;s a problem because abbreviations like
+&amp;ldquo;Sat&amp;rdquo; and &amp;ldquo;Wed&amp;rdquo; refer to the &lt;strong&gt;English&lt;/strong&gt; words &amp;ldquo;Saturday&amp;rdquo; and
+&amp;ldquo;Wednesday&amp;rdquo;. So, we need to make sure that &lt;code&gt;parse_date_time()&lt;/code&gt;
+understands that it needs to use an English locale. Then, everything
+works out.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;parsed_highlights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tl_slice&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;mutate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;created_at&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;parse_date_time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;str_remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;created_at&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;\\+0000&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# remove the +0000 &lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;orders&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;a b d H:M:S Y&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;locale&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;English&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;parsed_highlights&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## # A tibble: 5 x 4&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   created_at          full_text                     favorite_count retweet_count&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   &amp;lt;dttm&amp;gt;              &amp;lt;chr&amp;gt;                                  &amp;lt;dbl&amp;gt;         &amp;lt;dbl&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 1 2022-03-05 20:56:33 &amp;#34;The fun thing about getting~            508            83&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2 2022-02-19 17:32:23 &amp;#34;Ever wanted to use colors i~            342            56&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 3 2022-03-30 10:25:48 &amp;#34;From standard output to pow~            336            58&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 4 2022-04-19 19:20:53 &amp;#34;Last week, I held a short w~            287            46&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 5 2021-11-06 16:16:05 &amp;#34;I tried to explain the vari~            273            38&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;We are now ready to send this data to ggplot. Since &lt;code&gt;created_at&lt;/code&gt; is
+formatted in datetime now, ggplot will understand what it means when we
+map &lt;code&gt;x = created_at&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;parsed_highlights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;created_at&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;favorite_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;geom_line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;index_files/figure-gfm/unnamed-chunk-22-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;using-scale_x_datetime-and-locale&#34;&gt;Using scale_x_date(time) and locale&lt;/h3&gt;
+&lt;p&gt;Did you see that the x-axis uses German abbreviations and doesn&amp;rsquo;t show
+what year we&amp;rsquo;re in? That&amp;rsquo;s not great. Let&amp;rsquo;s change that. As is always
+the case when we want to format the axes we will need a &lt;code&gt;scale_*()&lt;/code&gt;
+function. Here, what we need is &lt;code&gt;scale_x_datetime()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;But this won&amp;rsquo;t solve our German locale problem. The easiest way to solve
+that tricky ordeal is to change the locale globally via
+&lt;code&gt;Sys.setlocale()&lt;/code&gt;. Don&amp;rsquo;t worry, though. The locale will reset after
+restarting R. No permanent &amp;ldquo;damage&amp;rdquo; here.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;Sys.setlocale&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;LC_ALL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;English&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;LC_COLLATE=English_United States.1252;LC_CTYPE=English_United States.1252;LC_MONETARY=English_United States.1252;LC_NUMERIC=C;LC_TIME=English_United States.1252&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parsed_highlights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; 
+  &lt;span class=&#34;nf&#34;&gt;ggplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;aes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;created_at&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;favorite_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;geom_line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;scale_x_datetime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;date_breaks&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;2 months&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# break every two months&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;date_labels&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;%b %Y&amp;#39;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;index_files/figure-gfm/unnamed-chunk-24-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Notice that we have once again used the same abbreviation as for
+&lt;code&gt;parse_date_time()&lt;/code&gt;. This time, though, they have to be preceded by &lt;code&gt;%&lt;/code&gt;.
+Don&amp;rsquo;t ask me why. It is just the way it is.&lt;/p&gt;
+&lt;h3 id=&#34;create-new-dates&#34;&gt;Create new dates&lt;/h3&gt;
+&lt;p&gt;Let us add a rectangle to our previous plot via an annotation. This is
+similar to what I needed to do when adding my &amp;ldquo;mysterious wonderland&amp;rdquo; to
+my plot.&lt;/p&gt;
+&lt;p&gt;Since the &lt;code&gt;x&lt;/code&gt; aesthetic is formatted to datetime, we have to specify
+dates for the &lt;code&gt;xmin&lt;/code&gt; and &lt;code&gt;xmax&lt;/code&gt; aesthetic of our annotation. Therefore,
+we need to create dates manually. In this case, &lt;code&gt;make_datetime()&lt;/code&gt; is the
+way to go. If we&amp;rsquo;re dealing only with dates (without times), then
+&lt;code&gt;make_date()&lt;/code&gt; is a useful pendant. Both functions are quite
+straightforward.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;annotate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;s&#34;&gt;&amp;#39;rect&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;xmin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;make_datetime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2021&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;month&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;day&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hour&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;xmax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;make_datetime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2021&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;month&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+    &lt;span class=&#34;n&#34;&gt;ymin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ymax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;273&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;alpha&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.5&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;index_files/figure-gfm/unnamed-chunk-26-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;filter-with-intervals&#34;&gt;Filter with intervals&lt;/h3&gt;
+&lt;p&gt;Maybe we want to highlight a part of our line. To do so, we could filter
+our data to check whether certain date ranges correspond to parts that
+we want to highlight. Usually when we want to check if a value &lt;code&gt;x&lt;/code&gt; is
+within a certain set of &lt;code&gt;objects&lt;/code&gt; we use &lt;code&gt;x %in% objects&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To do the same with dates, we need to create an interval with
+&lt;code&gt;interval()&lt;/code&gt; first. Then, we can use that in &lt;code&gt;filter()&lt;/code&gt; in conjunction
+with &lt;code&gt;%within%&lt;/code&gt; instead of &lt;code&gt;%in%&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;my_interval&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;interval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;make_date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2022&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;month&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+  &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;make_date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2022&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;month&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;day&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;geom_line&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parsed_highlights&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&amp;gt;%&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;created_at&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%within%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;my_interval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;color&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;red&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;index_files/figure-gfm/unnamed-chunk-28-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;calculations-with-times&#34;&gt;Calculations with times&lt;/h3&gt;
+&lt;p&gt;Say that you want to highlight the first five days after a certain date.
+(That&amp;rsquo;s exactly what I did in my plot.) Then, you can simply add
+&lt;code&gt;days(5)&lt;/code&gt; to this date. There are similar functions like &lt;code&gt;minutes()&lt;/code&gt;,
+&lt;code&gt;hours()&lt;/code&gt; and so on. Let me show you how that may look in a
+visualization.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;
+  &lt;span class=&#34;nf&#34;&gt;annotate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;s&#34;&gt;&amp;#39;rect&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;xmin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parsed_highlights[[1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;created_at&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hours&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;xmax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parsed_highlights[[1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;created_at&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;days&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ymin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;Inf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ymax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;Inf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;alpha&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;fill&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;index_files/figure-gfm/unnamed-chunk-30-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;closing&#34;&gt;Closing&lt;/h2&gt;
+&lt;p&gt;This was a short intro to &lt;code&gt;lubridate&lt;/code&gt; and &lt;code&gt;rtweet&lt;/code&gt;. Naturally, the
+evolution of my follower count contained a lot more steps. In the end,
+though, these steps were merely a collection of&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;techniques you know from my two previous storytelling with ggplot
+posts (see
+&lt;a href=&#34;https://albert-rapp.de/post/2022-03-29-recreating-the-swd-look/&#34;&gt;here&lt;/a&gt;
+and
+&lt;a href=&#34;https://albert-rapp.de/post/2022-05-01-use-grobs-to-get-rounded-corners/&#34;&gt;here&lt;/a&gt;)
+plus&lt;/li&gt;
+&lt;li&gt;data wrangling using times and dates with the functions that I just
+showed you.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once again, thank you all for your support. And if you liked this post
+and don&amp;rsquo;t follow my work yet, then consider following me on
+&lt;a href=&#34;https://twitter.com/rappa753&#34;&gt;Twitter&lt;/a&gt; and/or subscribing to my &lt;a href=&#34;https://albert-rapp.de/index.xml&#34;&gt;RSS
+feed&lt;/a&gt;. See you next time!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>ggplot-tips: Learning by Thieving</title>
       <link>https://albert-rapp.de/post/2022-01-10-learning-by-thieving/</link>

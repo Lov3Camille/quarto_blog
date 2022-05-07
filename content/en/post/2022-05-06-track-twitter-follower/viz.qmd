@@ -1,0 +1,261 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+library(showtext)
+library(ggtext)
+showtext_opts(dpi = 300)
+showtext_auto()
+font_add_google('Fira Sans', 'general_text')
+font_add_google('Oleo Script', 'title_text')
+
+camcorder::gg_record(
+  dir = 'img',
+  width = 297, # A4 paper
+  height = 210,
+  unit = 'mm',
+  dpi = 300
+)
+```
+
+
+```{r}
+recorded_followers <- read_rds('content/en/post/2022-05-06-track-twitter-follower/followers.rds') %>% 
+  mutate(type = 'recorded')
+
+
+twitter_registration <- lubridate::make_datetime(2021, 7, 19, 9)
+first_recorded_date <- recorded_followers[[1, 'time']] 
+first_recorded_followers <- recorded_followers[[1, 'followers']] 
+days_to_first_record <- as.numeric(first_recorded_date - twitter_registration) 
+
+interpolated_followers <- tibble(
+  time = twitter_registration + lubridate::days(0:floor(days_to_first_record)),
+  followers = floor(seq_along(time) * first_recorded_followers / days_to_first_record)
+) %>% 
+  mutate(type = 'interpolated')
+
+followers <- bind_rows(interpolated_followers, recorded_followers)
+
+
+color_palette <- thematic::okabe_ito(8)
+axis_color <- 'grey80'
+interpolated_color <- 'grey40'
+Sys.setlocale("LC_ALL","English")
+base_timeline <- followers %>% 
+  ggplot(aes(time, followers)) +
+  geom_line(aes(linetype = type), size = 1, col = interpolated_color) +
+  annotate(
+    'rect',
+    xmin = twitter_registration,
+    xmax = first_recorded_date,
+    ymin = 0,
+    ymax = first_recorded_followers,
+    fill = interpolated_color,
+    alpha = 0.2,
+    col = interpolated_color,
+    linetype = 3
+  ) +
+  annotate(
+    'richtext',
+    x = first_recorded_date,
+    y = 0,
+    hjust = 1.0,
+    vjust = -0.1,
+    family = 'general_text',
+    color = interpolated_color,
+    label.colour = NA,
+    fill = NA,
+    label = '**Mysterious wonderland:**<br>This is the time before <br> I started tracking <br>followers automatically'
+  ) +
+  scale_linetype_manual(values = c(2, 1)) + 
+  scale_x_datetime(
+    date_labels = '%b %Y'
+  ) +
+  coord_cartesian(
+    xlim = c(twitter_registration, make_datetime(2022, 6, 15)),
+    expand = F, 
+    clip = 'off'
+  ) +
+  labs(
+    x = element_blank(),
+    y = 'FOLLOWERS',
+    title = 'Celebrating 1000 followers'
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = 'none',
+    text = element_text(
+      size = 20, 
+      family = 'general_text',
+      color = axis_color
+    ),
+    axis.text = element_text(
+      family = 'general_text',
+      color = axis_color
+    ),
+    axis.title.y = element_text(
+      hjust = 1,
+      color = axis_color,
+    ),
+    panel.grid.minor = element_blank(),
+    plot.title.position = 'plot'
+  )
+
+base_timeline <- base_timeline + 
+  annotate(
+    'point',
+    x = make_datetime(2022, 5, 5, 15),
+    y = 1000,
+    size = 5.5,
+    col = interpolated_color
+  ) +
+  annotate(
+    'richtext',
+    family = 'general_text',
+    x = make_datetime(2022, 5, 10),
+    y = 1000,
+    hjust = 0,
+    vjust = 1.05,
+    lineheight = 1,
+    size = 4,
+    col = interpolated_color,
+    label.colour = NA,
+    label = 'reached 1000<br>on **May 05, 2022**'
+  )
+```
+
+
+Find most popular blog posts
+
+```{r}
+library(rtweet)
+
+auth <- rtweet::rtweet_app(
+  bearer_token = keyring::key_get('twitter-bearer-token')
+)
+auth_as(auth)
+
+tl <- rtweet::get_timeline('rappa753', n = 1000)
+tl_slice <- tl %>% slice_max(favorite_count, n = 5) %>% 
+  select(created_at, full_text, favorite_count, retweet_count) 
+
+
+pop_tweets <- tl_slice %>%
+  mutate(
+    time = parse_date_time(
+      str_remove(created_at, "\\+0000"), # remove the +0000
+      orders = "a b d H:M:S Y",
+      locale = "English"
+    )
+  ) %>%
+  mutate(
+    ind = map_dbl(time, ~ which.min(abs(followers$time - .))),
+    followers = followers$followers[ind - 1],
+    content = c(rep("dataviz", 3), "teaching", "teaching")
+  ) %>%
+  select(time, full_text, favorite_count, ind, followers, content) %>%
+  slice(-c(2, 5))
+
+pop_timeline <- map(pop_tweets$time, ~interval(start = . - hours(24), end = . + days(5))) %>% 
+  map(~filter(followers, time %within% .)) %>% 
+  map2(pop_tweets$content, ~mutate(.x, content = .y)) %>% 
+  map2(1:3, ~mutate(.x, group = .y)) %>% 
+  bind_rows()
+```
+
+
+```{r}
+storyline <- 
+  'Out of my **three most popular tweets**, two tweets have been<br> about data visualization. That\'s not surprising.<br><br>But what I found interesting is that one tweet has been about teaching. Glad to see the #rstats community interested in that.'
+
+storyline <- str_replace(
+  storyline, 
+  'two tweets', 
+  glue::glue('<span style = "color:{color_palette[3]}">**two tweets**</span>')
+)
+
+storyline <- str_replace(
+  storyline, 
+  'data visualization', 
+  glue::glue('<span style = "color:{color_palette[3]}">**data visualization**</span>')
+)
+
+storyline <- str_replace(
+  storyline, 
+  'one tweet', 
+  glue::glue('<span style = "color:{color_palette[1]}">**one tweet**</span>')
+)
+
+storyline <- str_replace(
+  storyline, 
+  'teaching', 
+  glue::glue('<span style = "color:{color_palette[1]}">**teaching**</span>')
+)
+
+follower_since_tracking <- recorded_followers$followers %>%  range()
+follower_since_tracking <- follower_since_tracking[2] - follower_since_tracking[1]
+days_since_tracking <- recorded_followers$time %>% range()
+days_since_tracking <- as.numeric(days_since_tracking[2] - days_since_tracking[1])
+months_since_tracking <- janitor::round_to_fraction(days_since_tracking / 30, denominator = 4)
+
+subtitle_text <- glue::glue('In the {months_since_tracking} months since I track my Twitter stats, {follower_since_tracking} new people have been following me.')
+
+caption_text <- 'Viz by Albert Rapp (@rappa753)'
+
+base_timeline +
+  geom_line(
+    data = pop_timeline,
+    aes(col = content, group = group),
+    size = 1.5
+  ) +
+  geom_rect(
+    data = pop_tweets,
+    aes(
+      xmin = time - hours(24),
+      xmax = time + days(5),
+      ymin = 0,
+      ymax = Inf,
+      col = content,
+      fill = content
+    ),
+    linetype = 3,
+    alpha = 0.25
+  ) +
+  geom_textbox(
+    data = slice(followers, 1),
+    x = make_datetime(2022),
+    y = 1000,
+    family = 'general_text',
+    col = interpolated_color,
+    label = storyline,
+    size = 6,
+    hjust = 0.75,
+    vjust = 1,
+    valign = 0.5,
+    halign = 0,
+    lineheight = 1.1,
+    width = unit(18, 'cm'),
+    height = unit(3.75, 'cm')
+  ) +
+  scale_fill_manual(values = color_palette[c(3, 1)]) +
+  scale_color_manual(values = color_palette[c(3, 1)]) +
+  labs(
+    subtitle = subtitle_text,
+    caption = caption_text
+  ) +
+  theme(
+    plot.subtitle = element_text(
+      margin = margin(b = 15, unit = 'mm'),
+      family = 'title_text',
+      size = 24,
+      color = interpolated_color
+    ),
+    plot.title = element_text(
+      family = 'title_text',
+      size = 42,
+      color = interpolated_color
+    ),
+    plot.caption = element_text(size = 14),
+    plot.background = element_rect(fill = 'white', colour = NA)
+  ) 
+```
