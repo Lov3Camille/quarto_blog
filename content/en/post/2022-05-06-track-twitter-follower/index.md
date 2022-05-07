@@ -116,10 +116,7 @@ tl_slice
 ```
 
 Notice that I tweeted two of these before I started tracking my
-followers. Consequently, I ignored them for my visualization. That's a
-bit of a shame because my most popular tweet is in that timeframe. It
-was about a [fun R
-infographic](https://twitter.com/rappa753/status/1500213701370171392).
+followers. Consequently, I ignored them for my visualization.
 
 Unfortunately, the `rtweet` package cannot do everything. For example,
 the snapshot functionality `tweet_shot()` does not work anymore. I think

@@ -138,10 +138,7 @@ resp. &amp;ldquo;favorites&amp;rdquo; as &lt;code&gt;rtweet&lt;/code&gt; likes t
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Notice that I tweeted two of these before I started tracking my
-followers. Consequently, I ignored them for my visualization. That&amp;rsquo;s a
-bit of a shame because my most popular tweet is in that timeframe. It
-was about a &lt;a href=&#34;https://twitter.com/rappa753/status/1500213701370171392&#34;&gt;fun R
-infographic&lt;/a&gt;.&lt;/p&gt;
+followers. Consequently, I ignored them for my visualization.&lt;/p&gt;
 &lt;p&gt;Unfortunately, the &lt;code&gt;rtweet&lt;/code&gt; package cannot do everything. For example,
 the snapshot functionality &lt;code&gt;tweet_shot()&lt;/code&gt; does not work anymore. I think
 that&amp;rsquo;s because the Twitter API changed.&lt;/p&gt;
