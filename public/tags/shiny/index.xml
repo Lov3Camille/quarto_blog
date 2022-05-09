@@ -6,7 +6,33 @@
     <description>Recent content in shiny on Albert Rapp</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy;{year}, This work is licensed under a [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).</copyright>
-    <lastBuildDate>Mon, 17 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/tags/shiny/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/tags/shiny/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to embed a Shiny app into your blog posts</title>
+      <link>https://albert-rapp.de/post/2022-05-09-embedding-a-shiny-app/</link>
+      <pubDate>Mon, 09 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://albert-rapp.de/post/2022-05-09-embedding-a-shiny-app/</guid>
+      <description>&lt;p&gt;Today&amp;rsquo;s a short blog post. It&amp;rsquo;s mainly for sharing a cool trick I just
+learned.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a simple template to incorporate your Shiny app into an HTML
+file. For instance, you can incorporate your shiny app into your blog
+post like I do here. Simply exchange the src argument by your Shiny
+app&amp;rsquo;s URL and then you&amp;rsquo;re good to go. Here, I use the app that I have
+&lt;a href=&#34;https://albert-rapp.de/post/2022-01-17-drawing-a-ggplot-interactively/&#34;&gt;shown you a couple of months
+ago&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;iframe src=&amp;quot;https://rappa.shinyapps.io/interactive-ggplot&amp;quot; data-external=&amp;quot;1&amp;quot; width=&amp;quot;925px&amp;quot; height=&amp;quot;800px&amp;quot;&amp;gt;
+&amp;lt;/iframe&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;From what I could tell, this is same code that &lt;code&gt;knitr::include_app()&lt;/code&gt;
+drops. But including the &lt;code&gt;iframe&lt;/code&gt; manually let&amp;rsquo;s you adjust the width
+&lt;strong&gt;and&lt;/strong&gt; height of your frame. Beware that you will have to choose the
+dimensions large enough for your Shiny app.&lt;/p&gt;
+&lt;iframe src=&#34;https://rappa.shinyapps.io/interactive-ggplot&#34; data-external=&#34;1&#34; width=&#34;925px&#34; height=&#34;800px&#34;&gt;
+&lt;/iframe&gt;
+</description>
+    </item>
+    
     <item>
       <title>Interactive ggplots, user feedback, and a little bit of javascript magic with Shiny</title>
       <link>https://albert-rapp.de/post/2022-01-17-drawing-a-ggplot-interactively/</link>
