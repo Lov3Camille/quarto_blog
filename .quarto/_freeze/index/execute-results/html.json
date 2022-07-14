@@ -1,0 +1,16 @@
+{
+  "hash": "27ac3f7de936870de841a2054cde4d66",
+  "result": {
+    "markdown": "---\ntitle: \"Tobi Burns\"\nimage: \"tobi.jpg\"\nlinks:\n  - label: LinkedIn\n    url: \"https://linkedin.com/\"\n  - label: Twitter\n    url: \"https://twitter.com/\"\n  - label: GitHub\n    url: \"https://github.com/\"\n  - label: Email\n    url: \"mailto:email@email.com\"\noutput:\n  postcards::jolla\n---\n\n \nI am a classically trained data scientist living in the San Francisco Bay Area. \nCurrently I work on the Oculus team at Facebook. I love talking about baseball, \ntrue crime podcasts, and causal inference.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

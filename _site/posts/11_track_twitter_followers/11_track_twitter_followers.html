@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.80">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Albert Rapp">
+  <meta name="dcterms.date" content="2022-05-06">
+  <meta name="description" content="We take a quick look at the rtweet and lubridate package. These help you to analyse your Twitter timeline. And they helped me to visualize my follower count as I reached 1000 followers this week.">
+  <title>Albert Rapp - Use {lubridate} and {rtweet} to analyze your Twitter timeline</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../../site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="../../">
+  <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="../../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../../site_libs/quarto-search/quarto-search.js"></script>
+  <script src="../../site_libs/quarto-html/quarto.js"></script>
+  <script src="../../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../../site_libs/quarto-html/anchor.min.js"></script>
+  <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "navbar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "end",
+    "type": "overlay",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Albert Rapp</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/AlbertRapp"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rappa753"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/user/Alfrodo123"><i class="bi bi-youtube" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blog.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
+        <li>
+    <a class="dropdown-item" href="https://yards.albert-rapp.de/">
+ <span class="dropdown-text">YARDS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://rweekly.org/">
+ <span class="dropdown-text">R Weekly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.r-bloggers.com/">
+ <span class="dropdown-text">R Bloggers</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive.html">Archive</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#working-with-rtweet" class="nav-link active" data-scroll-target="#working-with-rtweet">Working with rtweet</a>
+<ul class="collapse">
+<li><a href="#basic-functionalities" class="nav-link" data-scroll-target="#basic-functionalities">Basic functionalities</a></li>
+<li><a href="#setting-up-a-twitter-app" class="nav-link" data-scroll-target="#setting-up-a-twitter-app">Setting up a Twitter app</a></li>
+</ul></li>
+<li><a href="#working-with-lubridate" class="nav-link" data-scroll-target="#working-with-lubridate">Working with lubridate</a>
+<ul class="collapse">
+<li><a href="#parse-dates-and-times" class="nav-link" data-scroll-target="#parse-dates-and-times">Parse dates and times</a></li>
+<li><a href="#using-scale_x_datetime-and-locale" class="nav-link" data-scroll-target="#using-scale_x_datetime-and-locale">Using scale_x_date(time) and locale</a></li>
+<li><a href="#create-new-dates" class="nav-link" data-scroll-target="#create-new-dates">Create new dates</a></li>
+<li><a href="#filter-with-intervals" class="nav-link" data-scroll-target="#filter-with-intervals">Filter with intervals</a></li>
+<li><a href="#calculations-with-times" class="nav-link" data-scroll-target="#calculations-with-times">Calculations with times</a></li>
+</ul></li>
+<li><a href="#closing" class="nav-link" data-scroll-target="#closing">Closing</a></li>
+</ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
+
+
+
+<div class="quarto-title"><h1 class="title display-7">Use {lubridate} and {rtweet} to analyze your Twitter timeline</h1><div class="quarto-description"><p>We take a quick look at the rtweet and lubridate package. These help you to analyse your Twitter timeline. And they helped me to visualize my follower count as I reached 1000 followers this week.</p></div></div><div class="quarto-categories"><div class="quarto-category">Visualization</div><div class="quarto-category">API</div></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><p>Albert Rapp</p></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">May 6, 2022</p></div></div></div></header>
+
+<p>This week, I am oddly proud to announce that I have reached 1000 followers on <a href="https://twitter.com/rappa753">Twitter</a>. Check out the visualization that I have created for this joyous occasion.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="final_viz.png" class="img-fluid" width="1754"></p>
+</div>
+</div>
+<p>To me, my rising follower count and the somewhat regular mails that I receive are a sign that people like to read my blog. And to thank you all for following my work, let me give you a quick intro to the packages <code>rtweet</code> and <code>lubridate</code>. These were instrumental in creating the above visual.</p>
+<section id="working-with-rtweet" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-rtweet">Working with rtweet</h2>
+<p>At the end of February 2022, I wondered how my follower count evolves over time. Unfortunately, this is not something Twitter shows you by default. The Analytics page only shows me the change within my last 28 days. To overcome this drawback, I consulted the <code>rtweet</code> package which is a fabulous package that lets you interact with Twitter’s API through R.</p>
+<p>In my case, I only do rudimentary work with it and track my followers over time. For this to work, I have set up an R script that runs every hour to download a list of my followers. Each hour, the list’s length tells me how many followers I have.</p>
+<p>If you want to do the same, install the package first. Make sure to install the development version from GitHub, though.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rOpenSci/rtweet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="basic-functionalities" class="level3">
+<h3 class="anchored" data-anchor-id="basic-functionalities">Basic functionalities</h3>
+<p><code>rtweet</code> comes with a lot of convenient function. Most of these start with <code>get_</code>. For instance, there are</p>
+<ul>
+<li><code>get_followers()</code>: This is the function to get a list of an account’s followers.</li>
+<li><code>get_timeline()</code>: This gives you the a user’s timeline like tweets, replies and mentions.</li>
+<li><code>get_retweets()</code>: This gives you the most recent retweets of a given tweet.</li>
+</ul>
+<p>My aforementioned R script just runs <code>get_followers()</code> and computes the number of rows of the resulting tibble.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rtweet)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tib <span class="ot">&lt;-</span> <span class="fu">get_followers</span>(<span class="st">'rappa753'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 2,130 × 2
+   from_id             to_id   
+   &lt;chr&gt;               &lt;chr&gt;   
+ 1 1403459307690020865 rappa753
+ 2 708311039419490304  rappa753
+ 3 1009256944501174272 rappa753
+ 4 3185243893          rappa753
+ 5 1334663210801057792 rappa753
+ 6 1546881068183199744 rappa753
+ 7 449390779           rappa753
+ 8 1177241848504406026 rappa753
+ 9 85539709            rappa753
+10 1476991028          rappa753
+# … with 2,120 more rows</code></pre>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] 2130</code></pre>
+</div>
+</div>
+<p>For my above visualization, I used <code>get_timeline()</code> to extract my five most popular tweets. Here, I ranked the popularity by the count of likes resp. “favorites” as <code>rtweet</code> likes to call it.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tl <span class="ot">&lt;-</span> <span class="fu">get_timeline</span>(<span class="st">'rappa753'</span>, <span class="at">n =</span> <span class="dv">1000</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>tl_slice <span class="ot">&lt;-</span> tl <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(favorite_count, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(created_at, full_text, favorite_count, retweet_count) </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>tl_slice</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  created_at          full_text                     favorite_count retweet_count
+  &lt;dttm&gt;              &lt;chr&gt;                                  &lt;int&gt;         &lt;int&gt;
+1 2022-06-18 15:46:22 "Ever heard of logistic regr…           1462           231
+2 2022-07-10 16:18:10 "The #rstats ecosystem makes…            635            90
+3 2022-03-05 21:56:33 "The fun thing about getting…            507            82
+4 2022-07-09 13:21:04 "Creating calendar plots wit…            420            52
+5 2022-02-19 18:32:23 "Ever wanted to use colors i…            347            56</code></pre>
+</div>
+</div>
+<p>Notice that I tweeted two of these before I started tracking my followers. Consequently, I ignored them for my visualization.</p>
+<p>Unfortunately, the <code>rtweet</code> package cannot do everything. For example, the snapshot functionality <code>tweet_shot()</code> does not work anymore. I think that’s because the Twitter API changed.</p>
+<p>This bothered me during the <a href="https://twitter.com/30DayChartChall">30 day chart challenge</a> in April because I wanted to automatically extract great visualizations from Twitter. But as <code>tweet_shot()</code> was not working, I had to call Twitter’s API manually without <code>rtweet</code>. If you’re curious about how that works, check out my <a href="https://albert-rapp.de/posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html">corresponding blog post</a>. There, I’ve also explained how to set up a script that gets executed, say, every hour automatically.</p>
+</section>
+<section id="setting-up-a-twitter-app" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-a-twitter-app">Setting up a Twitter app</h3>
+<p>This pretty much explains how <code>rtweet</code> works. In general, it is really easy to use. And if you only want to use it only occasionally, there is not much more to it.</p>
+<p>However, if you want to use the package more often - as in calling the API every hour - then you need to set up a Twitter app. You can read up on how that works in the “Preparations” section of the <a href="https://albert-rapp.de/posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html">above blog post</a>. Once you’ve got that down, your <code>rtweet</code> calls can be authenticated through your Twitter app like so.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>auth <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">rtweet_app</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bearer_token =</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">'twitter-bearer-token'</span>, <span class="at">keyring =</span> <span class="st">'blogpost'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">auth_as</span>(auth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, I have used the <code>keyring</code> package to hide the bearer token of my Twitter app. If that doesn’t mean anything to you, let me once again refer to the <a href="https://albert-rapp.de/posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html">above blog post</a>. The important thing is that after these lines ran your <code>rtweet</code> calls get funneled through your own Twitter app.</p>
+</section>
+</section>
+<section id="working-with-lubridate" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-lubridate">Working with lubridate</h2>
+<p>As you saw above, the timeline that we extracted and saved in <code>rtweet</code> contains time data. Here it is once again.</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tl_slice</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  created_at          full_text                     favorite_count retweet_count
+  &lt;dttm&gt;              &lt;chr&gt;                                  &lt;int&gt;         &lt;int&gt;
+1 2022-06-18 15:46:22 "Ever heard of logistic regr…           1462           231
+2 2022-07-10 16:18:10 "The #rstats ecosystem makes…            635            90
+3 2022-03-05 21:56:33 "The fun thing about getting…            507            82
+4 2022-07-09 13:21:04 "Creating calendar plots wit…            420            52
+5 2022-02-19 18:32:23 "Ever wanted to use colors i…            347            56</code></pre>
+</div>
+</div>
+<p>Sadly, working with times and dates is rarely pleasant. But we can make our life a bit easier by using the <code>lubridate</code> package which was made for that. To show you how it works, it is probably best to show you a couple of use cases.</p>
+<p>All of these will be taken from what I had to deal with to create my celebratory visualization. But I simplified it to minimal examples for this blog post. More use cases can be found in the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf">lubridate cheatsheet</a> or the <a href="https://bookdown.org/Tazinho/Tidyverse-Cookbook/dates-and-times.html">tidyverse cookbook ressource</a> by Malte Grosser.</p>
+<section id="parse-dates-and-times" class="level3">
+<h3 class="anchored" data-anchor-id="parse-dates-and-times">Parse dates and times</h3>
+<p><strong>EDIT July 13, 2022:</strong> After moving my blog to quarto, <code>{rtweet}</code> updated its default output format. Now, parsing dates and times is not necessary anymore. I leave this section in here because the code may still be helpful in other situations.</p>
+<p>First, I needed to convert the <code>created_at</code> column from <code>character</code> to <code>datetime</code> format. The easiest way to do that gets rid of <code>+0000</code> in the character vector and then parses the vector into the right format via <code>parse_date_time()</code>. But there is a catch. Check out what happens if I try this on my computer.</p>
+<div class="cell" data-mesage="false">
+<div class="sourceCode" id="cb11"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>tl_slice <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">created_at =</span> <span class="fu">parse_date_time</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_remove</span>(created_at, <span class="st">'</span><span class="sc">\\</span><span class="st">+0000'</span>), <span class="co"># remove the +0000 </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">orders =</span> <span class="st">'a b d H:M:S Y'</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>See how all values in <code>created_at</code> are <code>NA</code> now? That’s a problem. And we will solve it very soon. But first, let me explain how the function call works.</p>
+<p>The <code>orders</code> argument specifies how the vector <code>created_at</code> (without <code>+0000</code>) is to be understood. We clarify that <code>created_at</code> contains (in the order of appearance)</p>
+<ol type="1">
+<li>abbreviated week day names (<code>a</code>)</li>
+<li>abbreviated month names (<code>b</code>)</li>
+<li>the day of the month as decimals (<code>d</code>)</li>
+<li>and so on</li>
+</ol>
+<p>Where do these abbreviations <code>a</code>, <code>b</code>, <code>d</code>, etc. come from? They are defined in the help page of <code>parse_date_time()</code>. You can find them in the section “Details”. But why does the code not work? Why do we always get an <code>NA</code>? For once, my computer is truly the problem. Or rather, its settings.</p>
+<p>By default, my computer is set to German. But even if RStudio or R’s error messages are set to English, my computer’s so-called “locale” may be still be set to German. That’s a problem because abbreviations like “Sat” and “Wed” refer to the <strong>English</strong> words “Saturday” and “Wednesday”. So, we need to make sure that <code>parse_date_time()</code> understands that it needs to use an English locale. Then, everything works out.</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>parsed_highlights <span class="ot">&lt;-</span> tl_slice <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">created_at =</span> <span class="fu">parse_date_time</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_remove</span>(created_at, <span class="st">'</span><span class="sc">\\</span><span class="st">+0000'</span>), <span class="co"># remove the +0000 </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">orders =</span> <span class="st">'a b d H:M:S Y'</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">locale =</span> <span class="st">"en_US.UTF-8"</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>parsed_highlights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+<p>We are now ready to send this data to ggplot. Since <code>created_at</code> is formatted in datetime now, ggplot will understand what it means when we map <code>x = created_at</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>parsed_highlights <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(created_at, favorite_count)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="using-scale_x_datetime-and-locale" class="level3">
+<h3 class="anchored" data-anchor-id="using-scale_x_datetime-and-locale">Using scale_x_date(time) and locale</h3>
+<p>Did you see that the x-axis uses German abbreviations and doesn’t show what year we’re in? That’s not great. Let’s change that. As is always the case when we want to format the axes we will need a <code>scale_*()</code> function. Here, what we need is <code>scale_x_datetime()</code>.</p>
+<p>But this won’t solve our German locale problem. The easiest way to solve that tricky ordeal is to change the locale globally via <code>Sys.setlocale()</code>. Don’t worry, though. The locale will reset after restarting R. No permanent “damage” here.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="st">"LC_ALL"</span>,<span class="st">"en_US.UTF-8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] "LC_CTYPE=en_US.UTF-8;LC_NUMERIC=C;LC_TIME=en_US.UTF-8;LC_COLLATE=en_US.UTF-8;LC_MONETARY=en_US.UTF-8;LC_MESSAGES=en_US.UTF-8;LC_PAPER=de_DE.UTF-8;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=de_DE.UTF-8;LC_IDENTIFICATION=C"</code></pre>
+</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> parsed_highlights <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(created_at, favorite_count)) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_datetime</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">'2 months'</span>, <span class="co"># break every two months</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_labels =</span> <span class="st">'%b %Y'</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Notice that we have once again used the same abbreviation as for <code>parse_date_time()</code>. This time, though, they have to be preceded by <code>%</code>. Don’t ask me why. It is just the way it is.</p>
+</section>
+<section id="create-new-dates" class="level3">
+<h3 class="anchored" data-anchor-id="create-new-dates">Create new dates</h3>
+<p>Let us add a rectangle to our previous plot via an annotation. This is similar to what I needed to do when adding my “mysterious wonderland” to my plot.</p>
+<p>Since the <code>x</code> aesthetic is formatted to datetime, we have to specify dates for the <code>xmin</code> and <code>xmax</code> aesthetic of our annotation. Therefore, we need to create dates manually. In this case, <code>make_datetime()</code> is the way to go. If we’re dealing only with dates (without times), then <code>make_date()</code> is a useful pendant. Both functions are quite straightforward.</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rect'</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> <span class="fu">make_datetime</span>(<span class="at">year =</span> <span class="dv">2021</span>, <span class="at">month =</span> <span class="dv">11</span>, <span class="at">day =</span> <span class="dv">6</span>, <span class="at">hour =</span> <span class="dv">12</span>),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> <span class="fu">make_datetime</span>(<span class="at">year =</span> <span class="dv">2021</span>, <span class="at">month =</span> <span class="dv">9</span>), </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="dv">200</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="dv">273</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="filter-with-intervals" class="level3">
+<h3 class="anchored" data-anchor-id="filter-with-intervals">Filter with intervals</h3>
+<p>Maybe we want to highlight a part of our line. To do so, we could filter our data to check whether certain date ranges correspond to parts that we want to highlight. Usually when we want to check if a value <code>x</code> is within a certain set of <code>objects</code> we use <code>x %in% objects</code>.</p>
+<p>To do the same with dates, we need to create an interval with <code>interval()</code> first. Then, we can use that in <code>filter()</code> in conjunction with <code>%within%</code> instead of <code>%in%</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>my_interval <span class="ot">&lt;-</span> <span class="fu">interval</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">start =</span> <span class="fu">make_date</span>(<span class="at">year =</span> <span class="dv">2022</span>, <span class="at">month =</span> <span class="dv">2</span>), </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">end =</span> <span class="fu">make_date</span>(<span class="at">year =</span> <span class="dv">2022</span>, <span class="at">month =</span> <span class="dv">3</span>, <span class="at">day =</span> <span class="dv">10</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> parsed_highlights <span class="sc">%&gt;%</span> <span class="fu">filter</span>(created_at <span class="sc">%within%</span> my_interval),</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">'red'</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="calculations-with-times" class="level3">
+<h3 class="anchored" data-anchor-id="calculations-with-times">Calculations with times</h3>
+<p>Say that you want to highlight the first five days after a certain date. (That’s exactly what I did in my plot.) Then, you can simply add <code>days(5)</code> to this date. There are similar functions like <code>minutes()</code>, <code>hours()</code> and so on. Let me show you how that may look in a visualization.</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rect'</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> parsed_highlights[[<span class="dv">1</span>, <span class="st">'created_at'</span>]] <span class="sc">-</span> <span class="fu">hours</span>(<span class="dv">24</span>),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> parsed_highlights[[<span class="dv">1</span>, <span class="st">'created_at'</span>]] <span class="sc">+</span> <span class="fu">days</span>(<span class="dv">5</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">ymax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.25</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">'blue'</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="closing" class="level2">
+<h2 class="anchored" data-anchor-id="closing">Closing</h2>
+<p>This was a short intro to <code>lubridate</code> and <code>rtweet</code>. Naturally, the evolution of my follower count contained a lot more steps. In the end, though, these steps were merely a collection of</p>
+<ul>
+<li>techniques you know from my two previous storytelling with ggplot posts (see <a href="https://albert-rapp.de/posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html">here</a> and <a href="https://albert-rapp.de/posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html">here</a>) plus</li>
+<li>data wrangling using times and dates with the functions that I just showed you.</li>
+</ul>
+<p>Once again, thank you all for your support. And if you liked this post and don’t follow my work yet, then consider following me on <a href="https://twitter.com/rappa753">Twitter</a> and/or subscribing to my <a href="https://albert-rapp.de/blog.xml">RSS feed</a>. See you next time!</p>
+
+
+</section>
+</main> <!-- /main -->
+<div>
+<hr>
+
+<h3> Stay in touch </h3>
+
+<p> If you enjoyed this post, then don't miss out on any future posts by subscribing to my email newsletter. </p>
+
+<iframe src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;width:60%;"></iframe>
+
+
+<h3> Support my work with a coffee </h3>
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="rappa753" data-color="#06436e" data-emoji="☕" data-font="Lato" data-text="Support me" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" data-height="40px"></script>
+
+<h3> Share </h3>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="#rstats" data-show-count="false">Tweet</a><script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+<hr>
+</div>
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="AlbertRapp/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

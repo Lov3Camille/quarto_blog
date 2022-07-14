@@ -1,0 +1,6 @@
+/*-- scss:defaults --*/
+
+h5 {
+  margin-bottom: 0pt;
+  margin-top: 1.5rem;
+}

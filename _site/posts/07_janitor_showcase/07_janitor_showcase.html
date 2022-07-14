@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.80">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Albert Rapp">
+  <meta name="dcterms.date" content="2022-01-12">
+  <meta name="description" content="I demonstrate a couple of functions from the janitor package I find quite useful">
+  <title>Albert Rapp - Showcasing the janitor package</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../../site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="../../">
+  <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="../../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../../site_libs/quarto-search/quarto-search.js"></script>
+  <script src="../../site_libs/quarto-html/quarto.js"></script>
+  <script src="../../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../../site_libs/quarto-html/anchor.min.js"></script>
+  <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "navbar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "end",
+    "type": "overlay",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Albert Rapp</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/AlbertRapp"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rappa753"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/user/Alfrodo123"><i class="bi bi-youtube" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blog.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
+        <li>
+    <a class="dropdown-item" href="https://yards.albert-rapp.de/">
+ <span class="dropdown-text">YARDS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://rweekly.org/">
+ <span class="dropdown-text">R Weekly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.r-bloggers.com/">
+ <span class="dropdown-text">R Bloggers</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive.html">Archive</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#clean-column-names" class="nav-link active" data-scroll-target="#clean-column-names">Clean column names</a></li>
+<li><a href="#remove-empty-and-or-constant-columns-and-rows" class="nav-link" data-scroll-target="#remove-empty-and-or-constant-columns-and-rows">Remove empty and or constant columns and rows</a></li>
+<li><a href="#rounding" class="nav-link" data-scroll-target="#rounding">Rounding</a></li>
+<li><a href="#find-matches-in-multiple-characteristics" class="nav-link" data-scroll-target="#find-matches-in-multiple-characteristics">Find matches in multiple characteristics</a></li>
+</ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
+
+
+
+<div class="quarto-title"><h1 class="title display-7">Showcasing the janitor package</h1><div class="quarto-description"><p>I demonstrate a couple of functions from the janitor package I find quite useful</p></div></div><div class="quarto-categories"></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><p>Albert Rapp</p></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">January 12, 2022</p></div></div></div></header>
+
+<p>The <code>janitor</code> package contains only a little number of functions but nevertheless it is surprisingly convenient. I never really fully appreciated its functionality until I took a look into the documentation. Of course, other packages can achieve the same thing too but <code>janitor</code> makes a lot of tasks easy. Thus, here is a little showcase. If you prefer a video version, you can find this blog post on <a href="https://youtu.be/AKPvlNWZBEQ">YouTube</a>.</p>
+<section id="clean-column-names" class="level2">
+<h2 class="anchored" data-anchor-id="clean-column-names">Clean column names</h2>
+<p>As everyone working with data knows, data sets rarely come in a clean format. Often, the necessary cleaning process already starts with the column names. Here, take this data set from TidyTuesday, week 41.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nurses <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-05/nurses.csv'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nurses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code> [1] "State"                                          
+ [2] "Year"                                           
+ [3] "Total Employed RN"                              
+ [4] "Employed Standard Error (%)"                    
+ [5] "Hourly Wage Avg"                                
+ [6] "Hourly Wage Median"                             
+ [7] "Annual Salary Avg"                              
+ [8] "Annual Salary Median"                           
+ [9] "Wage/Salary standard error (%)"                 
+[10] "Hourly 10th Percentile"                         
+[11] "Hourly 25th Percentile"                         
+[12] "Hourly 75th Percentile"                         
+[13] "Hourly 90th Percentile"                         
+[14] "Annual 10th Percentile"                         
+[15] "Annual 25th Percentile"                         
+[16] "Annual 75th Percentile"                         
+[17] "Annual 90th Percentile"                         
+[18] "Location Quotient"                              
+[19] "Total Employed (National)_Aggregate"            
+[20] "Total Employed (Healthcare, National)_Aggregate"
+[21] "Total Employed (Healthcare, State)_Aggregate"   
+[22] "Yearly Total Employed (State)_Aggregate"        </code></pre>
+</div>
+</div>
+<p>These column names are intuitively easy to understand but not necessarily easy to process by code as there are white spaces and other special characters. Therefore, I accompany most data input by <code>clean_names()</code> from the <code>janitor</code> package.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># load for pipe %&gt;%  and later wrangling</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nurses <span class="sc">%&gt;%</span> clean_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code> [1] "state"                                       
+ [2] "year"                                        
+ [3] "total_employed_rn"                           
+ [4] "employed_standard_error_percent"             
+ [5] "hourly_wage_avg"                             
+ [6] "hourly_wage_median"                          
+ [7] "annual_salary_avg"                           
+ [8] "annual_salary_median"                        
+ [9] "wage_salary_standard_error_percent"          
+[10] "hourly_10th_percentile"                      
+[11] "hourly_25th_percentile"                      
+[12] "hourly_75th_percentile"                      
+[13] "hourly_90th_percentile"                      
+[14] "annual_10th_percentile"                      
+[15] "annual_25th_percentile"                      
+[16] "annual_75th_percentile"                      
+[17] "annual_90th_percentile"                      
+[18] "location_quotient"                           
+[19] "total_employed_national_aggregate"           
+[20] "total_employed_healthcare_national_aggregate"
+[21] "total_employed_healthcare_state_aggregate"   
+[22] "yearly_total_employed_state_aggregate"       </code></pre>
+</div>
+</div>
+<p>Did you see what happened? White spaces were converted to <code>_</code> and parantheses were removed. Even the <code>%</code> signs were converted to <code>percent</code>. Now, these labels are easy to understand AND process by code. This does not mean that you are finished cleaning but at least now the columns are more accessible.</p>
+</section>
+<section id="remove-empty-and-or-constant-columns-and-rows" class="level2">
+<h2 class="anchored" data-anchor-id="remove-empty-and-or-constant-columns-and-rows">Remove empty and or constant columns and rows</h2>
+<p>Data sets come with empty or superfluous rows or columns are not a rare sighting. This is especially true if you work with Excel files because there will be a lot of empty cells. Take a look at the dirty Excel data set from janitor’s <a href="https://github.com/sfirke/janitor/blob/main/dirty_data.xlsx">GitHub page</a>. It looks like this when you open it with Excel.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="dirty_data.PNG" class="img-fluid" width="751"></p>
+</div>
+</div>
+<p>Taking a look just at this picture we may notice a couple of things.</p>
+<ul>
+<li><p>First, <a href="https://en.wikipedia.org/wiki/Jason_Bourne">Jason Bourne</a> is teaching at a school. I guess being a trained assassin qualifies him to teach physical education. Also - and this is just a hunch - undercover work likely earned him his “Theater” certification.</p></li>
+<li><p>Second, the header above the actual table will be annoying, so we must skip the first line when we read the data set.</p></li>
+<li><p>Third, the column names are not ideal but we know how to deal with that by now.</p></li>
+<li><p>Fourth, there are empty rows and columns we can get rid of.</p></li>
+<li><p>Fifth, there is a column that contains only ‘YES’. Therefore it contains no information at all and can be removed.</p></li>
+</ul>
+<p>So, let us read and clean the data. The <code>janitor</code> package will help us with <code>remove_empty()</code> and <code>remove_constant()</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>xl_file <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">'dirty_data.xlsx'</span>, <span class="at">skip =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_empty</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_constant</span>()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>xl_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 12 × 9
+   first_name   last_name employee_status subject    hire_date percent_allocated
+   &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;          &lt;dbl&gt;             &lt;dbl&gt;
+ 1 Jason        Bourne    Teacher         PE             39690              0.75
+ 2 Jason        Bourne    Teacher         Drafting       43479              0.25
+ 3 Alicia       Keys      Teacher         Music          37118              1   
+ 4 Ada          Lovelace  Teacher         &lt;NA&gt;           38572              1   
+ 5 Desus        Nice      Administration  Dean           42791              1   
+ 6 Chien-Shiung Wu        Teacher         Physics        11037              0.5 
+ 7 Chien-Shiung Wu        Teacher         Chemistry      11037              0.5 
+ 8 James        Joyce     Teacher         English        36423              0.5 
+ 9 Hedy         Lamarr    Teacher         Science        27919              0.5 
+10 Carlos       Boozer    Coach           Basketball     42221             NA   
+11 Young        Boozer    Coach           &lt;NA&gt;           34700             NA   
+12 Micheal      Larsen    Teacher         English        40071              0.8 
+# … with 3 more variables: full_time &lt;chr&gt;, certification_9 &lt;chr&gt;,
+#   certification_10 &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Here, <code>remove_empty()</code> defaulted to remove, both, rows and colums. If we wish, we can change that by setting e.g.&nbsp;<code>which = 'rows'</code>.</p>
+<p>Now, we may also want to see the <code>hire_data</code> in a sensible format. For example, in this dirty data set, Jason Bourne was hired on <code>39690</code>. Luckily, our <code>janitor</code> can make sense of it all.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>xl_file <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hire_date =</span> <span class="fu">excel_numeric_to_date</span>(hire_date))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 12 × 9
+   first_name   last_name employee_status subject    hire_date  percent_allocat…
+   &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;      &lt;date&gt;                &lt;dbl&gt;
+ 1 Jason        Bourne    Teacher         PE         2008-08-30             0.75
+ 2 Jason        Bourne    Teacher         Drafting   2019-01-14             0.25
+ 3 Alicia       Keys      Teacher         Music      2001-08-15             1   
+ 4 Ada          Lovelace  Teacher         &lt;NA&gt;       2005-08-08             1   
+ 5 Desus        Nice      Administration  Dean       2017-02-25             1   
+ 6 Chien-Shiung Wu        Teacher         Physics    1930-03-20             0.5 
+ 7 Chien-Shiung Wu        Teacher         Chemistry  1930-03-20             0.5 
+ 8 James        Joyce     Teacher         English    1999-09-20             0.5 
+ 9 Hedy         Lamarr    Teacher         Science    1976-06-08             0.5 
+10 Carlos       Boozer    Coach           Basketball 2015-08-05            NA   
+11 Young        Boozer    Coach           &lt;NA&gt;       1995-01-01            NA   
+12 Micheal      Larsen    Teacher         English    2009-09-15             0.8 
+# … with 3 more variables: full_time &lt;chr&gt;, certification_9 &lt;chr&gt;,
+#   certification_10 &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="rounding" class="level2">
+<h2 class="anchored" data-anchor-id="rounding">Rounding</h2>
+<p>To my <del>surprise</del> shock, R uses some unexpected rounding rule. In my world, whenever a number ends in <code>.5</code>, standard rounding would round up. Apparently, R uses something called <em>banker’s rounding</em> that in these cases rounds towards the next <em>even</em> number. Take a look.</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">4.5</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] 0 2 2 4 4</code></pre>
+</div>
+</div>
+<p>I would expect that the rounded vector contains the integers from one to five. Thankfully, <code>janitor</code> offers a convenient rounding function.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round_half_up</span>(<span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">4.5</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5</code></pre>
+</div>
+</div>
+<p>Ok, so that gives us a new function for rounding towards integers. But what is really convenient is that <code>janitor</code> can <code>round_to_fraction</code>s.</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round_to_fraction</span>(<span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">2.0</span>, <span class="fl">0.13</span>), <span class="at">denominator =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code> [1] 0.50 0.75 0.75 1.00 1.00 1.25 1.25 1.50 1.50 1.75 1.75 2.00</code></pre>
+</div>
+</div>
+<p>Here, I rounded the numbers to the next quarters (<code>denominator = 4</code>) but of course any fraction is possible. You can now live the dream of rounding towards arbitrary fractions.</p>
+</section>
+<section id="find-matches-in-multiple-characteristics" class="level2">
+<h2 class="anchored" data-anchor-id="find-matches-in-multiple-characteristics">Find matches in multiple characteristics</h2>
+<p>In my opinion, the <code>get_dupes()</code> function is really powerful. It allows us to find “similar” observations in a data set based on certain characteristics. For example, the <code>starwars</code> data set from <code>dplyr</code> contains a lot of information on characters from the Star Wars movies. Possibly, we want to find out which characters are similar w.r.t. to certain traits.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_dupes</span>(eye_color, hair_color, skin_color, sex, homeworld) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code># A tibble: 7 × 8
+  eye_color hair_color skin_color sex    homeworld dupe_count name        height
+  &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;        &lt;int&gt;
+1 blue      black      yellow     female Mirial             2 Luminara U…    170
+2 blue      black      yellow     female Mirial             2 Barriss Of…    166
+3 blue      blond      fair       male   Tatooine           2 Luke Skywa…    172
+4 blue      blond      fair       male   Tatooine           2 Anakin Sky…    188
+5 brown     brown      light      female Naboo              3 Cordé          157
+6 brown     brown      light      female Naboo              3 Dormé          165
+7 brown     brown      light      female Naboo              3 Padmé Amid…    165</code></pre>
+</div>
+</div>
+<p>So, Luke and Anakin Skywalker are similar to one another. Who would have thought that. Sadly, I don’t enough about Star Wars to know whether the other matches are similarly “surprising”. In any case, the point here is that we can easily find matches according to arbitrarily many characteristics. Conveniently, these characteristics are the first columns of the new output and we get a <code>dupe_count</code>.</p>
+<p>Alright, this concludes our little showcase. In the <code>janitor</code> package, there is another set of <code>tabyl()</code> functions. These are meant to improve base R’s <code>table()</code> functions. Since I rarely use that function I did not include it but if you use <code>table()</code> frequently, then you should definitely <a href="http://sfirke.github.io/janitor/articles/tabyls.html">check out tabyl()</a>.</p>
+
+
+</section>
+</main> <!-- /main -->
+<div>
+<hr>
+
+<h3> Stay in touch </h3>
+
+<p> If you enjoyed this post, then don't miss out on any future posts by subscribing to my email newsletter. </p>
+
+<iframe src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;width:60%;"></iframe>
+
+
+<h3> Support my work with a coffee </h3>
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="rappa753" data-color="#06436e" data-emoji="☕" data-font="Lato" data-text="Support me" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" data-height="40px"></script>
+
+<h3> Share </h3>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="#rstats" data-show-count="false">Tweet</a><script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+<hr>
+</div>
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="AlbertRapp/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

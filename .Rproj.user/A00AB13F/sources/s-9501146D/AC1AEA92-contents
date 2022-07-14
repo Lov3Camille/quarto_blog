@@ -1,0 +1,44 @@
+project:
+  type: website
+  resources: 'logo.png'
+
+website:
+  title: "Albert Rapp" 
+  # Add site-url (without trailing / at the end)
+  site-url: https://albert-rapp.de
+  # Add description: 
+  description: "This is my blog where I'm king in the castle. Very nice."
+  navbar:
+    right:
+      - text: Blog
+        href: blog.qmd 
+      - icon: github
+        href: https://github.com/AlbertRapp
+      - icon: twitter
+        href: https://twitter.com/rappa753
+      - icon: youtube
+        href: https://www.youtube.com/user/Alfrodo123
+      # Add RSS feed to navbar
+      # Link is given by {name}.xml where
+      # {name} is name of qmd-file generating the feed
+      - text: Ressources
+        menu: 
+          - text: YARDS
+            href: https://yards.albert-rapp.de/
+          - text: R Weekly
+            href: https://rweekly.org/
+          - text: R Bloggers
+            href: https://www.r-bloggers.com/
+      - icon: rss
+        href: blog.xml
+      - text: Archive
+        href: archive.qmd
+        
+
+    
+format:
+  html:
+    theme: theme.scss
+
+editor: source
+

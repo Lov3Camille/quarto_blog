@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.80">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Albert Rapp – blog</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+
+  <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="./">
+  <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="site_libs/quarto-search/fuse.min.js"></script>
+  <script src="site_libs/quarto-search/quarto-search.js"></script>
+  <script src="site_libs/quarto-listing/list.min.js"></script>
+  <script src="site_libs/quarto-listing/quarto-listing.js"></script>
+  <script src="site_libs/quarto-html/quarto.js"></script>
+  <script src="site_libs/quarto-html/popper.min.js"></script>
+  <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="site_libs/quarto-html/anchor.min.js"></script>
+  <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "navbar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "end",
+    "type": "overlay",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script>
+  <script>
+
+    window.document.addEventListener("DOMContentLoaded", function (_event) {
+      const listingTargetEl = window.document.querySelector('#listing-listing .list');
+      if (!listingTargetEl) {
+        // No listing discovered, do not attach.
+        return; 
+      }
+
+      const options = {
+        valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+        
+        searchColumns: ["listing-date","listing-title","listing-author","listing-description","listing-categories"],
+      };
+
+      window['quarto-listings'] = window['quarto-listings'] || {};
+      window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+      if (window['quarto-listing-loaded']) {
+        window['quarto-listing-loaded']();
+      }
+    });
+    </script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<link rel="alternate" type="application/rss+xml" title="Albert Rapp" href="blog.xml"></head>
+<body>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Albert Rapp</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./blog.html" aria-current="page">Blog</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/AlbertRapp"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rappa753"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/user/Alfrodo123"><i class="bi bi-youtube" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="./blog.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
+        <li>
+    <a class="dropdown-item" href="https://yards.albert-rapp.de/">
+ <span class="dropdown-text">YARDS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://rweekly.org/">
+ <span class="dropdown-text">R Weekly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.r-bloggers.com/">
+ <span class="dropdown-text">R Bloggers</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./archive.html">Archive</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(23)</span></div><div class="category" data-category="API">API <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Automation">Automation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Exploratory Intro">Exploratory Intro <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Functional Programming">Functional Programming <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Opinion">Opinion <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Shiny">Shiny <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Shorts">Shorts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Simulation">Simulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Visualization">Visualization <span class="quarto-category-count">(13)</span></div></div></div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+<div class="grid">
+<section id="series" class="level1 g-col-12 g-col-md-6">
+<h1>Series</h1>
+<section id="ggplot2-series" class="level5">
+<h5 class="anchored" data-anchor-id="ggplot2-series"><a href="ggplot-series.html">ggplot2-series</a></h5>
+<p>This series contains a great deal of tips, tricks and packages that you can use to level up your ggplot game.</p>
+</section>
+</section>
+<section id="subscribe" class="level1 g-col-12 g-col-md-6">
+<h1>Subscribe</h1>
+<iframe src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px;width:80%">
+</iframe>
+</section>
+</div>
+<section id="all-blog-posts" class="level1">
+<h1>All blog posts</h1>
+
+
+
+</section>
+<div class="quarto-listing" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="Shiny,Shorts" data-listing-date-sort="1652054400000" data-listing-file-modified-sort="1657826282135" data-listing-reading-time-sort="0.675">
+<div class="body">
+<a href="./posts/12_embedding_shiny_app/12_embedding_shiny_app.html">
+<h3 class="no-anchor listing-title">
+How to embed a Shiny app into your blog posts
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Shiny'); return false;">
+Shiny
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Shorts'); return false;">
+Shorts
+</div>
+</div>
+<a href="./posts/12_embedding_shiny_app/12_embedding_shiny_app.html">
+<div class="listing-description">
+<p>This is a one-minute blog post to share how to incorporate Shiny apps in blog posts.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/12_embedding_shiny_app/12_embedding_shiny_app.html">
+<div class="listing-date">
+May 9, 2022
+</div>
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Visualization,API" data-listing-date-sort="1651795200000" data-listing-file-modified-sort="1657742296419" data-listing-reading-time-sort="8.43">
+<div class="body">
+<a href="./posts/11_track_twitter_followers/11_track_twitter_followers.html">
+<h3 class="no-anchor listing-title">
+Use {lubridate} and {rtweet} to analyze your Twitter timeline
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('API'); return false;">
+API
+</div>
+</div>
+<a href="./posts/11_track_twitter_followers/11_track_twitter_followers.html">
+<div class="listing-description">
+<p>We take a quick look at the rtweet and lubridate package. These help you to analyse your Twitter timeline. And they helped me to visualize my follower count as I reached 1000 followers this week.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/11_track_twitter_followers/11_track_twitter_followers.html">
+<div class="listing-date">
+May 6, 2022
+</div>
+<div class="listing-reading-time">
+8 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="Visualization" data-listing-date-sort="1651622400000" data-listing-file-modified-sort="1657740842674" data-listing-reading-time-sort="18.485">
+<div class="body">
+<a href="./posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html">
+<h3 class="no-anchor listing-title">
+Storytelling in ggplot using rounded rectangles
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<a href="./posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html">
+<div class="listing-description">
+<p>We build rebuild a ‘Storytelling with Data’ plot which uses rounded rectangles. I’ll show you an easy and a hard way to make rectangles round.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html">
+<div class="listing-date">
+May 4, 2022
+</div>
+<div class="listing-reading-time">
+18 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="Opinion" data-listing-date-sort="1649980800000" data-listing-file-modified-sort="1657739991653" data-listing-reading-time-sort="11.415">
+<div class="body">
+<a href="./posts/10_lessons_learned_teaching_nonprogrammers/10_lessons_learned_teaching_nonprogrammers.html">
+<h3 class="no-anchor listing-title">
+6 Lessons that I learned from teaching R to non-programmers
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Opinion'); return false;">
+Opinion
+</div>
+</div>
+<a href="./posts/10_lessons_learned_teaching_nonprogrammers/10_lessons_learned_teaching_nonprogrammers.html">
+<div class="listing-description">
+<p>I held a short workshop teaching R to Economics students. Here are six things that I wish I had known in advance.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/10_lessons_learned_teaching_nonprogrammers/10_lessons_learned_teaching_nonprogrammers.html">
+<div class="listing-date">
+Apr 15, 2022
+</div>
+<div class="listing-reading-time">
+11 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="Automation,API" data-listing-date-sort="1649894400000" data-listing-file-modified-sort="1657739573711" data-listing-reading-time-sort="20.18">
+<div class="body">
+<a href="./posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html">
+<h3 class="no-anchor listing-title">
+How to collect dataviz from Twitter into your note-taking system
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Automation'); return false;">
+Automation
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('API'); return false;">
+API
+</div>
+</div>
+<a href="./posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html">
+<div class="listing-description">
+<p>The goal is to send a tweet’s URL to a dummy mail account and let R extract it, call the Twitter API and then put everything as a Markdown file into your note-taking system.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html">
+<div class="listing-date">
+Apr 14, 2022
+</div>
+<div class="listing-reading-time">
+20 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="Visualization" data-listing-date-sort="1648512000000" data-listing-file-modified-sort="1657738001165" data-listing-reading-time-sort="17.91">
+<div class="body">
+<a href="./posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html">
+<h3 class="no-anchor listing-title">
+Recreating the Storytelling with Data look with ggplot
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<a href="./posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html">
+<div class="listing-description">
+<p>We try to imitate the Storytelling with Data look with ggplot</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html">
+<div class="listing-date">
+Mar 29, 2022
+</div>
+<div class="listing-reading-time">
+17 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="Visualization,Functional Programming" data-listing-date-sort="1648166400000" data-listing-file-modified-sort="1657737619371" data-listing-reading-time-sort="6.455">
+<div class="body">
+<a href="./posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html">
+<h3 class="no-anchor listing-title">
+How to use functional programming for ggplot
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Functional Programming'); return false;">
+Functional Programming
+</div>
+</div>
+<a href="./posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html">
+<div class="listing-description">
+<p>Functional programming is a mighty sword. Today, we use it to avoid tedious repetitions when things go wrong in ggplot.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html">
+<div class="listing-date">
+Mar 25, 2022
+</div>
+<div class="listing-reading-time">
+6 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="Visualization" data-listing-date-sort="1646352000000" data-listing-file-modified-sort="1657737625803" data-listing-reading-time-sort="6.26">
+<div class="body">
+<a href="./posts/ggplot2-tips/08_fonts_and_icons/08_fonts_and_icons.html">
+<h3 class="no-anchor listing-title">
+How to use Fonts and Icons in ggplot
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<a href="./posts/ggplot2-tips/08_fonts_and_icons/08_fonts_and_icons.html">
+<div class="listing-description">
+<p>This is a short tutorial on how to import fonts and icons in R using the showtext package.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/08_fonts_and_icons/08_fonts_and_icons.html">
+<div class="listing-date">
+Mar 4, 2022
+</div>
+<div class="listing-reading-time">
+6 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="Visualization" data-listing-date-sort="1645228800000" data-listing-file-modified-sort="1657737630123" data-listing-reading-time-sort="12.22">
+<div class="body">
+<a href="./posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html">
+<h3 class="no-anchor listing-title">
+4 Ways to use colors in ggplot more efficiently
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<a href="./posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html">
+<div class="listing-description">
+<p>Inspired by a datawrapper blogpost, we explore how to work with fewer colors in ggplot.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html">
+<div class="listing-date">
+Feb 19, 2022
+</div>
+<div class="listing-reading-time">
+12 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="Shiny" data-listing-date-sort="1642377600000" data-listing-file-modified-sort="1657736300536" data-listing-reading-time-sort="10.295">
+<div class="body">
+<a href="./posts/08_drawing_ggplot_interactively/08_drawing_ggplot_interactively.html">
+<h3 class="no-anchor listing-title">
+Interactive ggplots, user feedback, and a little bit of Javascript magic with Shiny
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Shiny'); return false;">
+Shiny
+</div>
+</div>
+<a href="./posts/08_drawing_ggplot_interactively/08_drawing_ggplot_interactively.html">
+<div class="listing-description">
+<p>Here’s how I turned a ggplot interactive using Shiny and what else I learned while building that app</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/08_drawing_ggplot_interactively/08_drawing_ggplot_interactively.html">
+<div class="listing-date">
+Jan 17, 2022
+</div>
+<div class="listing-reading-time">
+10 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="" data-listing-date-sort="1641945600000" data-listing-file-modified-sort="1657480679753" data-listing-reading-time-sort="3.85">
+<div class="body">
+<a href="./posts/07_janitor_showcase/07_janitor_showcase.html">
+<h3 class="no-anchor listing-title">
+Showcasing the janitor package
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+
+</div>
+<a href="./posts/07_janitor_showcase/07_janitor_showcase.html">
+<div class="listing-description">
+<p>I demonstrate a couple of functions from the janitor package I find quite useful</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/07_janitor_showcase/07_janitor_showcase.html">
+<div class="listing-date">
+Jan 12, 2022
+</div>
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-categories="Visualization,Opinion" data-listing-date-sort="1641772800000" data-listing-file-modified-sort="1657480367087" data-listing-reading-time-sort="3.445">
+<div class="body">
+<a href="./posts/ggplot2-tips/06_learning_by_thieving/06_learning_by_thieving.html">
+<h3 class="no-anchor listing-title">
+ggplot-tips: Learning by Thieving
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Opinion'); return false;">
+Opinion
+</div>
+</div>
+<a href="./posts/ggplot2-tips/06_learning_by_thieving/06_learning_by_thieving.html">
+<div class="listing-description">
+<p>I advocate to take part in the TidyTuesday events to learn with and from others.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/06_learning_by_thieving/06_learning_by_thieving.html">
+<div class="listing-date">
+Jan 10, 2022
+</div>
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="Visualization" data-listing-date-sort="1640908800000" data-listing-file-modified-sort="1657480270039" data-listing-reading-time-sort="8.86">
+<div class="body">
+<a href="./posts/ggplot2-tips/05_ggforce_examples/05_ggforce_examples.html">
+<h3 class="no-anchor listing-title">
+A couple of visualizations from ggforce
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<a href="./posts/ggplot2-tips/05_ggforce_examples/05_ggforce_examples.html">
+<div class="listing-description">
+<p>The ggplot2-tips series is continued with a few example plots from the ggforce package</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/05_ggforce_examples/05_ggforce_examples.html">
+<div class="listing-date">
+Dec 31, 2021
+</div>
+<div class="listing-reading-time">
+8 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="Shiny" data-listing-date-sort="1639008000000" data-listing-file-modified-sort="1657479819821" data-listing-reading-time-sort="14.88">
+<div class="body">
+<a href="./posts/06_shiny_app_learnings/06_shiny_app_learnings.html">
+<h3 class="no-anchor listing-title">
+6 simple Shiny things I have learned from creating a somewhat small app
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Shiny'); return false;">
+Shiny
+</div>
+</div>
+<a href="./posts/06_shiny_app_learnings/06_shiny_app_learnings.html">
+<div class="listing-description">
+<p>I recently built a small Shiny app where I had to search for how to do a lot of things. Here are 6 things I learned doing that. Maybe a Shiny beginner will find something useful in here.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/06_shiny_app_learnings/06_shiny_app_learnings.html">
+<div class="listing-date">
+Dec 9, 2021
+</div>
+<div class="listing-reading-time">
+14 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="14" data-categories="Visualization" data-listing-date-sort="1635379200000" data-listing-file-modified-sort="1657479373667" data-listing-reading-time-sort="8.72">
+<div class="body">
+<a href="./posts/ggplot2-tips/04_arranging_plots/04_arranging_plots.html">
+<h3 class="no-anchor listing-title">
+ggplot tips: Arranging plots
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<a href="./posts/ggplot2-tips/04_arranging_plots/04_arranging_plots.html">
+<div class="listing-description">
+<p>The patchwork and ggforce packages can be used to compose plots from multiple subplots. Let’s have a look at how that works.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/04_arranging_plots/04_arranging_plots.html">
+<div class="listing-date">
+Oct 28, 2021
+</div>
+<div class="listing-reading-time">
+8 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="15" data-categories="Visualization,Exploratory Intro" data-listing-date-sort="1634342400000" data-listing-file-modified-sort="1657479167340" data-listing-reading-time-sort="12.19">
+<div class="body">
+<a href="./posts/05_exploratory_intro_plotly/05_exploratory_intro_quarto.html">
+<h3 class="no-anchor listing-title">
+An Exploratory Introduction to the Plotly Package
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Exploratory Intro'); return false;">
+Exploratory Intro
+</div>
+</div>
+<a href="./posts/05_exploratory_intro_plotly/05_exploratory_intro_quarto.html">
+<div class="listing-description">
+<p>We try to do a few simple things with the plotly package in order to figure out how it works.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/05_exploratory_intro_plotly/05_exploratory_intro_quarto.html">
+<div class="listing-date">
+Oct 16, 2021
+</div>
+<div class="listing-reading-time">
+12 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="16" data-categories="" data-listing-date-sort="1633219200000" data-listing-file-modified-sort="1657478269364" data-listing-reading-time-sort="13.625">
+<div class="body">
+<a href="./posts/04_sonntagsfrage/04_sonntagsfrage.html">
+<h3 class="no-anchor listing-title">
+Did German Voters Become More Impulsive?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+
+</div>
+<a href="./posts/04_sonntagsfrage/04_sonntagsfrage.html">
+<div class="listing-description">
+<p>We try to find out if voters in Germany became more impulsive over time.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/04_sonntagsfrage/04_sonntagsfrage.html">
+<div class="listing-date">
+Oct 3, 2021
+</div>
+<div class="listing-reading-time">
+13 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="17" data-categories="Functional Programming" data-listing-date-sort="1631750400000" data-listing-file-modified-sort="1657737262413" data-listing-reading-time-sort="11.555">
+<div class="body">
+<a href="./posts/03_writing_versatile_fcts/03_writing_versatile_fcts.html">
+<h3 class="no-anchor listing-title">
+Writing Versatile Functions with R
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Functional Programming'); return false;">
+Functional Programming
+</div>
+</div>
+<a href="./posts/03_writing_versatile_fcts/03_writing_versatile_fcts.html">
+<div class="listing-description">
+<p>Using concepts like dot-dot-dot and curly-curly we create functions that are more versatile and can be used in multiple settings.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/03_writing_versatile_fcts/03_writing_versatile_fcts.html">
+<div class="listing-date">
+Sep 16, 2021
+</div>
+<div class="listing-reading-time">
+11 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="18" data-categories="Visualization" data-listing-date-sort="1631318400000" data-listing-file-modified-sort="1657477254164" data-listing-reading-time-sort="3.44">
+<div class="body">
+<a href="./posts/ggplot2-tips/03_position_adjustment/03_position_adjustment.html">
+<h3 class="no-anchor listing-title">
+ggplot tips: Using position_stack() for Individual Positioning
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<a href="./posts/ggplot2-tips/03_position_adjustment/03_position_adjustment.html">
+<div class="listing-description">
+<p>We take a look at the differences between position = ‘stack’ and position = position_stack().</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/03_position_adjustment/03_position_adjustment.html">
+<div class="listing-date">
+Sep 11, 2021
+</div>
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="19" data-categories="Visualization" data-listing-date-sort="1629331200000" data-listing-file-modified-sort="1657477112284" data-listing-reading-time-sort="5.665">
+<div class="body">
+<a href="./posts/ggplot2-tips/02_aesthetic_labels/02_aesthetic_labels.html">
+<h3 class="no-anchor listing-title">
+ggplot tips: Assigning Labels to an Aesthetic
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<a href="./posts/ggplot2-tips/02_aesthetic_labels/02_aesthetic_labels.html">
+<div class="listing-description">
+<p>We talk about how to easily create labels for an aesthetic.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/02_aesthetic_labels/02_aesthetic_labels.html">
+<div class="listing-date">
+Aug 19, 2021
+</div>
+<div class="listing-reading-time">
+5 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="20" data-categories="Visualization" data-listing-date-sort="1628294400000" data-listing-file-modified-sort="1657476707322" data-listing-reading-time-sort="5.62">
+<div class="body">
+<a href="./posts/ggplot2-tips/01_a_few_ggplot_tips/01_a_few_ggplot_tips.html">
+<h3 class="no-anchor listing-title">
+Beginning a ggplot2 Series: Logarithmize Your Scales
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<a href="./posts/ggplot2-tips/01_a_few_ggplot_tips/01_a_few_ggplot_tips.html">
+<div class="listing-description">
+<p>This is the beginning of a series about a few ggplot2 tricks I picked up along the way. In this first installment we talk about how logarithmizing scales can be beneficial.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/01_a_few_ggplot_tips/01_a_few_ggplot_tips.html">
+<div class="listing-date">
+Aug 7, 2021
+</div>
+<div class="listing-reading-time">
+5 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="21" data-categories="Simulation" data-listing-date-sort="1627430400000" data-listing-file-modified-sort="1657476535155" data-listing-reading-time-sort="17.355">
+<div class="body">
+<a href="./posts/02_luck_vs_skill/02_luck_vs_skill.html">
+<h3 class="no-anchor listing-title">
+Is Success Luck or Hard Work?
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Simulation'); return false;">
+Simulation
+</div>
+</div>
+<a href="./posts/02_luck_vs_skill/02_luck_vs_skill.html">
+<div class="listing-description">
+<p>I recreate a simulation study on the influence of luck on success compared to the influence of skill.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/02_luck_vs_skill/02_luck_vs_skill.html">
+<div class="listing-date">
+Jul 28, 2021
+</div>
+<div class="listing-reading-time">
+17 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="22" data-categories="" data-listing-date-sort="1626220800000" data-listing-file-modified-sort="1657476479055" data-listing-reading-time-sort="9.845">
+<div class="body">
+<a href="./posts/01_visualize_kernel_density/01_visualize_kernel_density.html">
+<h3 class="no-anchor listing-title">
+Animating kernel density estimators
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+
+</div>
+<a href="./posts/01_visualize_kernel_density/01_visualize_kernel_density.html">
+<div class="listing-description">
+<p>For my first post I create an animation using the animate package.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/01_visualize_kernel_density/01_visualize_kernel_density.html">
+<div class="listing-date">
+Jul 14, 2021
+</div>
+<div class="listing-reading-time">
+9 min
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

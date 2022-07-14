@@ -1,0 +1,14 @@
+{
+  "hash": "02503c45e3ae12e7b16d62a1770d5b64",
+  "result": {
+    "markdown": "---\ntitle: twitter-post\ndate: '2022-05-09'\nslug: []\ncategories: ['123']\ndescription: 'Here is my description of this post'\n\nexecute: \n  message: false\n  warning: false\neditor_options: \n  chunk_output_type: console\n---\n\n\n# SetUp\n\n\n::: {.cell}\n\n:::\n\n\n\n## Sub menu\n\n\n\n$$\n\\int_0^1 f(x) \\ dx\n$$\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\nlibrary(tidyverse)\nlibrary(rvest)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

@@ -1,0 +1,164 @@
+---
+title: 'Showcasing the janitor package'
+date: '2022-01-12'
+categories: []
+description: "I demonstrate a couple of functions from the janitor package I find quite useful"
+execute: 
+  message: false
+  warning: false
+  collapse: false
+editor_options: 
+  chunk_output_type: console
+---
+
+The `janitor` package contains only a little number of functions but nevertheless
+it is surprisingly convenient.
+I never really fully appreciated its functionality until I took a look into the documentation.
+Of course, other packages can achieve the same thing too but `janitor` makes
+a lot of tasks easy.
+Thus, here is a little showcase.
+If you prefer a video version, you can find this blog post on [YouTube](https://youtu.be/AKPvlNWZBEQ).
+
+## Clean column names
+
+As everyone working with data knows, data sets rarely come in a clean format.
+Often, the necessary cleaning process already starts with the column names.
+Here, take this data set from TidyTuesday, week 41.
+
+```{r}
+#| message = FALSE
+nurses <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-05/nurses.csv')
+names(nurses)
+```
+
+These column names are intuitively easy to understand but not necessarily easy to process
+by code as there are white spaces and other special characters.
+Therefore, I accompany most data input by `clean_names()` from the `janitor` package.
+
+```{r, message=F, warning=F}
+library(janitor)
+library(dplyr) # load for pipe %>%  and later wrangling
+names(nurses %>% clean_names)
+```
+
+Did you see what happened?
+White spaces were converted to `_` and parantheses were removed.
+Even the `%` signs were converted to `percent`.
+Now, these labels are easy to understand AND process by code.
+This does not mean that you are finished cleaning but at least now the columns
+are more accessible.
+
+## Remove empty and or constant columns and rows
+
+Data sets come with empty or superfluous rows or columns are not a rare sighting. 
+This is especially true if you work with Excel files because there will be a lot of empty
+cells.
+Take a look at the dirty Excel data set from janitor's [GitHub page](https://github.com/sfirke/janitor/blob/main/dirty_data.xlsx).
+It looks like this when you open it with Excel.
+
+```{r}
+#| echo = F
+knitr::include_graphics('dirty_data.PNG')
+```
+
+Taking a look just at this picture we may notice a couple of things.
+
+- First, [Jason Bourne](https://en.wikipedia.org/wiki/Jason_Bourne) is teaching at a school. 
+I guess being a trained assassin qualifies him to teach physical education.
+Also - and this is just a hunch - undercover work likely earned him his "Theater" certification.
+
+- Second, the header above the actual table will be annoying, so we must skip the first line
+when we read the data set.
+
+- Third, the column names are not ideal but we know how to deal with that by now.
+
+- Fourth, there are empty rows and columns we can get rid of.
+
+- Fifth, there is a column that contains only 'YES'.
+Therefore it contains no information at all and can be removed.
+
+So, let us read and clean the data.
+The `janitor` package will help us with `remove_empty()` and `remove_constant()`.
+
+```{r}
+#| message = F,
+#| warning = F
+xl_file <- readxl::read_excel('dirty_data.xlsx', skip = 1) %>% 
+  clean_names() %>%
+  remove_empty() %>% 
+  remove_constant()
+xl_file
+```
+
+Here, `remove_empty()` defaulted to remove, both, rows and colums.
+If we wish, we can change that by setting e.g. `which = 'rows'`.
+
+Now, we may also want to see the `hire_data` in a sensible format.
+For example, in this dirty data set, Jason Bourne was hired on `39690`.
+Luckily, our `janitor` can make sense of it all.
+
+```{r}
+xl_file %>% 
+  mutate(hire_date = excel_numeric_to_date(hire_date))
+```
+
+## Rounding 
+
+To my ~~surprise~~ shock, R uses some unexpected rounding rule.
+In my world, whenever a number ends in `.5`, standard rounding would round up.
+Apparently, R uses something called *banker's rounding* that in these cases 
+rounds towards the next *even* number.
+Take a look.
+
+```{r}
+round(seq(0.5, 4.5, 1))
+```
+
+I would expect that the rounded vector contains the integers from one to five.
+Thankfully, `janitor` offers a convenient rounding function.
+
+```{r}
+round_half_up(seq(0.5, 4.5, 1))
+```
+
+Ok, so that gives us a new function for rounding towards integers.
+But what is really convenient is that `janitor` can `round_to_fraction`s.
+
+```{r}
+round_to_fraction(seq(0.5, 2.0, 0.13), denominator = 4)
+```
+
+Here, I rounded the numbers to the next quarters (`denominator = 4`) but of course
+any fraction is possible. 
+You can now live the dream of rounding towards arbitrary fractions.
+
+
+## Find matches in multiple characteristics
+
+In my opinion, the `get_dupes()` function is really powerful.
+It allows us to find "similar" observations in a data set based on certain characteristics.
+For example, the `starwars` data set from `dplyr`  contains a lot of information 
+on characters from the Star Wars movies.
+Possibly, we want to find out which characters are similar w.r.t. to certain traits.
+
+```{r}
+starwars %>% 
+  get_dupes(eye_color, hair_color, skin_color, sex, homeworld) %>% 
+  select(1:8)
+```
+
+So, Luke and Anakin Skywalker are similar to one another. 
+Who would have thought that.
+Sadly, I don't enough about Star Wars to know whether the other matches are similarly 
+"surprising".
+In any case, the point here is that we can easily find matches according to 
+arbitrarily many characteristics.
+Conveniently, these characteristics are the first columns of the new output and 
+we get a `dupe_count`.
+
+
+Alright, this concludes our little showcase.
+In the `janitor` package, there is another set of `tabyl()` functions. 
+These are meant to improve base R's `table()` functions. 
+Since I rarely use that function I did not include it but if you use `table()` frequently, 
+then you should definitely [check out tabyl()](http://sfirke.github.io/janitor/articles/tabyls.html).
