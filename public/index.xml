@@ -6,7 +6,26 @@
     <description>Recent content on Albert Rapp</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy;{year}, This work is licensed under a [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).</copyright>
-    <lastBuildDate>Mon, 09 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://albert-rapp.de/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Announcement: This blog moves to Quarto</title>
+      <link>https://albert-rapp.de/post/2022-07-14-this-blog-moves-its-rss/</link>
+      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://albert-rapp.de/post/2022-07-14-this-blog-moves-its-rss/</guid>
+      <description>&lt;p&gt;My blog turns 1 today! Yay!
+For this occasion, I&amp;rsquo;ve reimplemented my blog with &lt;a href=&#34;https://quarto.org/&#34;&gt;Quarto&lt;/a&gt;.
+Also, this lets me use all of Quarto&amp;rsquo;s cool new tricks.&lt;/p&gt;
+&lt;p&gt;For many of you, this move will change nothing.
+But those of you that use my RSS feed will need to update their feed.
+Once the new blog is online, you can get the new RSS feed via the RSS icon in the navbar.&lt;/p&gt;
+&lt;p&gt;Alternatively, you can take this chance and subscribe to my new(ish) email newsletter.
+It is a biweekly newsletter focusing on dataviz, statistics and Shiny.
+Of course, this way you won&amp;rsquo;t miss my new blog posts.
+You can sign up &lt;a href=&#34;https://alberts-newsletter.beehiiv.com/subscribe&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>How to embed a Shiny app into your blog posts</title>
       <link>https://albert-rapp.de/post/2022-05-09-embedding-a-shiny-app/</link>

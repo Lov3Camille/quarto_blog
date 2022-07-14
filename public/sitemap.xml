@@ -3,12 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://albert-rapp.de/</loc>
-    <lastmod>2022-05-09T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://albert-rapp.de/post/2022-05-09-embedding-a-shiny-app/</loc>
-    <lastmod>2022-05-09T00:00:00+00:00</lastmod>
+    <loc>https://albert-rapp.de/post/2022-07-14-this-blog-moves-its-rss/</loc>
+    <lastmod>2022-07-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/post/</loc>
+    <lastmod>2022-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://albert-rapp.de/post/2022-05-09-embedding-a-shiny-app/</loc>
     <lastmod>2022-05-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://albert-rapp.de/tags/shiny/</loc>
