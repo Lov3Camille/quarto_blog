@@ -1,83 +1,123 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.80">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Albert Rapp – blog</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
 
-  <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-  <script src="site_libs/quarto-nav/headroom.min.js"></script>
-  <script src="site_libs/clipboard/clipboard.min.js"></script>
-  <meta name="quarto:offset" content="./">
-  <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-  <script src="site_libs/quarto-search/fuse.min.js"></script>
-  <script src="site_libs/quarto-search/quarto-search.js"></script>
-  <script src="site_libs/quarto-listing/list.min.js"></script>
-  <script src="site_libs/quarto-listing/quarto-listing.js"></script>
-  <script src="site_libs/quarto-html/quarto.js"></script>
-  <script src="site_libs/quarto-html/popper.min.js"></script>
-  <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="site_libs/quarto-html/anchor.min.js"></script>
-  <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <script src="site_libs/bootstrap/bootstrap.min.js"></script>
-  <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <script id="quarto-search-options" type="application/json">{
-    "location": "navbar",
-    "copy-button": false,
-    "collapse-after": 2,
-    "panel-placement": "end",
-    "type": "overlay",
-    "limit": 20,
-    "language": {
-      "search-no-results-text": "No results",
-      "search-matching-documents-text": "matching documents",
-      "search-copy-link-title": "Copy link to search",
-      "search-hide-matches-text": "Hide additional matches",
-      "search-more-match-text": "more match in this document",
-      "search-more-matches-text": "more matches in this document",
-      "search-clear-button-title": "Clear",
-      "search-detached-cancel-button-title": "Cancel",
-      "search-submit-button-title": "Submit"
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Albert Rapp – blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
     }
-  }</script>
-  <script>
 
-    window.document.addEventListener("DOMContentLoaded", function (_event) {
-      const listingTargetEl = window.document.querySelector('#listing-listing .list');
-      if (!listingTargetEl) {
-        // No listing discovered, do not attach.
-        return; 
-      }
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
 
-      const options = {
-        valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-        
-        searchColumns: ["listing-date","listing-title","listing-author","listing-description","listing-categories"],
-      };
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
 
-      window['quarto-listings'] = window['quarto-listings'] || {};
-      window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
 
-      if (window['quarto-listing-loaded']) {
-        window['quarto-listing-loaded']();
-      }
-    });
-    </script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y3M69TZVPJ"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Y3M69TZVPJ', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
 <link rel="alternate" type="application/rss+xml" title="Albert Rapp" href="blog.xml"></head>
-<body>
+
+<body class="nav-fixed">
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
@@ -117,6 +157,10 @@
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
         <li>
+    <a class="dropdown-item" href="./dataviz_portfolio.html">
+ <span class="dropdown-text">DataViz Portfolio</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://yards.albert-rapp.de/">
  <span class="dropdown-text">YARDS</span></a>
   </li>  
@@ -145,9 +189,12 @@
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(23)</span></div><div class="category" data-category="API">API <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Automation">Automation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Exploratory Intro">Exploratory Intro <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Functional Programming">Functional Programming <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Opinion">Opinion <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Shiny">Shiny <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Shorts">Shorts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Simulation">Simulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Visualization">Visualization <span class="quarto-category-count">(13)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(24)</span></div><div class="category" data-category="API">API <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Automation">Automation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Exploratory Intro">Exploratory Intro <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Functional Programming">Functional Programming <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Opinion">Opinion <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Shiny">Shiny <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Shorts">Shorts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Simulation">Simulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Visualization">Visualization <span class="quarto-category-count">(13)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
+
+
+
 <div class="grid">
 <section id="series" class="level1 g-col-12 g-col-md-6">
 <h1>Series</h1>
@@ -158,7 +205,7 @@
 </section>
 <section id="subscribe" class="level1 g-col-12 g-col-md-6">
 <h1>Subscribe</h1>
-<iframe src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px;width:80%">
+<iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px">
 </iframe>
 </section>
 </div>
@@ -168,7 +215,8 @@
 
 
 </section>
-<div class="quarto-listing" id="listing-listing">
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
      <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
@@ -192,7 +240,37 @@
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Shiny,Shorts" data-listing-date-sort="1652054400000" data-listing-file-modified-sort="1657826282135" data-listing-reading-time-sort="0.675">
+<div class="quarto-post image-right" data-index="0" data-categories="" data-listing-date-sort="1658613600000" data-listing-file-modified-sort="1658671128295" data-listing-reading-time-sort="35.715">
+<div class="body">
+<a href="./posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html">
+<h3 class="no-anchor listing-title">
+The ultimate guide to starting a Quarto blog
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+
+</div>
+<a href="./posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html">
+<div class="listing-description">
+<p>This blog post is an in-depth guide on how to start blogging with Quarto.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html">
+<div class="listing-date">
+Jul 24, 2022
+</div>
+<div class="listing-reading-time">
+35 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Shiny,Shorts" data-listing-date-sort="1652047200000" data-listing-file-modified-sort="1658425705284" data-listing-reading-time-sort="0.695">
 <div class="body">
 <a href="./posts/12_embedding_shiny_app/12_embedding_shiny_app.html">
 <h3 class="no-anchor listing-title">
@@ -227,7 +305,7 @@ May 9, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Visualization,API" data-listing-date-sort="1651795200000" data-listing-file-modified-sort="1657742296419" data-listing-reading-time-sort="8.43">
+<div class="quarto-post image-right" data-index="2" data-categories="Visualization,API" data-listing-date-sort="1651788000000" data-listing-file-modified-sort="1658425679024" data-listing-reading-time-sort="8.46">
 <div class="body">
 <a href="./posts/11_track_twitter_followers/11_track_twitter_followers.html">
 <h3 class="no-anchor listing-title">
@@ -262,7 +340,7 @@ May 6, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="Visualization" data-listing-date-sort="1651622400000" data-listing-file-modified-sort="1657740842674" data-listing-reading-time-sort="18.485">
+<div class="quarto-post image-right" data-index="3" data-categories="Visualization" data-listing-date-sort="1651615200000" data-listing-file-modified-sort="1658425945204" data-listing-reading-time-sort="18.515">
 <div class="body">
 <a href="./posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html">
 <h3 class="no-anchor listing-title">
@@ -294,7 +372,7 @@ May 4, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="Opinion" data-listing-date-sort="1649980800000" data-listing-file-modified-sort="1657739991653" data-listing-reading-time-sort="11.415">
+<div class="quarto-post image-right" data-index="4" data-categories="Opinion" data-listing-date-sort="1649973600000" data-listing-file-modified-sort="1658425669760" data-listing-reading-time-sort="11.45">
 <div class="body">
 <a href="./posts/10_lessons_learned_teaching_nonprogrammers/10_lessons_learned_teaching_nonprogrammers.html">
 <h3 class="no-anchor listing-title">
@@ -326,7 +404,7 @@ Apr 15, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="Automation,API" data-listing-date-sort="1649894400000" data-listing-file-modified-sort="1657739573711" data-listing-reading-time-sort="20.18">
+<div class="quarto-post image-right" data-index="5" data-categories="Automation,API" data-listing-date-sort="1649887200000" data-listing-file-modified-sort="1658425653732" data-listing-reading-time-sort="20.205">
 <div class="body">
 <a href="./posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html">
 <h3 class="no-anchor listing-title">
@@ -361,7 +439,7 @@ Apr 14, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="Visualization" data-listing-date-sort="1648512000000" data-listing-file-modified-sort="1657738001165" data-listing-reading-time-sort="17.91">
+<div class="quarto-post image-right" data-index="6" data-categories="Visualization" data-listing-date-sort="1648504800000" data-listing-file-modified-sort="1658425932156" data-listing-reading-time-sort="17.96">
 <div class="body">
 <a href="./posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html">
 <h3 class="no-anchor listing-title">
@@ -393,7 +471,7 @@ Mar 29, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="Visualization,Functional Programming" data-listing-date-sort="1648166400000" data-listing-file-modified-sort="1657737619371" data-listing-reading-time-sort="6.455">
+<div class="quarto-post image-right" data-index="7" data-categories="Visualization,Functional Programming" data-listing-date-sort="1648162800000" data-listing-file-modified-sort="1658425913888" data-listing-reading-time-sort="6.525">
 <div class="body">
 <a href="./posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html">
 <h3 class="no-anchor listing-title">
@@ -428,7 +506,7 @@ Mar 25, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="Visualization" data-listing-date-sort="1646352000000" data-listing-file-modified-sort="1657737625803" data-listing-reading-time-sort="6.26">
+<div class="quarto-post image-right" data-index="8" data-categories="Visualization" data-listing-date-sort="1646348400000" data-listing-file-modified-sort="1658425897600" data-listing-reading-time-sort="6.31">
 <div class="body">
 <a href="./posts/ggplot2-tips/08_fonts_and_icons/08_fonts_and_icons.html">
 <h3 class="no-anchor listing-title">
@@ -460,7 +538,7 @@ Mar 4, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="Visualization" data-listing-date-sort="1645228800000" data-listing-file-modified-sort="1657737630123" data-listing-reading-time-sort="12.22">
+<div class="quarto-post image-right" data-index="9" data-categories="Visualization" data-listing-date-sort="1645225200000" data-listing-file-modified-sort="1658425882336" data-listing-reading-time-sort="12.245">
 <div class="body">
 <a href="./posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html">
 <h3 class="no-anchor listing-title">
@@ -492,7 +570,7 @@ Feb 19, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="Shiny" data-listing-date-sort="1642377600000" data-listing-file-modified-sort="1657736300536" data-listing-reading-time-sort="10.295">
+<div class="quarto-post image-right" data-index="10" data-categories="Shiny" data-listing-date-sort="1642374000000" data-listing-file-modified-sort="1658425641224" data-listing-reading-time-sort="10.33">
 <div class="body">
 <a href="./posts/08_drawing_ggplot_interactively/08_drawing_ggplot_interactively.html">
 <h3 class="no-anchor listing-title">
@@ -524,7 +602,7 @@ Jan 17, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="" data-listing-date-sort="1641945600000" data-listing-file-modified-sort="1657480679753" data-listing-reading-time-sort="3.85">
+<div class="quarto-post image-right" data-index="11" data-categories="" data-listing-date-sort="1641942000000" data-listing-file-modified-sort="1658425633236" data-listing-reading-time-sort="3.885">
 <div class="body">
 <a href="./posts/07_janitor_showcase/07_janitor_showcase.html">
 <h3 class="no-anchor listing-title">
@@ -554,7 +632,7 @@ Jan 12, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="Visualization,Opinion" data-listing-date-sort="1641772800000" data-listing-file-modified-sort="1657480367087" data-listing-reading-time-sort="3.445">
+<div class="quarto-post image-right" data-index="12" data-categories="Visualization,Opinion" data-listing-date-sort="1641769200000" data-listing-file-modified-sort="1658425869964" data-listing-reading-time-sort="3.465">
 <div class="body">
 <a href="./posts/ggplot2-tips/06_learning_by_thieving/06_learning_by_thieving.html">
 <h3 class="no-anchor listing-title">
@@ -589,7 +667,7 @@ Jan 10, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="Visualization" data-listing-date-sort="1640908800000" data-listing-file-modified-sort="1657480270039" data-listing-reading-time-sort="8.86">
+<div class="quarto-post image-right" data-index="13" data-categories="Visualization" data-listing-date-sort="1640905200000" data-listing-file-modified-sort="1658425851408" data-listing-reading-time-sort="8.895">
 <div class="body">
 <a href="./posts/ggplot2-tips/05_ggforce_examples/05_ggforce_examples.html">
 <h3 class="no-anchor listing-title">
@@ -621,7 +699,7 @@ Dec 31, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="Shiny" data-listing-date-sort="1639008000000" data-listing-file-modified-sort="1657479819821" data-listing-reading-time-sort="14.88">
+<div class="quarto-post image-right" data-index="14" data-categories="Shiny" data-listing-date-sort="1639004400000" data-listing-file-modified-sort="1658425620004" data-listing-reading-time-sort="14.93">
 <div class="body">
 <a href="./posts/06_shiny_app_learnings/06_shiny_app_learnings.html">
 <h3 class="no-anchor listing-title">
@@ -653,7 +731,7 @@ Dec 9, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="Visualization" data-listing-date-sort="1635379200000" data-listing-file-modified-sort="1657479373667" data-listing-reading-time-sort="8.72">
+<div class="quarto-post image-right" data-index="15" data-categories="Visualization" data-listing-date-sort="1635372000000" data-listing-file-modified-sort="1658425826744" data-listing-reading-time-sort="8.8">
 <div class="body">
 <a href="./posts/ggplot2-tips/04_arranging_plots/04_arranging_plots.html">
 <h3 class="no-anchor listing-title">
@@ -685,7 +763,7 @@ Oct 28, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="Visualization,Exploratory Intro" data-listing-date-sort="1634342400000" data-listing-file-modified-sort="1657479167340" data-listing-reading-time-sort="12.19">
+<div class="quarto-post image-right" data-index="16" data-categories="Visualization,Exploratory Intro" data-listing-date-sort="1634335200000" data-listing-file-modified-sort="1658425597852" data-listing-reading-time-sort="12.245">
 <div class="body">
 <a href="./posts/05_exploratory_intro_plotly/05_exploratory_intro_quarto.html">
 <h3 class="no-anchor listing-title">
@@ -720,7 +798,7 @@ Oct 16, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="" data-listing-date-sort="1633219200000" data-listing-file-modified-sort="1657478269364" data-listing-reading-time-sort="13.625">
+<div class="quarto-post image-right" data-index="17" data-categories="" data-listing-date-sort="1633212000000" data-listing-file-modified-sort="1658425582169" data-listing-reading-time-sort="13.655">
 <div class="body">
 <a href="./posts/04_sonntagsfrage/04_sonntagsfrage.html">
 <h3 class="no-anchor listing-title">
@@ -750,7 +828,7 @@ Oct 3, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="Functional Programming" data-listing-date-sort="1631750400000" data-listing-file-modified-sort="1657737262413" data-listing-reading-time-sort="11.555">
+<div class="quarto-post image-right" data-index="18" data-categories="Functional Programming" data-listing-date-sort="1631743200000" data-listing-file-modified-sort="1658425527109" data-listing-reading-time-sort="11.58">
 <div class="body">
 <a href="./posts/03_writing_versatile_fcts/03_writing_versatile_fcts.html">
 <h3 class="no-anchor listing-title">
@@ -782,7 +860,7 @@ Sep 16, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="Visualization" data-listing-date-sort="1631318400000" data-listing-file-modified-sort="1657477254164" data-listing-reading-time-sort="3.44">
+<div class="quarto-post image-right" data-index="19" data-categories="Visualization" data-listing-date-sort="1631311200000" data-listing-file-modified-sort="1658425817692" data-listing-reading-time-sort="3.46">
 <div class="body">
 <a href="./posts/ggplot2-tips/03_position_adjustment/03_position_adjustment.html">
 <h3 class="no-anchor listing-title">
@@ -814,7 +892,7 @@ Sep 11, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="Visualization" data-listing-date-sort="1629331200000" data-listing-file-modified-sort="1657477112284" data-listing-reading-time-sort="5.665">
+<div class="quarto-post image-right" data-index="20" data-categories="Visualization" data-listing-date-sort="1629324000000" data-listing-file-modified-sort="1658425805068" data-listing-reading-time-sort="5.7">
 <div class="body">
 <a href="./posts/ggplot2-tips/02_aesthetic_labels/02_aesthetic_labels.html">
 <h3 class="no-anchor listing-title">
@@ -846,7 +924,7 @@ Aug 19, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="20" data-categories="Visualization" data-listing-date-sort="1628294400000" data-listing-file-modified-sort="1657476707322" data-listing-reading-time-sort="5.62">
+<div class="quarto-post image-right" data-index="21" data-categories="Visualization" data-listing-date-sort="1628287200000" data-listing-file-modified-sort="1658425793940" data-listing-reading-time-sort="5.65">
 <div class="body">
 <a href="./posts/ggplot2-tips/01_a_few_ggplot_tips/01_a_few_ggplot_tips.html">
 <h3 class="no-anchor listing-title">
@@ -878,7 +956,7 @@ Aug 7, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="21" data-categories="Simulation" data-listing-date-sort="1627430400000" data-listing-file-modified-sort="1657476535155" data-listing-reading-time-sort="17.355">
+<div class="quarto-post image-right" data-index="22" data-categories="Simulation" data-listing-date-sort="1627423200000" data-listing-file-modified-sort="1658335856346" data-listing-reading-time-sort="17.395">
 <div class="body">
 <a href="./posts/02_luck_vs_skill/02_luck_vs_skill.html">
 <h3 class="no-anchor listing-title">
@@ -910,7 +988,7 @@ Jul 28, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="22" data-categories="" data-listing-date-sort="1626220800000" data-listing-file-modified-sort="1657476479055" data-listing-reading-time-sort="9.845">
+<div class="quarto-post image-right" data-index="23" data-categories="" data-listing-date-sort="1626213600000" data-listing-file-modified-sort="1658325479145" data-listing-reading-time-sort="9.875">
 <div class="body">
 <a href="./posts/01_visualize_kernel_density/01_visualize_kernel_density.html">
 <h3 class="no-anchor listing-title">
@@ -945,8 +1023,26 @@ Jul 14, 2021
 No matching items
 </div>
 </div></main> <!-- /main -->
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -966,7 +1062,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
     setTimeout(function() {
+      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -1022,6 +1121,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
 
 
 </body></html>

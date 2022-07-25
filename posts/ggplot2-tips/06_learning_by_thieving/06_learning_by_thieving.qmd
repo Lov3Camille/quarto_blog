@@ -11,6 +11,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 [TidyTuesday](https://github.com/rfordatascience/tidytuesday), the weekly social data project that brings together R users, is a great way to connect to the R community and learn to wrangle and visualize data.
 But more importantly, it is a superb chance to learn new data visualization skills by ~~doing~~ thieving.

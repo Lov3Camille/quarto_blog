@@ -1,12 +1,12 @@
 ---
 page-layout: full
 header-includes: |
-  <link href="index-styles.scss" rel="stylesheet">
+  <link href="index-styles.css" rel="stylesheet">
 ---
 
 ::: {.grid}
 
-::: {.g-col-12 .g-col-md-6}
+::: {.g-col-12 .g-col-md-6 id='bio-pic'}
 ![](profile2.jpg)
 :::
 
@@ -20,9 +20,8 @@ To get started, you can check out my most popular content below. You can find me
 Feel free to reach out to me via [mail](mailto:blog@albert-rapp.de) and subscribe to my email newsletter.
 
 
-<iframe src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px;width:80%"></iframe>
+<iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px"></iframe>
 :::
-
 
 
 ::: {.g-col-12 .g-col-md-5 .g-start-md-2}
@@ -98,6 +97,10 @@ Functional programming is great and powerful. A great motivation for learning th
 
 ::: {.g-col-12 .g-col-md-5}
 # Miscellaneous
+
+##### [The ultimate guide to starting a Quarto blog](posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html)
+This is an in-depth guide on how to start blogging with Quarto.
+
 
 ##### [6 Lessons that I learned from teaching R to non-programmers](posts/10_lessons_learned_teaching_nonprogrammers/10_lessons_learned_teaching_nonprogrammers.html)
 I taught a intro to R course for business students. Here are things I wish I had known sooner.

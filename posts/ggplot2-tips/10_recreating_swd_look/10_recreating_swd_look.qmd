@@ -11,6 +11,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 So, I found a [great video](https://www.youtube.com/watch?v=st7_vPjq0SU) from Storytelling with Data (SWD).
 In this video, a data storyteller demonstrates how a dataviz that does not demonstrate a clear story can be improved.

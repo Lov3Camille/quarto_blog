@@ -11,6 +11,12 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv_snap.lock")
+```
+
 
 For my first post on this blog I decided to create an animation using the [`animation`](https://yihui.org/animation/) package.
 To give this animation some purpose let me demonstrate how kernel density estimators work with the help of an animation.

@@ -11,6 +11,12 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
+
 The `janitor` package contains only a little number of functions but nevertheless
 it is surprisingly convenient.
 I never really fully appreciated its functionality until I took a look into the documentation.

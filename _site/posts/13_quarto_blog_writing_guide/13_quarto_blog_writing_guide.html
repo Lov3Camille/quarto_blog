@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Albert Rapp">
+<meta name="dcterms.date" content="2022-07-24">
+<meta name="description" content="This blog post is an in-depth guide on how to start blogging with Quarto.">
+
+<title>Albert Rapp - The ultimate guide to starting a Quarto blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/code-filename-0.0.1/code-filename.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y3M69TZVPJ"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Y3M69TZVPJ', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+
+<meta name="twitter:title" content="Albert Rapp - The ultimate guide to starting a Quarto blog">
+<meta name="twitter:description" content="This blog post is an in-depth guide on how to start blogging with Quarto.">
+<meta name="twitter:image" content="https://albert-rapp.de/thumbnail_blog.png">
+<meta name="twitter:creator" content="@rappa753">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="418">
+<meta name="twitter:image-width" content="800">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Albert Rapp</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/AlbertRapp"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rappa753"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/user/Alfrodo123"><i class="bi bi-youtube" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blog.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
+        <li>
+    <a class="dropdown-item" href="../../dataviz_portfolio.html">
+ <span class="dropdown-text">DataViz Portfolio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://yards.albert-rapp.de/">
+ <span class="dropdown-text">YARDS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://rweekly.org/">
+ <span class="dropdown-text">R Weekly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.r-bloggers.com/">
+ <span class="dropdown-text">R Bloggers</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive.html">Archive</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#three-reasons-for-starting-a-blog" id="toc-three-reasons-for-starting-a-blog" class="nav-link active" data-scroll-target="#three-reasons-for-starting-a-blog">Three reasons for starting a blog</a></li>
+  <li><a href="#initialize-your-blog" id="toc-initialize-your-blog" class="nav-link" data-scroll-target="#initialize-your-blog">Initialize your blog</a>
+  <ul class="collapse">
+  <li><a href="#first-simple-changes" id="toc-first-simple-changes" class="nav-link" data-scroll-target="#first-simple-changes">First simple changes</a></li>
+  <li><a href="#create-your-first-blog-post" id="toc-create-your-first-blog-post" class="nav-link" data-scroll-target="#create-your-first-blog-post">Create your first blog post</a></li>
+  <li><a href="#changing-metadata" id="toc-changing-metadata" class="nav-link" data-scroll-target="#changing-metadata">Changing metadata</a></li>
+  </ul></li>
+  <li><a href="#create-your-own-series" id="toc-create-your-own-series" class="nav-link" data-scroll-target="#create-your-own-series">Create your own series</a>
+  <ul class="collapse">
+  <li><a href="#listing-pages-including-rss-feeds" id="toc-listing-pages-including-rss-feeds" class="nav-link" data-scroll-target="#listing-pages-including-rss-feeds">Listing pages (including RSS feeds)</a></li>
+  <li><a href="#creating-an-archive" id="toc-creating-an-archive" class="nav-link" data-scroll-target="#creating-an-archive">Creating an archive</a></li>
+  <li><a href="#new-sub-directory-for-series" id="toc-new-sub-directory-for-series" class="nav-link" data-scroll-target="#new-sub-directory-for-series">New sub-directory for series</a></li>
+  </ul></li>
+  <li><a href="#interact-with-your-audience" id="toc-interact-with-your-audience" class="nav-link" data-scroll-target="#interact-with-your-audience">Interact with your audience</a>
+  <ul class="collapse">
+  <li><a href="#comment-sections" id="toc-comment-sections" class="nav-link" data-scroll-target="#comment-sections">Comment sections</a></li>
+  <li><a href="#newsletter" id="toc-newsletter" class="nav-link" data-scroll-target="#newsletter">Newsletter</a></li>
+  <li><a href="#add-a-footer-below-blog-posts" id="toc-add-a-footer-below-blog-posts" class="nav-link" data-scroll-target="#add-a-footer-below-blog-posts">Add a footer below blog posts</a></li>
+  </ul></li>
+  <li><a href="#style-your-blog" id="toc-style-your-blog" class="nav-link" data-scroll-target="#style-your-blog">Style your blog</a>
+  <ul class="collapse">
+  <li><a href="#scss-rules" id="toc-scss-rules" class="nav-link" data-scroll-target="#scss-rules">SCSS-Rules</a></li>
+  <li><a href="#light-and-dark-modes" id="toc-light-and-dark-modes" class="nav-link" data-scroll-target="#light-and-dark-modes">Light and dark modes</a></li>
+  </ul></li>
+  <li><a href="#build-your-own-landing-page" id="toc-build-your-own-landing-page" class="nav-link" data-scroll-target="#build-your-own-landing-page">Build your own landing page</a>
+  <ul class="collapse">
+  <li><a href="#add-reactivity" id="toc-add-reactivity" class="nav-link" data-scroll-target="#add-reactivity">Add reactivity</a></li>
+  </ul></li>
+  <li><a href="#make-posts-robust-with-renv" id="toc-make-posts-robust-with-renv" class="nav-link" data-scroll-target="#make-posts-robust-with-renv">Make posts robust with {renv}</a></li>
+  <li><a href="#cookies-analytics-extensions-and-more-miscellaneous-stuff" id="toc-cookies-analytics-extensions-and-more-miscellaneous-stuff" class="nav-link" data-scroll-target="#cookies-analytics-extensions-and-more-miscellaneous-stuff">Cookies, analytics, extensions and more miscellaneous stuff</a></li>
+  <li><a href="#publish-your-blog-online" id="toc-publish-your-blog-online" class="nav-link" data-scroll-target="#publish-your-blog-online">Publish your blog online</a></li>
+  <li><a href="#writing-tips" id="toc-writing-tips" class="nav-link" data-scroll-target="#writing-tips">Writing tips</a></li>
+  <li><a href="#closing" id="toc-closing" class="nav-link" data-scroll-target="#closing">Closing</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The ultimate guide to starting a Quarto blog</h1>
+</div>
+
+<div>
+  <div class="description">
+    This blog post is an in-depth guide on how to start blogging with Quarto.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Albert Rapp </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 24, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>Blogging is great for many reasons. And with <a href="https://quarto.org/">Quarto</a>, blogging has never been easier. Within a few clicks, you can create your own Quarto blog. And the best part is: With Quarto you can customize basically everything according to your wishes.</p>
+<p>Today, I want to show you how to build a blog with Quarto. This in-depth guide is the result of hours of working with Quarto’s amazingly detailed <a href="https://quarto.org/docs/reference/">documentation</a>. Hopefully, it will save you a lot of time and helps you start your own blog. Here’s what we will cover:</p>
+<ol type="1">
+<li><strong>Three reasons for starting a blog</strong></li>
+<li><strong>How to initialize your Quarto blog</strong></li>
+<li><strong>Create your own series</strong></li>
+<li><strong>Let your readers interact with you</strong></li>
+<li><strong>Make your blog unique with your own theme</strong></li>
+<li><strong>Build a custom landing page</strong></li>
+<li><strong>Make your posts ROBUST with <code>{renv}</code></strong></li>
+<li><strong>Cookies, Google analytics, Quarto extensions and other miscellaneous topics</strong></li>
+<li><strong>Publish your blog</strong></li>
+<li><strong>Writing tips</strong></li>
+</ol>
+<p>Notice that this is a lot. I don’t want to brag. But this is <strong>a lot</strong>. Do yourself a favor and skip the time-intensive steps if you’re just starting out with your blog.</p>
+<p>In the beginning, the most important thing is to <strong>write regularly</strong>. This is WAAAAY more important than, say, using many fancy colors in your blog. At first, you can just go with a pre-defined theme and a standard landing page.</p>
+<p>Really, I cannot stress this enough: If you want to start a blog, start writing regularly first. Worry about your design later. The only way I could stress this more would be to say it <a href="https://youtu.be/fc6GiXos4U8?t=168">in Spanish</a>.</p>
+<p>And if you’re not sure what steps you can skip from my detailed guide, <a href="https://twitter.com/BeaMilz">Beatriz Milz</a> got you covered. In <a href="https://beamilz.com/posts/2022-06-05-creating-a-blog-with-quarto/en/">one of her blog posts</a> she shows you how to get started with your Quarto blog in 10 steps. So, you can always start with her intro to get started quickly and then successively add parts from my guide.</p>
+<p>Alright, enough chit-chat. Let’s dive in.</p>
+<section id="three-reasons-for-starting-a-blog" class="level2">
+<h2 class="anchored" data-anchor-id="three-reasons-for-starting-a-blog">Three reasons for starting a blog</h2>
+<p>In case it is not self-evident of why you should start a blog, let me give you a few good reasons.</p>
+<ul>
+<li><p><strong>Learning:</strong> Writing acts as a safeguard from shallow understanding. I cannot count how many time I erroneously thought I’ve understood something. But working on a blog post often showed me that my first “understanding” was wrong. That’s why writing is such an effective tool for learning.</p></li>
+<li><p><strong>Helping others:</strong> When you share your learnings, you will eventually help people who are struggling with similar problems. Don’t worry if you’re not an expert. Usually, people don’t enjoy learning from experts.<br>
+Rather. people like to learn from other learners who are just a few steps ahead. That’s because experts tend to leave out details that are “obvious”. Yet, some things are only obvious once you are an expert.</p></li>
+<li><p><strong>Portfolio and job opportunities:</strong> If you publish content on the internet, you can always show people what you’ve created. This is great for demonstrating your skills (e.g.&nbsp;when applying for a job). Also, from personal experience I can tell you: Writing in the open can lead to job opportunities. You never know who ends up reading your blog and wants to work with you.</p></li>
+</ul>
+</section>
+<section id="initialize-your-blog" class="level2">
+<h2 class="anchored" data-anchor-id="initialize-your-blog">Initialize your blog</h2>
+<p>Once you have <a href="https://quarto.org/docs/get-started/">installed Quarto</a>, it is dead-simple to start a blog. If you don’t use RStudio, you’ll have to call</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create-project myblog <span class="at">--type</span> website:blog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>from the command line. In RStudio, you’ll have to click on the “new project”-button and the menu will let you create a new Quarto blog.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-73EA840D.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Click on ‘Quarto Blog’ to start a new blog project</figcaption><p></p>
+</figure>
+</div>
+<p>You should also create a git repo for your blog project (RStudio will ask you if you want that). This lets you revert changes when you break your blog. And after answering all of RStudio’s prompts, you can render your blog with <code>Render Website</code> from RStudio’s <code>Build</code> tab.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-0E83F78C.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">This is what the default blog looks like.</figcaption><p></p>
+</figure>
+</div>
+<section id="first-simple-changes" class="level3">
+<h3 class="anchored" data-anchor-id="first-simple-changes">First simple changes</h3>
+<p>First, let us make the about page into a landing page. Use it to introduce your blog to your readers instead of flooding them with a list of blog posts. To do so, rename two files:</p>
+<ol type="1">
+<li>Rename <code>index.qmd</code> to <code>blog.qmd</code></li>
+<li>Rename <code>about.qmd</code> to <code>index.qmd</code></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-A0440BBB.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Your previous about.qmd file becomes your landing page now. The navbar doesn’t look right. We’ll change that next.</figcaption><p></p>
+</figure>
+</div>
+<p>The next easy changes happen in the <code>_quarto.yml</code> file. There, we will mostly change some general info about our blog and stuff in the navbar. Most of the steps are self-explanatory that’s why I only list the steps I think are necessary.</p>
+<ol type="1">
+<li>Name your blog via <code>website</code> &gt; <code>title</code></li>
+<li>Set a <code>site-url</code> for your blog (this is important for RSS feeds later. If you don’t have a URL yet, you can skip this step for now).</li>
+<li>Add a description</li>
+<li>Change reference of <code>about.qmd</code> and link to <code>blog.qmd</code></li>
+<li>Link your GitHub profile etc.</li>
+<li>Set <code>theme: theme.scss</code>. This will be used for custom styling later. But you can also set <code>theme</code> to <a href="https://quarto.org/docs/output-formats/html-themes.html">one of Quarto’s pre-defined themes</a>.</li>
+</ol>
+<p>You can also take a look at my <code>_quarto.yml</code> file:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>_quarto.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Albert Rapp"</span><span class="at"> </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">site-url</span><span class="kw">:</span><span class="at"> https://albert-rapp.de</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"This is Albert Rapp's personal Blog."</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">right</span><span class="kw">:</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> Blog</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> blog.qmd </span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> github</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://github.com/AlbertRapp</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> twitter</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://twitter.com/rappa753</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> youtube</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://www.youtube.com/user/Alfrodo123</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#########################</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># You can ignore this part in the first step</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> rss</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> blog.xml</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> Ressources</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">menu</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> DataViz Portfolio</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">href</span><span class="kw">:</span><span class="at"> dataviz_portfolio.html</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> YARDS</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://yards.albert-rapp.de/</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> R Weekly</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://rweekly.org/</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> R Bloggers</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://www.r-bloggers.com/</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> Archive</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> archive.qmd</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">google-analytics</span><span class="kw">:</span><span class="at"> &lt;Insert your ID here&gt;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cookie-consent</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">twitter-card</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> thumbnail_blog.png</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">card-style</span><span class="kw">:</span><span class="at"> summary_large_image</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">creator</span><span class="kw">:</span><span class="at"> </span><span class="st">"@rappa753"</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> code-filename</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co">######################### </span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> theme.scss</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-your-first-blog-post" class="level3">
+<h3 class="anchored" data-anchor-id="create-your-first-blog-post">Create your first blog post</h3>
+<p>You can create a new blog post by creating a new <code>.qmd</code>-file in the <code>posts</code> directory. But I recommend that you create a new sub-directory in <code>posts</code> for each new blog post. So, starting a new blog post is just a matter of</p>
+<ol type="1">
+<li>Creating a new directory, say, <code>posts/new_blog_post</code>.</li>
+<li>Create a blank <code>.qmd</code>-file in this new directory, e.g <code>posts/new_blog_post/post.qmd</code>.</li>
+<li>For demo purposes, you can now fill the new file’s YAML header with a few basic properties and fill it with a bit of text, code chunks, math parts etc. If you wish, uou can use the <a href="https://github.com/AlbertRapp/quarto_bottomup_blog/blob/master/posts/new/new_post.qmd">dummy file I used</a>.</li>
+</ol>
+<p>If you’ve followed these steps, you can render your new blog post by clicking <code>Render Website</code> in RStudio’s <code>Build</code> tab. This will render all <code>.qmd</code>-files that have not been rendered before. If you want to make changes to a blog post, then you will have to render the respective <code>.qmd</code>-file manually.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-BE004E13.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">This is the dummy blog post I used to try out new features from Quarto. Later on, I used it to see how new themes look.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="changing-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="changing-metadata">Changing metadata</h3>
+<p>In general, it’s good that you don’t have to re-render everything when you write a new post. The <code>posts/_metadata.yml</code> file ensures that. Its main purpose is to set global options for all you blog posts in the <code>posts</code> directory.</p>
+<p>By default, this file sets <code>freeze: true</code>. That’s the reason why you have re-render blog posts manually. In <code>_metadata.yml</code>, we can define more YAML options for all blog posts. Most of the changes I applied in this file are self-explanatory. Thus, I leave you with my <code>_metadata.yml</code> file.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>posts/_metadata.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="posts/_metadata.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Options specified here will apply to all posts in this folder</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># freeze computational output</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">freeze</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable banner style title blocks</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">title-block-banner</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Author name of all blog posts</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">'Albert Rapp'</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Table of content settings</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> article</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#########################</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># You can skip this part in the first step</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-after-body</span><span class="kw">:</span><span class="at"> ../footer.html</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">comments</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">utterances</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">repo</span><span class="kw">:</span><span class="at">  AlbertRapp/blogComments </span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#########################</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="create-your-own-series" class="level2">
+<h2 class="anchored" data-anchor-id="create-your-own-series">Create your own series</h2>
+<p>Creating a series (like my <a href="../../ggplot-series.html">ggplot2 series</a>) is great because it bundles similar content into one thread. However, we need to understand listing pages before we can create our own series.</p>
+<section id="listing-pages-including-rss-feeds" class="level3">
+<h3 class="anchored" data-anchor-id="listing-pages-including-rss-feeds">Listing pages (including RSS feeds)</h3>
+<p>The file <code>blog.qmd</code> is a listing page. It determines what blog posts will be listed on our <code>Blog</code> page. The important stuff happens in this file’s YAML header. Here’s how my header looks.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>blog.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" data-filename="blog.qmd"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">listing</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> posts/**/*.qmd</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort</span><span class="kw">:</span><span class="at"> </span><span class="st">"date desc"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort-ui</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">filter-ui</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">fields</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">date</span><span class="kw">,</span><span class="at"> title</span><span class="kw">,</span><span class="at"> reading-time</span><span class="kw">,</span><span class="at"> description</span><span class="kw">,</span><span class="at"> categories</span><span class="kw">]</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">feed</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> full</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">title-block-banner</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let me briefly describe a few of these options:</p>
+<ul>
+<li><p><code>contents: posts/**/*.qmd</code> means that all <code>.qmd</code>-files from the <code>posts</code> directory (and sub-directories) will be included in this listing page. If your <code>posts</code> directory will only contain <code>.qmd</code>-files, then you may as well just write <code>contents: posts</code>. In my case, though, some directories contain <code>.md</code>-files that I don’t want to list.</p></li>
+<li><p>If you wish, enable sorting &amp; filtering via <code>sort-ui: true</code> and <code>filter-ui: true</code>. The default sorting is set via <code>sort</code>.</p></li>
+<li><p>I don’t like the title block banner. So I set the corresponding option to false.</p></li>
+<li><p>More importantly, I want to display a post’s reading time instead of the author (I am the only author anyway). By changing the <code>fields</code> options, I can make that happen. In the <a href="https://quarto.org/docs/websites/website-listings.html#listing-fields">Quarto’s docs</a> you can find more options for <code>fields</code>.</p></li>
+<li><p><code>feed: true</code> instructs this listing page to generate an RSS-feed. This works only if we have set the <code>site-url</code> in our <code>_quarto.yml</code> file. If we have enabled RSS feeds, then this listing page will generate a feed that will be saved in the file <code>blog.xml</code> (because the generating file is <code>blog.qmd</code>). That’s why I have linked the RSS icon in our <code>_quarto.yml</code> file to <code>blog.xml</code>.</p></li>
+</ul>
+</section>
+<section id="creating-an-archive" class="level3">
+<h3 class="anchored" data-anchor-id="creating-an-archive">Creating an archive</h3>
+<p>Now that we understand listing pages we can create more of them. For example, let us create an archive. This is nothing but a listing page that lists all blog posts without a description.</p>
+<p>For this archive I have created a new file <code>archive.qmd</code> in my blog’s main directory and filled it as follows. Notice that <code>page-layout: full</code>. This means that there is no additional side margin for the category labels.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>archive.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="archive.qmd"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Archive"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> full</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">listing</span><span class="kw">:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> posts/**/*.qmd</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">fields</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">date</span><span class="kw">,</span><span class="at"> title</span><span class="kw">]</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort</span><span class="kw">:</span><span class="at"> </span><span class="st">'date desc'</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="new-sub-directory-for-series" class="level3">
+<h3 class="anchored" data-anchor-id="new-sub-directory-for-series">New sub-directory for series</h3>
+<p>Finally, we can create new listing pages for blog posts that belong to a series. For this to work, all posts that belong to a series must reside in a single new sub-directory of <code>posts</code>. For my blog, I have created a sub-directory <code>posts/ggplot2-tips</code>. And the corresponding listing page is generated by <code>ggplot-series.qmd</code>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>ggplot-series.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="ggplot-series.qmd"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Series: ggplot2-tips"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">listing</span><span class="kw">:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> posts/ggplot2-tips</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort</span><span class="kw">:</span><span class="at"> </span><span class="st">"date desc"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort-ui</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">filter-ui</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">fields</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">date</span><span class="kw">,</span><span class="at"> title</span><span class="kw">,</span><span class="at"> reading-time</span><span class="kw">,</span><span class="at"> description</span><span class="kw">]</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> full</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">title-block-banner</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, we have to link to our new listing pages somewhere. I chose to link to my archive in the navbar (see <code>_quarto.yml</code>). And my ggplot2 series found a home above the list of all other blog posts. I made this happen by modifying <code>blog.qmd</code> with regular Markdown magic. This could look as follows:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>blog.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="blog.qmd"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">listing</span><span class="kw">:</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> posts/**/*.qmd</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort</span><span class="kw">:</span><span class="at"> </span><span class="st">"date desc"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort-ui</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">filter-ui</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">fields</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">date</span><span class="kw">,</span><span class="at"> title</span><span class="kw">,</span><span class="at"> reading-time</span><span class="kw">,</span><span class="at"> description</span><span class="kw">,</span><span class="at"> categories</span><span class="kw">]</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">feed</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> full</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">title-block-banner</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Series</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">##### [ggplot2-series](ggplot-series.html)</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="at">This series contains a great deal of tips, tricks and packages </span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="at">that you can use to level up your ggplot game.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In reality, my blog listings page looks a little bit different because I use two columns (<a href="../../blog.html">as you can see for yourself</a>) but we’ll come to that shortly.</p>
+</section>
+</section>
+<section id="interact-with-your-audience" class="level2">
+<h2 class="anchored" data-anchor-id="interact-with-your-audience">Interact with your audience</h2>
+<p>Did you really publish a blog post if no one reads it? Let’s face it. The best content in the world won’t save you from going unnoticed if readers cannot keep in touch. Luckily, we have already taken the first steps to let your audience connect to you.</p>
+<p>For starters, your newly created RSS-feed can notify readers whenever you post something new. Also, you can submit your newly created RSS-feed to feed-aggregators like <a href="https://rweekly.org/">Rweekly</a> or <a href="https://www.r-bloggers.com/">Rbloggers</a>. This will increase your reach in an automated fashion. More importantly, Rweekly and Rbloggers are great places to show your content to the R community.</p>
+<section id="comment-sections" class="level3">
+<h3 class="anchored" data-anchor-id="comment-sections">Comment sections</h3>
+<p>Next, let us add a comment section. This let’s your readers, well, comment on your superb content. My go-to tool for that is <a href="https://utteranc.es/">utterances</a>. As it works via GitHub, you’ll need to create a separate public repo on GitHub. This repo will be home to your blog’s comments. But first, you need to install utterances on your newly created repo. Follow <a href="https://github.com/apps/utterances/installations/new">this link</a> to do so.</p>
+<p>Clearly, we want a comment section below every blog post but not below every page (e.g.&nbsp;our landing page). Therefore, a good place to include utterances is in <code>posts/_metadata.yml</code>. You have already seen the code necessary for that earlier. But for your convenience, here it is again.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>posts/_metadata.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb8" data-filename="posts/_metadata.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comments</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">utterances</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">repo</span><span class="kw">:</span><span class="at">  AlbertRapp/blogComments</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Beware that the RStudio viewer may not display the comments. Open your blog in an external browser to see if everything worked.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-A3799506.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Check that your comment section appears under your blog posts.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="newsletter" class="level3">
+<h3 class="anchored" data-anchor-id="newsletter">Newsletter</h3>
+<p>Another popular way to engage with your readers is via newsletters. The idea is simple:</p>
+<ol type="1">
+<li>Readers sign up via email</li>
+<li>You regularly inform your subscribers about new content. Personally, I also use <a href="https://alberts-newsletter.beehiiv.com/subscribe">my newsletter</a> to share thoughts on topics that interest me (and hopefully my readers).</li>
+</ol>
+<p>Thankfully, you don’t have to send the mails manually. There are many free providers that can help with the logistics. And most of these services provide HTML snippets for registration too. That’s fantastic because you can place this snippet anywhere you like. In my case, <a href="https://www.beehiiv.com/">Beehiiv</a> provided the following snippet.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">id</span><span class="ot">=</span><span class="st">"beehiiv-form"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true"</span> <span class="er">data-test-id</span><span class="ot">=</span><span class="st">"beehiiv-embed"</span> <span class="er">frameborder</span><span class="ot">=</span><span class="st">"0"</span> <span class="er">scrolling</span><span class="ot">=</span><span class="st">"no"</span> <span class="er">style</span><span class="ot">=</span><span class="st">"margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px; width: 90%;"</span><span class="kw">&gt;&lt;/iframe&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s put it somewhere easy first. Let us use Quarto’s column syntax for this. In case you don’t know it, here’s a demo.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Output</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="sourceCode" id="cb10"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>:::: {.columns}</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>### Column 1</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>This is written in column 1</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>::: {.column width="50%"}</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>### Column 2</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>This is written in column 2</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>:::: </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="column-1" class="level3">
+<h3 class="anchored" data-anchor-id="column-1">Column 1</h3>
+<p>This is written in column 1</p>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="column-2" class="level3">
+<h3 class="anchored" data-anchor-id="column-2">Column 2</h3>
+<p>This is written in column 2</p>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Now we can use this to put our registration snippet at the top of the blog listings page. For example, we could modify <code>blog.qmd</code> as follows.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>blog.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb11" data-filename="blog.qmd"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">listing</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> posts/**/*.qmd</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort</span><span class="kw">:</span><span class="at"> </span><span class="st">"date desc"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort-ui</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">filter-ui</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">fields</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">date</span><span class="kw">,</span><span class="at"> title</span><span class="kw">,</span><span class="at"> reading-time</span><span class="kw">,</span><span class="at"> description</span><span class="kw">,</span><span class="at"> categories</span><span class="kw">]</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">feed</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> full</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">title-block-banner</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="at">::</span><span class="fu">:</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">.columns</span><span class="kw">}</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="at">:</span><span class="fu">:</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">.column width=</span><span class="st">"40%"</span><span class="kw">}</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Series</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">##### [ggplot2-series](ggplot-series.html)</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="at">This series contains a great deal of tips, tricks and packages </span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="at">that you can use to level up your ggplot game.</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="at">:</span><span class="fu">:</span><span class="kw">:</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="at">:</span><span class="fu">:</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">.column width=</span><span class="st">"60%"</span><span class="kw">}</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Subscribe</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="at">&lt;iframe id="beehiiv-form" src="https</span><span class="fu">://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin</span><span class="kw">:</span><span class="at"> 0; border-radius: 0px !important; background-color: transparent; height: 75px; width: 90%;"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="at">:</span><span class="fu">:</span><span class="kw">:</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="at">::</span><span class="fu">:</span><span class="kw">:</span><span class="at"> </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-ED5A9347.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Output of previous change to blog.qmd</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="add-a-footer-below-blog-posts" class="level3">
+<h3 class="anchored" data-anchor-id="add-a-footer-below-blog-posts">Add a footer below blog posts</h3>
+<p>Now, we’re going to do something harder. We will include something at the end of every blog post (before the comments). That’s the perfect spot for</p>
+<ul>
+<li><p>Newsletter registrations,</p></li>
+<li><p>“Share on”-buttons,</p></li>
+<li><p>“Buy me coffee”-buttons or</p></li>
+<li><p>whatever else you fancy.</p></li>
+</ul>
+<p>For example, this could look like my current footer.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-E257B6FC.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">My current footer</figcaption><p></p>
+</figure>
+</div>
+<p>To include something at the end of posts, I’ve found <code>format</code> &gt; <code>html</code> &gt; <code>include-after-body</code> helpful. That’s the part you have seen earlier in my <code>_metadata.yml</code> file. You don’t know which part I’m talking about? Well, it’s easy to forget. But don’t worry. I got you. Here’s the part I mean.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>posts/_metadata.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb12" data-filename="posts/_metadata.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-after-body</span><span class="kw">:</span><span class="at"> ../footer.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Of course, this assumes that you have whipped together a <code>footer.html</code> file in the main directory. If you don’t know HTML, then you can always use code from a <code>.qmd</code>-file’s output (more on finding HTML-code later). For my blog, I have created the following simple HTML-file.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>footer.html</strong></pre>
+</div>
+<div class="sourceCode" id="cb13" data-filename="footer.html"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;hr&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h3&gt;</span> Stay in touch <span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span> If you enjoyed this post, then don't miss out on any future posts by subscribing to my email newsletter. <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">id</span><span class="ot">=</span><span class="st">"beehiiv-form"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true"</span> <span class="er">data-test-id</span><span class="ot">=</span><span class="st">"beehiiv-embed"</span> <span class="er">frameborder</span><span class="ot">=</span><span class="st">"0"</span> <span class="er">scrolling</span><span class="ot">=</span><span class="st">"no"</span> <span class="er">style</span><span class="ot">=</span><span class="st">"margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;"</span><span class="kw">&gt;&lt;/iframe&gt;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h3&gt;</span> Support my work with a coffee <span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">"text/javascript"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"</span> <span class="er">data-name</span><span class="ot">=</span><span class="st">"bmc-button"</span> <span class="er">data-slug</span><span class="ot">=</span><span class="st">"rappa753"</span> <span class="er">data-color</span><span class="ot">=</span><span class="st">"#06436e"</span> <span class="er">data-emoji</span><span class="ot">=</span><span class="st">"☕"</span>  <span class="er">data-font</span><span class="ot">=</span><span class="st">"Lato"</span> <span class="er">data-text</span><span class="ot">=</span><span class="st">"Support me"</span> <span class="er">data-outline-color</span><span class="ot">=</span><span class="st">"#ffffff"</span> <span class="er">data-font-color</span><span class="ot">=</span><span class="st">"#ffffff"</span> <span class="er">data-coffee-color</span><span class="ot">=</span><span class="st">"#FFDD00"</span> <span class="er">data-height</span><span class="ot">=</span><span class="st">"40px"</span> <span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h3&gt;</span> Share <span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://twitter.com/share?ref_src=twsrc%5Etfw"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"twitter-share-button"</span> <span class="er">data-size</span><span class="ot">=</span><span class="st">"large"</span> <span class="er">data-hashtags</span><span class="ot">=</span><span class="st">"#rstats"</span> <span class="er">data-show-count</span><span class="ot">=</span><span class="st">"false"</span><span class="kw">&gt;</span>Tweet<span class="kw">&lt;/a&gt;&lt;script</span> <span class="er">async</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://platform.twitter.com/widgets.js"</span> <span class="er">charset</span><span class="ot">=</span><span class="st">"utf-8"</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;hr&gt;</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that the code for all the widgets were provided from the respective service. I certainly didn’t code that stuff myself. You know, I’m not an HTML expert.</p>
+</section>
+</section>
+<section id="style-your-blog" class="level2">
+<h2 class="anchored" data-anchor-id="style-your-blog">Style your blog</h2>
+<p>At some point, you will likely want to customize your blog’s visual appearance. This will include changing colors, fonts and sizes of all sorts of things.</p>
+<p>And same as the internet, Quarto runs on HTML and CSS. These two languages are the major players that style your blog. Luckily, you don’t have to know a lot about them to style your blog.</p>
+<p>That’s because Quarto already generates a whole lot of HTML and CSS code when you render your blog. Consequently, it takes only a little peaking behind the HTML/CSS curtain to find out what values need tweaking.</p>
+<p>I know, this sounds quite complicated. But it isn’t. I don’t know a whole lot about HTML and CSS but I have customized this blog, haven’t I? In fact, working on this blog has been a fun way to learn more about these two languages. To help you do the same, I have created a video that walks you through the process of</p>
+<ol type="1">
+<li>Learning a minimal amount of HMTL/CSS to understand what’s going on,</li>
+<li>Finding HTML/CSS snippets that you want to tweak and</li>
+<li>Making the changes in your blog</li>
+</ol>
+<p>You can find the video on YouTube.</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/ErRX8plZpQE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<p>If videos are not your thing, here’s the high-level summary:</p>
+<p>In <code>quarto.yml</code>, we have set <code>theme: theme.scss</code>. Thus, all visual elements of this blog are governed by this SCSS-file. But it doesn’t exist yet. That’s why everything is set to default values. So, create <code>theme.scss</code> yourself by creating an empty text file and renaming it to <code>theme.scss</code>.</p>
+<p>Quarto uses a framework called <a href="https://getbootstrap.com/">Bootstrap</a>. In this framework, you can change most parts of your blog by changing a variable’s value. For instance, there is a variable called <code>$primary</code> (variables use dollar signs in SCSS). It governs the main color of your blog. And you can change it to any color you like.</p>
+<p>Similarly, your text color is governed by <code>$body-color</code> and your text font is determined by <code>$font-family-base</code>. Quarto lists the most common variables <a href="https://quarto.org/docs/output-formats/html-themes.html#sass-variables">in their docs</a>. For the full list of variables you can check out <a href="https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss">Bootstrap’s Github page</a>. Here are the variables I have set at the beginning of my <code>theme.scss</code> file.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>theme.scss</strong></pre>
+</div>
+<div class="sourceCode" id="cb14" data-filename="theme.scss"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>$primary<span class="in">:  #06436e !default</span>;</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>$font-family-base<span class="in">:  'Source</span> Sans Pro'<span class="op">,</span>  'Lato'<span class="op">,</span> 'Merriweather'<span class="op">,</span> 'Roboto Regular'<span class="op">,</span> 'Cabin Regular' !default;</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>$body-color<span class="in">: $gray-700</span> !default;</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>$headings-font-family<span class="in">:  'Prata</span>'<span class="op">,</span> 'Roboto'<span class="op">,</span> 'Playfair Display'<span class="op">,</span> 'Montserrat'    !default;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice that my file starts with <code>/*-- scss:defaults --*/</code>. This is just something an SCSS-file expects. Also, make sure to use multiple fonts. As not every computer has every font installed, it’s good to offer multiple alternatives for your reader’s computer.</p>
+<p>Consequently, when you want to style your blog, you can stroll through the list of variables. Once you have found a variable that you want to change (most variable names are quite self-explanatory), just throw that into your scss-file.</p>
+<section id="scss-rules" class="level3">
+<h3 class="anchored" data-anchor-id="scss-rules">SCSS-Rules</h3>
+<p>Unfortunately, not everything can be changed with Bootstrap variables. In this case, you will need to take a look at your blog’s source code. To do so, open your blog in a browser of your choice. Then, right-click anywhere and press “Inspect”. This will open the developer mode of your browser.</p>
+<p>Now, you can see your blog’s source code. This view can be quite daunting. But don’t worry. You can ignore most of it. The only thing you need is the most specific description of the part you want to tweak.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-5AD5F4B6.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">On the left you see the website you’ve opened. On the right you see the HTML- (top) and CSS-code (bottom). As you move your cursor through the HTML-code, your browser shows you the corresponding part of the website.</figcaption><p></p>
+</figure>
+</div>
+<p>You see, in HTML and CSS everything consists of (nested) tags, classes and IDs. All of these are indicated by a different symbol:</p>
+<ul>
+<li><p><code>&lt;...&gt;</code> stands for <strong>tag</strong>, e.g.&nbsp;<code>&lt;div&gt; &lt;/div&gt;</code> (This is a section)</p></li>
+<li><p><code>.</code> stands for <strong>class</strong>, e.g.&nbsp;<code>.grid</code> (This is grid class object)</p></li>
+<li><p><code>#</code> stands for <strong>ID</strong>, e.g.&nbsp;<code>#my_about_page</code> (This is a name that you can access in your CSS code)</p></li>
+</ul>
+<p>As you move your cursor through the HTML code, your browser will show you what element in your blog corresponds to the code you’re currently hovering over. This helps you to find the HTML code responsible for the part that you want to tweak. Once you have found the desired code section, the CSS-code will also show you a mix of tags, classes and IDs that describe this element.</p>
+<p>For example, each blog title is described by <code>#title-block-header.quarto-title-block.default .quarto-title .title</code>. Just copy this from your browser’s developer page and put it into your SCSS-file. Then, add <code>{}</code> and describe how you want to style the element. This could look like so.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>theme.scss</strong></pre>
+</div>
+<div class="sourceCode" id="cb15" data-filename="theme.scss"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#title-block-header</span><span class="fu">.quarto-title-block.default</span> <span class="fu">.quarto-title</span> <span class="fu">.title</span> {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: <span class="st">"Oleo Script"</span><span class="op">,</span> <span class="st">"Libre Baskerville"</span><span class="op">,</span> $headings-font-family<span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: $font-size-base * <span class="dv">2.5</span><span class="op">;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here I have chosen to use different fonts for blog titles (if possible) and make the font larger. I tried to avoid hard-coding the font size with something like <code>14pt</code>. Instead, I have taken the Bootstrap variable <code>$font-size-base</code> and scaled it. Finally, notice that SCSS-rules - like the one we have just defined - need to be written after <code>/*-- scss:rules --*/</code> in your SCSS-file.</p>
+<p>So, now you have learned a way to style your blog. You can basically change everything you like this way. And you don’t need to know much about HTML/CSS for that. You just need some patience strolling through the code.</p>
+<p>Of course, you will need to know the keywords like <code>font-family</code>, <code>font-size</code>, etc. But you will stumble across the most common keywords in the HTML code anyway. Alternatively, a quick web search can help. And if you want, you can take a look at my <a href="../../theme.scss"><code>theme.scss</code> file</a>.</p>
+<p>This file also includes a few <code>@media (min-width: ...px)</code> calls that styles the blog differently on small screens (depending on the amount of pixels). You can ignore this part for now.</p>
+</section>
+<section id="light-and-dark-modes" class="level3">
+<h3 class="anchored" data-anchor-id="light-and-dark-modes">Light and dark modes</h3>
+<p>Are you a fan of dark modes? Me too! Though, at the time of writing I haven’t gotten around to add a dark mode to this blog. But the steps to include a dark mode are easy. You just have to modify your <code>_quarto.yml</code> file as follows.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>_quarto.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb16" data-filename="_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">light</span><span class="kw">:</span><span class="at"> theme.scss</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> theme-dark.scss</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will add a dark mode toggle to your navbar. And now you can style the dark mode in the same way as before by creating a new scss-file for it.</p>
+</section>
+</section>
+<section id="build-your-own-landing-page" class="level2">
+<h2 class="anchored" data-anchor-id="build-your-own-landing-page">Build your own landing page</h2>
+<p>My own landing page is custom built and here I’ll show you how you can do the same. But there is absolutely no reason against <a href="https://quarto.org/docs/websites/website-about.html">using one of the built-in templates</a> (especially if you’re just starting your blogging career).</p>
+<p>Building my landing page will require a little bit more knowledge about HTML and CSS. Don’t be alarmed, though. You can easily follow along if you’ve understood how to work with classes and IDs (as described earlier or <a href="https://www.youtube.com/watch?v=ErRX8plZpQE">in my video</a>).</p>
+<p>First, we need to set up <code>index.qmd</code>. This file determines what your blog’s landing page looks like. Delete all content from this file and replace it with</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>index.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb17" data-filename="index.qmd"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> full</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Second, set up a grid system. Quarto uses the <a href="https://getbootstrap.com/docs/5.1/layout/css-grid/">CSS-grid system</a>. We can make use of that in <code>index.qmd</code> via</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>index.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb18" data-filename="index.qmd"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.grid</span>}</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>CONTENT</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="in">:::</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Recall that the dot (<code>.</code>) in CSS stands for class. So, the previous code means quarto will render your qmd-file into an html-file that contains a section (a <code>div</code> in HTML-speak) that is of class <code>grid</code>. We will fill this div with columns next.</p>
+<p>Adding columns is done by adding more <code>div</code>s. In this case, these <code>div</code>s are of the class <code>g-col-*</code>. Here, <code>*</code> describes how many columns the <code>div</code> should fill (out of 12 columns). The actual content is written with regular Markdown. This could look like so:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>index.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb19" data-filename="index.qmd"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.grid</span>}</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.g-col-6</span>}</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>!<span class="ex">[]</span>(profile2<span class="fu">.jpg</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="in">:::</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.g-col-6</span>}</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a># Hi<span class="op">,</span> I'm Albert Rapp<span class="fu">.</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>I'm a mathematics PhD students with a passion for R<span class="op">,</span> data visualization<span class="op">,</span> Shiny and statistics/machine learning<span class="fu">.</span> On this blog<span class="op">,</span> I share and teach what I learn<span class="fu">.</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>To get started<span class="op">,</span> you can check out my most popular content below<span class="fu">.</span> You can find me on <span class="ex">[Twitter]</span>(https<span class="in">://twitter</span><span class="fu">.com</span>/rappa753) or</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="ex">[GitHub]</span>(https<span class="in">://github</span><span class="fu">.com</span>/AlbertRapp) and </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="ex">[YouTube]</span>(https<span class="in">://www</span><span class="fu">.youtube.com</span>/user/Alfrodo123)<span class="fu">.</span> </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>Feel free to reach out to me via <span class="ex">[mail]</span>(mailto<span class="in">:blog</span><span class="im">@albert-rapp</span>.de) <span class="kw">and</span> subscribe to my email newsletter.</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>&lt;iframe id=<span class="st">"beehiiv-form"</span> src=<span class="st">"https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true"</span> data-test-id=<span class="st">"beehiiv-embed"</span> frameborder=<span class="st">"0"</span> scrolling=<span class="st">"no"</span> style=<span class="st">"margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px"</span>&gt;&lt;/iframe&gt;</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code will create the following landing page.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-79318471.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<section id="add-reactivity" class="level3">
+<h3 class="anchored" data-anchor-id="add-reactivity">Add reactivity</h3>
+<p>Our new landing page will look decent on large screens. But we should test what it looks like on small screens too.</p>
+<p>However, there’s no need to take out your phone. Use your browser and activate its responsive mode (<code>ctrl</code>+<code>shift</code>+<code>M</code> in Firefox). This way, you can see what your website would look like on phones or tablets.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-1E3D81FD.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Mobile view of the landing page we’ve just built.</figcaption><p></p>
+</figure>
+</div>
+<p>If you’ve checked the view on phones, then you may notice that splitting the screen in two won’t fly. In this case, it’s better to put sections <strong>below</strong> each other. We can make that happen by adding <code>g-col-md-*</code> classes to our previous divs (and making the other classes full-width).</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>index.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb20" data-filename="index.qmd"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.grid</span>}</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.g-col-12</span> <span class="fu">.g-col-md-6</span>}</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>!<span class="ex">[]</span>(profile2<span class="fu">.jpg</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="in">:::</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.g-col-12</span> <span class="fu">.g-col-md-6</span>}</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a># Hi<span class="op">,</span> I'm Albert Rapp<span class="fu">.</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>I'm a mathematics PhD students with a passion for R<span class="op">,</span> data visualization<span class="op">,</span> Shiny and statistics/machine learning<span class="fu">.</span> On this blog<span class="op">,</span> I share and teach what I learn<span class="fu">.</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>To get started<span class="op">,</span> you can check out my most popular content below<span class="fu">.</span> You can find me on <span class="ex">[Twitter]</span>(https<span class="in">://twitter</span><span class="fu">.com</span>/rappa753) or</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="ex">[GitHub]</span>(https<span class="in">://github</span><span class="fu">.com</span>/AlbertRapp) and </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="ex">[YouTube]</span>(https<span class="in">://www</span><span class="fu">.youtube.com</span>/user/Alfrodo123)<span class="fu">.</span> </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>Feel free to reach out to me via <span class="ex">[mail]</span>(mailto<span class="in">:blog</span><span class="im">@albert-rapp</span>.de) <span class="kw">and</span> subscribe to my email newsletter.</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>&lt;iframe id=<span class="st">"beehiiv-form"</span> src=<span class="st">"https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true"</span> data-test-id=<span class="st">"beehiiv-embed"</span> frameborder=<span class="st">"0"</span> scrolling=<span class="st">"no"</span> style=<span class="st">"margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px"</span>&gt;&lt;/iframe&gt;</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, <code>.g-col-12 .g-col-md-6</code> means that the <code>div</code> will use 12 columns (full width) by default. But on screens of at least medium width (&gt;=768px), the <code>div</code> will only take 6 columns. Congrats, you’ve now used responsive design. 🥳</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-BA9A601E.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Use responsive design to make your landing page look good on small screens. I hope you’re not sick of my face yet 😆</figcaption><p></p>
+</figure>
+</div>
+<p>Next, we should use our landing page to highlight our best content. Think of this as a getting started guide for your readers. Here, I want to use centered columns of width 5. And to ensure that the columns are centered let us offset the first block by one column (on larger than medium screens).</p>
+<p>This is accomplished by adding yet another class to the <code>div</code>, namely <code>g-start-md-*</code>. Here, <code>*</code>️ is the start column. And seeing this in action may look like this:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>index.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb21" data-filename="index.qmd"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>::: {.g-col-12 .g-col-md-5 .g-start-md-2}</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a># Data Visualization</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>- Blog post 1</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>- Blog post 2</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>- Blog post 3</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>::: {.g-col-12 .g-col-md-5}</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a># Stats/ML</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>- This div...</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>- ...required...</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>- ...no offset (it's still in the first row)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-036A33EA.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Output of previous code chunk. Notice that the first column doesn’t start all the way to the left.</figcaption><p></p>
+</figure>
+</div>
+<p>Finally, you can always customize the appearance of a grid element by adding more custom classes (with <code>.</code>) or IDs (with <code>#</code>). Afterwards, you can target that class or ID in your SCSS file. This way, I aligned my bio with the bottom of the picture.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">HTML Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Content of theme.scss</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>index.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb22" data-filename="index.qmd"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.g-col-12</span> <span class="fu">.g-col-md-6</span> <span class="pp">#about-me-text</span>}</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>!<span class="ex">[]</span>(profile2<span class="fu">.jpg</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">:::</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>theme.scss</strong></pre>
+</div>
+<div class="sourceCode" id="cb23" data-filename="theme.scss"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#about-me-text</span> {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">align-items</span>: end<span class="op">;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">display</span>: <span class="dv">grid</span><span class="op">;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="make-posts-robust-with-renv" class="level2">
+<h2 class="anchored" data-anchor-id="make-posts-robust-with-renv">Make posts robust with {renv}</h2>
+<p>Imagine that you have written a really cool blog post. And not just any cool blog post. I mean a SUPER DUPER cool blog post. Did you imagine that? Good. That’s your future when you start a blog. But don’t get too excited yet! Here’s the drama of this fairy tale.</p>
+<p>Unfortunately, your super cool blog post uses version <code>1.2.4.</code> of <code>{ggplot2}</code>. This is unfortunate because right now we’re at version <code>3.3.6</code>. And a lot has changed since your blog post was rendered last time.</p>
+<p>What’s worse is that you won’t be able to render your blog anymore if you ever need to re-render all blog posts. This can happen, for example, if you move your blog to a different format, e.g.&nbsp;Quarto.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Luckily, it’s possible to tell R which package versions it should use for your blog posts. To do so, you need to control the versions with <a href="https://rstudio.github.io/renv/articles/renv.html">{renv}</a>. This is a package like any other package and you can install it with <code>install.packages('renv')</code>.</p>
+<p>Once you have installed <code>{renv}</code>, you can use it within your blog project. Actually, it is quite simple to set up. Here’s how <code>{renv}</code>’s docs describe the workflow.</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li><p>Call <a href="https://rstudio.github.io/renv/reference/init.html"><code>renv::init()</code></a> to initialize a new project-local environment with a private R library,</p></li>
+<li><p>Work in the project as normal, installing and removing new R packages as they are needed in the project,</p></li>
+<li><p>Call <a href="https://rstudio.github.io/renv/reference/snapshot.html"><code>renv::snapshot()</code></a> to save the state of the project library to the lockfile (called <code>renv.lock</code>),</p></li>
+<li><p>Continue working on your project, installing and updating R packages as needed.</p></li>
+<li><p>Call <a href="https://rstudio.github.io/renv/reference/snapshot.html"><code>renv::snapshot()</code></a> again to save the state of your project library if your attempts to update R packages were successful, or call <a href="https://rstudio.github.io/renv/reference/restore.html"><code>renv::restore()</code></a> to revert to the previous state as encoded in the lockfile if your attempts to update packages introduced some new problems.</p></li>
+</ol>
+</blockquote>
+<p>So, if you’ve just started your blog project, then <code>renv:init()</code> will set you up with a clean slate. This means that whenever you want to use a package that you have not used before <strong>in this project</strong>, you will need to install the package for this project (via <code>install.packages()</code>). Yes, this is true even if you have used, say, <code>{ggplot2}</code> in other projects.</p>
+<p>In case you’re running into installation problems with <code>{renv}</code>, you’ll need to change your download method for new packages. Simply add the following line to your <code>.Renviron</code> file. Either find this file on your computer manually or open it by calling <code>usethis::edit_r_environ()</code> (if necessary from a not <code>{renv}</code>-controlled project).</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">Sys.setenv</span>(<span class="at">RENV_DOWNLOAD_FILE_METHOD =</span> <span class="fu">getOption</span>(<span class="st">"download.file.method"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Whenever you have installed or updated packages in this project, then call <code>renv::snapshot()</code>. This will save all package information <strong>including version numbers</strong> into a so-called lock file <code>renv.lock</code> (which will appear in your projects main directory). Now, here’s what you need to do to make <strong>each of your blog posts</strong> robust against version changes.</p>
+<ol type="1">
+<li><p>After finishing anew blog post, call <code>renv::snapshot()</code>. This will update your <code>renv.lock</code> file <strong>of your blog project.</strong></p></li>
+<li><p>Take this updated <code>renv.lock</code> file and copy it into the directory of your newly finished blog post.</p></li>
+<li><p>In your new blog post, add the following code chunk at the top of your blog post’s <code>qmd</code>-file (after the YAML header, of course).</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: 'hide'</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">use</span>(<span class="at">lockfile =</span> <span class="st">"renv.lock"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p>That’s it. You have successfully saved your blog post from dying by version change. Whenever your blog post needs to be re-rendered, this first code chunk will instruct R to use the package versions that are defined in this post’s lock-file.</p>
+<p>But let me warn you that this is not a perfect solution. Your blog posts are still not invincible. For example, <code>{renv}</code> does not prevent problems when you have written your blog post on a Windows system and want to re-render it on Ubuntu. Possibly, some packages (e.g.&nbsp;<code>{keyring}</code>) behave differently on a different OS.</p>
+</section>
+<section id="cookies-analytics-extensions-and-more-miscellaneous-stuff" class="level2">
+<h2 class="anchored" data-anchor-id="cookies-analytics-extensions-and-more-miscellaneous-stuff">Cookies, analytics, extensions and more miscellaneous stuff</h2>
+<p>There are many, many more cool features that Quarto has in store for your blog. Let me briefly mention a few more gems.</p>
+<ul>
+<li><p><strong>Analytics:</strong> You’re probably curious about how much attention your blog attracts. To find out, you can measure your website’s traffic with <a href="https://analytics.google.com">Google analytics</a>. Simply register with Google and you will get a tracking ID. This ID can be added in your <code>_quarto.yml</code> file via <code>google-analytics</code>. For more information, check out the <a href="https://quarto.org/docs/websites/website-tools.html#google-analytics">Quarto docs</a>.</p></li>
+<li><p><strong>Cookie consent:</strong> It is rude and more importantly illegal to track your readers with cookies without their consent. So it is paramount that you ask your readers for permission if you use cookies. This can be done via a simple, yet ABSOLUTELY ANNOYING, pop-up window that asks for consent. Activate this window via <code>cookie-consent: true</code> in <code>_quarto.yml</code>.</p></li>
+<li><p><strong>Social card:</strong> A great place to share your blog posts is Twitter. But to get the most out of your promo tweets, your links should probably generate a <a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards">Twitter card</a>. Once again, you can enable this feature in your <code>_quarto.yml</code> file. And for custom styling of your Twitter card, please refer to the <a href="https://quarto.org/docs/websites/website-tools.html#twitter-cards">Quarto docs</a>. Note that it takes some time (days) until Twitter registers your changed Twitter card information.</p></li>
+<li><p><strong>Extensions:</strong> Quarto’s functionality can be leveled up with <a href="https://quarto.org/docs/extensions/">Extensions</a>. For example, the <code>code-filename</code> extension helped me to include a file name at the top of many of this post’s code chunks. If you want to use the <code>code-filename</code> extensions as well, then proceed as follows. Of course, this works with any other extension as well.</p>
+<ol type="1">
+<li><p>Make sure that your Quarto version is up-to-date. Extensions are a fairly new feature.</p></li>
+<li><p>Install <code>code-filename</code> locally for your blog project: You will need to open a terminal at your blog’s working directory and execute</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install extension quarto-ext/code-filename</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Notice that there is a new directory <code>_extensions</code> in your blog’s directory now. (This is not really a step that you have to do but still it’s nice to notice changes).</p></li>
+<li><p>Add the new extension to your <code>_quarto.yml</code> file to activate it.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>_quarto.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb27" data-filename="_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> code-filename</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Enjoy your new feature. You can use it like</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="at">``` {.yaml filename=_quarto.yml}</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> code-filename</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="at">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<ul>
+<li><p><strong>PDF Output:</strong> On Twitter, I was asked if my guide can include some info on Quarto’s PDF output options. In this context, this reminds me that a reader once emailed me and asked whether I can provide a PDF-file for one of my blog posts. So, I guess, some people may be interested in having PDF- as well as HTML-versions of your blog.<br>
+In principle, you could add an additional format to, say, your <code>_metadata.yml</code> file. In my case, this could look like</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre> <strong>posts/_metadata.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb29" data-filename="posts/_metadata.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-after-body</span><span class="kw">:</span><span class="at"> ../footer.html</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Unfortunately, I haven’t found a button or shortcut to render <strong>both</strong> outputs simultaneously in RStudio. But with the command line (which you can use in RStudio), it is simple. You’ll just have to call</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render <span class="at">--to</span> all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will render all of your blog posts to both HTML and PDF. Now what’s cool is that a reader can easily access the PDF version by changing a post’s link e.g.&nbsp;from <code>site-url/post_XY.html</code> to <code>site-url/post_XY.pdf</code>.<br>
+Of course, all of that will only work if your blog posts contain static elements that work in a PDF. Possibly, this can be cirumvented and <a href="https://quarto.org/docs/books/book-output.html#format-options">Quarto’s docs on book formats</a> (it’s a more pressing issue for books) may have some info on that. Personally, I avoid PDFs in my blog.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="publish-your-blog-online" class="level2">
+<h2 class="anchored" data-anchor-id="publish-your-blog-online">Publish your blog online</h2>
+<p>My preferred publisher is <a href="https://www.netlify.com/">Netlify</a>. It’s really easy to set up to publish with them. So, let me describe how that works. Mainly, you have two choices once you have registered with Netlify.</p>
+<ol type="1">
+<li>Give Netlify access to the GitHub repository that your blog lives in. Once access is granted, Netlify will deploy the most recent version of your blog whenever you push changes to your repository.</li>
+<li>Alternatively, you can use the command line. To do so, open a new terminal and set its working directory to your blog’s working directory. Then, you only need to call <code>quarto publish netlify</code> and follow the instructions on the terminal.</li>
+</ol>
+<p>You can use the latter method for publishing at other services as well. For more information, let me refer you to <a href="https://quarto.org/docs/output-formats/html-publishing.html">Quarto’s docs</a>. Also, let me mention that Netlify will give you a Netlify URL, e.g. <code>tourmaline-faloodeh-4b36ef.netlify.com</code>. However, I think it’s advisable to buy a custom domain and link it to the Netlify URL (Netlify provides help on that).</p>
+</section>
+<section id="writing-tips" class="level2">
+<h2 class="anchored" data-anchor-id="writing-tips">Writing tips</h2>
+<p>I don’t consider my writing particularly good and I am sure that I use a fair share of imperfect grammar. But a small language barrier shouldn’t stop me or you from publishing a blog. And before I leave you, let me share a few pearls of writing wisdom that I found helpful.</p>
+<ul>
+<li><p><strong>Consistency</strong> <strong>is key</strong>: Blogging is like any other any new habit: It takes time until it sticks. That’s why it is really important that you try to post something regularly. If you have trouble overcoming your weaker self I can recommend the book <a href="https://amzn.to/3aYm5NX">Atomic Habits by James Clear</a>. It contains TONS of great strategies to make a new habit stick.</p></li>
+<li><p><strong>Perfectionism is the enemy:</strong> One major obstacle that can stop you from writing regularly is perfectionism. Don’t worry if your blog post is perfect, or original, or super exciting or whatever. It is maddingly easy to waste hours “polishing” a blog post to perfection. So, if you catch yourself polishing a lot. Then maybe think about just hitting publish.</p></li>
+<li><p><strong>Expect the indifference:</strong> When you publish a blog post, you never know if people will be excited about what you wrote. Chances are that they won’t be. In fact, if you just got started, then count on it! This may sound harsh but it’s actually great. Use this knowledge to counter your need for perfectionism. This can help you to work on your consistency until eventually people care about what you write.</p></li>
+<li><p><strong>Get feedback on your writing:</strong> Nothing makes writing more boring than not getting any feedback. I recommend that you advertise your posts on Rweekly and Twitter. Depending on how people engage with your post (or not), you will have feedback about how much your community cares about the topic you chose. Eventually, you will hit on a topic that people care about. Then, it can be incredibly fun to double down on this topic or engage in conversations about it.</p></li>
+</ul>
+<p>For more tips, you can check out <a href="https://twitter.com/david_perell">David Perell</a>’s or <a href="https://twitter.com/dickiebush">Dickie Bush</a>’s work. I learned most of the above writing tips from them.</p>
+</section>
+<section id="closing" class="level2">
+<h2 class="anchored" data-anchor-id="closing">Closing</h2>
+<p>Phew! This is the longest and most in-depth guide that I ever wrote. And this was also the scariest post I ever wrote. When I started on this Quarto endeavor almost two months ago, I had literally ZERO knowledge about</p>
+<ul>
+<li><p>HTML/CSS</p></li>
+<li><p>Responsive design</p></li>
+<li><p>Version control with <code>{renv}</code></p></li>
+</ul>
+<p>and many other small things I’ve learned since then. Thus, I see this guide as a culmination of everything I’ve learned and I am oddly proud about it.</p>
+<p>I hope that you enjoyed this guide and that it serves you well. Please reach out to me if you run into any trouble with what I wrote. I am more than happy to improve my guide so that it can help more people.</p>
+<p>And don’t forget to stay in touch via my <a href="https://alberts-newsletter.beehiiv.com/subscribe">Newsletter</a>, <a href="https://twitter.com/rappa753">Twitter</a> or my <a href="https://albert-rapp.de/blog.xml">RSS feed</a>. See you next time!</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>Yes, this is exactly what happened to me. I was young and foolish.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<div>
+<hr>
+
+<h3> Stay in touch </h3>
+
+<p> If you enjoyed this post, then you may also enjoy my biweekly newsletter. Every other week I share thoughts on data visualization, statistics and Shiny web app development. </p>
+
+<iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;"></iframe>
+
+
+<h3> You can also support my work with a coffee </h3>
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="rappa753" data-color="#06436e" data-emoji="☕" data-font="Lato" data-text="Support me" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" data-height="40px"></script>
+
+<h3> Share </h3>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="#rstats" data-show-count="false">Tweet</a><script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+<hr>
+</div>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="AlbertRapp/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+</body></html>

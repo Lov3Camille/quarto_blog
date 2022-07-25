@@ -11,6 +11,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 Currently, I am quite curious about interactive plots which is why I am reading [Scott Murray's highly recommendable book on D3](https://alignedleft.com/work/d3-book-2e).
 For those of you who don't know it,

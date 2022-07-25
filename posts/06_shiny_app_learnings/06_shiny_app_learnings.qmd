@@ -16,6 +16,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 A couple of weeks back, I wanted to explain to my student what I mean when I talk about the "variance of the sample variance". In my head, this term sounds quite confusing and contains the word "variance" at least one too many times. But as I was not sure whether my subsequent explanation really came through, I decided to let my students explore the notion on their own through [a Shiny app](https://rappa.shinyapps.io/estimator-variance/).
 

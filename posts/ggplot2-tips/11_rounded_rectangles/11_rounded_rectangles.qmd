@@ -15,6 +15,12 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
+
 
 A standard ggplot output can rarely convey a powerful message.
 For effective data visualization you need to customize your plot.

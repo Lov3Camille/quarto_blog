@@ -12,6 +12,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 Last week, I gave a short workshop teaching R to Economics students without prior programming experience. [On Twitter](https://twitter.com/rappa753/status/1516497080201904129), I shared six lessons that I wish I had learnt before. This blog post is a more detailed account of my experience. Additionally, I incorporated many excellent suggestions from others on Twitter into this blog post.
 

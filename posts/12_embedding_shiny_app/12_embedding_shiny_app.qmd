@@ -12,6 +12,12 @@ editor_options:
 ---
 
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
+
 Today's a short blog post.
 It's mainly for sharing a cool trick I just learned.
 

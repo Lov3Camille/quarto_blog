@@ -11,6 +11,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 For some reason, using other than the default font in plots has been a major problem for me in R.
 Supposedly, one can use the `extrafont` package to manage all of that but I found it too cumbersome.

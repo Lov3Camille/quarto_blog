@@ -16,6 +16,12 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
+
 I've been reading [Mastering Shiny by Hadley Wickham](https://mastering-shiny.org/) lately and one of the things that intrigued me is that you can make ggplots interactive. Though I believe that there are limitation to the level of interactiveness compared to using, say, [plotly](https://albert-rapp.de/post/2021-10-16-exploratory-intro-plotly/), I really wanted to practice interactive ggplots with Shiny. Naturally, I build a [Shiny app](https://rappa.shinyapps.io/interactive-ggplot/) to figure things out. Here's a demonstration of what the app can do. The rest of this chapter teaches you how some parts of the app were implemented.
 
 ```{r, echo = F}

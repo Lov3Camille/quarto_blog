@@ -1,7 +1,6 @@
-# options specified here will apply to all posts in this folder
+# Options specified here will apply to all posts in this folder
 
 # freeze computational output
-# (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: true
 
 # Enable banner style title blocks
@@ -16,6 +15,8 @@ toc-depth: 3
 
 page-layout: article
 
+#########################
+# You can leave out this part in the first step
 format:
   html:
     include-after-body: ../footer.html
@@ -23,4 +24,4 @@ format:
 comments: 
   utterances: 
     repo:  AlbertRapp/blogComments 
-
+#########################

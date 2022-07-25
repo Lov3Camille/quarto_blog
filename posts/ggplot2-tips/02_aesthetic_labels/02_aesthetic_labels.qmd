@@ -11,6 +11,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 This blog post is part of a series I am creating where I collect tips I found useful when I first learned to work with `ggplot2`.
 All posts which are part of this series can be found [here](https://albert-rapp.de/ggplot-series.html).

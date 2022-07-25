@@ -11,6 +11,12 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
+
 When creating a plot I frequently catch myself using way too many colors. Thus, I have to remind myself often to keep things simple.
 Usually, this makes a data visualization way more effective.
 

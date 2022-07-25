@@ -11,6 +11,12 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
+
 It is almost the beginning of a new year and I have decided to finish off this year with a quick blog post. 
 Also, friends were shaming me that I have been slacking off on this blog lately. 
 Therefore, let's get started right away.

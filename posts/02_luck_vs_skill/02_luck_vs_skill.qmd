@@ -10,6 +10,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv_snap2.lock")
+```
 
 Recently, I decided to try out a few stretches in an effort to stay in shape during long stretches of working from home and not leaving the house.
 Also, to distract me from my inflexible body I thought I would watch a video on YouTube simultaneously and as luck would have it, I saw an interesting video on Veritasium's YouTube Channel called ["Is Success Luck or Hard Work"](https://www.youtube.com/watch?v=3LopI4YeC4I).

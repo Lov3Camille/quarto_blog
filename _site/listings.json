@@ -1,0 +1,76 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html",
+      "/posts/12_embedding_shiny_app/12_embedding_shiny_app.html",
+      "/posts/11_track_twitter_followers/11_track_twitter_followers.html",
+      "/posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html",
+      "/posts/10_lessons_learned_teaching_nonprogrammers/10_lessons_learned_teaching_nonprogrammers.html",
+      "/posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html",
+      "/posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html",
+      "/posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html",
+      "/posts/ggplot2-tips/08_fonts_and_icons/08_fonts_and_icons.html",
+      "/posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html",
+      "/posts/08_drawing_ggplot_interactively/08_drawing_ggplot_interactively.html",
+      "/posts/07_janitor_showcase/07_janitor_showcase.html",
+      "/posts/ggplot2-tips/06_learning_by_thieving/06_learning_by_thieving.html",
+      "/posts/ggplot2-tips/05_ggforce_examples/05_ggforce_examples.html",
+      "/posts/06_shiny_app_learnings/06_shiny_app_learnings.html",
+      "/posts/ggplot2-tips/04_arranging_plots/04_arranging_plots.html",
+      "/posts/05_exploratory_intro_plotly/05_exploratory_intro_quarto.html",
+      "/posts/04_sonntagsfrage/04_sonntagsfrage.html",
+      "/posts/03_writing_versatile_fcts/03_writing_versatile_fcts.html",
+      "/posts/ggplot2-tips/03_position_adjustment/03_position_adjustment.html",
+      "/posts/ggplot2-tips/02_aesthetic_labels/02_aesthetic_labels.html",
+      "/posts/ggplot2-tips/01_a_few_ggplot_tips/01_a_few_ggplot_tips.html",
+      "/posts/02_luck_vs_skill/02_luck_vs_skill.html",
+      "/posts/01_visualize_kernel_density/01_visualize_kernel_density.html"
+    ]
+  },
+  {
+    "listing": "/archive.html",
+    "items": [
+      "/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html",
+      "/posts/12_embedding_shiny_app/12_embedding_shiny_app.html",
+      "/posts/11_track_twitter_followers/11_track_twitter_followers.html",
+      "/posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html",
+      "/posts/10_lessons_learned_teaching_nonprogrammers/10_lessons_learned_teaching_nonprogrammers.html",
+      "/posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html",
+      "/posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html",
+      "/posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html",
+      "/posts/ggplot2-tips/08_fonts_and_icons/08_fonts_and_icons.html",
+      "/posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html",
+      "/posts/08_drawing_ggplot_interactively/08_drawing_ggplot_interactively.html",
+      "/posts/07_janitor_showcase/07_janitor_showcase.html",
+      "/posts/ggplot2-tips/06_learning_by_thieving/06_learning_by_thieving.html",
+      "/posts/ggplot2-tips/05_ggforce_examples/05_ggforce_examples.html",
+      "/posts/06_shiny_app_learnings/06_shiny_app_learnings.html",
+      "/posts/ggplot2-tips/04_arranging_plots/04_arranging_plots.html",
+      "/posts/05_exploratory_intro_plotly/05_exploratory_intro_quarto.html",
+      "/posts/04_sonntagsfrage/04_sonntagsfrage.html",
+      "/posts/03_writing_versatile_fcts/03_writing_versatile_fcts.html",
+      "/posts/ggplot2-tips/03_position_adjustment/03_position_adjustment.html",
+      "/posts/ggplot2-tips/02_aesthetic_labels/02_aesthetic_labels.html",
+      "/posts/ggplot2-tips/01_a_few_ggplot_tips/01_a_few_ggplot_tips.html",
+      "/posts/02_luck_vs_skill/02_luck_vs_skill.html",
+      "/posts/01_visualize_kernel_density/01_visualize_kernel_density.html"
+    ]
+  },
+  {
+    "listing": "/ggplot-series.html",
+    "items": [
+      "/posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html",
+      "/posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html",
+      "/posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html",
+      "/posts/ggplot2-tips/08_fonts_and_icons/08_fonts_and_icons.html",
+      "/posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html",
+      "/posts/ggplot2-tips/06_learning_by_thieving/06_learning_by_thieving.html",
+      "/posts/ggplot2-tips/05_ggforce_examples/05_ggforce_examples.html",
+      "/posts/ggplot2-tips/04_arranging_plots/04_arranging_plots.html",
+      "/posts/ggplot2-tips/03_position_adjustment/03_position_adjustment.html",
+      "/posts/ggplot2-tips/02_aesthetic_labels/02_aesthetic_labels.html",
+      "/posts/ggplot2-tips/01_a_few_ggplot_tips/01_a_few_ggplot_tips.html"
+    ]
+  }
+]

@@ -11,6 +11,13 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
+
+
 This week, I had to deal with two very similar tasks on two very similar but not identical data sets that required me to write a function that is versatile enough to deal with both data sets despite their subtle differences.
 The differences that had to be accounted for mainly related to using functions in the two cases that relied on differently many arguments.
 Also, some of the column names were different which meant that I could not hard-code the column names into the function I was creating.

@@ -10,6 +10,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 It is not that long ago when I first encountered `ggplot2` and decided to learn how to use it[^motivation-R].
 By no means do I think that I have sufficiently mastered this package yet but as time has passed I have certainly picked up a few tips on my journey to get better at creating more meaningful visualizations.

@@ -1,124 +1,164 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.80">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="author" content="Albert Rapp">
-  <meta name="dcterms.date" content="2022-04-14">
-  <meta name="description" content="The goal is to send a tweet’s URL to a dummy mail account and let R extract it, call the Twitter API and then put everything as a Markdown file into your note-taking system.">
-  <title>Albert Rapp - How to collect dataviz from Twitter into your note-taking system</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
 
-  <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-  <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-  <script src="../../site_libs/clipboard/clipboard.min.js"></script>
-  <meta name="quarto:offset" content="../../">
-  <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-  <script src="../../site_libs/quarto-search/fuse.min.js"></script>
-  <script src="../../site_libs/quarto-search/quarto-search.js"></script>
-  <script src="../../site_libs/quarto-html/quarto.js"></script>
-  <script src="../../site_libs/quarto-html/popper.min.js"></script>
-  <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="../../site_libs/quarto-html/anchor.min.js"></script>
-  <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-  <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <script id="quarto-search-options" type="application/json">{
-    "location": "navbar",
-    "copy-button": false,
-    "collapse-after": 2,
-    "panel-placement": "end",
-    "type": "overlay",
-    "limit": 20,
-    "language": {
-      "search-no-results-text": "No results",
-      "search-matching-documents-text": "matching documents",
-      "search-copy-link-title": "Copy link to search",
-      "search-hide-matches-text": "Hide additional matches",
-      "search-more-match-text": "more match in this document",
-      "search-more-matches-text": "more matches in this document",
-      "search-clear-button-title": "Clear",
-      "search-detached-cancel-button-title": "Cancel",
-      "search-submit-button-title": "Submit"
-    }
-  }</script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Albert Rapp">
+<meta name="dcterms.date" content="2022-04-14">
+<meta name="description" content="The goal is to send a tweet’s URL to a dummy mail account and let R extract it, call the Twitter API and then put everything as a Markdown file into your note-taking system.">
+
+<title>Albert Rapp - How to collect dataviz from Twitter into your note-taking system</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y3M69TZVPJ"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Y3M69TZVPJ', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+
+<meta name="twitter:title" content="Albert Rapp - How to collect dataviz from Twitter into your note-taking system">
+<meta name="twitter:description" content="The goal is to send a tweet’s URL to a dummy mail account and let R extract it, call the Twitter API and then put everything as a Markdown file into your note-taking system.">
+<meta name="twitter:image" content="https://albert-rapp.de/thumbnail_blog.png">
+<meta name="twitter:creator" content="@rappa753">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="418">
+<meta name="twitter:image-width" content="800">
 </head>
-<body>
+
+<body class="nav-fixed">
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
@@ -158,6 +198,10 @@
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
         <li>
+    <a class="dropdown-item" href="../../dataviz_portfolio.html">
+ <span class="dropdown-text">DataViz Portfolio</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://yards.albert-rapp.de/">
  <span class="dropdown-text">YARDS</span></a>
   </li>  
@@ -186,40 +230,76 @@
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc">
-<h2 id="toc-title">On this page</h2>
-<ul>
-<li><a href="#intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
-<li><a href="#overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
-<li><a href="#preparations" class="nav-link" data-scroll-target="#preparations">Preparations</a>
-<ul class="collapse">
-<li><a href="#get-twitter-developer-account" class="nav-link" data-scroll-target="#get-twitter-developer-account">Get Twitter developer account</a></li>
-<li><a href="#how-to-embed-your-bearer-token-and-other-sensitive-material-in-your-code" class="nav-link" data-scroll-target="#how-to-embed-your-bearer-token-and-other-sensitive-material-in-your-code">How to embed your bearer token and other sensitive material in your code</a></li>
-</ul></li>
-<li><a href="#what-to-do-once-we-have-a-url" class="nav-link" data-scroll-target="#what-to-do-once-we-have-a-url">What to do once we have a URL</a>
-<ul class="collapse">
-<li><a href="#use-get-to-access-twitter-api" class="nav-link" data-scroll-target="#use-get-to-access-twitter-api">Use GET() to access Twitter API</a></li>
-<li><a href="#extract-tweet-data-from-what-the-api-gives-us-and-download-images" class="nav-link" data-scroll-target="#extract-tweet-data-from-what-the-api-gives-us-and-download-images">Extract tweet data from what the API gives us and download images</a></li>
-<li><a href="#fill-out-markdown-template-using-extracted-information-and-images" class="nav-link" data-scroll-target="#fill-out-markdown-template-using-extracted-information-and-images">Fill out Markdown template using extracted information and images</a></li>
-<li><a href="#shuffle-files-around-on-your-file-system" class="nav-link" data-scroll-target="#shuffle-files-around-on-your-file-system">Shuffle files around on your file system</a></li>
-</ul></li>
-<li><a href="#how-to-extract-url-and-other-stuff-from-mail" class="nav-link" data-scroll-target="#how-to-extract-url-and-other-stuff-from-mail">How to extract URL and other stuff from mail</a>
-<ul class="collapse">
-<li><a href="#postman-gives-you-access" class="nav-link" data-scroll-target="#postman-gives-you-access">Postman gives you access</a></li>
-<li><a href="#grab-urls-from-mail" class="nav-link" data-scroll-target="#grab-urls-from-mail">Grab URLs from mail</a></li>
-</ul></li>
-<li><a href="#last-step-execute-r-script-automatically" class="nav-link" data-scroll-target="#last-step-execute-r-script-automatically">Last Step: Execute R script automatically</a></li>
-<li><a href="#mind-the-possibilities" class="nav-link" data-scroll-target="#mind-the-possibilities">Mind the possibilities</a></li>
-</ul>
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#preparations" id="toc-preparations" class="nav-link" data-scroll-target="#preparations">Preparations</a>
+  <ul class="collapse">
+  <li><a href="#get-twitter-developer-account" id="toc-get-twitter-developer-account" class="nav-link" data-scroll-target="#get-twitter-developer-account">Get Twitter developer account</a></li>
+  <li><a href="#how-to-embed-your-bearer-token-and-other-sensitive-material-in-your-code" id="toc-how-to-embed-your-bearer-token-and-other-sensitive-material-in-your-code" class="nav-link" data-scroll-target="#how-to-embed-your-bearer-token-and-other-sensitive-material-in-your-code">How to embed your bearer token and other sensitive material in your code</a></li>
+  </ul></li>
+  <li><a href="#what-to-do-once-we-have-a-url" id="toc-what-to-do-once-we-have-a-url" class="nav-link" data-scroll-target="#what-to-do-once-we-have-a-url">What to do once we have a URL</a>
+  <ul class="collapse">
+  <li><a href="#use-get-to-access-twitter-api" id="toc-use-get-to-access-twitter-api" class="nav-link" data-scroll-target="#use-get-to-access-twitter-api">Use GET() to access Twitter API</a></li>
+  <li><a href="#extract-tweet-data-from-what-the-api-gives-us-and-download-images" id="toc-extract-tweet-data-from-what-the-api-gives-us-and-download-images" class="nav-link" data-scroll-target="#extract-tweet-data-from-what-the-api-gives-us-and-download-images">Extract tweet data from what the API gives us and download images</a></li>
+  <li><a href="#fill-out-markdown-template-using-extracted-information-and-images" id="toc-fill-out-markdown-template-using-extracted-information-and-images" class="nav-link" data-scroll-target="#fill-out-markdown-template-using-extracted-information-and-images">Fill out Markdown template using extracted information and images</a></li>
+  <li><a href="#shuffle-files-around-on-your-file-system" id="toc-shuffle-files-around-on-your-file-system" class="nav-link" data-scroll-target="#shuffle-files-around-on-your-file-system">Shuffle files around on your file system</a></li>
+  </ul></li>
+  <li><a href="#how-to-extract-url-and-other-stuff-from-mail" id="toc-how-to-extract-url-and-other-stuff-from-mail" class="nav-link" data-scroll-target="#how-to-extract-url-and-other-stuff-from-mail">How to extract URL and other stuff from mail</a>
+  <ul class="collapse">
+  <li><a href="#postman-gives-you-access" id="toc-postman-gives-you-access" class="nav-link" data-scroll-target="#postman-gives-you-access">Postman gives you access</a></li>
+  <li><a href="#grab-urls-from-mail" id="toc-grab-urls-from-mail" class="nav-link" data-scroll-target="#grab-urls-from-mail">Grab URLs from mail</a></li>
+  </ul></li>
+  <li><a href="#last-step-execute-r-script-automatically" id="toc-last-step-execute-r-script-automatically" class="nav-link" data-scroll-target="#last-step-execute-r-script-automatically">Last Step: Execute R script automatically</a></li>
+  <li><a href="#mind-the-possibilities" id="toc-mind-the-possibilities" class="nav-link" data-scroll-target="#mind-the-possibilities">Mind the possibilities</a></li>
+  </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">How to collect dataviz from Twitter into your note-taking system</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Automation</div>
+    <div class="quarto-category">API</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    The goal is to send a tweet’s URL to a dummy mail account and let R extract it, call the Twitter API and then put everything as a Markdown file into your note-taking system.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
 
-<div class="quarto-title"><h1 class="title display-7">How to collect dataviz from Twitter into your note-taking system</h1><div class="quarto-description"><p>The goal is to send a tweet's URL to a dummy mail account and let R extract it, call the Twitter API and then put everything as a Markdown file into your note-taking system.</p></div></div><div class="quarto-categories"><div class="quarto-category">Automation</div><div class="quarto-category">API</div></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><p>Albert Rapp</p></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">April 14, 2022</p></div></div></div></header>
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Albert Rapp </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 14, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
 
+</header>
+
+<div class="cell">
+
+</div>
 <section id="intro" class="level2">
 <h2 class="anchored" data-anchor-id="intro">Intro</h2>
 <p>It is mid-April and the <a href="https://twitter.com/30DayChartChall">#30daychartchallenge</a> is well on its way. One glace at the hashtag’s Twitter feed suffices to realize that there are great contributions. That’s a perfect opportunity to collect data viz examples for future inspirations.</p>
@@ -263,7 +343,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="project-elevated.PNG" class="img-fluid figure-img" width="669"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Click on detailed features to apply for higher access</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Click on detailed features to apply for higher access</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -276,7 +356,7 @@
 
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>bearer_token <span class="ot">&lt;-</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">'twitter-bearer-token'</span>, <span class="at">keyring =</span> <span class="st">'blogpost'</span>)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>bearer_token <span class="ot">&lt;-</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">'twitter-bearer-token'</span>, <span class="at">keyring =</span> <span class="st">'blogpost'</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>user_mail <span class="ot">&lt;-</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">'dataviz-mail'</span>, <span class="at">keyring =</span> <span class="st">'blogpost'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>password_mail <span class="ot">&lt;-</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">'dataviz-mail-password'</span>, <span class="at">keyring =</span> <span class="st">'blogpost'</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>allowed_senders <span class="ot">&lt;-</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">'allowed_senders'</span>, <span class="at">keyring =</span> <span class="st">'blogpost'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -288,7 +368,7 @@
 <h2 class="anchored" data-anchor-id="what-to-do-once-we-have-a-url">What to do once we have a URL</h2>
 <p>Let’s assume for the sake of this section that we already extracted a tweet URL from a mail. Here’s the URL that we will use. In fact, it’s <a href="https://twitter.com/c_gebhard">Christian Gebhard</a>’s tweet that inspired me to start this project. From the URL we can extract the tweet’s ID (the bunch of numbers after <code>/status/</code>). Also, we will need the URL of Twitter’s API.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr) <span class="co"># for regex matching</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr) <span class="co"># for regex matching</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for binding rows and pipe</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tweet_url <span class="ot">&lt;-</span> <span class="st">'https://twitter.com/c_gebhard/status/1510533315262042112'</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>tweet_id <span class="ot">&lt;-</span> tweet_url <span class="sc">%&gt;%</span> <span class="fu">str_match</span>(<span class="st">"status/([0-9]+)"</span>) <span class="sc">%&gt;%</span> .[, <span class="dv">2</span>]</span>
@@ -298,7 +378,7 @@
 <h3 class="anchored" data-anchor-id="use-get-to-access-twitter-api">Use GET() to access Twitter API</h3>
 <p>Next, we use the <code>GET()</code> function from the <code>httr</code> package to interact with Twitter’s API.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr) <span class="co"># for API communication</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr) <span class="co"># for API communication</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>auth <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, bearer_token) <span class="co"># API needs format "Bearer &lt;my_token&gt;"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -315,9 +395,9 @@
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>) </span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>Response [https://api.twitter.com/2/tweets?ids=1510533315262042112&amp;tweet.fields=created_at&amp;expansions=attachments.media_keys%2Cauthor_id&amp;media.fields=url]
-  Date: 2022-07-13 19:12
+  Date: 2022-07-21 17:47
   Status: 200
   Content-Type: application/json; charset=utf-8
   Size: 690 B</code></pre>
@@ -339,13 +419,13 @@ media.fields=duration_ms,height,media_key,preview_image_url,public_metrics,type,
 </ul>
 <p>Therefore, it is only a matter of figuring out how to make the output of <code>GET()</code> deliver this result. Hints on that came from <code>GET()</code> examples in the docs.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">GET</span>(<span class="st">"http://google.com/"</span>, <span class="at">path =</span> <span class="st">"search"</span>, <span class="at">query =</span> <span class="fu">list</span>(<span class="at">q =</span> <span class="st">"ham"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">GET</span>(<span class="st">"http://google.com/"</span>, <span class="at">path =</span> <span class="st">"search"</span>, <span class="at">query =</span> <span class="fu">list</span>(<span class="at">q =</span> <span class="st">"ham"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>Response [http://www.google.com/search?q=ham]
-  Date: 2022-07-13 19:12
+  Date: 2022-07-21 17:47
   Status: 200
   Content-Type: text/html; charset=ISO-8859-1
-  Size: 106 kB
+  Size: 122 kB
 &lt;!doctype html&gt;&lt;html lang="de"&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;meta content="/im...
 document.documentElement.addEventListener("submit",function(b){var a;if(a=b.t...
 var a=window.performance;window.start=Date.now();a:{var b=window;if(a){var c=...
@@ -358,10 +438,10 @@ b}).join(" "))};function w(){var a=k.navigator;return a&amp;&amp;(a=a.userAgent)
 var a=document.getElementById("st-toggle"),b=document.getElementById("st-card...
 ...</code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">GET</span>(<span class="st">"http://httpbin.org/get"</span>, <span class="fu">add_headers</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">GET</span>(<span class="st">"http://httpbin.org/get"</span>, <span class="fu">add_headers</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>Response [http://httpbin.org/get]
-  Date: 2022-07-13 19:12
+  Date: 2022-07-21 17:47
   Status: 200
   Content-Type: application/json
   Size: 403 B
@@ -374,14 +454,14 @@ var a=document.getElementById("st-toggle"),b=document.getElementById("st-card...
     "B": "2", 
     "Host": "httpbin.org", 
     "User-Agent": "libcurl/7.68.0 r-curl/4.3.2 httr/1.4.3", 
-    "X-Amzn-Trace-Id": "Root=1-62cf1938-1ae927d56300c6ad51096f2c"
+    "X-Amzn-Trace-Id": "Root=1-62d9913b-1838afb6392fdf321bc3479c"
 ...</code></pre>
 </div>
 </div>
 <p>So, the first example shows how an argument <code>query</code> can be filled with a list that creates the URL we need. The second examples shows us that there is something called <code>add_headers()</code>. Do I know exactly what that is? I mean, from a technical perspective of what is going on behind the scenes? Definitely not. But Twitter’s example request had something called header. Therefore, <code>add_headers()</code> is probably something that does what the Twitter API expects.</p>
 <p>And where do the key-value pairs come from? I found these strolling through Twitter’s <a href="https://developer.twitter.com/en/docs/twitter-api/data-dictionary/introduction">data dictionary</a>. Thus, a <code>GET()</code> request was born and I could feel like a true <a href="https://knowyourmeme.com/memes/hackerman">Hackerman</a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>auth <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, bearer_token) <span class="co"># API needs format "Bearer &lt;my_token&gt;"</span></span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>auth <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, bearer_token) <span class="co"># API needs format "Bearer &lt;my_token&gt;"</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make request to API and parse to list</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>request <span class="ot">&lt;-</span> <span class="fu">GET</span>(</span>
@@ -398,29 +478,29 @@ var a=document.getElementById("st-toggle"),b=document.getElementById("st-card...
 </div>
 <p>Alright, we successfully requested data. Now, it becomes time to parse it to something useful. The <code>content()</code> function will to that.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>parsed_request <span class="ot">&lt;-</span> request <span class="sc">%&gt;%</span> <span class="fu">content</span>(<span class="st">'parsed'</span>)</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>parsed_request <span class="ot">&lt;-</span> request <span class="sc">%&gt;%</span> <span class="fu">content</span>(<span class="st">'parsed'</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>parsed_request</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>$data
 $data[[1]]
-$data[[1]]$id
-[1] "1510533315262042112"
-
-$data[[1]]$created_at
-[1] "2022-04-03T08:23:01.000Z"
-
-$data[[1]]$text
-[1] "#30DayChartChallenge #Day3 - Topic: historical\n\nBack to the Shakespeare data! Hamlet is is longest play, the comedies tend to be shorter.\n\nTool: #rstats\nData: kaggle users LiamLarsen, aodhan\nColor-Scale: MetBrewer\nFonts: Niconne, Noto Sans (+Mono)\nCode: https://t.co/iXAbniQDCb https://t.co/JCNrYH9uP4"
-
-$data[[1]]$author_id
-[1] "1070306701"
-
 $data[[1]]$attachments
 $data[[1]]$attachments$media_keys
 $data[[1]]$attachments$media_keys[[1]]
 [1] "3_1510533145334104067"
 
 
+
+$data[[1]]$id
+[1] "1510533315262042112"
+
+$data[[1]]$author_id
+[1] "1070306701"
+
+$data[[1]]$created_at
+[1] "2022-04-03T08:23:01.000Z"
+
+$data[[1]]$text
+[1] "#30DayChartChallenge #Day3 - Topic: historical\n\nBack to the Shakespeare data! Hamlet is is longest play, the comedies tend to be shorter.\n\nTool: #rstats\nData: kaggle users LiamLarsen, aodhan\nColor-Scale: MetBrewer\nFonts: Niconne, Noto Sans (+Mono)\nCode: https://t.co/iXAbniQDCb https://t.co/JCNrYH9uP4"
 
 
 
@@ -455,21 +535,21 @@ $includes$users[[1]]$username
 <h3 class="anchored" data-anchor-id="extract-tweet-data-from-what-the-api-gives-us-and-download-images">Extract tweet data from what the API gives us and download images</h3>
 <p>We have seen that <code>parsed_request</code> is basically a large list that contains everything we requested from the API. Unfortunately, it is a highly nested list, so we have to do some work to extract the parts we actually want. <code>pluck()</code> from the <code>purrr</code> package is our best friend on this one. Here’s all the information we extract from the <code>parsed_request</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr) <span class="co"># for pluck and map functions</span></span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr) <span class="co"># for pluck and map functions</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract necessary information from list-like structure</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>tweet_text <span class="ot">&lt;-</span> parsed_request <span class="sc">%&gt;%</span> </span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="st">"data"</span>, <span class="dv">1</span>, <span class="st">'text'</span>) </span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>tweet_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] "#30DayChartChallenge #Day3 - Topic: historical\n\nBack to the Shakespeare data! Hamlet is is longest play, the comedies tend to be shorter.\n\nTool: #rstats\nData: kaggle users LiamLarsen, aodhan\nColor-Scale: MetBrewer\nFonts: Niconne, Noto Sans (+Mono)\nCode: https://t.co/iXAbniQDCb https://t.co/JCNrYH9uP4"</code></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tweet_user <span class="ot">&lt;-</span>  parsed_request <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tweet_user <span class="ot">&lt;-</span>  parsed_request <span class="sc">%&gt;%</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="st">"includes"</span>, <span class="st">'users'</span>, <span class="dv">1</span>, <span class="st">'username'</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>tweet_user</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] "c_gebhard"</code></pre>
 </div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We will use the tweet date and time as part of unique file names</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We will use the tweet date and time as part of unique file names</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace white spaces and colons (:) for proper file names</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>tweet_date <span class="ot">&lt;-</span> parsed_request <span class="sc">%&gt;%</span> </span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="st">"data"</span>, <span class="dv">1</span>, <span class="st">'created_at'</span>) <span class="sc">%&gt;%</span> </span>
@@ -477,22 +557,22 @@ $includes$users[[1]]$username
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace</span>(<span class="st">' '</span>, <span class="st">'_'</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">':'</span>, <span class="st">''</span>)</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>tweet_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] "2022-04-03_082301"</code></pre>
 </div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>img_urls <span class="ot">&lt;-</span> parsed_request <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>img_urls <span class="ot">&lt;-</span> parsed_request <span class="sc">%&gt;%</span> </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="st">"includes"</span>, <span class="st">'media'</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span> <span class="co"># bind_rows for multiple pictures, i.e. multiple URLS</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">'photo'</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(url)</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>img_urls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>[1] "https://pbs.twimg.com/media/FPZ95H0XwAMHA8q.jpg"</code></pre>
 </div>
 </div>
 <p>Next, download all the images via the <code>img_urls</code> and <code>download.file()</code>. We will use <code>walk2()</code> to download all files (in case there are multiple images/URLs) and save the files into PNGs that are named using the unique <code>tweet_date</code> IDs. Remember to set <code>mode = 'wb'</code> in <code>download.file()</code>. I am not really sure why but without it you will save poor quality images.</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download image - set mode otherwise download is blurry</span></span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download image - set mode otherwise download is blurry</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>img_names <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">'tweet'</span>, tweet_user, tweet_date, <span class="fu">seq_along</span>(img_urls), <span class="at">sep =</span> <span class="st">"_"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">walk2</span>(img_urls, img_names, <span class="sc">~</span><span class="fu">download.file</span>(.x, <span class="fu">paste0</span>(.y, <span class="st">'.png'</span>), <span class="at">mode =</span> <span class="st">'wb'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -505,7 +585,7 @@ $includes$users[[1]]$username
 </ul>
 <p>Let’s cherish this mile stone with a dedicated function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>request_twitter_data <span class="ot">&lt;-</span> <span class="cf">function</span>(tweet_url, bearer_token) {</span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>request_twitter_data <span class="ot">&lt;-</span> <span class="cf">function</span>(tweet_url, bearer_token) {</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract tweet id by regex</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  tweet_id <span class="ot">&lt;-</span> tweet_url <span class="sc">%&gt;%</span> <span class="fu">str_match</span>(<span class="st">"status/([0-9]+)"</span>) <span class="sc">%&gt;%</span> .[, <span class="dv">2</span>]</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  auth <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, bearer_token) <span class="co"># API needs format "Bearer &lt;my_token&gt;"</span></span>
@@ -564,13 +644,13 @@ $includes$users[[1]]$username
 <h3 class="anchored" data-anchor-id="fill-out-markdown-template-using-extracted-information-and-images">Fill out Markdown template using extracted information and images</h3>
 <p>We have our images and the original tweet now. Thanks to our previous function, we can save all of the information in a list.</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>request <span class="ot">&lt;-</span> <span class="fu">request_twitter_data</span>(tweet_url, bearer_token)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>request <span class="ot">&lt;-</span> <span class="fu">request_twitter_data</span>(tweet_url, bearer_token)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So, let’s bring all that information into a Markdown file. Here is the <code>template.md</code> file that I have created for this joyous occasion.</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co"># for reading and writing files from/to disk</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co"># for reading and writing files from/to disk</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">read_file</span>(<span class="st">'template.md'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>#dataviz #twitter
 
 ![[insert_img_name_here]]
@@ -589,13 +669,13 @@ insert_mail_here</code></pre>
 <p>As you can see, I started the Markdown template with two tags <code>#dataviz</code> and <code>#twitter</code>. This helps me to search for a specific dataviz faster. Also, I have already written out the Markdown syntax for image imports <code>![[...]]</code> and added a placeholder <code>insert_img_name_here</code>. This one will be replaced by the file path to the image. Similarly, other placeholders like <code>insert_text_here</code> and <code>insert_mail_here</code> allow me to save the tweet and the mail content into my note taking system too.</p>
 <p>To do so, I will need a function that replaces all the placeholders. First, I created a helper function that changes the image import placeholder properly, when there are multiple images.</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>md_import_strings <span class="ot">&lt;-</span> <span class="cf">function</span>(file_names) {</span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>md_import_strings <span class="ot">&lt;-</span> <span class="cf">function</span>(file_names) {</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">'![['</span>, file_names, <span class="st">']]'</span>, <span class="at">collapse =</span> <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>) </span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then, I created a function that takes the <code>request</code> list that we got from calling our own <code>request_twitter_data()</code> function and iteratively uses <code>str_replace_all()</code>. This iteration is done with <code>reduce2()</code> which will replace all placeholders in <code>template.md</code> .</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble) <span class="co"># for easier readable tribble creation</span></span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble) <span class="co"># for easier readable tribble creation</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace the placeholders in the template</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We change original mail place holder later on</span></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>replace_template_placeholder <span class="ot">&lt;-</span> <span class="cf">function</span>(template_name, request) {</span>
@@ -618,7 +698,7 @@ insert_mail_here</code></pre>
 <span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="fu">replace_template_placeholder</span>(<span class="st">'template.md'</span>, request) <span class="sc">%&gt;%</span> <span class="fu">cat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
+<div class="cell-output cell-output-stdout">
 <pre><code>#dataviz #twitter
 
 ![[tweet_c_gebhard_2022-04-03_082301_1.png]]
@@ -644,7 +724,7 @@ insert_mail_here</code></pre>
 </div>
 <p>As you can see, my <code>replace_template_placeholder()</code> function also replaces the typical <code>#</code> from Twitter with <code>(#)</code>. This is just a precaution to avoid wrong interpretation of these lines as headings in Markdown. Also, the original mail has not been inserted yet because we have no mail yet. But soooon. Finally, we need to write the replaced strings to a file. I got some helpers for that right here.</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>write_replaced_text <span class="ot">&lt;-</span> <span class="cf">function</span>(replaced_text, request) {</span>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>write_replaced_text <span class="ot">&lt;-</span> <span class="cf">function</span>(replaced_text, request) {</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  file_name <span class="ot">&lt;-</span> request<span class="sc">$</span>file_name[<span class="dv">1</span>] <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">'_1.png'</span>, <span class="st">'.md'</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_lines</span>(replaced_text, file_name)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">'/'</span>, file_name) </span>
@@ -658,7 +738,7 @@ insert_mail_here</code></pre>
 <p>Awesome! We created new image files and a new Markdown note in our working directory. Now, we have to move them to our Obsidian vault. This is the place where I collect all my Markdown notes for use in Obsidian. In my case, I will need to move the Markdown note to the vault directory and the images to a subdirectory within this vault. This is because I changed settings in Obsidian that makes sure that all attachments, e.g.&nbsp;images, are saved in a separate subdirectory.</p>
 <p>Here’s the function I created to get that job done. The function uses the <code>request</code> list again because it contains the file paths of the images. Here, <code>vault_location</code> and <code>attachments_dir</code> are the file paths to my Obsidian vault.</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># for unnesting</span></span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># for unnesting</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>move_files <span class="ot">&lt;-</span> <span class="cf">function</span>(request, replaced_template, vault_location, attachments_dir) {</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create from-to dictionary with file paths in each column</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  move_dict <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -690,7 +770,7 @@ insert_mail_here</code></pre>
 <h3 class="anchored" data-anchor-id="postman-gives-you-access">Postman gives you access</h3>
 <p>I have created a dummy mail account at gmail. Using the <code>mRpostman</code> package, we can establish a connection to our mail inbox. After the connection is established, we can filter for all new emails that are sent from our list of <code>allowed_senders</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mRpostman) <span class="co"># for email communication</span></span>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mRpostman) <span class="co"># for email communication</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>imap_mail <span class="ot">&lt;-</span> <span class="st">'imaps://imap.gmail.com'</span> <span class="co"># mail client</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Establish connection to imap server</span></span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">configure_imap</span>(</span>
@@ -715,14 +795,14 @@ insert_mail_here</code></pre>
 <p>If <code>mails</code> is not empty, i.e.&nbsp;if there are new mails, then we need to extract the tweet URLs from them. Unfortunately, depending on where you sent your email from, the mail text can be encoded.</p>
 <p>For example, I send most of the tweets via the share button on Twitter using my Android smartphone. And for some reason, my Android mail client encodes the mails in something called <code>base64</code>. But sending a tweet URL from Thunderbird on my computer works without any encoding. Here are two example mails I have sent to my dummy mail account.</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is_empty</span>(mails)) mail_bodys <span class="ot">&lt;-</span> mails <span class="sc">%&gt;%</span> con<span class="sc">$</span><span class="fu">fetch_text</span>()</span>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is_empty</span>(mails)) mail_bodys <span class="ot">&lt;-</span> mails <span class="sc">%&gt;%</span> con<span class="sc">$</span><span class="fu">fetch_text</span>()</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(mail_bodys[[<span class="dv">1</span>]])</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(mail_bodys[[<span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As you can see, the mail sent from my computer is legible but the other one is gibberish. Thankfully, Allan Cameron helped me out on <a href="https://stackoverflow.com/questions/71772972/translate-encoding-of-android-mail-in-r">Stackoverflow</a> to decode the mail. To decode the mail, the trick was to extract the parts between <code>base64</code> and <code>----</code>.</p>
 <p>There are two such texts in the encoded mail. Surprisingly, the first one decoded to a text without line breaks. This is why we take the second encoded part and decode it. However, this will give us an HTML text with all kinds of tags like <code>&lt;div&gt;</code> and what not. Therefore, we use <code>html_read()</code> and <code>html_text2()</code> from the <code>rvest</code> package to handle that. All of this is summarized in this helper function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>decode_encoded_mails <span class="ot">&lt;-</span> <span class="cf">function</span>(encoded_mails) {</span>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>decode_encoded_mails <span class="ot">&lt;-</span> <span class="cf">function</span>(encoded_mails) {</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ressource: https://stackoverflow.com/questions/71772972/translate-encoding-of-android-mail-in-r</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Find location in each encoded string where actual text starts</span></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  start_encoded <span class="ot">&lt;-</span> encoded_mails <span class="sc">%&gt;%</span> </span>
@@ -755,7 +835,7 @@ insert_mail_here</code></pre>
 <p>I feel like this is the most hacky part of this blog post. Unfortunately, your milage may vary here. If your phone or whatever you use encodes the mails differently, then you may have to adjust the function. But I hope that I have explained enough details and concepts for you to manage that if it comes to this.</p>
 <p>Recall that I send both plain mails from Thunderbird and encoded mails from Android. Therefore, here is another helper that decoded mails if neccessary from both types in one swoop.</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>decode_all_mails <span class="ot">&lt;-</span> <span class="cf">function</span>(mail_bodys) {</span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>decode_all_mails <span class="ot">&lt;-</span> <span class="cf">function</span>(mail_bodys) {</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Decode in case mail is base64 decoded</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  is_encoded <span class="ot">&lt;-</span> <span class="fu">str_detect</span>(mail_bodys, <span class="st">'Content-Transfer-Encoding'</span>)</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  encoded_mails <span class="ot">&lt;-</span> mail_bodys[is_encoded]</span>
@@ -775,7 +855,7 @@ insert_mail_here</code></pre>
 </ul>
 <p>The only new thing is that we use our postman connection to move the processed mails into a new directory (which I called “Processed”) on the email server. This way, the inbox is empty again or filled only with mails from unauthorized senders.</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is_empty</span>(mails)) {</span>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is_empty</span>(mails)) {</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Grab mail texts and URLs</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  mail_bodys <span class="ot">&lt;-</span> mails <span class="sc">%&gt;%</span> con<span class="sc">$</span><span class="fu">fetch_text</span>() <span class="sc">%&gt;%</span> decode_all_mails</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  urls <span class="ot">&lt;-</span> mail_bodys <span class="sc">%&gt;%</span> <span class="fu">str_extract</span>(<span class="st">'https.*'</span>)</span>
@@ -841,18 +921,19 @@ set wshshell = nothing</code></pre>
 
 
 </section>
+
 </main> <!-- /main -->
 <div>
 <hr>
 
 <h3> Stay in touch </h3>
 
-<p> If you enjoyed this post, then don't miss out on any future posts by subscribing to my email newsletter. </p>
+<p> If you enjoyed this post, then you may also enjoy my biweekly newsletter. Every other week I share thoughts on data visualization, statistics and Shiny web app development. </p>
 
-<iframe src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;width:60%;"></iframe>
+<iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;"></iframe>
 
 
-<h3> Support my work with a coffee </h3>
+<h3> You can also support my work with a coffee </h3>
 
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="rappa753" data-color="#06436e" data-emoji="☕" data-font="Lato" data-text="Support me" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" data-height="40px"></script>
 
@@ -864,8 +945,26 @@ set wshshell = nothing</code></pre>
 
 <hr>
 </div>
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -885,7 +984,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
     setTimeout(function() {
+      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -943,6 +1045,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="AlbertRapp/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
 
 
 </body></html>

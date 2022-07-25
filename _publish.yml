@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 9d597cca-2c24-444d-8ea3-3d1cf753b1d8
+      url: 'https://albert-rapp.de'

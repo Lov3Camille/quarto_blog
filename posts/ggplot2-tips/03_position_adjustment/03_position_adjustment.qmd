@@ -11,6 +11,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 For a long time I have wondered why some people would use `position_stack()` for position alignment instead of the simpler version `position = "stack"`.
 Recently, though, I learned the purpose of the former approach when I tried to add data labels to a stacked bar chart for better legibility.

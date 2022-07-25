@@ -2,7 +2,8 @@
     "rmdVisualMode": "false",
     "source_window_id": "",
     "Source": "Source",
-    "cursorPosition": "0,0",
+    "cursorPosition": "12,0",
     "scrollLine": "0",
-    "chunk_output_type": "console"
+    "chunk_output_type": "console",
+    "docOutlineVisible": "1"
 }

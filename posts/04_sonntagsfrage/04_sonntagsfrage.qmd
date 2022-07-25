@@ -17,6 +17,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 A bit more than two weeks ago, Germany held a federal election and, naturally, this is always reason for a lot of discussions and subjective truths.
 One subjective truth I encountered myself related to how fast the party CDU/CSU was able to collect and lose votes according to polls right before the election.

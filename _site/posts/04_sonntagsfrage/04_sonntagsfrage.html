@@ -1,61 +1,101 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.80">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="author" content="Albert Rapp">
-  <meta name="dcterms.date" content="2021-10-03">
-  <meta name="description" content="We try to find out if voters in Germany became more impulsive over time.">
-  <title>Albert Rapp - Did German Voters Become More Impulsive?</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
 
-  <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-  <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-  <script src="../../site_libs/clipboard/clipboard.min.js"></script>
-  <meta name="quarto:offset" content="../../">
-  <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-  <script src="../../site_libs/quarto-search/fuse.min.js"></script>
-  <script src="../../site_libs/quarto-search/quarto-search.js"></script>
-  <script src="../../site_libs/quarto-html/quarto.js"></script>
-  <script src="../../site_libs/quarto-html/popper.min.js"></script>
-  <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="../../site_libs/quarto-html/anchor.min.js"></script>
-  <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-  <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <script id="quarto-search-options" type="application/json">{
-    "location": "navbar",
-    "copy-button": false,
-    "collapse-after": 2,
-    "panel-placement": "end",
-    "type": "overlay",
-    "limit": 20,
-    "language": {
-      "search-no-results-text": "No results",
-      "search-matching-documents-text": "matching documents",
-      "search-copy-link-title": "Copy link to search",
-      "search-hide-matches-text": "Hide additional matches",
-      "search-more-match-text": "more match in this document",
-      "search-more-matches-text": "more matches in this document",
-      "search-clear-button-title": "Clear",
-      "search-detached-cancel-button-title": "Cancel",
-      "search-submit-button-title": "Submit"
-    }
-  }</script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Albert Rapp">
+<meta name="dcterms.date" content="2021-10-03">
+<meta name="description" content="We try to find out if voters in Germany became more impulsive over time.">
+
+<title>Albert Rapp - Did German Voters Become More Impulsive?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y3M69TZVPJ"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Y3M69TZVPJ', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+
+<meta name="twitter:title" content="Albert Rapp - Did German Voters Become More Impulsive?">
+<meta name="twitter:description" content="We try to find out if voters in Germany became more impulsive over time.">
+<meta name="twitter:image" content="https://albert-rapp.de/thumbnail_blog.png">
+<meta name="twitter:creator" content="@rappa753">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="418">
+<meta name="twitter:image-width" content="800">
 </head>
-<body>
+
+<body class="nav-fixed">
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
@@ -95,6 +135,10 @@
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
         <li>
+    <a class="dropdown-item" href="../../dataviz_portfolio.html">
+ <span class="dropdown-text">DataViz Portfolio</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://yards.albert-rapp.de/">
  <span class="dropdown-text">YARDS</span></a>
   </li>  
@@ -123,25 +167,57 @@
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc">
-<h2 id="toc-title">On this page</h2>
-<ul>
-<li><a href="#data-warning" class="nav-link active" data-scroll-target="#data-warning">Data Warning</a></li>
-<li><a href="#popularity-over-time" class="nav-link" data-scroll-target="#popularity-over-time">Popularity Over Time</a></li>
-<li><a href="#what-happens-close-to-an-election" class="nav-link" data-scroll-target="#what-happens-close-to-an-election">What Happens Close to an Election?</a></li>
-<li><a href="#three-month-volatility" class="nav-link" data-scroll-target="#three-month-volatility">Three-Month Volatility</a></li>
-<li><a href="#coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation">Coefficient of Variation</a></li>
-<li><a href="#conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-</ul>
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-warning" id="toc-data-warning" class="nav-link active" data-scroll-target="#data-warning">Data Warning</a></li>
+  <li><a href="#popularity-over-time" id="toc-popularity-over-time" class="nav-link" data-scroll-target="#popularity-over-time">Popularity Over Time</a></li>
+  <li><a href="#what-happens-close-to-an-election" id="toc-what-happens-close-to-an-election" class="nav-link" data-scroll-target="#what-happens-close-to-an-election">What Happens Close to an Election?</a></li>
+  <li><a href="#three-month-volatility" id="toc-three-month-volatility" class="nav-link" data-scroll-target="#three-month-volatility">Three-Month Volatility</a></li>
+  <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation">Coefficient of Variation</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Did German Voters Become More Impulsive?</h1>
+</div>
+
+<div>
+  <div class="description">
+    We try to find out if voters in Germany became more impulsive over time.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
 
-<div class="quarto-title"><h1 class="title display-7">Did German Voters Become More Impulsive?</h1><div class="quarto-description"><p>We try to find out if voters in Germany became more impulsive over time.</p></div></div><div class="quarto-categories"></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><p>Albert Rapp</p></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">October 3, 2021</p></div></div></div></header>
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Albert Rapp </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 3, 2021</p>
+    </div>
+  </div>
+    
+  </div>
+  
 
+</header>
+
+<div class="cell">
+
+</div>
 <p>A bit more than two weeks ago, Germany held a federal election and, naturally, this is always reason for a lot of discussions and subjective truths. One subjective truth I encountered myself related to how fast the party CDU/CSU was able to collect and lose votes according to polls right before the election.</p>
 <p>According to the <a href="https://en.wikipedia.org/wiki/Allensbach_Institute">Allensbach Institute</a>, a private polling institute based in Allensbach, Baden-Württemberg, on July 20th, approximately three months before the official election, the CDU/CSU could get 31.5% of the votes<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Almost four weeks later on the 19th of August, the Allensbach institute forecast only 27.5% for the CDU/CSU.</p>
 <p>At that time, I had the subjective feeling that it was quite common to assume that the CDU/CSU is on a steep downward spiral. In the end, the CDU/CSU was able to slow its downward course and got 24.1% of the votes in the election. While this is still an abysmal outcome for this party, I was surprised that it was not worse.</p>
@@ -163,7 +239,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Some recent trends are detectable but in this particular figure, I don’t see anything that points to an increased volatility in recent times.</p>
@@ -176,7 +252,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-5-1.png" style="height:120.0%" width="672"></p>
+<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-6-1.png" style="height:120.0%" width="672"></p>
 </div>
 </div>
 <p>Interestingly, the most recent election seems to have had more volatile last three months compared to previous elections. Indeed, this could indicate more impulsive voteing behavior but I am not entirely convinced yet.</p>
@@ -186,14 +262,14 @@
 <p>To see if the change in the last three months of the most recent election is truly something out of the ordinary, we need context. In order to get this context, let us consult our historical data again and compute the average share of votes for each party in every quarter of every year. Then, hopefully, these computed mean percentages represent the mood of the majority of people in a given quarter and we can see how much these means change from quarter to quarter.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Taking the fluctuations over time into account, the quarterly change right before this year’s election looks less extreme. In fact, most of the parties have had more extreme or similar changes on a quarterly basis in the past.</p>
 <p>Clearly, the fact that we aggregate the share of votes over a period of three months could potentially obscure fluctuations. But as the next plot shows, if we do the same thing but aggregate on a monthly basis, then the overall impression of the new monthly plot is the same as with the original quarterly plot.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -202,14 +278,14 @@
 <p>Before we try to make sense of what all that we have seen could mean in terms of voters’ impulsiveness, let us take one more stab at trying to measure the volatility. This time, let us compute the coefficient of variation (CV)<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> of the mean weekly share of votes for each quarter and each party and display this over time.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Except for the AfD and SPD, no profound trend in the CV can be detected as most regression lines appear to have a slope that is close to zero. Further, the AfD’s decrease in its monthly CV might be explained by the fact that it is a comparatively new party which means that might not have had a solid voter base in the beginning.</p>
 <p>Since we are interested in more recent voter behavior, let us try to take only the data since the beginning of 2013 into account. This should give us an impression about the three most recent elections.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Overall, as the confidence bands of the regression lines indicate that the real slope of the lines might as well be close to zero, I find it hard to argue either way about a more impulsive voting behavior.</p>
@@ -222,6 +298,7 @@
 
 
 </section>
+
 
 <div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
@@ -238,12 +315,12 @@
 
 <h3> Stay in touch </h3>
 
-<p> If you enjoyed this post, then don't miss out on any future posts by subscribing to my email newsletter. </p>
+<p> If you enjoyed this post, then you may also enjoy my biweekly newsletter. Every other week I share thoughts on data visualization, statistics and Shiny web app development. </p>
 
-<iframe src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;width:60%;"></iframe>
+<iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;"></iframe>
 
 
-<h3> Support my work with a coffee </h3>
+<h3> You can also support my work with a coffee </h3>
 
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="rappa753" data-color="#06436e" data-emoji="☕" data-font="Lato" data-text="Support me" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" data-height="40px"></script>
 
@@ -255,8 +332,26 @@
 
 <hr>
 </div>
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -276,7 +371,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
     setTimeout(function() {
+      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -334,6 +432,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://utteranc.es/client.js" repo="AlbertRapp/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
 
 
 </body></html>

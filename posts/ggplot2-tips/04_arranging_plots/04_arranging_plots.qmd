@@ -11,6 +11,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 In this week's [TidyTuesday](https://github.com/rfordatascience/tidytuesday), I noticed that I am frequently not using only `ggplot2` to create plots.
 In fact, it has become essential to me to leverage the powers of other great additional packages that align well with `ggplot2`.

@@ -11,6 +11,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| echo: false
+#| results: 'hide'
+renv::use(lockfile = "renv.lock")
+```
 
 This week, I am oddly proud to announce that I have reached 1000 followers on [Twitter](https://twitter.com/rappa753).
 Check out the visualization that I have created for this joyous occasion.
