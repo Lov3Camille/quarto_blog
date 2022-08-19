@@ -702,6 +702,9 @@ You will still need some knowledge of the engine you're using (`glm()` in this c
 But `{tidymodels}` will give you a nicer interface to the engine.
 And you can easily switch between engines and other models because it's all constructed from a unified interface.
 
+Finally, let me mention that switching to a Poisson regression is just a matter of exchanging `logistic_reg()` for `poisson_reg()` (and changing the mode to `"regression"`).
+In fact, that's how you switch to any other model, e.g. to random forests via `rand_forest()`.
+
 ## Conclusion
 
 That's a wrap!

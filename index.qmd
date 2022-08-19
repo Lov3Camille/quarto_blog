@@ -48,7 +48,7 @@ Avoid plots that look like a [gnome just puked a rainbow](https://giphy.com/gifs
 ##### [Yet Again: R + Data Science](https://yards.albert-rapp.de/)
 Course I taught at Ulm University. Inspired by the legendary [R4DS](https://r4ds.had.co.nz/), I take a tour through the data science workflow. Includes intro to `{shiny}` and `{tidymodels}`.
 
-##### [Mathematics of generalized linear models (soon as blog post)](https://twitter.com/rappa753/status/1538156165535760384)
+##### [The ultimate beginner's guide to generalized linear models (GLMs)](posts/14_GLMs/14_GLMS.qmd)
 Both Poisson and logistic regression are GLMs. I explain the fundamentals.
 
 ##### [Statistical Concepts (A Shiny App)](https://rappa.shinyapps.io/estimator-variance/)
