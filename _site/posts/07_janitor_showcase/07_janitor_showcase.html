@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -348,7 +351,11 @@ cookieconsent.run({
 <p>Data sets come with empty or superfluous rows or columns are not a rare sighting. This is especially true if you work with Excel files because there will be a lot of empty cells. Take a look at the dirty Excel data set from janitor’s <a href="https://github.com/sfirke/janitor/blob/main/dirty_data.xlsx">GitHub page</a>. It looks like this when you open it with Excel.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="dirty_data.PNG" class="img-fluid" width="751"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="dirty_data.PNG" class="lightbox" width="751" data-gallery="quarto-lightbox-gallery-1"><img src="dirty_data.PNG" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Taking a look just at this picture we may notice a couple of things.</p>
@@ -591,6 +598,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true});</script>
 
 
 

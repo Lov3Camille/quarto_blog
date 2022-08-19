@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -284,7 +287,11 @@ cookieconsent.run({
 <p>I’ve been reading <a href="https://mastering-shiny.org/">Mastering Shiny by Hadley Wickham</a> lately and one of the things that intrigued me is that you can make ggplots interactive. Though I believe that there are limitation to the level of interactiveness compared to using, say, <a href="https://albert-rapp.de/post/2021-10-16-exploratory-intro-plotly/">plotly</a>, I really wanted to practice interactive ggplots with Shiny. Naturally, I build a <a href="https://rappa.shinyapps.io/interactive-ggplot/">Shiny app</a> to figure things out. Here’s a demonstration of what the app can do. The rest of this chapter teaches you how some parts of the app were implemented.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Animation.gif" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="Animation.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Animation.gif" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="working-with-clicks" class="level2">
@@ -331,7 +338,11 @@ cookieconsent.run({
 <p>This will give us the following app.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="click_animation.gif" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="click_animation.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="click_animation.gif" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Like a cat, this app is a master of mixed signals and wants to be touched but only a random amount of times. Unlike a cat, the app will show you a plot displaying its latest message at the most recently clicked spot.</p>
@@ -345,7 +356,11 @@ cookieconsent.run({
 <p>So, let’s build an app that works as follows:</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="name_animation.gif" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="name_animation.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="name_animation.gif" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The notifications in this app are all powered through the <code>shinyFeedback</code> package. In order to activate its powers, drop a <code>shinyFeedback::useShinyFeedback()</code> in the UI like so.</p>
@@ -632,6 +647,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 

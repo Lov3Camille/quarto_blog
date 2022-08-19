@@ -24,7 +24,7 @@ website:
 # You can ignore this part in the first step
       - icon: rss
         href: blog.xml
-      - text: Ressources
+      - text: Resources
         menu: 
           - text: DataViz Portfolio
             href: dataviz_portfolio.html
@@ -45,6 +45,9 @@ website:
 
 filters:
   - code-filename
+  - lightbox
+
+lightbox: auto
 #########################  
   
 editor: source

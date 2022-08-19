@@ -39,6 +39,9 @@ ul.task-list{list-style: none;}
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -239,7 +242,11 @@ cookieconsent.run({
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_sonntagsfrage_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" width="672"><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Some recent trends are detectable but in this particular figure, I don’t see anything that points to an increased volatility in recent times.</p>
@@ -252,7 +259,11 @@ cookieconsent.run({
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-6-1.png" style="height:120.0%" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_sonntagsfrage_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" height="120%" data-gallery="quarto-lightbox-gallery-2" width="672"><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Interestingly, the most recent election seems to have had more volatile last three months compared to previous elections. Indeed, this could indicate more impulsive voteing behavior but I am not entirely convinced yet.</p>
@@ -262,14 +273,22 @@ cookieconsent.run({
 <p>To see if the change in the last three months of the most recent election is truly something out of the ordinary, we need context. In order to get this context, let us consult our historical data again and compute the average share of votes for each party in every quarter of every year. Then, hopefully, these computed mean percentages represent the mood of the majority of people in a given quarter and we can see how much these means change from quarter to quarter.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_sonntagsfrage_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" width="672"><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Taking the fluctuations over time into account, the quarterly change right before this year’s election looks less extreme. In fact, most of the parties have had more extreme or similar changes on a quarterly basis in the past.</p>
 <p>Clearly, the fact that we aggregate the share of votes over a period of three months could potentially obscure fluctuations. But as the next plot shows, if we do the same thing but aggregate on a monthly basis, then the overall impression of the new monthly plot is the same as with the original quarterly plot.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_sonntagsfrage_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" width="672"><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -278,14 +297,22 @@ cookieconsent.run({
 <p>Before we try to make sense of what all that we have seen could mean in terms of voters’ impulsiveness, let us take one more stab at trying to measure the volatility. This time, let us compute the coefficient of variation (CV)<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> of the mean weekly share of votes for each quarter and each party and display this over time.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_sonntagsfrage_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" width="672"><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Except for the AfD and SPD, no profound trend in the CV can be detected as most regression lines appear to have a slope that is close to zero. Further, the AfD’s decrease in its monthly CV might be explained by the fact that it is a comparatively new party which means that might not have had a solid voter base in the beginning.</p>
 <p>Since we are interested in more recent voter behavior, let us try to take only the data since the beginning of 2013 into account. This should give us an impression about the three most recent elections.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_sonntagsfrage_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" width="672"><img src="04_sonntagsfrage_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Overall, as the confidence bands of the regression lines indicate that the real slope of the lines might as well be close to zero, I find it hard to argue either way about a more impulsive voting behavior.</p>
@@ -437,6 +464,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":true,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom"});</script>
 
 
 

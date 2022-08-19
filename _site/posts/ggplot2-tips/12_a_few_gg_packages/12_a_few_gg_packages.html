@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Albert Rapp">
+<meta name="dcterms.date" content="2022-07-27">
+<meta name="description" content="This blog post is a quick one. It highlights a few hidden gems (functions) from well-known or not so well-known packages.">
+
+<title>Albert Rapp - 5 hidden gems from gg-packages to level up your dataviz game</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y3M69TZVPJ"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Y3M69TZVPJ', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+
+<meta name="twitter:title" content="Albert Rapp - 5 hidden gems from gg-packages to level up your dataviz game">
+<meta name="twitter:description" content="This blog post is a quick one. It highlights a few hidden gems (functions) from well-known or not so well-known packages.">
+<meta name="twitter:image" content="https://albert-rapp.de/thumbnail_blog.png">
+<meta name="twitter:creator" content="@rappa753">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="418">
+<meta name="twitter:image-width" content="800">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Albert Rapp</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/AlbertRapp"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rappa753"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/user/Alfrodo123"><i class="bi bi-youtube" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../../blog.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
+        <li>
+    <a class="dropdown-item" href="../../../dataviz_portfolio.html">
+ <span class="dropdown-text">DataViz Portfolio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://yards.albert-rapp.de/">
+ <span class="dropdown-text">YARDS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://rweekly.org/">
+ <span class="dropdown-text">R Weekly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.r-bloggers.com/">
+ <span class="dropdown-text">R Bloggers</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../archive.html">Archive</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#bump-charts" id="toc-bump-charts" class="nav-link active" data-scroll-target="#bump-charts">Bump charts</a></li>
+  <li><a href="#chicklet-charts" id="toc-chicklet-charts" class="nav-link" data-scroll-target="#chicklet-charts">Chicklet charts</a></li>
+  <li><a href="#camcorder" id="toc-camcorder" class="nav-link" data-scroll-target="#camcorder">Camcorder</a></li>
+  <li><a href="#arc-bars" id="toc-arc-bars" class="nav-link" data-scroll-target="#arc-bars">Arc bars</a></li>
+  <li><a href="#patchwork" id="toc-patchwork" class="nav-link" data-scroll-target="#patchwork">Patchwork</a></li>
+  <li><a href="#closing" id="toc-closing" class="nav-link" data-scroll-target="#closing">Closing</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">5 hidden gems from gg-packages to level up your dataviz game</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Visualization</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    This blog post is a quick one. It highlights a few hidden gems (functions) from well-known or not so well-known packages.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Albert Rapp </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 27, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>There are incredibly many gg-packages that extend the power of <code>{ggplot2}</code>. Many of these packages fulfill specific purposes. And to achieve their goals, most packages contain helper functions that act in the background. Thus, the helpers get no spotlight. This is unfortunate because some of them are superb.</p>
+<p>That’s why we’ll do things differently today! Today is about those amazing helper functions that deserve to be in the spotlight. I call these functions hidden gems. Let’s go!</p>
+<section id="bump-charts" class="level2">
+<h2 class="anchored" data-anchor-id="bump-charts">Bump charts</h2>
+<p>The <code>{ggbump}</code> package is designed to create bump charts (bump is a funny sound. Try saying it). This type of chart is especially useful to show rankings over time. On Twitter, you can find many of these. Here’s one from Stephan Teodosescu.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+For week 28 of <a href="https://twitter.com/hashtag/TidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">#TidyTuesday</a> I looked at flights ✈️ by country in Europe. <br><br>I wanted to use the patchwork package to combine a plot of the top ranked European countries (inspired by <a href="https://twitter.com/rappa753?ref_src=twsrc%5Etfw"><span class="citation" data-cites="rappa753">@rappa753</span></a>'s viz) and seasonality of flights. <br><br>Code: <a href="https://t.co/FRkq39YMm5">https://t.co/FRkq39YMm5</a><br><br> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> <a href="https://t.co/zHErTk0lwd">pic.twitter.com/zHErTk0lwd</a>
+</p>
+— Stephan Teodosescu (<span class="citation" data-cites="steodosescu">@steodosescu</span>) <a href="https://twitter.com/steodosescu/status/1549065989630832642?ref_src=twsrc%5Etfw">July 18, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>If you <a href="https://github.com/steodose/Tidy-Tuesday/blob/master/Week%2028_2022.R">take a look at Stephan’s code</a>, you will notice that it uses <code>{ggbump}</code>. And if you look even closer, you will notice that most of the heavy lifting (after computing the ranking) is done by <code>geom_bump()</code>. So, <code>geom_bump()</code> is the star of this package. And it’s really easy to use. Here’s an example from its <a href="https://www.rdocumentation.org/packages/ggbump/versions/0.1.0/topics/geom_bump">docs</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">country =</span> <span class="fu">c</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"India"</span>, <span class="st">"India"</span>, <span class="st">"India"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Sweden"</span>, <span class="st">"Sweden"</span>, <span class="st">"Sweden"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Germany"</span>, <span class="st">"Germany"</span>, <span class="st">"Germany"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Finland"</span>, <span class="st">"Finland"</span>, <span class="st">"Finland"</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">year =</span> <span class="fu">c</span>(<span class="dv">2011</span>, <span class="dv">2012</span>, <span class="dv">2013</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dv">2011</span>, <span class="dv">2012</span>, <span class="dv">2013</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dv">2011</span>, <span class="dv">2012</span>, <span class="dv">2013</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dv">2011</span>, <span class="dv">2012</span>, <span class="dv">2013</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">rank =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># USE THE DEV VERSION FROM GITHUB</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># INSTALL WITH devtools::install_github("davidsjoberg/ggbump")</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(year, rank, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  ggbump<span class="sc">::</span><span class="fu">geom_bump</span>(<span class="at">size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="12_a_few_gg_packages_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" width="672"><img src="12_a_few_gg_packages_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Bonus for bump charts: You can spice up your visual with images. Leverage <code>{ggflags}</code> to plot flags instead of points. Here’s an example of that (with code in thread) from Rosie Griffiths.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+Finally got around to doing my first <a href="https://twitter.com/hashtag/TidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">#TidyTuesday</a> <br>📊✈️<a href="https://twitter.com/hashtag/RStats?src=hash&amp;ref_src=twsrc%5Etfw">#RStats</a> <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> <a href="https://twitter.com/hashtag/ggplot?src=hash&amp;ref_src=twsrc%5Etfw">#ggplot</a> <a href="https://twitter.com/hashtag/Datavisualization?src=hash&amp;ref_src=twsrc%5Etfw">#Datavisualization</a> <a href="https://t.co/UIHvmlgHeB">pic.twitter.com/UIHvmlgHeB</a>
+</p>
+— Dr.&nbsp;Rosie Griffiths (<span class="citation" data-cites="Rosie_Griffiths">@Rosie_Griffiths</span>) <a href="https://twitter.com/Rosie_Griffiths/status/1549722543984107527?ref_src=twsrc%5Etfw">July 20, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>But let’s not waste any more time talking about the star of the package. Today is about the underrated helpers. In this case, that award goes to <code>geom_sigmoid()</code>.</p>
+<p>This function gives you the bumps of the bump charts. And their smoothness looks oddly satisfying. Check out how Georgios Karamanis used them for a stunning visual.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+For this week's <a href="https://twitter.com/hashtag/TidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">#TidyTuesday</a> I plotted the arrivals to Greek airports in 2022 compared to 2019. <br><br>code: <a href="https://t.co/84f65QoFZW">https://t.co/84f65QoFZW</a><a href="https://twitter.com/hashtag/Rstats?src=hash&amp;ref_src=twsrc%5Etfw">#Rstats</a> <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> <a href="https://t.co/BCWJC1YT6N">pic.twitter.com/BCWJC1YT6N</a>
+</p>
+— Georgios Karamanis (<span class="citation" data-cites="geokaramanis">@geokaramanis</span>) <a href="https://twitter.com/geokaramanis/status/1547916608118480896?ref_src=twsrc%5Etfw">July 15, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>So this function packs a punch on its own. That’s hidden gem material right there. But wait! There is more.</p>
+<p>Digging down even further, notice that <code>geom_sigmoid()</code> uses another helper called <code>sigmoid()</code>. This is the exact same function that I used to build a ribbon bump chart. You may have seen it on Twitter.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+As always, there's a <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> package for every occasion.<br><br>🔀 With {ggbump}, bump charts (for rankings) are easily created. <br>👷🏽 With a little bit of work, one can transform them to ribbon bump charts.<br><br>Here's a demo for this week's <a href="https://twitter.com/hashtag/tidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">#tidyTuesday</a>.<br><br>Code: <a href="https://t.co/PTDbhq2rbH">https://t.co/PTDbhq2rbH</a> <a href="https://t.co/PBgkWvjC4S">pic.twitter.com/PBgkWvjC4S</a>
+</p>
+— Albert Rapp (<span class="citation" data-cites="rappa753">@rappa753</span>) <a href="https://twitter.com/rappa753/status/1548335653909250048?ref_src=twsrc%5Etfw">July 16, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>The crucial part in this visual’s <a href="https://github.com/AlbertRapp/PublicTidyTuesday/blob/main/2022_w28_euroflights/2022_w28_euroflights.qmd">code</a> has been computing the points of the the sigmoidal curves between rectangles. After that, it’s a piece of cake. Good ol’ <code>geom_ribbon()</code> can handle the rest for us.</p>
+<p>To compute the points, <code>sigmoid()</code> was invaluable. All it needs are the start and end coordinates via <code>x_from</code>, <code>x_to</code>, <code>y_from</code> and <code>y_to</code>. Here’s the crucial step in my code (line 8). Note that I have used a bit of <a href="../09_functional_programming_ggplot/09_functional_programming_ggplot.html">functional programming magic</a> to compute the curves for each year.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>lower_bounds <span class="ot">&lt;-</span> state_data <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="fu">select</span>(year, percentage_flights_lower) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb2-4"><a href="#cb2-4"></a>      <span class="do">## Coordinates of left resp. right corner of rectangles</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>      <span class="at">x_from =</span> year <span class="sc">+</span> bar_width, </span>
+<span id="cb2-6"><a href="#cb2-6"></a>      <span class="at">x_to =</span> year <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> bar_width,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>      <span class="at">y_from =</span> percentage_flights_lower <span class="sc">+</span> margin_between_ribbons,</span>
+<span id="cb2-8"><a href="#cb2-8"></a>      <span class="at">y_to =</span> <span class="fu">c</span>(percentage_flights_lower[<span class="sc">-</span><span class="dv">1</span>], percentage_flights_lower[<span class="dv">7</span>]) <span class="sc">+</span> margin_between_ribbons,</span>
+<span id="cb2-9"><a href="#cb2-9"></a>      <span class="do">## Compute sigmoidal function for each year</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>      <span class="at">sigmoid =</span> <span class="fu">pmap</span>(<span class="fu">list</span>(x_from, x_to, y_from, y_to), sigmoid, <span class="at">n =</span> n_points, <span class="at">smooth =</span> <span class="dv">8</span>)</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="chicklet-charts" class="level2">
+<h2 class="anchored" data-anchor-id="chicklet-charts">Chicklet charts</h2>
+<p>Another great package is <code>{ggchicklet}</code>. Its main purpose is to generate chicklet charts. You can think of them as stacked rounded bar charts. Here’s a great example from Dan Oehm.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/hashtag/TidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">#TidyTuesday</a> week 29: Technology 👨‍💻<br><br>A lot of things to look at regarding technology adoption. Chose to take a quick look at Aus electricity production by type. Our reliance on fossil fuels is embarrassing but hopeful with the new govt…<a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> <a href="https://twitter.com/hashtag/DataVisualization?src=hash&amp;ref_src=twsrc%5Etfw">#DataVisualization</a> <a href="https://t.co/x5YcCOP2Yr">pic.twitter.com/x5YcCOP2Yr</a>
+</p>
+— Dan Oehm 🌲⛰️ (<span class="citation" data-cites="danoehm">@danoehm</span>) <a href="https://twitter.com/danoehm/status/1550412816795914240?ref_src=twsrc%5Etfw">July 22, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>But this is not the only great thing <code>{ggchicklet}</code> can do. Otherwise, why would we talk about it here? With <code>{ggchicklet}</code> you can also generate arbitrary rounded rectangles (not necessarily stacked ones). You just need to access <code>ggchicklet:::geom_rrect()</code> (three dots! This is really HIDDEN).</p>
+<p>It works just like <code>ggplot2::geom_rect()</code> but add another aesthetic to include the radius <code>r</code> of the corners. You can find an in-depth explanation in <a href="../11_rounded_rectangles/11_rounded_rectangles.html">one of my old blog posts</a>. Or you can find a summary in the following thread.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+By itself, a standard <a href="https://twitter.com/hashtag/ggplot2?src=hash&amp;ref_src=twsrc%5Etfw">#ggplot2</a> output can rarely convince anyone. <br><br>You need a story to communicate your message. And for effective storytelling, your plot has to be customized.<br><br>My newest blog post shows you how. <br><br>Find it at <a href="https://t.co/y32vlY3YMh">https://t.co/y32vlY3YMh</a><a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> 🧵🧵⬇️ <a href="https://t.co/roE17jN3gZ">pic.twitter.com/roE17jN3gZ</a>
+</p>
+— Albert Rapp (<span class="citation" data-cites="rappa753">@rappa753</span>) <a href="https://twitter.com/rappa753/status/1521882038688694277?ref_src=twsrc%5Etfw">May 4, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section id="camcorder" class="level2">
+<h2 class="anchored" data-anchor-id="camcorder">Camcorder</h2>
+<p>Originally, <a href="https://github.com/thebioengineer/camcorder"><code>{camcorder}</code></a> is intended to be used for recording a data viz process. Basically, you can record all of your intermediate plots with <code>camcorder::gg_record()</code>. Afterwards, you can you can generate a gif from these recordings (also an in-built feature). For example, you can find a gif on the creation Georgios Karamanis’ earlier plot <a href="https://twitter.com/geokaramanis/status/1548900174432460801">on Twitter</a>.</p>
+<p>So, this is the main purpose of <code>{camcorder}</code>. But the reason I list this package here is because it can be used off-label. I use <code>{camcorder}</code> for ALL my visualizations. But I rarely use it to build a gif.</p>
+<p>In my opinion, the REAL advantage of using <code>camcorder::gg_record()</code> is that it fixes your canvas size. This mean that whenever you generate a plot, it is saved as a png-file with predetermined dimensions and the resulting file is displayed in the <strong>Viewer</strong> window in RStudio (not the <strong>Plots</strong> window).</p>
+<p>Why is this helpful? Well, if you have ever created a custom plot and exported it with <code>ggsave()</code>, then you already know what can go wrong. Suddenly, all of your sizes can be wrong and your plot can look like a mess.</p>
+<p>That’s because you usually hard-code sizes, e.g.&nbsp;<code>14pt</code>. But <code>pt</code> is not a relative unit! So it will hardly give a f***, whether you export a 10x10-image or a 20x20-image. If you fix <code>14pt</code> you will get that. Regardless of canvas size. For more information on the theory behind that take a look at <a href="https://www.christophenicault.com/post/understand_size_dimension_ggplot2/">Christiphe Nicault’s blog post</a>.</p>
+<p>The solution is to start with a fixed canvas size. Only then can you safely hard-code. That’s why at the start of working of every visualization I call something like</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>camcorder<span class="sc">::</span><span class="fu">gg_record</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">dir =</span> <span class="st">'img'</span>, <span class="at">dpi =</span> <span class="dv">300</span>, <span class="at">width =</span> <span class="dv">16</span>, <span class="at">height =</span> <span class="dv">9</span>, <span class="at">units =</span> <span class="st">'cm'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will save all plots that I generate in a directory called <code>dir</code>. I can still resize my picture afterwards. But this is easier to do than guessing “good” dimensions with <code>ggsave()</code>.</p>
+<p>Beware though that some packages like <code>{patchwork}</code> or <code>{ggtext}</code> can mess with <code>{camcorder}</code>. So, be sure to call <code>gg_record()</code> <strong>after</strong> you have imported them. Alternatively, just call <code>gg_record()</code> again if you add one the these packages only later. Finally, if you want to use <code>{camcorder}</code> in conjunction with <code>{showtext}</code>, then be sure to let <code>{showtext}</code> know what dpi value you chose when calling <code>gg_record()</code>. This can be done via</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>showtext<span class="sc">::</span><span class="fu">showtext_opts</span>(<span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Otherwise, your texts may look weird.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+Note to self and that one person that was asking about weird text spacing last <a href="https://twitter.com/hashtag/TidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">#TidyTuesday</a> (really couldn't find your tweet anymore).<br><br>Same problem just hit me and I solved it by setting the showtext dpi properly to e.g 300 with<br><br>showtext_opts(dpi = 300)<br><br>Some ressources below⬇️ <a href="https://t.co/64OmubG09j">pic.twitter.com/64OmubG09j</a>
+</p>
+— Albert Rapp (<span class="citation" data-cites="rappa753">@rappa753</span>) <a href="https://twitter.com/rappa753/status/1501230840655003650?ref_src=twsrc%5Etfw">March 8, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section id="arc-bars" class="level2">
+<h2 class="anchored" data-anchor-id="arc-bars">Arc bars</h2>
+<p><code>{ggforce}</code> includes a great deal of functions for data visualization. In fact, that’s why I’ve already displayed some of them in a <a href="../05_ggforce_examples/05_ggforce_examples.html">previous blog post</a>. Many of these functions don’t follow a specific theme and that’s why it’s hard to keep track of them.</p>
+<p>In an effort to help my memory, let me teach you one function from <code>{ggforce}</code> I wish I had known a couple of weeks ago. Maybe you have seen the gauge plot I have created recently. Here’s a reminder for you.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+I used the <a href="https://twitter.com/hashtag/tidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">#tidyTuesday</a> pay gap data from last week to practice<br><br>1 building gauge charts with <a href="https://twitter.com/hashtag/ggplot2?src=hash&amp;ref_src=twsrc%5Etfw">#ggplot2</a> manually <br>2 adding a custom how-to-read legend with patchwork<br><br>Code : <a href="https://t.co/4dkXbOWYoz">https://t.co/4dkXbOWYoz</a><a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/7ZkpzmtgLz">pic.twitter.com/7ZkpzmtgLz</a>
+</p>
+— Albert Rapp (<span class="citation" data-cites="rappa753">@rappa753</span>) <a href="https://twitter.com/rappa753/status/1544663149760110592?ref_src=twsrc%5Etfw">July 6, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Drawing these gauges was painful. I did everything by hand, i.e.&nbsp;I computed the circles’ coordinates via <a href="https://en.wikipedia.org/wiki/Polar_coordinate_system#Converting_between_polar_and_Cartesian_coordinates">Polar coordinates</a>. In hindsight, this was waaaay too much effort.</p>
+<p>Just two weeks later, Nicola Rennie also built a gauge plot. But she was clever. She used <code>geom_arc_bar()</code> from <code>{ggforce}</code>. Here’s her tweet.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+Data from <a href="https://twitter.com/nberpubs?ref_src=twsrc%5Etfw"><span class="citation" data-cites="nberpubs">@nberpubs</span></a> for <a href="https://twitter.com/hashtag/TidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">#TidyTuesday</a> this week! I looked at changes in measles immunisations rates between 1980 and 2010. Used {ggforce} for some experimental double gauge plots!<br><br>Code: <a href="https://t.co/92H6g0iF0J">https://t.co/92H6g0iF0J</a><a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/DataViz?src=hash&amp;ref_src=twsrc%5Etfw">#DataViz</a> <a href="https://t.co/fqC4kJbkUT">pic.twitter.com/fqC4kJbkUT</a>
+</p>
+— Nicola Rennie (<span class="citation" data-cites="nrennie35">@nrennie35</span>) <a href="https://twitter.com/nrennie35/status/1549438413794861064?ref_src=twsrc%5Etfw">July 19, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>With <code>geom_arc_bar()</code>, it is easy to draw any curved bar. God forbid, you can even create a pie chart (see also <a href="https://alberts-newsletter.beehiiv.com/p/truthful-tidytuesday-contributions">Are food plots always foul?</a>). Check out the cool examples from the <a href="https://ggforce.data-imaginist.com/reference/geom_arc_bar.html">docs</a>.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Hard edges</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Rounded edges</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Pie example</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>arcs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">start =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi, <span class="at">length.out =</span> <span class="dv">11</span>)[<span class="sc">-</span><span class="dv">11</span>],</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">end =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi, <span class="at">length.out =</span> <span class="dv">11</span>)[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">r =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Behold the arcs</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(arcs) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  ggforce<span class="sc">::</span><span class="fu">geom_arc_bar</span>(<span class="fu">aes</span>(<span class="at">x0 =</span> <span class="dv">0</span>, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">r0 =</span> r <span class="sc">-</span> <span class="dv">1</span>, <span class="at">r =</span> r, <span class="at">start =</span> start,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">end =</span> end, <span class="at">fill =</span> r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="12_a_few_gg_packages_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" width="672"><img src="12_a_few_gg_packages_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_arc_bar uses geom_shape to draw the arcs, so you have all the</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># possibilities of that as well, e.g. rounding of corners</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(arcs) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  ggforce<span class="sc">::</span><span class="fu">geom_arc_bar</span>(<span class="fu">aes</span>(<span class="at">x0 =</span> <span class="dv">0</span>, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">r0 =</span> r <span class="sc">-</span> <span class="dv">1</span>, <span class="at">r =</span> r, <span class="at">start =</span> start,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">end =</span> end, <span class="at">fill =</span> r), <span class="at">radius =</span> <span class="fu">unit</span>(<span class="dv">4</span>, <span class="st">'mm'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="12_a_few_gg_packages_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" width="672"><img src="12_a_few_gg_packages_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you got values for a pie chart, use stat_pie</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'eaten'</span>, <span class="st">"eaten but said you didn</span><span class="sc">\'</span><span class="st">t"</span>, <span class="st">'cat took it'</span>, <span class="st">'for tonight'</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'will decompose slowly'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>pie <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(states, <span class="dv">2</span>), <span class="at">levels =</span> states),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'Pie'</span>, <span class="st">'Donut'</span>), <span class="at">each =</span> <span class="dv">5</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">r0 =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>), <span class="at">each =</span> <span class="dv">5</span>),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">focus =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="fl">0.2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="dv">2</span>),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">amount =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the cakes</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  ggforce<span class="sc">::</span><span class="fu">geom_arc_bar</span>(</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pie, <span class="at">stat =</span> <span class="st">'pie'</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">x0 =</span> <span class="dv">0</span>, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">r0 =</span> r0, <span class="at">r =</span> <span class="dv">1</span>, <span class="at">amount =</span> amount,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> state, <span class="at">explode =</span> focus</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  ggforce<span class="sc">::</span><span class="fu">theme_no_axes</span>() <span class="sc">+</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="st">''</span>, <span class="at">type =</span> <span class="st">'qual'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="12_a_few_gg_packages_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" width="672"><img src="12_a_few_gg_packages_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="patchwork" class="level2">
+<h2 class="anchored" data-anchor-id="patchwork">Patchwork</h2>
+<p>I have no doubt that you have already heard about <code>{patchwork}</code>. This package makes compositing plots super easy. If you haven’t heard about <code>{patchwork}</code>, here’s a super quick demo. Alternatively, you can check out my <a href="../04_arranging_plots/04_arranging_plots.html">blog post about it</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(cty, hwy))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> p <span class="co"># Add for side-by-side</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="12_a_few_gg_packages_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" width="672"><img src="12_a_few_gg_packages_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">/</span> p <span class="co"># Divide for stacking</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="12_a_few_gg_packages_files/figure-html/unnamed-chunk-9-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" width="672"><img src="12_a_few_gg_packages_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Of course, there’s more to <code>{patchwork}</code> than that. Let me show you one more overlooked function. This function is called <code>plot_spacer()</code>. It’s great when you need <code>w h i t e   s p a c e</code>.</p>
+<p>There’s really no need to cover every inch of your plot with ink. Actually, white space can give your visuals some room to breathe in. And that can make your visual so much more powerful. Try that next time you use assemble plots with <code>{patchwork}</code>. Here’s how <code>plot_spacer()</code> works.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">plot_spacer</span>() <span class="sc">+</span> p <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="12_a_few_gg_packages_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" width="672"><img src="12_a_few_gg_packages_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="closing" class="level2">
+<h2 class="anchored" data-anchor-id="closing">Closing</h2>
+<p>Alright, this concludes our short tour of hidden gems. I hope you liked them. Of course, the gg-ecosystem offers SO MUCH more. To find more packages, you can check out the <a href="https://exts.ggplot2.tidyverse.org/gallery/">extension library</a>.</p>
+<p>If you have any questions, let me know via mail or in the comments. And don’t forget to stay in touch via my <a href="https://alberts-newsletter.beehiiv.com/subscribe">Newsletter</a>, <a href="https://twitter.com/rappa753">Twitter</a> or my <a href="https://albert-rapp.de/blog.xml">RSS feed</a>. See you next time!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<div>
+<hr>
+
+<h3> Stay in touch </h3>
+
+<p> If you enjoyed this post, then you may also enjoy my biweekly newsletter. Every other week I share thoughts on data visualization, statistics and Shiny web app development. </p>
+
+<iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;"></iframe>
+
+
+<h3> You can also support my work with a coffee </h3>
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="rappa753" data-color="#06436e" data-emoji="☕" data-font="Lato" data-text="Support me" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" data-height="40px"></script>
+
+<h3> Share </h3>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="#rstats" data-show-count="false">Tweet</a><script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+<hr>
+</div>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="AlbertRapp/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","loop":true});</script>
+
+
+
+</body></html>

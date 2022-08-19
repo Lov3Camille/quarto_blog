@@ -684,7 +684,10 @@ tweak. Once you have found the desired code section, the CSS-code will also show
 you a mix of tags, classes and IDs that describe this element.
 
 For example, each blog title is described by
-`#title-block-header.quarto-title-block.default .quarto-title .title`. Just copy
+``` {.css}
+#title-block-header.quarto-title-block.default .quarto-title .title
+```
+Just copy
 this from your browser's developer page and put it into your SCSS-file. Then,
 add `{}` and describe how you want to style the element. This could look like
 so.
@@ -1061,40 +1064,167 @@ Let me briefly mention a few more gems.
         ```
         ````
 
-    -   **PDF Output:** On Twitter, I was asked if my guide can include some
-        info on Quarto's PDF output options. In this context, this reminds me
-        that a reader once emailed me and asked whether I can provide a PDF-file
-        for one of my blog posts. So, I guess, some people may be interested in
-        having PDF- as well as HTML-versions of your blog.\
-        In principle, you could add an additional format to, say, your
-        `_metadata.yml` file. In my case, this could look like
+-   **PDF Output:** On Twitter, I was asked if my guide can include some info on
+    Quarto's PDF output options. In this context, this reminds me that a reader
+    once emailed me and asked whether I can provide a PDF-file for one of my
+    blog posts. So, I guess, some people may be interested in having PDF- as
+    well as HTML-versions of your blog.\
+    In principle, you could add an additional format to, say, your
+    `_metadata.yml` file. In my case, this could look like
 
-        ``` {.yaml filename="posts/_metadata.yml"}
-        format:
-          html:
-            include-after-body: ../footer.html
-        pdf:
-          toc: true
-        ```
+    ``` {.yaml filename="posts/_metadata.yml"}
+    format:
+      html:
+        include-after-body: ../footer.html
+    pdf:
+      toc: true
+    ```
 
-        Unfortunately, I haven't found a button or shortcut to render **both**
-        outputs simultaneously in RStudio. But with the command line (which you
-        can use in RStudio), it is simple. You'll just have to call
+    Unfortunately, I haven't found a button or shortcut to render **both**
+    outputs simultaneously in RStudio. But with the command line (which you can
+    use in RStudio), it is simple. You'll just have to call
 
-        ``` bash
-        quarto render --to all
-        ```
+    ``` bash
+    quarto render --to all
+    ```
 
-        This will render all of your blog posts to both HTML and PDF. Now what's
-        cool is that a reader can easily access the PDF version by changing a
-        post's link e.g. from `site-url/post_XY.html` to
-        `site-url/post_XY.pdf`.\
-        Of course, all of that will only work if your blog posts contain static
-        elements that work in a PDF. Possibly, this can be cirumvented and
-        [Quarto's docs on book
-        formats](https://quarto.org/docs/books/book-output.html#format-options)
-        (it's a more pressing issue for books) may have some info on that.
-        Personally, I avoid PDFs in my blog.
+    This will render all of your blog posts to both HTML and PDF. Now what's
+    cool is that a reader can easily access the PDF version by changing a post's
+    link e.g. from `site-url/post_XY.html` to `site-url/post_XY.pdf`.\
+    Of course, all of that will only work if your blog posts contain static
+    elements that work in a PDF. Possibly, this can be cirumvented and [Quarto's
+    docs on book
+    formats](https://quarto.org/docs/books/book-output.html#format-options)
+    (it's a more pressing issue for books) may have some info on that.
+    Personally, I avoid PDFs in my blog.
+
+-   **Adding ressources:** Sometimes you want to add a few static materials to
+    your blog post. For example, I've included multiple `app.R` files in a [blog
+    post about Shiny](../06_shiny_app_learnings.html). In order to link to
+    these, they need to be included as a Ressource to the blog post.\
+    In this case, all files were located in a sub-directory called `DummyApp`.
+    Thus, I could include all files in the YAML header via
+
+    ``` yaml
+    format:
+      html:
+        resources:
+          - DummyApp
+    ```
+
+    Then, I can link to the files via their path. The same trick works, when you
+    want to include an audio file to your blog post. Make sure that the audio
+    file, say `audio.mp3`, is in your post's directory and then add some html
+    magic like so:
+
+    ::: panel-tabset
+    ## HTML-code
+
+    ``` html
+    <figure>
+    <figcaption>Click to listen</figcaption>
+    <audio controls src="audio.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+    </figure>
+    ```
+
+    ## YAML-header
+
+    ``` yaml
+    format:
+      html:
+        resources:
+          - audio.mp3
+    ```
+    :::
+
+-   **Links from your old blog:** If you already had a blog, then you may wish
+    that your old hyperlinks continue to work. For example, I have linked to my
+    blog post about rounded rectangles in [this
+    tweet](https://twitter.com/rappa753/status/1521882068887777281). Back then,
+    my blog post lived at
+
+    ``` yaml
+    https://albert-rapp.de/post/2022-05-01-use-grobs-to-get-rounded-corners/
+    ```
+
+    Everything after `.de/` reflects the directory structure of my **old blog**.
+    But this Quarto blog has a different structure. Now, this blog post lives at
+
+    ``` yaml
+    https://albert-rapp.de/posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html
+    ```
+
+    Therefore, the old link will not work anymore. Thankfully, we can save our
+    old link via
+    [redirects](https://quarto.org/docs/websites/website-navigation.html#redirects).
+    All we have to do is add an **alias** in the YAML header of the blog post
+    like so
+
+    ``` yaml
+    aliases: 
+      # Move from post's directory to root via ../../../
+      # Then add structure from old blog
+      - ../../../post/2022-05-01-use-grobs-to-get-rounded-corners/index.html
+    ```
+
+-   **Hide sections:** Using the chunk option `code-fold` you can hide code in a
+    dropdown menu like this.
+
+    ```{r}
+    #| code-fold: true
+    library(tidyverse)
+    ```
+
+    If you take a look at the resulting HTML-code, you will notice that this is
+    really just a combination of two HTML-tags `<details>` and `<summary>`.
+    Thus, folding is not just restricted to code chunks. If you want to e.g.
+    fold an entire section, you can do it manually with HTML.
+    
+    
+    ``` {.html}
+    <details>
+    <summary> Appendix </summary>
+
+    ## Appendix 
+    I can fill this with regular Markdown. This is **bold**. This is *italic*.
+
+    Also, code chunks work. 
+  
+    ```{.r}
+    library(ggplot2)
+    mpg |>
+      ggplot(aes(hwy, cty)) +
+      geom_jitter()
+    #``` 
+    (Remove # and . in {.r}. It's only here for the demo. 
+    Without it, this is a nested code block.
+    And this does not render well.) 
+    </details>
+      
+    ```
+  
+
+    <details>
+
+    <summary>Appendix</summary>
+
+    ## Appendix
+
+    I can fill this with regular Markdown. This is **bold**. This is *italic*.
+
+    Also, code chunks work.
+
+    ```{r}
+    library(ggplot2)
+    mpg |>
+      ggplot(aes(hwy, cty)) +
+      geom_jitter()
+    ```
+
+    </details>
 
 ## Publish your blog online
 

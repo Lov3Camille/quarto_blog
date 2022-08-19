@@ -68,7 +68,8 @@ ul.task-list{list-style: none;}
 
     const options = {
       valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
@@ -160,8 +161,8 @@ cookieconsent.run({
  </a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
         <li>
     <a class="dropdown-item" href="./dataviz_portfolio.html">
  <span class="dropdown-text">DataViz Portfolio</span></a>
@@ -219,7 +220,83 @@ cookieconsent.run({
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="" data-listing-date-sort="1658613600000" data-listing-file-modified-sort="1658671128295" data-listing-reading-time-sort="35.715">
+<div class="quarto-post image-right" data-index="0" data-categories="Statistics,ML" data-listing-date-sort="1660255200000" data-listing-file-modified-sort="1660911792478" data-listing-reading-time-sort="18.345">
+<div class="body">
+<a href="./posts/14_GLMs/14_GLMS.html">
+<h3 class="no-anchor listing-title">
+The ultimate beginner’s guide to generalized linear models (GLMs)
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/14_GLMs/14_GLMS.html">
+<div class="listing-date">
+Aug 12, 2022
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Visualization" data-listing-date-sort="1660082400000" data-listing-file-modified-sort="1660229315655" data-listing-reading-time-sort="7.055">
+<div class="body">
+<a href="./posts/ggplot2-tips/14_scaled_heatmaps/14_scaled_heatmaps.html">
+<h3 class="no-anchor listing-title">
+Forget regular heat maps. Use bubbles on a grid!
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/14_scaled_heatmaps/14_scaled_heatmaps.html">
+<div class="listing-date">
+Aug 10, 2022
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="Visualization" data-listing-date-sort="1659304800000" data-listing-file-modified-sort="1660226405797" data-listing-reading-time-sort="6.07">
+<div class="body">
+<a href="./posts/ggplot2-tips/13_alternative_corrplots/13_alternative_corrplots.html">
+<h3 class="no-anchor listing-title">
+Alternative ways to visualize correlations
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/13_alternative_corrplots/13_alternative_corrplots.html">
+<div class="listing-date">
+Aug 1, 2022
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="Visualization" data-listing-date-sort="1658872800000" data-listing-file-modified-sort="1658912488602" data-listing-reading-time-sort="10.86">
+<div class="body">
+<a href="./posts/ggplot2-tips/12_a_few_gg_packages/12_a_few_gg_packages.html">
+<h3 class="no-anchor listing-title">
+5 hidden gems from gg-packages to level up your dataviz game
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-tips/12_a_few_gg_packages/12_a_few_gg_packages.html">
+<div class="listing-date">
+Jul 27, 2022
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="" data-listing-date-sort="1658613600000" data-listing-file-modified-sort="1660229427219" data-listing-reading-time-sort="39.245">
 <div class="body">
 <a href="./posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html">
 <h3 class="no-anchor listing-title">
@@ -238,7 +315,7 @@ Jul 24, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Shiny,Shorts" data-listing-date-sort="1652047200000" data-listing-file-modified-sort="1658425705284" data-listing-reading-time-sort="0.695">
+<div class="quarto-post image-right" data-index="5" data-categories="Shiny,Shorts" data-listing-date-sort="1652047200000" data-listing-file-modified-sort="1660307857136" data-listing-reading-time-sort="0.695">
 <div class="body">
 <a href="./posts/12_embedding_shiny_app/12_embedding_shiny_app.html">
 <h3 class="no-anchor listing-title">
@@ -257,7 +334,7 @@ May 9, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="Visualization,API" data-listing-date-sort="1651788000000" data-listing-file-modified-sort="1658425679024" data-listing-reading-time-sort="8.46">
+<div class="quarto-post image-right" data-index="6" data-categories="Visualization,API" data-listing-date-sort="1651788000000" data-listing-file-modified-sort="1658425679024" data-listing-reading-time-sort="8.46">
 <div class="body">
 <a href="./posts/11_track_twitter_followers/11_track_twitter_followers.html">
 <h3 class="no-anchor listing-title">
@@ -276,7 +353,7 @@ May 6, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="Visualization" data-listing-date-sort="1651615200000" data-listing-file-modified-sort="1658425945204" data-listing-reading-time-sort="18.515">
+<div class="quarto-post image-right" data-index="7" data-categories="Visualization" data-listing-date-sort="1651615200000" data-listing-file-modified-sort="1659013461679" data-listing-reading-time-sort="18.515">
 <div class="body">
 <a href="./posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html">
 <h3 class="no-anchor listing-title">
@@ -295,7 +372,7 @@ May 4, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="Opinion" data-listing-date-sort="1649973600000" data-listing-file-modified-sort="1658425669760" data-listing-reading-time-sort="11.45">
+<div class="quarto-post image-right" data-index="8" data-categories="Opinion" data-listing-date-sort="1649973600000" data-listing-file-modified-sort="1658425669760" data-listing-reading-time-sort="11.45">
 <div class="body">
 <a href="./posts/10_lessons_learned_teaching_nonprogrammers/10_lessons_learned_teaching_nonprogrammers.html">
 <h3 class="no-anchor listing-title">
@@ -314,7 +391,7 @@ Apr 15, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="Automation,API" data-listing-date-sort="1649887200000" data-listing-file-modified-sort="1658425653732" data-listing-reading-time-sort="20.205">
+<div class="quarto-post image-right" data-index="9" data-categories="Automation,API" data-listing-date-sort="1649887200000" data-listing-file-modified-sort="1658425653732" data-listing-reading-time-sort="20.205">
 <div class="body">
 <a href="./posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html">
 <h3 class="no-anchor listing-title">
@@ -333,7 +410,7 @@ Apr 14, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="Visualization" data-listing-date-sort="1648504800000" data-listing-file-modified-sort="1658425932156" data-listing-reading-time-sort="17.96">
+<div class="quarto-post image-right" data-index="10" data-categories="Visualization" data-listing-date-sort="1648504800000" data-listing-file-modified-sort="1658425932156" data-listing-reading-time-sort="17.96">
 <div class="body">
 <a href="./posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html">
 <h3 class="no-anchor listing-title">
@@ -352,7 +429,7 @@ Mar 29, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="Visualization,Functional Programming" data-listing-date-sort="1648162800000" data-listing-file-modified-sort="1658425913888" data-listing-reading-time-sort="6.525">
+<div class="quarto-post image-right" data-index="11" data-categories="Visualization,Functional Programming" data-listing-date-sort="1648162800000" data-listing-file-modified-sort="1658425913888" data-listing-reading-time-sort="6.525">
 <div class="body">
 <a href="./posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html">
 <h3 class="no-anchor listing-title">
@@ -371,7 +448,7 @@ Mar 25, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="Visualization" data-listing-date-sort="1646348400000" data-listing-file-modified-sort="1658425897600" data-listing-reading-time-sort="6.31">
+<div class="quarto-post image-right" data-index="12" data-categories="Visualization" data-listing-date-sort="1646348400000" data-listing-file-modified-sort="1658425897600" data-listing-reading-time-sort="6.31">
 <div class="body">
 <a href="./posts/ggplot2-tips/08_fonts_and_icons/08_fonts_and_icons.html">
 <h3 class="no-anchor listing-title">
@@ -390,7 +467,7 @@ Mar 4, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="Visualization" data-listing-date-sort="1645225200000" data-listing-file-modified-sort="1658425882336" data-listing-reading-time-sort="12.245">
+<div class="quarto-post image-right" data-index="13" data-categories="Visualization" data-listing-date-sort="1645225200000" data-listing-file-modified-sort="1658425882336" data-listing-reading-time-sort="12.245">
 <div class="body">
 <a href="./posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html">
 <h3 class="no-anchor listing-title">
@@ -409,7 +486,7 @@ Feb 19, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="Shiny" data-listing-date-sort="1642374000000" data-listing-file-modified-sort="1658425641224" data-listing-reading-time-sort="10.33">
+<div class="quarto-post image-right" data-index="14" data-categories="Shiny" data-listing-date-sort="1642374000000" data-listing-file-modified-sort="1658425641224" data-listing-reading-time-sort="10.33">
 <div class="body">
 <a href="./posts/08_drawing_ggplot_interactively/08_drawing_ggplot_interactively.html">
 <h3 class="no-anchor listing-title">
@@ -428,7 +505,7 @@ Jan 17, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="" data-listing-date-sort="1641942000000" data-listing-file-modified-sort="1658425633236" data-listing-reading-time-sort="3.885">
+<div class="quarto-post image-right" data-index="15" data-categories="" data-listing-date-sort="1641942000000" data-listing-file-modified-sort="1658425633236" data-listing-reading-time-sort="3.885">
 <div class="body">
 <a href="./posts/07_janitor_showcase/07_janitor_showcase.html">
 <h3 class="no-anchor listing-title">
@@ -447,7 +524,7 @@ Jan 12, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="Visualization,Opinion" data-listing-date-sort="1641769200000" data-listing-file-modified-sort="1658425869964" data-listing-reading-time-sort="3.465">
+<div class="quarto-post image-right" data-index="16" data-categories="Visualization,Opinion" data-listing-date-sort="1641769200000" data-listing-file-modified-sort="1658425869964" data-listing-reading-time-sort="3.465">
 <div class="body">
 <a href="./posts/ggplot2-tips/06_learning_by_thieving/06_learning_by_thieving.html">
 <h3 class="no-anchor listing-title">
@@ -466,7 +543,7 @@ Jan 10, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="Visualization" data-listing-date-sort="1640905200000" data-listing-file-modified-sort="1658425851408" data-listing-reading-time-sort="8.895">
+<div class="quarto-post image-right" data-index="17" data-categories="Visualization" data-listing-date-sort="1640905200000" data-listing-file-modified-sort="1658425851408" data-listing-reading-time-sort="8.895">
 <div class="body">
 <a href="./posts/ggplot2-tips/05_ggforce_examples/05_ggforce_examples.html">
 <h3 class="no-anchor listing-title">
@@ -485,7 +562,7 @@ Dec 31, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="Shiny" data-listing-date-sort="1639004400000" data-listing-file-modified-sort="1658425620004" data-listing-reading-time-sort="14.93">
+<div class="quarto-post image-right" data-index="18" data-categories="Shiny" data-listing-date-sort="1639004400000" data-listing-file-modified-sort="1658425620004" data-listing-reading-time-sort="14.93">
 <div class="body">
 <a href="./posts/06_shiny_app_learnings/06_shiny_app_learnings.html">
 <h3 class="no-anchor listing-title">
@@ -504,7 +581,7 @@ Dec 9, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="Visualization" data-listing-date-sort="1635372000000" data-listing-file-modified-sort="1658425826744" data-listing-reading-time-sort="8.8">
+<div class="quarto-post image-right" data-index="19" data-categories="Visualization" data-listing-date-sort="1635372000000" data-listing-file-modified-sort="1658425826744" data-listing-reading-time-sort="8.8">
 <div class="body">
 <a href="./posts/ggplot2-tips/04_arranging_plots/04_arranging_plots.html">
 <h3 class="no-anchor listing-title">
@@ -523,7 +600,7 @@ Oct 28, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="Visualization,Exploratory Intro" data-listing-date-sort="1634335200000" data-listing-file-modified-sort="1658425597852" data-listing-reading-time-sort="12.245">
+<div class="quarto-post image-right" data-index="20" data-categories="Visualization,Exploratory Intro" data-listing-date-sort="1634335200000" data-listing-file-modified-sort="1658425597852" data-listing-reading-time-sort="12.245">
 <div class="body">
 <a href="./posts/05_exploratory_intro_plotly/05_exploratory_intro_quarto.html">
 <h3 class="no-anchor listing-title">
@@ -542,7 +619,7 @@ Oct 16, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="" data-listing-date-sort="1633212000000" data-listing-file-modified-sort="1658425582169" data-listing-reading-time-sort="13.655">
+<div class="quarto-post image-right" data-index="21" data-categories="" data-listing-date-sort="1633212000000" data-listing-file-modified-sort="1658425582169" data-listing-reading-time-sort="13.655">
 <div class="body">
 <a href="./posts/04_sonntagsfrage/04_sonntagsfrage.html">
 <h3 class="no-anchor listing-title">
@@ -561,7 +638,7 @@ Oct 3, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="Functional Programming" data-listing-date-sort="1631743200000" data-listing-file-modified-sort="1658425527109" data-listing-reading-time-sort="11.58">
+<div class="quarto-post image-right" data-index="22" data-categories="Functional Programming" data-listing-date-sort="1631743200000" data-listing-file-modified-sort="1658425527109" data-listing-reading-time-sort="11.58">
 <div class="body">
 <a href="./posts/03_writing_versatile_fcts/03_writing_versatile_fcts.html">
 <h3 class="no-anchor listing-title">
@@ -580,7 +657,7 @@ Sep 16, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="Visualization" data-listing-date-sort="1631311200000" data-listing-file-modified-sort="1658425817692" data-listing-reading-time-sort="3.46">
+<div class="quarto-post image-right" data-index="23" data-categories="Visualization" data-listing-date-sort="1631311200000" data-listing-file-modified-sort="1658425817692" data-listing-reading-time-sort="3.46">
 <div class="body">
 <a href="./posts/ggplot2-tips/03_position_adjustment/03_position_adjustment.html">
 <h3 class="no-anchor listing-title">
@@ -599,7 +676,7 @@ Sep 11, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="20" data-categories="Visualization" data-listing-date-sort="1629324000000" data-listing-file-modified-sort="1658425805068" data-listing-reading-time-sort="5.7">
+<div class="quarto-post image-right" data-index="24" data-categories="Visualization" data-listing-date-sort="1629324000000" data-listing-file-modified-sort="1658425805068" data-listing-reading-time-sort="5.7">
 <div class="body">
 <a href="./posts/ggplot2-tips/02_aesthetic_labels/02_aesthetic_labels.html">
 <h3 class="no-anchor listing-title">
@@ -618,7 +695,7 @@ Aug 19, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="21" data-categories="Visualization" data-listing-date-sort="1628287200000" data-listing-file-modified-sort="1658425793940" data-listing-reading-time-sort="5.65">
+<div class="quarto-post image-right" data-index="25" data-categories="Visualization" data-listing-date-sort="1628287200000" data-listing-file-modified-sort="1658425793940" data-listing-reading-time-sort="5.65">
 <div class="body">
 <a href="./posts/ggplot2-tips/01_a_few_ggplot_tips/01_a_few_ggplot_tips.html">
 <h3 class="no-anchor listing-title">
@@ -637,7 +714,7 @@ Aug 7, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="22" data-categories="Simulation" data-listing-date-sort="1627423200000" data-listing-file-modified-sort="1658335856346" data-listing-reading-time-sort="17.395">
+<div class="quarto-post image-right" data-index="26" data-categories="Simulation" data-listing-date-sort="1627423200000" data-listing-file-modified-sort="1658335856346" data-listing-reading-time-sort="17.395">
 <div class="body">
 <a href="./posts/02_luck_vs_skill/02_luck_vs_skill.html">
 <h3 class="no-anchor listing-title">
@@ -656,7 +733,7 @@ Jul 28, 2021
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="23" data-categories="" data-listing-date-sort="1626213600000" data-listing-file-modified-sort="1658325479145" data-listing-reading-time-sort="9.875">
+<div class="quarto-post image-right" data-index="27" data-categories="" data-listing-date-sort="1626213600000" data-listing-file-modified-sort="1658325479145" data-listing-reading-time-sort="9.875">
 <div class="body">
 <a href="./posts/01_visualize_kernel_density/01_visualize_kernel_density.html">
 <h3 class="no-anchor listing-title">
@@ -679,6 +756,9 @@ Jul 14, 2021
 <div class="listing-no-matching d-none">
 No matching items
 </div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

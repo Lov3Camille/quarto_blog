@@ -40,4 +40,3 @@ UPDATE: Originally, I had demonstrated the above code chunk here.
 But that causes unnecessary traffic on my shinyapps.io account, so I removed the demo.
 
 
-

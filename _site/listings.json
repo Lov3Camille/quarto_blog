@@ -2,6 +2,10 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/14_GLMs/14_GLMS.html",
+      "/posts/ggplot2-tips/14_scaled_heatmaps/14_scaled_heatmaps.html",
+      "/posts/ggplot2-tips/13_alternative_corrplots/13_alternative_corrplots.html",
+      "/posts/ggplot2-tips/12_a_few_gg_packages/12_a_few_gg_packages.html",
       "/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html",
       "/posts/12_embedding_shiny_app/12_embedding_shiny_app.html",
       "/posts/11_track_twitter_followers/11_track_twitter_followers.html",
@@ -31,6 +35,10 @@
   {
     "listing": "/archive.html",
     "items": [
+      "/posts/14_GLMs/14_GLMS.html",
+      "/posts/ggplot2-tips/14_scaled_heatmaps/14_scaled_heatmaps.html",
+      "/posts/ggplot2-tips/13_alternative_corrplots/13_alternative_corrplots.html",
+      "/posts/ggplot2-tips/12_a_few_gg_packages/12_a_few_gg_packages.html",
       "/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html",
       "/posts/12_embedding_shiny_app/12_embedding_shiny_app.html",
       "/posts/11_track_twitter_followers/11_track_twitter_followers.html",
@@ -60,6 +68,9 @@
   {
     "listing": "/ggplot-series.html",
     "items": [
+      "/posts/ggplot2-tips/14_scaled_heatmaps/14_scaled_heatmaps.html",
+      "/posts/ggplot2-tips/13_alternative_corrplots/13_alternative_corrplots.html",
+      "/posts/ggplot2-tips/12_a_few_gg_packages/12_a_few_gg_packages.html",
       "/posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html",
       "/posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html",
       "/posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html",

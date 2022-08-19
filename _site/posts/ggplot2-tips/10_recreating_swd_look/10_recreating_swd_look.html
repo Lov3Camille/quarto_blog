@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -347,13 +350,21 @@ cookieconsent.run({
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="sc">~</span>scales<span class="sc">::</span><span class="fu">percent</span>(., <span class="at">accuracy =</span> <span class="dv">1</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>As it is right know, the plot shows data. But what is the message of this dataviz? To make the message more explicit, the plot is transformed during the course of the video. Take a look at what story the exact same data can tell.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="final.png" class="img-fluid" width="944"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="final.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" width="944"><img src="final.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>From reading the SWD book, I know that some of the techniques that were used in this picture can be used in many settings. Therefore, I decided to document the steps I took to recreate the dataviz with ggplot.</p>
@@ -374,7 +385,11 @@ cookieconsent.run({
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">'white'</span>, <span class="co"># set color to distinguish bars better</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Notice that I used the <code>group</code>- instead of <code>fill</code>-aesthetic because I only need grouping. Also, it is always a good idea to avoid <a href="https://albert-rapp.de/post/2022-02-19-ggplot2-color-tips-from-datawrapper/">excessive use of colors</a>. This will allow us to emphasize parts of our story with colors later on.</p>
@@ -398,7 +413,11 @@ cookieconsent.run({
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">'white'</span>,</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -414,7 +433,11 @@ cookieconsent.run({
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">'white'</span>,</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now, we can’t really make out which warehouses have a higher accuracy. Given that the accuracy is likely something we care about, this is bad. But we can change the order even more. For instance, we can also order the bars by error rate. Here, <code>fct_reorder()</code> is our friend.</p>
@@ -432,7 +455,11 @@ cookieconsent.run({
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">'white'</span>,</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -466,7 +493,11 @@ cookieconsent.run({
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Notice how your eyes are immediately drawn to the intended region. That’s the power of colors! Also, note that setting the colors manually like this worked because <code>fill</code> in <code>geom_col()</code> is vectorized. This is not always the case. In these instances, you may find that <a href="https://albert-rapp.de/post/2022-03-25-functional-programming-when-geoms-are-not-vectorized/">functional programming solves your problem</a>.</p>
@@ -484,7 +515,11 @@ cookieconsent.run({
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Here, we turned off the expansion to avoid wasting white space. Now, the IDs are at their designated place and we do not see lines from their names to the bars anymore. If you want even more power on the space expansion you can leave <code>expand = T</code> and modify the expansion for each axis with <code>scale_*_continuous()</code> and the <code>expansion()</code> function. Check out <a href="https://twitter.com/ChBurkhart/status/1492087527511052290/photo/1">Christian Burkhart’s neat cheatsheet</a> that teaches you everything you need to understand expansions.</p>
@@ -516,7 +551,11 @@ cookieconsent.run({
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Notice that we have customized the theme elements via <code>element_*()</code> functions. Basically, each geom type like “line”, “rect”, “text”, etc. has their own <code>element_*()</code> function. The <code>theme()</code> function expects attributes to be changed using these. If you are unfamiliar with this concept, maybe the corresponding part in my <a href="https://yards.albert-rapp.de/statquant#themes">YARDS lecture notes</a> will help you.</p>
@@ -534,13 +573,21 @@ cookieconsent.run({
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Once again, the design enforces that important information like what’s on an axis is in the top left corner. This was done by changing <code>hjust</code>. In this case <code>hjust = 0</code> corresponds to left-justified whereas <code>hjust = 1</code> corresponds to right-justified. Of course, <code>vjust</code> works similarly. For more details w.r.t. <code>hjust</code> and <code>vjust</code>, check out <a href="https://stackoverflow.com/questions/7263849/what-do-hjust-and-vjust-do-when-making-a-plot-using-ggplot">this stackoverflow answer</a> that gives you everything that you need in one visual. For your convenience, here is a slightly changed form of that visual.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>But once you start aligning the axes titles, you notice that the 0% and 100% labels fall outside the grid. We could try to set <code>hjust</code> of <code>axis.text.x</code> in <code>theme()</code> but sadly this is not vectorized. Subsequently, all <code>hjust</code> values must be the same. That’s not bueno. Therefore, I drew the axes labels manually with <code>annotate()</code> but make sure that you remove the current labels in <code>scale_x_continuous()</code>. Also, now you know why we had to set <code>clip = 'off'</code> earlier. The axes labels are outside of the regular panel.</p>
@@ -569,7 +616,11 @@ cookieconsent.run({
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -591,7 +642,11 @@ cookieconsent.run({
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Notice that I used a <code>hjust</code> value greater than 1 here to add some white space on the right side of the labels. Otherwise, the percent sign will be too close to the bar’s edge.</p>
@@ -613,7 +668,11 @@ cookieconsent.run({
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-16-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -645,7 +704,11 @@ cookieconsent.run({
 <span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span>
 <span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>text_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="10_recreating_swd_look_files/figure-html/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" width="672"><img src="10_recreating_swd_look_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -698,7 +761,11 @@ cookieconsent.run({
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="final.png" class="img-fluid" width="944"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="final.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" width="944"><img src="final.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -851,6 +918,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"loop":true,"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});</script>
 
 
 

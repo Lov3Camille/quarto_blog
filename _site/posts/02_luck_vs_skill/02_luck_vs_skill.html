@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -344,7 +347,11 @@ cookieconsent.run({
 <p>To illustrate the high and low skill distribution, let us take a look at the densities of the beta distributions in question.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="02_luck_vs_skill_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-1"><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now, let us write a function that runs a single iteration of the selection process and marks applicants as either selected or not. We will denote the number of applicants to be picked via <code>m</code>. In our astronaut example it holds that <span class="math inline">\(m = 11\)</span>.</p>
@@ -436,7 +443,11 @@ cookieconsent.run({
 <span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.line.y =</span> <span class="fu">element_blank</span>(), </span>
 <span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="02_luck_vs_skill_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-2"><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Here, we added a table of the average luck score of the successful applicants to the boxplots that summarize the distribution of their luck scores. As it turns out, we can clearly see differences between the luck distribution of the successful candidates across the different skill distributions. Interestingly, the uniform skill distribution comes quite close to the average value Veritasium finds in his video, so I guess we can assume that he probably used that skill distribution.</p>
@@ -446,7 +457,11 @@ cookieconsent.run({
 <p>Finally, to break this scenario down to something more realistic with a higher available spots to applicants ratio I ran the same simulation but with only one available position and 100 applications.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> The results look similar but as expected if their are less applicants for one position, then luck plays a lesser but still important role.</p>
 <div class="cell" data-hash="02_luck_vs_skill_cache/html/unnamed-chunk-8_e4fae5a33fb9c1ef00a05ef054be9a7b">
 <div class="cell-output-display">
-<p><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="02_luck_vs_skill_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-3"><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -494,14 +509,22 @@ cookieconsent.run({
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="02_luck_vs_skill_files/figure-html/unnamed-chunk-11-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-4"><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>As you can see, the distribution of the skill ranks of the successful applicants do not vary much across the skill distributions. Also, it looks like the average ranks are simply the amount of positions plus 1. This is somewhat unsurprising since we throw out 50% of the applicants randomly in the first stage of the process.</p>
 <p>Nevertheless, this reinforces the idea that not necessarily the most skilled person gets hired to do the job. What is even more surprising to me is the fact that in the current scenario there is still a chance of around 8% that a successful applicant has a skill rank above 22 (recall that there are 11 open positions). Now, running the same analysis for 100 applicants for 1 job again yields similar results.</p>
 <div class="cell" data-hash="02_luck_vs_skill_cache/html/unnamed-chunk-13_4aad13bddf5e0c5e2f6d073c84bab26f">
 <div class="cell-output-display">
-<p><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="02_luck_vs_skill_files/figure-html/unnamed-chunk-13-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-5"><img src="02_luck_vs_skill_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>In these 1000 simulations, the chances that a successful applicant has a skill score of 5 or above are similarly high but depend on the skill distribution.</p>
@@ -662,6 +685,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":true});</script>
 
 
 

@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -298,7 +301,11 @@ cookieconsent.run({
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sale_price)) <span class="sc">+</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-1"><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>As you can see, the distribution looks skewed in the sense that most of the sale prices fall within one range but there are also sale prices that are comparatively high. In effect, the histogram depicts a “long tail” and the highly priced sales are not that easily discernible in the histogram as the column heights may become really small and there may be large “gaps” between columns as seen above.</p>
@@ -308,7 +315,11 @@ cookieconsent.run({
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(sale_price, <span class="dv">10</span>))) <span class="sc">+</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-2"><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Admittedly, we have a gap in the histogram on the left hand side now but overall the histogram looks way less skewed. In fact, this somewhat resembles what a histogram of a normally distributed random variable could look like. This is nice because Gaussian variables are something which a lot of statistical techniques can work with best.</p>
@@ -324,7 +335,11 @@ cookieconsent.run({
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-3"><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Notice that the overall impression of the picture is the same as with the manually logarithmized plot. However, the x-axis is now logarithmized as opposed to being linear. So, manual logarithmization of the variable leads to just that: A transformation of the data but the axis in the plot remains linear which is why the labels on that x-axis showed values that needed to be retransformed to its original values.</p>
@@ -339,7 +354,11 @@ cookieconsent.run({
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-4"><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Even better, <code>scales</code> has a lot of functions that are useful for specific units such as dollar or week, month, year (in case you are working with time data whose labels can be a special kind of pain).</p>
@@ -349,7 +368,11 @@ cookieconsent.run({
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_dollar</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-5"><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Of course, the same thing works not only for the x-axis scale but for all kinds of other scales too. For instance, if you want to plot the same histogram but oriented vertically, you can simply change the <code>x</code>-aesthetic to be the <code>y</code>-aesthetic which means that you will need to adjust the <code>y</code> scale then.</p>
@@ -359,7 +382,11 @@ cookieconsent.run({
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_dollar</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-6"><img src="01_a_few_ggplot_tips_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>In retrospect, it is really easy to adjust the axis with <code>scale_*</code> layers and the <code>scales</code> package and I really do not know why I hesitated in the past to use these functions. I guess adding another layer to the plot felt somewhat harder and slower than brute-forcing my way through the transformation. But believe me, in the long run this takes up way more of your time (especially if you want to interpret your plot later on).</p>
@@ -502,6 +529,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":true,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});</script>
 
 
 

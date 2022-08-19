@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -289,7 +292,7 @@ cookieconsent.run({
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="google-fonts.png" class="img-fluid figure-img" width="608"></p>
+<p><a href="google-fonts.png" class="lightbox" title="Screenshot from fonts.google.com" width="608" data-gallery="quarto-lightbox-gallery-1"><img src="google-fonts.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">Screenshot from fonts.google.com</figcaption><p></p>
 </figure>
 </div>
@@ -331,26 +334,42 @@ cookieconsent.run({
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="08_fonts_and_icons_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" width="672"><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>You may wonder why we have used <code>coord_cartesian()</code> here. We did this in order to ensure that the x-axis is not centered at 0 and our example texts won’t be outside of the plot. Personally, I find this somewhat tedious but this can’t be helped, I guess. With text elements we always run at the risk of writing outside of the plot area.</p>
 <p>Next, let’s make our use of fonts somewhat more practical. In my <a href="https://albert-rapp.de/post/2022-02-19-ggplot2-color-tips-from-datawrapper/">last blog post</a>, I stressed the use of highlighting a few important things instead of using many colors. Combine this with direct labels instead of a legend and you get this plot I created using the Fira Sans font.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="08_fonts_and_icons_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" width="672"><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now, see what it would look like had I used the Lobster font instead.</p>
 <div class="cell" data-fig.showtext="true">
 <div class="cell-output-display">
-<p><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="08_fonts_and_icons_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" width="672"><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Feels different doesn’t it? And this is still different than the Anton font.</p>
 <div class="cell" data-fig.showtext="true">
 <div class="cell-output-display">
-<p><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="08_fonts_and_icons_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" width="672"><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -370,7 +389,7 @@ cookieconsent.run({
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="unicode-finder.png" class="img-fluid figure-img" width="475"></p>
+<p><a href="unicode-finder.png" class="lightbox" title="Screenshot from fontawesome.com. Unicode highlighted in yellow." width="475" data-gallery="quarto-lightbox-gallery-6"><img src="unicode-finder.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">Screenshot from fontawesome.com. Unicode highlighted in yellow.</figcaption><p></p>
 </figure>
 </div>
@@ -391,7 +410,11 @@ cookieconsent.run({
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>)) <span class="sc">+</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="08_fonts_and_icons_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" width="672"><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This way, you can also use icons in scatter plots. Though, make sure to set <code>fill=NA</code> if you do not want to have white boxes around the icons.</p>
@@ -401,7 +424,11 @@ cookieconsent.run({
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_richtext</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">label.colour =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">'dodgerblue4'</span>,) <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="08_fonts_and_icons_files/figure-html/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" width="672"><img src="08_fonts_and_icons_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>You will notice that using the two previous code chunks will generate a lot of warnings about “native encoding”. So far, I have always been able to ignore these without any trouble. I really don’t know why they appear. And if you know, please let me know in the comments below.</p>
@@ -537,6 +564,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":true,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});</script>
 
 
 

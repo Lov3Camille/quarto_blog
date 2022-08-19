@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -290,7 +293,11 @@ cookieconsent.run({
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> sample))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_visualize_kernel_density_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" width="672"><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The underlying procedure to generate the plot it to use a kernel density estimator <span class="math inline">\(\hat{f}_h\)</span> in order to estimate the true underlying density <span class="math inline">\(f\)</span> by using the formula</p>
@@ -312,7 +319,11 @@ cookieconsent.run({
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"bw = {h}"</span>)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_visualize_kernel_density_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" width="672"><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Of course, I could now create multiple plots and change the value if <code>h</code> each time to demonstrate the effect of the bandwidth but the point of this post was to create an animation. So let’s do that instead.</p>
@@ -344,7 +355,11 @@ cookieconsent.run({
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="animation.gif" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="animation.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="animation.gif" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>As you can see, the bandwidth really is a smoothing parameter. Of course, too much smoothing may not yield great results so the parameter needs to be chosen with care but let us not worry about this in this blog post.</p>
@@ -414,7 +429,11 @@ cookieconsent.run({
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">draw_axis</span>(x_sample, tib)</span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_visualize_kernel_density_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" width="672"><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Once we have that, we draw the kernels.</p>
@@ -436,7 +455,11 @@ cookieconsent.run({
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">draw_kernel</span>(p, tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_visualize_kernel_density_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" width="672"><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Next, average the densities at an arbitrary position <span class="math inline">\(x_0.\)</span> If we can do that, then we can iterate through different values of <span class="math inline">\(x_0.\)</span></p>
@@ -507,7 +530,11 @@ cookieconsent.run({
 <span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> (<span class="dv">0</span>)</span>
 <span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_until_x0</span>(tib, x0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_visualize_kernel_density_files/figure-html/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" width="672"><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Last but not least, we may want to display the estimated density without the underlying kernels.</p>
@@ -552,7 +579,11 @@ cookieconsent.run({
 <span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="fu">final_plot</span>(tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_visualize_kernel_density_files/figure-html/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" width="672"><img src="01_visualize_kernel_density_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Finally, we have all the ingredients to create the animation by collecting all of these functions in a wrapper function and using it in conjunction with <code>saveGIF()</code>.</p>
@@ -574,7 +605,11 @@ cookieconsent.run({
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="kernelAnimation.gif" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="kernelAnimation.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="kernelAnimation.gif" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Thus, we have created a short animation that illustrates the kernel density estimation procedure. Probably, there is some room for improving the animation by fine tuning the plots, tweaking with the animation speed or the number of frames. For now, though, let us leave everything as it is.</p>
@@ -711,6 +746,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom"});</script>
 
 
 

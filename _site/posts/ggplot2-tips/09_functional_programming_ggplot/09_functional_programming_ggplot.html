@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -311,7 +314,11 @@ The fun thing about getting better at <a href="https://twitter.com/hashtag/ggplo
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">col =</span> <span class="st">'dodgerblue4'</span>) <span class="sc">+</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size_identity</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-1"><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Notice that</p>
@@ -340,7 +347,11 @@ The fun thing about getting better at <a href="https://twitter.com/hashtag/ggplo
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">xend =</span> xend, <span class="at">y =</span> y, <span class="at">yend =</span> yend)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_curve</span>(<span class="at">col =</span> <span class="st">'dodgerblue4'</span>, <span class="at">size =</span> tib<span class="sc">$</span>size_col, <span class="at">curvature =</span> <span class="fl">0.6</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-2"><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This changes our straight lines from before to curved lines. What’s more, I can control how strong the curvature is supposed to be via <code>curvature</code>. But as it is right now, both of our differently-sized curves have the same level of curvature.</p>
@@ -358,7 +369,11 @@ The fun thing about getting better at <a href="https://twitter.com/hashtag/ggplo
 <pre><code>Error in if (curvature == 0) {: the condition has length &gt; 1</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-3"><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Oh no! It seems as if <code>geom_curve()</code> expects the argument of <code>curvature</code> to be a single number. Maybe <code>aes()</code> then?</p>
@@ -371,7 +386,11 @@ The fun thing about getting better at <a href="https://twitter.com/hashtag/ggplo
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> tib<span class="sc">$</span>size_col </span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-4"><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Well, at least this time we can see curves. Unfortunately, the warning let’s us know that <code>curvature</code> is an unknown aesthetic which will be ignored. As you can see, this results in the same curvature for both curves again.</p>
@@ -391,7 +410,11 @@ The fun thing about getting better at <a href="https://twitter.com/hashtag/ggplo
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">curvature =</span> <span class="fl">0.6</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-5"><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Alright, this time we got what we wanted. That’s something at least. Honestly, our “solution” is not scalable though. What if we want to draw hundreds of curves?</p>
@@ -438,7 +461,11 @@ position_identity </code></pre>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  curve_layers </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-11-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-6"><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Damn, these are some nice functionally created curves. Now, let’s put our new technique to a test. Can it handle arbitrarily many curves?</p>
@@ -460,7 +487,11 @@ position_identity </code></pre>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  ))</span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> curve_layers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-12-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-7"><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Congratulations! We have successfully created drawings of a toddler. And the even better news is that we can draw as many curves as we want.</p>
@@ -471,7 +502,11 @@ position_identity </code></pre>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">combine_gg_elements</span>(<span class="fu">ggplot</span>(), curve_layers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-13-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-8"><img src="09_functional_programming_ggplot_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This was something I picked up from Hadley Wickham’s <a href="https://ggplot2-book.org/programming.html#functional-programming">ggplot2 book</a> but it seems that we don’t need that anymore (the combine function, the book is still a great ressource). But I leave this here for completeness’ sake. Once again, writing a blog post has taught me stuff I thought I already knew. If you want to watch me learn more stuff or want to learn more ggplot things yourself, feel free to subscribe to my <a href="https://albert-rapp.de/blog.xml">RSS feed</a> or follow me on <a href="https://twitter.com/rappa753">Twitter</a>.</p>
@@ -607,6 +642,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom"});</script>
 
 
 

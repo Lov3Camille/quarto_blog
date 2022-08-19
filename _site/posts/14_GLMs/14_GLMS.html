@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Albert Rapp">
+<meta name="dcterms.date" content="2022-08-12">
+<meta name="description" content="This is an beginner’s guide on GLMs. We cover the mathematical foundations as well as how to implement GLMs with R. The implementations are done with and without {tidymodels}.">
+
+<title>Albert Rapp - The ultimate beginner’s guide to generalized linear models (GLMs)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y3M69TZVPJ"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Y3M69TZVPJ', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Albert Rapp - The ultimate beginner’s guide to generalized linear models (GLMs)">
+<meta name="twitter:description" content="This is an beginner’s guide on GLMs. We cover the mathematical foundations as well as how to implement GLMs with R. The implementations are done with and without {tidymodels}.">
+<meta name="twitter:image" content="https://albert-rapp.de/thumbnail_blog.png">
+<meta name="twitter:creator" content="@rappa753">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="418">
+<meta name="twitter:image-width" content="800">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Albert Rapp</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/AlbertRapp"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rappa753"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/user/Alfrodo123"><i class="bi bi-youtube" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blog.xml"><i class="bi bi-rss" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../dataviz_portfolio.html">
+ <span class="dropdown-text">DataViz Portfolio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://yards.albert-rapp.de/">
+ <span class="dropdown-text">YARDS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://rweekly.org/">
+ <span class="dropdown-text">R Weekly</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.r-bloggers.com/">
+ <span class="dropdown-text">R Bloggers</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive.html">Archive</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link active" data-scroll-target="#logistic-regression">Logistic regression</a>
+  <ul class="collapse">
+  <li><a href="#newtons-method" id="toc-newtons-method" class="nav-link" data-scroll-target="#newtons-method">Newton’s method</a></li>
+  </ul></li>
+  <li><a href="#poisson-regression" id="toc-poisson-regression" class="nav-link" data-scroll-target="#poisson-regression">Poisson regression</a></li>
+  <li><a href="#generalized-linear-models" id="toc-generalized-linear-models" class="nav-link" data-scroll-target="#generalized-linear-models">Generalized linear models</a></li>
+  <li><a href="#implementing-glms" id="toc-implementing-glms" class="nav-link" data-scroll-target="#implementing-glms">Implementing GLMs</a>
+  <ul class="collapse">
+  <li><a href="#glms-with-glm." id="toc-glms-with-glm." class="nav-link" data-scroll-target="#glms-with-glm.">GLMs with <code>glm()</code>.</a></li>
+  <li><a href="#glms-with-tidymodels" id="toc-glms-with-tidymodels" class="nav-link" data-scroll-target="#glms-with-tidymodels">GLMs with <code>{tidymodels}</code></a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The ultimate beginner’s guide to generalized linear models (GLMs)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Statistics</div>
+    <div class="quarto-category">ML</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    This is an beginner’s guide on GLMs. We cover the mathematical foundations as well as how to implement GLMs with R. The implementations are done with and without <code>{tidymodels}</code>.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Albert Rapp </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 12, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>You may have never heard about generalized linear models (GLMs). But you’ve probably heard about logistic regression or Poisson regression. Both of them are special cases of GLMs.</p>
+<p>There are even more special cases of GLMs. That’s because GLMs are versatile statistical models. And in this blog post we’re going to explore the mathematical foundations of these models. Actually, this post is based on one of my recent <a href="https://twitter.com/rappa753/status/1538156165535760384">Twitter threads</a>. You can think of this post as the long form version of that thread.</p>
+<p>Here, I’ll add a few more details on the mathematical foundations of GLMs.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> More importantly, though, I will show you how to implement GLMs with R. We’ll learn both the <code>{tidymodels}</code> and the <code>{stats}</code> way of doing GLMs. So without further ado, let’s go.</p>
+<section id="logistic-regression" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-regression">Logistic regression</h2>
+<p>Let’s start with logistic regression. Assume that you have the following data about penguins.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 333 × 4
+   sex    body_mass_g species bill_length_mm
+   &lt;fct&gt;        &lt;int&gt; &lt;fct&gt;            &lt;dbl&gt;
+ 1 male          3750 Adelie            39.1
+ 2 female        3800 Adelie            39.5
+ 3 female        3250 Adelie            40.3
+ 4 female        3450 Adelie            36.7
+ 5 male          3650 Adelie            39.3
+ 6 female        3625 Adelie            38.9
+ 7 male          4675 Adelie            39.2
+ 8 female        3200 Adelie            41.1
+ 9 male          3800 Adelie            38.6
+10 male          4400 Adelie            34.6
+# … with 323 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
+</div>
+</div>
+<p>Imagine that your goal is to classify penguins as male or female based on the other variables <code>body_mass_g</code>, <code>species</code> and <code>bill_length_mm</code>. Better yet, let’s make this specific. Here’s a dataviz for this exact scenario.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="14_GLMS_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="14_GLMS_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As you can see, the male and female penguins form clusters that do not overlap too much. However, regular linear regression won’t help us to distinguish them. Think about it. Its output is something numerical. Here, we want to find classes.</p>
+<p>So, how about trying to predict a related numerical quantity then? Like a probability that a penguin is male. Could we convert the classes to 0 and 1 and then run a linear regression? Well, we could. But this won’t give us probabilities either. Why? Because predictions are not restricted to <span class="math inline">\([0, 1]\)</span>.</p>
+<p>But I suspect you’re REALLY determined to use linear regression. After all, what have you learned ordinary least squares (OLS) for if not for using it everywhere? So, what saves you from huge predictions? That’s the glorious logistic function (applied to linear regression’s predictions). It looks like this.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.1</span>), <span class="at">y =</span> <span class="fu">plogis</span>(x)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> thematic<span class="sc">::</span><span class="fu">okabe_ito</span>(<span class="dv">3</span>)[<span class="dv">3</span>], <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="14_GLMS_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="14_GLMS_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I’ve applied this strategy to our data to “predict” probabilities. Then, I used a 50% threshold for classification.</p>
+<p>Note that I have chosen this threshold here only for demo purposes. In general, 50% is not a good threshold. That’s because there are many situations where you want your model to be <strong>really</strong> sure before it makes a classification. For example, with malignant tumor detection we want to use a threshold that is different from a coin flip. Clearly, we want to be sure that a tumor is dangerous before we undergo surgery.</p>
+<p>So, back to our prediction strategy. Against all odds we’ve run a linear regression to “predict” probabilities and classified on this 50% threshold. Does this give us good results? Have a look for yourself.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Predicted probabilities</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Correct classifications?</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell" data-fig.showtext="true">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="14_GLMS_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="14_GLMS_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell" data-fig.showtext="true">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="14_GLMS_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="14_GLMS_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The predictions for male and female penguins overlap quite a lot. This leads to many incorrect classifications. Not bueno. At this point, you may as well have trained a model that answers “Is this a male penguin?” with <a href="https://www.youtube.com/watch?v=LJP1DphOWPs">“Nope, just Chuck Testa”</a>.</p>
+<p>So, our classification is bad. And hopefully I’ve convinced you that OLS isn’t the way to go here. But what now?</p>
+<p>Well, it wasn’t all bad. The idea of linking a desired quantity (like a probability) to a linear predictor is actually what GLMs do. To make it work, let’s take a step back.</p>
+<p>Usually, we model our response variable <span class="math inline">\(Y\)</span> by decomposing it into</p>
+<ul>
+<li>a deterministic function <span class="math inline">\(f(X_1,..., X_n)\)</span> dependent on predictors <span class="math inline">\(X_1, \ldots, X_p\)</span>, <span class="math inline">\(p \in \mathbb{N}\)</span>, plus</li>
+<li>a random error term</li>
+</ul>
+<p>Thus, regression is nothing but finding a function describing the <strong>average</strong> outcome. With a little change in notation this becomes clearer:</p>
+<p><span class="math display">\[
+\begin{align*}
+Y_i &amp;= f(X_1, \ldots, X_p) + \varepsilon_i \\[2mm]
+&amp;= \mathbb{E}[Y_i | X_1, \ldots, X_p] + \varepsilon_i, \quad i = 1, \ldots, n
+\end{align*}
+\]</span></p>
+<p>In linear regression, this deterministic function is given by a linear predictor. We will denote this linear predictor by <span class="math inline">\(\eta_i(\beta)\)</span> Note that it depends on a parameter <span class="math inline">\(\beta \in \mathbb{R}^{p + 1}\)</span>.</p>
+<p><span class="math display">\[
+\eta_i(\beta) = \beta_0 + x_{i, 1}\beta_1 + \cdots + x_{i, p} \beta_p
+\]</span></p>
+<p>Alright, we’ve emphasized that we’re really trying to model an expectation. Now, think about what we’re trying to predict. We’re looking for probabilities, are we not?</p>
+<p>And do we know a distribution whose expectation is a probability? Bingo! We’re thinking about Bernoulli. Therefore, let us assume that our response variable <span class="math inline">\(Y\)</span> is Bernoulli-distributed (given our predictors), i.e.&nbsp;<span class="math inline">\(Y_i | X_1, \ldots, X_p \sim \text{Ber}(\pi_i)\)</span>.</p>
+<p>And now we’re back with our idea to link the average outcome to a linear predictor via a suitable transformation (logistic function). This sets up our model. In formulas, this is written as</p>
+<p><span class="math display">\[
+\mathbb{E}[Y_i | X_1, \ldots, X_p] = \pi_i = h\big(\eta_i(\beta)\big)
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+h(x) = \frac{e^{\text{x}}}{1 + e^x}.
+\]</span></p>
+<p>You’re thinking we’ve tried this already, aren’t you? How will we get different results? Isn’t this new setup just semantics? Theoretic background is useless in practice, right? (I’ve actually heard someone say that to a speaker at a scientific workshop. A shitshow ensued.)</p>
+<p>Previously, we used the OLS estimator to find the linear predictor’s parameter <span class="math inline">\(\beta\)</span>. But with our new model setup comes a new way of estimating <span class="math inline">\(\beta\)</span>. Take a look. Compare the results of using the OLS estimator with what we get when we maximize the so-called likelihood.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Transforming OLS estimates</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Maximizing likelihood</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell" data-fig.showtext="true">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="14_GLMS_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="14_GLMS_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell" data-fig.showtext="true">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="14_GLMS_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="14_GLMS_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Much fewer incorrect results, right? And that’s despite having used the same 50% threshold once I predicted probabilites. This means that maximizing the likelihood delivers a way better estimator. Let’s see how that works.</p>
+<p>The <strong>likelihood function</strong> <span class="math inline">\(L\)</span> is the product of the densities of the assumed distribution of Y given the predictors (here Bernoulli). This makes it the joint probability of the observed data. In formulas, this is</p>
+<p><span class="math display">\[
+L(\beta) := \prod_{i = 1}^n f(y_i | \beta) = \prod_{i = 1}^n \pi_i^{y_i} (1 - \pi_i)^{1 - y_i}.
+\]</span></p>
+<p>We estimate <span class="math inline">\(\beta\)</span> by maximizing this function or equivalently (but easier) its logarithm</p>
+<p><span class="math display">\[
+l(\beta)
+:=
+\log L(\beta)
+=
+\sum_{i = 1}^n \bigg[
+  \underbrace{y_i \log \bigg(
+    \frac{\pi_i}{1 - \pi_i}
+  \bigg)
+  +
+  \log (1 - \pi_i)}_{=: l_i(\beta)}
+\bigg].
+\]</span></p>
+<p>How do we find this maximum? By using the same strategy as for any other function that we want to maximize: Compute the first derivative and find its root. That’s why it’s easier to maximize the log-likelihood (sums are easier to differentiate than products).</p>
+<p>In this context, the first derivative<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> is also known as <strong>score fct</strong></p>
+<p><span class="math display">\[
+s(\beta)
+:=
+\frac{\partial l(\beta)}{\partial \beta}
+=
+\sum_{i = 1}^n \frac{\partial l_i(\beta)}{\partial \beta}
+=
+\sum_{i = 1}^n s_i(\beta),
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\begin{align*}
+  s_i(\beta) &amp;= x_i(y_i - \pi_i) = x_i\big(y_i - h(x_i^T \beta)\big)\quad \text{and} \\[2mm]
+  h(x) &amp;= \frac{e^{\text{x}}}{1 + e^x}
+\end{align*}
+\]</span></p>
+<p>Here, finding a root is hard because no analytical solutions exist. Thus, we’ll have to rely on numerical methods.</p>
+<section id="newtons-method" class="level3">
+<h3 class="anchored" data-anchor-id="newtons-method">Newton’s method</h3>
+<p>A well-known procedure is Newton’s method. In each iteration it tries to get closer to a function’s root by moving along its gradient. Have a look at this GIF from <a href="https://en.wikipedia.org/wiki/Newton's_method#/media/File:NewtonIteration_Ani.gif">Wikipedia</a>. It shows how Newton’s method works for a univariate function. But the same ideas work in higher dimensions, i.e.&nbsp;in <span class="math inline">\(\mathbb{R}^n\)</span> where <span class="math inline">\(n \in \mathbb{N}\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="NewtonIteration_Ani.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="NewtonIteration_Ani.gif" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Alright, let me unwrap what you see here. In each iteration, Newton’s method computes <span class="math inline">\(f(x_k)\)</span>, i.e.&nbsp;the function’s value at <span class="math inline">\(x_k\)</span> (the current value). Then, it uses the function’s derivative <span class="math inline">\(f^{\prime}\)</span> to find the tangent line of <span class="math inline">\(f\)</span> at the current position <span class="math inline">\(x_k\)</span>. Once the tangent line is found, our new position <span class="math inline">\(x_{k + 1}\)</span> is determined by the intersection of the tangent line and the <span class="math inline">\(x\)</span>-axis. All of this can be summarized via</p>
+<p><span class="math display">\[
+x_{k + 1} = f(x_k) - (f^{\prime}(x_k))^{-1} f(x_k).
+\]</span></p>
+<p>As I said, this can be generalized for vector-valued functions <span class="math inline">\(f\)</span>. In that case, <span class="math inline">\(f^{\prime}\)</span> is a matrix (the so called <a href="https://en.wikipedia.org/wiki/Hessian_matrix">Hessian matrix</a>) and <span class="math inline">\((f^{\prime})^{-1}\)</span> is the inverse of that matrix. Like the one-dimensional derivative the Hessian matrix is dependent of the current position <span class="math inline">\(x_k\)</span>.</p>
+<p>In the context of GLMs, the current position <span class="math inline">\(x_k\)</span> is usually denoted with <span class="math inline">\(\beta_{k}\)</span> and the Hessian</p>
+<p><span class="math display">\[
+\mathcal{J}(\beta) = - \frac{\partial^2 l(\beta)}{\partial \beta \partial \beta^T}
+\]</span></p>
+<p>is called <strong>observed information Matrix</strong>. Once again we can summarize Newton’s algorithm in one single line by</p>
+<p><span class="math display">\[
+\beta_{t + 1} = \beta_{t} + \mathcal{J}^{-1}(\beta_{t}) s(\beta_{t}).
+\]</span></p>
+</section>
+</section>
+<section id="poisson-regression" class="level2">
+<h2 class="anchored" data-anchor-id="poisson-regression">Poisson regression</h2>
+<p>Congrats! You’ve brushed up on one example of GLMs, namely logistic regression. But GLMs wouldn’t be general if that were all.</p>
+<p>Depending on the assumed distribution and the function that links the linear predictor to the expectation, GLMs have many names. <strong>Poisson regression</strong> is another one.</p>
+<p>Poisson regression is a GLM which assumes that Y follows a Poisson distribution (who would have seen that one coming), i.e.&nbsp;<span class="math inline">\(Y_i | X_1, X_2, X_3 \sim \text{Poi}(\lambda_i)\)</span>, <span class="math inline">\(\lambda_i &gt; 0\)</span>. A suitable link function is given by the exponential function</p>
+<p><span class="math display">\[
+\mathbb{E}[Y_i | X_1, X_2, X_3] = \lambda_i = \exp\big(\eta_i(\beta)\big).
+\]</span></p>
+<p>This model is used when you try to estimate count data like this.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="cell-output-display">
+
+<div id="bqtcbgclgb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#bqtcbgclgb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 12pt;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 80%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bqtcbgclgb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bqtcbgclgb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bqtcbgclgb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bqtcbgclgb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bqtcbgclgb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bqtcbgclgb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bqtcbgclgb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bqtcbgclgb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bqtcbgclgb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bqtcbgclgb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bqtcbgclgb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bqtcbgclgb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqtcbgclgb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bqtcbgclgb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bqtcbgclgb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqtcbgclgb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bqtcbgclgb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqtcbgclgb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bqtcbgclgb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqtcbgclgb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bqtcbgclgb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqtcbgclgb .gt_left {
+  text-align: left;
+}
+
+#bqtcbgclgb .gt_center {
+  text-align: center;
+}
+
+#bqtcbgclgb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bqtcbgclgb .gt_font_normal {
+  font-weight: normal;
+}
+
+#bqtcbgclgb .gt_font_bold {
+  font-weight: bold;
+}
+
+#bqtcbgclgb .gt_font_italic {
+  font-style: italic;
+}
+
+#bqtcbgclgb .gt_super {
+  font-size: 65%;
+}
+
+#bqtcbgclgb .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#bqtcbgclgb .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#bqtcbgclgb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bqtcbgclgb .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#bqtcbgclgb .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#bqtcbgclgb .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Marijuana</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Cigarette</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Alcohol</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Count</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_right">911</td></tr>
+    <tr><td class="gt_row gt_left">no</td>
+<td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_right">538</td></tr>
+    <tr><td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_left">no</td>
+<td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_right">44</td></tr>
+    <tr><td class="gt_row gt_left">no</td>
+<td class="gt_row gt_left">no</td>
+<td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_right">456</td></tr>
+    <tr><td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_left">no</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_left">no</td>
+<td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_left">no</td>
+<td class="gt_row gt_right">43</td></tr>
+    <tr><td class="gt_row gt_left">yes</td>
+<td class="gt_row gt_left">no</td>
+<td class="gt_row gt_left">no</td>
+<td class="gt_row gt_right">2</td></tr>
+    <tr><td class="gt_row gt_left">no</td>
+<td class="gt_row gt_left">no</td>
+<td class="gt_row gt_left">no</td>
+<td class="gt_row gt_right">279</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="4"> Alcohol, Cigarette, and Marijuana Use for High School Seniors; Table 7.3 of Agresti, A (2007). An Introduction to Categorical Data Analysis.</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+</div>
+<p>Let’s find the maximum-likelihood estimate <span class="math inline">\(\hat{\beta}\)</span> for the parameter <span class="math inline">\(\beta\)</span> of our linear predictor <span class="math inline">\(\eta_i(\beta)\)</span>. Thankfully, the formulas look very similar to logistic regression, i.e.</p>
+<p><span class="math display">\[
+\begin{align*}
+  l(\beta) &amp;= \sum_{i = 1}^n \big[y_i x_i^T\beta - \exp(x_i^T\beta )\big] \\
+s(\beta) &amp;= \sum_{i = 1}^n x_i\big(y_i - \exp(x_i^T \beta)\big)
+\end{align*}
+\]</span></p>
+<p>Again, applying Newton’s method to the score function <span class="math inline">\(s\)</span> will give us its root and therefore the ML-estimate of <span class="math inline">\(\beta\)</span>.</p>
+</section>
+<section id="generalized-linear-models" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-linear-models">Generalized linear models</h2>
+<p>We’ve now seen two examples of GLMs. In each case, we have assumed two different distributions and link functions. This begs two questions 🤔</p>
+<ol type="1">
+<li>Does this work with any distribution?</li>
+<li>How in the world do we choose the link function?</li>
+</ol>
+<p>The secret ingredient that has been missing is a concept known as <strong>exponential families</strong>. It can answer both questions. Isn’t that just peachy?</p>
+<p>Exponential families (not to be confused with the <a href="https://en.wikipedia.org/wiki/Exponential_distribution">exponential distribution</a>) are distributions whose density can be rewritten in a <strong>very</strong> special form</p>
+<p><span class="math display">\[
+f(y | \theta) = \exp\bigg\{
+  \frac{y\theta - b(\theta)}{\phi}w + c(y, \phi, w)
+\bigg\},
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\theta\)</span> is the <strong>natural/canonical parameter</strong></li>
+<li><span class="math inline">\(b(\theta)\)</span> is a twice differentiable function</li>
+<li><span class="math inline">\(\phi\)</span> is a dispersion parameter</li>
+<li><span class="math inline">\(w\)</span> is a known weight</li>
+<li><span class="math inline">\(c\)</span> is a normalization constant independent of <span class="math inline">\(\theta\)</span></li>
+</ul>
+<p>Honestly, this curious form is anything but intuitive. Yet, it is surprisingly versatile and the math just works. If you ask me, that’s quite mathemagical<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Distribution</th>
+<th><span class="math inline">\(\theta\)</span></th>
+<th><span class="math inline">\(b(\theta)\)</span></th>
+<th><span class="math inline">\(b^\prime(\theta)\)</span></th>
+<th><span class="math inline">\(\phi\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span></td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(\theta^2/2\)</span></td>
+<td><span class="math inline">\(\theta\)</span></td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\text{Ber}(\pi)\)</span></td>
+<td><span class="math inline">\(\log (\pi / (1 - \pi))\)</span></td>
+<td><span class="math inline">\(\log(1 + e^\theta)\)</span></td>
+<td><span class="math inline">\(\frac{e^\theta}{1 + e^\theta}\)</span></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\text{Poi}(\lambda)\)</span></td>
+<td><span class="math inline">\(\log(\lambda)\)</span></td>
+<td><span class="math inline">\(\exp(\theta)\)</span></td>
+<td><span class="math inline">\(\exp(\theta)\)</span></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>It probably doesn’t come as a surprise that Bernoulli and Poisson distributions are exponential families (see table or <a href="https://en.wikipedia.org/wiki/Exponential_family">Wikipedia</a> for even more exponential distributions). But what may surprise you is this:</p>
+<p>The function <span class="math inline">\(b\)</span> plays an extraordinary role: Its derivative can be used as link function! That’s why we have chosen the link function the way we did. In fact, that’s the <strong>canoncial choice</strong>.</p>
+<p>So, now you know GLMs’ ingredients: Exponential families and link functions.</p>
+<p>Bam! We’ve made it through the math part. Now begins the programming part.</p>
+</section>
+<section id="implementing-glms" class="level2">
+<h2 class="anchored" data-anchor-id="implementing-glms">Implementing GLMs</h2>
+<p>As promised, we will implement GLMs in two different ways. First, we’ll do it the <code>{stats}</code> way.</p>
+<section id="glms-with-glm." class="level3">
+<h3 class="anchored" data-anchor-id="glms-with-glm.">GLMs with <code>glm()</code>.</h3>
+<p>With <code>{stats}</code>, the <code>glm()</code> function is the main player to implement any GLM. Among other arguments, this function accepts</p>
+<ul>
+<li>a <code>formula</code> argument: This is how we tell <code>glm()</code> what variable we want to predict based on which predictors.</li>
+<li>a <code>family</code> argument: This is the exponential family that we want to use (for logistic regression this will be Bernoulli or, more generally, binomial)</li>
+<li>a <code>data</code> argument: This is the data.frame/tibble that contains the variables that you’ve stated in the <code>formula</code>.</li>
+</ul>
+<p>For our penguins example, this may look like this.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>glm.mod <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  sex <span class="sc">~</span> body_mass_g <span class="sc">+</span> bill_length_mm <span class="sc">+</span> species, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> binomial, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins_data</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, I’ve saved our fitted model into a variable <code>glm.mod</code>. For our purposes, we can treat this variable like a list that is equipped with a so-called class attribute (which influences the behavior of some functions later). Our list’s column <code>fitted.values</code> contains the probabilities the GLM predicted, e.g.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>glm.mod<span class="sc">$</span>fitted.values[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         1          2          3          4          5          6          7 
+0.69330991 0.80620808 0.12555009 0.05499928 0.55937374 0.45142835 0.99939311 
+         8          9         10 
+0.14437378 0.69994208 0.92478757 </code></pre>
+</div>
+</div>
+<p>Now we can manually turn the predicted probabilities into <code>sex</code> predictions. That requires us to know whether the predicted probability refers to male or female penguins.</p>
+<p>Strolling through the docs of <code>glm()</code> reveals that the second level in our response factor <code>sex</code> is considered a “success”. So that means the probability refers to male penguins (because that’s the second level of <code>sex</code>). Tricky, I know.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>threshold <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">&lt;-</span> penguins_data <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">prob.fit =</span> glm.mod<span class="sc">$</span>fitted.values,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">prediction =</span> <span class="fu">if_else</span>(prob.fit <span class="sc">&gt;</span> threshold, <span class="st">'male'</span>, <span class="st">'female'</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">correct =</span> <span class="fu">if_else</span>(sex <span class="sc">==</span> prediction, <span class="st">'correct'</span>, <span class="st">'incorrect'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>preds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 333 × 7
+   sex    body_mass_g species bill_length_mm prob.fit prediction correct  
+   &lt;fct&gt;        &lt;int&gt; &lt;fct&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;    
+ 1 male          3750 Adelie            39.1   0.693  male       correct  
+ 2 female        3800 Adelie            39.5   0.806  male       incorrect
+ 3 female        3250 Adelie            40.3   0.126  female     correct  
+ 4 female        3450 Adelie            36.7   0.0550 female     correct  
+ 5 male          3650 Adelie            39.3   0.559  male       correct  
+ 6 female        3625 Adelie            38.9   0.451  female     correct  
+ 7 male          4675 Adelie            39.2   0.999  male       correct  
+ 8 female        3200 Adelie            41.1   0.144  female     correct  
+ 9 male          3800 Adelie            38.6   0.700  male       correct  
+10 male          4400 Adelie            34.6   0.925  male       correct  
+# … with 323 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
+</div>
+</div>
+<p>And we can also predict other probabilities for observations that have not been present in the original dataset.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>new_observations <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">body_mass_g =</span> <span class="fu">c</span>(<span class="dv">4532</span>, <span class="dv">5392</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">bill_length_mm =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">49</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">species =</span> <span class="fu">c</span>(<span class="st">'Adelie'</span>, <span class="st">'Gentoo'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  glm.mod, </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> new_observations</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1        2 
+6.911824 3.661797 </code></pre>
+</div>
+</div>
+<p>Note that this gave us the value of the linear predictors. But that’s not we’re interested, right? So let’s tell <code>predict()</code> that we care about the response variable.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  glm.mod, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> new_observations,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">'response'</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        1         2 
+0.9990051 0.9749570 </code></pre>
+</div>
+</div>
+<p>Now, these look more like probabilities. And they are. These are our predicted probabilities. But we can also save the probabilities into our tibble.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>new_observations <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pred_prob =</span> <span class="fu">predict</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>      glm.mod,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">newdata =</span> new_observations,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">'response'</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  body_mass_g bill_length_mm species pred_prob
+        &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
+1        4532             40 Adelie      0.999
+2        5392             49 Gentoo      0.975</code></pre>
+</div>
+</div>
+<p>One last thing before we move on to <code>{tidymodels}</code>. At first, it may be hard to work with <code>predict()</code> because the documentation does not feel super helpful at first. Take a look. The docs do not tell you much about arguments like <code>newdata</code> or <code>type</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/paste-1010B979.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/paste-1010B979.png" class="img-fluid figure-img" style="width:70.0%"></a></p>
+</figure>
+</div>
+<p>That’s because <code>predict()</code> is actually a really versatile function. It works differently depending on what kind of model object you feed it with, e.g.&nbsp;output from <code>lm()</code> or <code>glm()</code>. That’s the part that is determined by <code>glm.mod</code>’s class attribute.</p>
+<p>Now, at the end of <code>predict()</code>’s docs you will find a list that shows you all kinds of other <code>predict()</code> functions like <code>predict.glm()</code>. This is the function that works with objects of class <code>glm</code>. In the docs of the latter function you can now look up all arguments that you need.</p>
+</section>
+<section id="glms-with-tidymodels" class="level3">
+<h3 class="anchored" data-anchor-id="glms-with-tidymodels">GLMs with <code>{tidymodels}</code></h3>
+<p>Like the tidyverse, <code>{tidymodels}</code> is actually more than a single package. It is a whole ecosystem of packages. All of these packages share a design philosophy and are tailored to modelling/machine learning. Check out how many packages get attached when we call <code>{tidymodels}</code>.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ broom        1.0.0     ✔ rsample      1.1.0
+✔ dials        1.0.0     ✔ tune         1.0.0
+✔ infer        1.0.2     ✔ workflows    1.0.0
+✔ modeldata    1.0.0     ✔ workflowsets 1.0.0
+✔ parsnip      1.0.0     ✔ yardstick    1.0.0
+✔ recipes      1.0.1     </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+✖ scales::discard() masks purrr::discard()
+✖ dplyr::filter()   masks stats::filter()
+✖ recipes::fixed()  masks stringr::fixed()
+✖ dplyr::lag()      masks stats::lag()
+✖ yardstick::spec() masks readr::spec()
+✖ recipes::step()   masks stats::step()
+• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+</div>
+</div>
+<p>Obviously, we can’t dig into everything here. So, let’s just cover the minimal amount we need for our use case. For a more detailed intro to <code>{tidymodels}</code> you can check out my <a href="https://yards.albert-rapp.de/how-to-build-a-model.html">YARDS lecture notes</a>. And for a really thorough deep dive I recommend the <a href="https://www.tmwr.org/">Tidy Modeling with R book</a>.</p>
+<p>To run a logistic regression in the <code>{tidymodels}</code> framework we need to first define a <strong>model specification</strong>. These are handled by <code>{parsnip}</code>. Here, this looks like this.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>logistic_spec <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glm"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>logistic_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Logistic Regression Model Specification (classification)
+
+Computational engine: glm </code></pre>
+</div>
+</div>
+<p>Notice that the output is really nothing more than a description saying</p>
+<ul>
+<li>we’re doing a logistic regression (<code>logistic_reg()</code>).</li>
+<li>we want to use the <code>stats::glm()</code> engine/function to fit the logistic regression (<code>set_engine("glm")</code>)</li>
+<li>we want to do classification (and not regression) (<code>set_mode("classification")</code>)</li>
+</ul>
+<p>Notice that there are other engines that we could use, e.g.&nbsp;<code>"glmnet"</code> or <code>"keras"</code>. Also, specifying the mode is kind of superfluous here. But for models that can do both, classification and regression, e.g.&nbsp;<a href="https://yards.albert-rapp.de/tree-based-models.html">random forests</a>, this is necessary. That’s why I’ve shown that step here.</p>
+<p>Alright, so we’ve set up our model. Time to fit it. That happens with <code>fit()</code>.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>glm.tidymod <span class="ot">&lt;-</span> logistic_spec <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">formula =</span> sex <span class="sc">~</span> body_mass_g <span class="sc">+</span> bill_length_mm <span class="sc">+</span> species, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> penguins_data</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Like <code>predict()</code>, the <code>fit()</code> function works a little bit differently depending on its input object. What’s more is that can be a bit tricky to find the correct page in the docs to look up the correct arguments. What you’re actually looking for is <code>fit.model_spec()</code>. That’s because <code>logistic_spec</code> is not a <code>glm</code> object but a <code>model_spec</code> object.</p>
+<p>Don’t worry about the technicalities if you’ve found that confusing. The point is that <code>fit()</code> expects a</p>
+<ul>
+<li>model specification</li>
+<li>a formula (exactly like <code>glm()</code>)</li>
+<li>data</li>
+</ul>
+<p>Now we can throw <code>glm.tidymod</code> into <code>predict()</code>. Beware of your objects though! In the <code>{stats}</code> way, we’ve passed a <code>glm</code> object to <code>predict</code> so really it behaves like <code>predict.glm()</code>. Now, we’re using a <code>model_fit()</code> object (that’s what <code>fit()</code> returns). So, we’ll need to look at the docs of <code>predict.model_fit()</code>.</p>
+<p>Et voilà! The documentation reveals that there are arguments called <code>new_data</code> (mind the <code>_</code>) and <code>type</code>. The latter argument can deal with a lot of different inputs. But here we’re just going with <code>"prob"</code>.</p>
+<div class="cell" data-fig.showtext="true">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>new_observations <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pred_prob =</span> <span class="fu">predict</span>(</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>      glm.tidymod,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">new_data =</span> new_observations,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">'prob'</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  body_mass_g bill_length_mm species pred_prob$.pred_female $.pred_male
+        &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt;       &lt;dbl&gt;
+1        4532             40 Adelie                0.000995       0.999
+2        5392             49 Gentoo                0.0250         0.975</code></pre>
+</div>
+</div>
+<p>Notice that this actually returns <strong>two</strong> probabilities. One for each <code>sex</code>. That’s great because we don’t have to wonder anymore what class our predicted probability refers to.</p>
+<p>This is just one of many advantages working with <code>{tidymodels}</code>. You will still need some knowledge of the engine you’re using (<code>glm()</code> in this case). But <code>{tidymodels}</code> will give you a nicer interface to the engine. And you can easily switch between engines and other models because it’s all constructed from a unified interface.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>That’s a wrap! This guide should give you a solid understanding of both, the theoretical and practical, aspects of GLMs. If you’ve got any questions, feel free to use the comment section or send me a mail.</p>
+<p>If you don’t want to stay in touch or don’t want to miss new blog posts, then don’t forget to subscribe to my newsletter below. Enjoy the rest of your day and see you next time!</p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-fahrmeir2013" class="csl-entry" role="doc-biblioentry">
+Fahrmeir, Ludwig, Thomas Kneib, Stefan Lang, and Brian Marx. 2013. <em>Regression</em>. Springer Berlin Heidelberg. <a href="https://doi.org/10.1007/978-3-642-34333-9">https://doi.org/10.1007/978-3-642-34333-9</a>.
+</div>
+</div></section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>Of course I can’t cover everything. This is a beginner’s guide after all. For more details let me refer to the excellent book <span class="citation" data-cites="fahrmeir2013">(<a href="#ref-fahrmeir2013" role="doc-biblioref">Fahrmeir et al. 2013</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>For detailed calculations of the score function and any other formula, I recommend that you refer to <span class="citation" data-cites="fahrmeir2013">(<a href="#ref-fahrmeir2013" role="doc-biblioref">Fahrmeir et al. 2013</a>)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>An interesting perspective on what makes exponential familes so magical can be found on <a href="https://stats.stackexchange.com/questions/284260/why-do-we-assume-the-exponential-family-in-the-glm-context/284285#284285">SE</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<div>
+<hr>
+
+<h3> Stay in touch </h3>
+
+<p> If you enjoyed this post, then you may also enjoy my biweekly newsletter. Every other week I share thoughts on data visualization, statistics and Shiny web app development. </p>
+
+<iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 55px;"></iframe>
+
+
+<h3> You can also support my work with a coffee </h3>
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="rappa753" data-color="#06436e" data-emoji="☕" data-font="Lato" data-text="Support me" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" data-height="40px"></script>
+
+<h3> Share </h3>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="#rstats" data-show-count="false">Tweet</a><script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+<hr>
+</div>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="AlbertRapp/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":true,"selector":".lightbox"});</script>
+
+
+
+</body></html>

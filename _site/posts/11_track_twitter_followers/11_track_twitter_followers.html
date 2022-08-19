@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -296,7 +299,11 @@ cookieconsent.run({
 <p>This week, I am oddly proud to announce that I have reached 1000 followers on <a href="https://twitter.com/rappa753">Twitter</a>. Check out the visualization that I have created for this joyous occasion.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="final_viz.png" class="img-fluid" width="1754"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="final_viz.png" class="lightbox" width="1754" data-gallery="quarto-lightbox-gallery-1"><img src="final_viz.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>To me, my rising follower count and the somewhat regular mails that I receive are a sign that people like to read my blog. And to thank you all for following my work, let me give you a quick intro to the packages <code>rtweet</code> and <code>lubridate</code>. These were instrumental in creating the above visual.</p>
@@ -442,7 +449,11 @@ cookieconsent.run({
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(created_at, favorite_count)) <span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="11_track_twitter_followers_files/figure-html/unnamed-chunk-12-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-2"><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -464,7 +475,11 @@ cookieconsent.run({
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="11_track_twitter_followers_files/figure-html/unnamed-chunk-13-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-3"><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Notice that we have once again used the same abbreviation as for <code>parse_date_time()</code>. This time, though, they have to be preceded by <code>%</code>. Don’t ask me why. It is just the way it is.</p>
@@ -485,7 +500,11 @@ cookieconsent.run({
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="11_track_twitter_followers_files/figure-html/unnamed-chunk-14-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-4"><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -506,7 +525,11 @@ cookieconsent.run({
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span></span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="11_track_twitter_followers_files/figure-html/unnamed-chunk-15-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-5"><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -525,7 +548,11 @@ cookieconsent.run({
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">'blue'</span></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="11_track_twitter_followers_files/figure-html/unnamed-chunk-16-1.png" class="lightbox" width="672" data-gallery="quarto-lightbox-gallery-6"><img src="11_track_twitter_followers_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -670,6 +697,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":true,"closeEffect":"zoom"});</script>
 
 
 

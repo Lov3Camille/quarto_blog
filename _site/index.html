@@ -36,6 +36,9 @@ ul.task-list{list-style: none;}
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -129,8 +132,8 @@ cookieconsent.run({
  </a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ressources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ressources">    
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
         <li>
     <a class="dropdown-item" href="./dataviz_portfolio.html">
  <span class="dropdown-text">DataViz Portfolio</span></a>
@@ -170,12 +173,16 @@ cookieconsent.run({
 
 <div class="grid">
 <div id="bio-pic" class="g-col-12 g-col-md-6">
-<p><img src="profile2.jpg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="profile2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="profile2.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 <div id="about-me-text" class="g-col-12 g-col-md-6">
 <section id="hi-im-albert-rapp." class="level1">
 <h1>Hi, I’m Albert Rapp.</h1>
-<p>I’m a mathematics PhD students with a passion for R, data visualization, Shiny and statistics/machine learning. On this blog, I share and teach what I learn.</p>
+<p>I’m a mathematics PhD student with a passion for R, data visualization, Shiny and statistics/machine learning. On this blog, I share and teach what I learn.</p>
 <p>To get started, you can check out my most popular content below. You can find me on <a href="https://twitter.com/rappa753">Twitter</a> or <a href="https://github.com/AlbertRapp">GitHub</a> and <a href="https://www.youtube.com/user/Alfrodo123">YouTube</a>. Feel free to reach out to me via <a href="mailto:blog@albert-rapp.de">mail</a> and subscribe to my email newsletter.</p>
 <iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px">
 </iframe>
@@ -379,6 +386,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":true,"openEffect":"zoom","descPosition":"bottom"});</script>
 
 
 

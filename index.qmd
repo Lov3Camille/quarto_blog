@@ -12,7 +12,7 @@ header-includes: |
 
 ::: {.g-col-12 .g-col-md-6 id='about-me-text'}
 # Hi, I'm Albert Rapp.
-I'm a mathematics PhD students with a passion for R, data visualization, Shiny and statistics/machine learning. On this blog, I share and teach what I learn.
+I'm a mathematics PhD student with a passion for R, data visualization, Shiny and statistics/machine learning. On this blog, I share and teach what I learn.
 
 To get started, you can check out my most popular content below. You can find me on [Twitter](https://twitter.com/rappa753) or
 [GitHub](https://github.com/AlbertRapp) and 

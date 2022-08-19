@@ -2,126 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://albert-rapp.de/blog.html</loc>
-    <lastmod>2022-07-24T14:50:20.443Z</lastmod>
+    <lastmod>2022-08-19T12:23:23.326Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/archive.html</loc>
-    <lastmod>2022-07-24T14:50:21.147Z</lastmod>
+    <lastmod>2022-08-19T12:23:23.954Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/index.html</loc>
-    <lastmod>2022-07-24T14:50:21.543Z</lastmod>
+    <lastmod>2022-08-16T13:19:45.100Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/11_track_twitter_followers/11_track_twitter_followers.html</loc>
-    <lastmod>2022-07-24T14:50:22.387Z</lastmod>
+    <lastmod>2022-08-11T14:51:33.915Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html</loc>
-    <lastmod>2022-07-24T14:50:23.715Z</lastmod>
+    <lastmod>2022-08-11T14:51:35.183Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/05_exploratory_intro_plotly/05_exploratory_intro_quarto.html</loc>
-    <lastmod>2022-07-24T14:50:24.455Z</lastmod>
+    <lastmod>2022-08-11T14:51:35.939Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/09_get_twitter_posts_into_your_notetaking_system/09_get_twitter_posts_into_your_notetaking_system.html</loc>
-    <lastmod>2022-07-24T14:50:25.299Z</lastmod>
+    <lastmod>2022-08-11T14:51:36.747Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/09_get_twitter_posts_into_your_notetaking_system/template.html</loc>
-    <lastmod>2022-07-24T14:50:25.571Z</lastmod>
+    <lastmod>2022-08-11T14:51:37.011Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/09_get_twitter_posts_into_your_notetaking_system/tweet_c_gebhard_2022-04-03_082301.html</loc>
-    <lastmod>2022-07-24T14:50:25.851Z</lastmod>
+    <lastmod>2022-08-11T14:51:37.287Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/07_janitor_showcase/07_janitor_showcase.html</loc>
-    <lastmod>2022-07-24T14:50:26.411Z</lastmod>
+    <lastmod>2022-08-11T14:51:37.863Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/03_writing_versatile_fcts/03_writing_versatile_fcts.html</loc>
-    <lastmod>2022-07-24T14:50:27.067Z</lastmod>
+    <lastmod>2022-08-11T14:51:38.539Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/02_luck_vs_skill/02_luck_vs_skill.html</loc>
-    <lastmod>2022-07-24T14:50:27.763Z</lastmod>
+    <lastmod>2022-08-11T14:51:39.231Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/04_sonntagsfrage/04_sonntagsfrage.html</loc>
-    <lastmod>2022-07-24T14:50:28.215Z</lastmod>
+    <lastmod>2022-08-11T14:51:39.763Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/01_visualize_kernel_density/01_visualize_kernel_density.html</loc>
-    <lastmod>2022-07-24T14:50:28.847Z</lastmod>
+    <lastmod>2022-08-11T14:51:40.511Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/12_embedding_shiny_app/12_embedding_shiny_app.html</loc>
-    <lastmod>2022-07-24T14:50:29.119Z</lastmod>
+    <lastmod>2022-08-12T12:37:40.248Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/05_ggforce_examples/05_ggforce_examples.html</loc>
-    <lastmod>2022-07-24T14:50:29.907Z</lastmod>
+    <lastmod>2022-08-11T14:51:41.659Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/06_learning_by_thieving/06_learning_by_thieving.html</loc>
-    <lastmod>2022-07-24T14:50:30.411Z</lastmod>
+    <lastmod>2022-08-11T14:51:42.247Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/01_a_few_ggplot_tips/01_a_few_ggplot_tips.html</loc>
-    <lastmod>2022-07-24T14:50:31.003Z</lastmod>
+    <lastmod>2022-08-11T14:51:42.827Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html</loc>
-    <lastmod>2022-07-24T14:50:31.659Z</lastmod>
+    <lastmod>2022-08-11T14:51:43.615Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/11_rounded_rectangles/11_rounded_rectangles.html</loc>
-    <lastmod>2022-07-24T14:50:32.487Z</lastmod>
+    <lastmod>2022-08-11T14:51:44.511Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/02_aesthetic_labels/02_aesthetic_labels.html</loc>
-    <lastmod>2022-07-24T14:50:33.011Z</lastmod>
+    <lastmod>2022-08-11T14:51:45.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albert-rapp.de/posts/ggplot2-tips/13_alternative_corrplots/13_alternative_corrplots.html</loc>
+    <lastmod>2022-08-11T14:51:45.891Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albert-rapp.de/posts/ggplot2-tips/12_a_few_gg_packages/12_a_few_gg_packages.html</loc>
+    <lastmod>2022-08-11T14:51:46.675Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/09_functional_programming_ggplot/09_functional_programming_ggplot.html</loc>
-    <lastmod>2022-07-24T14:50:33.603Z</lastmod>
+    <lastmod>2022-08-11T14:51:47.363Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/04_arranging_plots/04_arranging_plots.html</loc>
-    <lastmod>2022-07-24T14:50:34.259Z</lastmod>
+    <lastmod>2022-08-11T14:51:48.099Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/03_position_adjustment/03_position_adjustment.html</loc>
-    <lastmod>2022-07-24T14:50:34.811Z</lastmod>
+    <lastmod>2022-08-11T14:51:48.619Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/10_recreating_swd_look/10_recreating_swd_look.html</loc>
-    <lastmod>2022-07-24T14:50:35.587Z</lastmod>
+    <lastmod>2022-08-11T14:51:49.475Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/ggplot2-tips/08_fonts_and_icons/08_fonts_and_icons.html</loc>
-    <lastmod>2022-07-24T14:50:36.195Z</lastmod>
+    <lastmod>2022-08-11T14:51:50.179Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albert-rapp.de/posts/ggplot2-tips/14_scaled_heatmaps/14_scaled_heatmaps.html</loc>
+    <lastmod>2022-08-11T14:51:50.799Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/10_lessons_learned_teaching_nonprogrammers/10_lessons_learned_teaching_nonprogrammers.html</loc>
-    <lastmod>2022-07-24T14:50:36.883Z</lastmod>
+    <lastmod>2022-08-11T14:51:51.575Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/06_shiny_app_learnings/06_shiny_app_learnings.html</loc>
-    <lastmod>2022-07-24T14:50:37.599Z</lastmod>
+    <lastmod>2022-08-11T14:51:52.227Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/posts/08_drawing_ggplot_interactively/08_drawing_ggplot_interactively.html</loc>
-    <lastmod>2022-07-24T14:50:38.327Z</lastmod>
+    <lastmod>2022-08-11T14:51:52.863Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/ggplot-series.html</loc>
-    <lastmod>2022-07-24T14:50:38.755Z</lastmod>
+    <lastmod>2022-08-11T14:51:53.315Z</lastmod>
   </url>
   <url>
     <loc>https://albert-rapp.de/dataviz_portfolio.html</loc>
-    <lastmod>2022-07-24T14:50:39.055Z</lastmod>
+    <lastmod>2022-08-11T14:51:53.579Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albert-rapp.de/posts/14_GLMs/14_GLMS.html</loc>
+    <lastmod>2022-08-19T12:23:22.470Z</lastmod>
   </url>
 </urlset>

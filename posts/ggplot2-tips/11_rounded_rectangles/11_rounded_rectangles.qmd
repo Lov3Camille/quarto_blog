@@ -3,6 +3,9 @@ title: 'Storytelling in ggplot using rounded rectangles'
 date: '2022-05-04'
 categories: ["Visualization"]
 description: "We build rebuild a 'Storytelling with Data' plot which uses rounded rectangles. I'll show you an easy and a hard way to make rectangles round."
+aliases: 
+  # Consolidate new directory structure and that of the old blog
+  - ../../../post/2022-05-01-use-grobs-to-get-rounded-corners/index.html
 execute: 
   message: false
   warning: false
