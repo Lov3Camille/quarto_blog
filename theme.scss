@@ -14,10 +14,9 @@ $black:    #000 !default;
 
 $primary:  #06436e !default;
 $code-color: $primary !default;
-$font-family-base: 'Gowun Batang', 'Source Sans Pro',  'Lato', 'Merriweather', 'Roboto Regular', 'Cabin Regular' !default;
+$font-family-base: 'Gowun Batang', 'LXGW WenKai', 'Source Sans Pro',  'Lato', 'Merriweather', 'Roboto Regular', 'Cabin Regular' !default;
 $body-color: $gray-700 !default;
-$headings-font-family:  'Dancing Script', 'Prata', 'Roboto', 'Playfair Display', 'Montserrat'    !default;
-$content-font-family: 'Gowun Batang' !default;
+$headings-font-family:  'Gowun Batang', 'LXGW WenKai', 'Prata', 'Roboto', 'Playfair Display', 'Montserrat'    !default;
 
 /*-- scss:rules --*/
 
@@ -27,7 +26,7 @@ ol > li {
 
 
 #title-block-header.quarto-title-block.default .quarto-title .title {
-  font-family: "Gowun Batang", "Dancing Script", "Libre Baskerville", $headings-font-family;
+  font-family: $headings-font-family;
   font-size: $font-size-base * 2.5;
 }
 
@@ -40,13 +39,17 @@ h3.no-anchor.listing-title {
 }
 
 .navbar-dark .navbar-brand {
-  font-family: $headings-font-family;
+  font-family: 'Dancing Script';
   font-size: $font-size-base * 1.75;
 }
 
 .navbar > .container-xxl, .navbar > .container-xl, .navbar > .container-lg, .navbar > .container-md, .navbar > .container-sm, .navbar > .container, .navbar > .container-fluid {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+div.listing-description {
+  font-family: $headings-font-family;
 }
 
 
@@ -56,7 +59,7 @@ div.quarto-post .listing-categories .listing-category {
     border: none;
     border-radius: .4em;
     text-transform: none;
-    font-family: $content-font-family;
+    font-family: $font-family-base;
 }
 
 #title-block-header.quarto-title-block.default .quarto-categories .quarto-category {

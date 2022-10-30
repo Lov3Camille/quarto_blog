@@ -1,18 +1,20 @@
 [
   {
-    "listing": "/archive.html",
+    "listing": "/blog.html",
     "items": [
-      "/posts/demo/demo.html"
+      "/posts/cmu_15-213_lab0/cmu_15-213_lab0.html",
+      "/posts/camille_string/camille_string.html",
+      "/posts/camille_shell/camille_shell.html",
+      "/posts/new_beginnings/new_beginnings.html"
     ]
   },
   {
-    "listing": "/ggplot-series.html",
-    "items": []
-  },
-  {
-    "listing": "/blog.html",
+    "listing": "/archive.html",
     "items": [
-      "/posts/demo/demo.html"
+      "/posts/cmu_15-213_lab0/cmu_15-213_lab0.html",
+      "/posts/camille_string/camille_string.html",
+      "/posts/camille_shell/camille_shell.html",
+      "/posts/new_beginnings/new_beginnings.html"
     ]
   }
 ]

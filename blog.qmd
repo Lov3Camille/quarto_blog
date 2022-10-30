@@ -14,10 +14,10 @@ title-block-banner: false
 
 :::: {.grid}
 
-::: {.g-col-12 .g-col-md-6}
+<!-- ::: {.g-col-12 .g-col-md-6}
 # Subscribe
 <iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px"></iframe>
-:::
+::: -->
 
 :::: 
 

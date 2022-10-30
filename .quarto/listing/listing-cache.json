@@ -5,9 +5,6 @@
     ],
     "archive.qmd": [
       "posts/**/*.qmd"
-    ],
-    "ggplot-series.qmd": [
-      "posts/ggplot2-tips"
     ]
   }
 }

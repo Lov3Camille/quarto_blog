@@ -16,7 +16,6 @@ toc-depth: 3
 page-layout: article
 
 #########################
-# You can leave out this part in the first step
 format:
   html:
     include-after-body: ../footer.html

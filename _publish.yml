@@ -1,4 +1,4 @@
 - source: project
-  netlify:
-    - id: 9d597cca-2c24-444d-8ea3-3d1cf753b1d8
-      url: 'https://albert-rapp.de'
+  quarto-pub:
+    - id: a93c778a-9420-4ac8-b781-404993c68501
+      url: 'https://quartopub.com/sites/lov3camille/love-camille'

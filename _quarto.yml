@@ -19,7 +19,6 @@ website:
       - icon: twitter
         href: https://twitter.com/lov3camille_
 #########################
-# You can ignore this part in the first step
       - icon: rss
         href: blog.xml
       - text: Resources
