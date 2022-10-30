@@ -7,7 +7,7 @@ freeze: true
 title-block-banner: false
 
 # Author name of all blog posts
-author: 'Albert Rapp'
+author: 'lov3camille'
 
 # Table of content settings
 toc: true
@@ -23,5 +23,5 @@ format:
 
 comments: 
   utterances: 
-    repo:  AlbertRapp/blogComments 
+    repo:  Lov3Camille/blogComments 
 #########################
