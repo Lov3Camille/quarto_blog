@@ -35,7 +35,6 @@ website:
     creator: "@lov3camille"
 
 filters:
-  - code-filename
   - lightbox
 
 lightbox: auto

@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>Love Camille</title>
-<link>https://quartopub.com/sites/lov3camille/love-camille/blog.html</link>
-<atom:link href="https://quartopub.com/sites/lov3camille/love-camille/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://lov3camille.top/blog.html</link>
+<atom:link href="https://lov3camille.top/blog.xml" rel="self" type="application/rss+xml"/>
 <description>This is Lov3Camille&#39;s personal Blog.</description>
 <generator>quarto-1.2.247</generator>
 <lastBuildDate>Mon, 10 Oct 2022 16:00:00 GMT</lastBuildDate>
 <item>
   <title>CMU 15-213 Lab0</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/cmu_15-213_lab0/cmu_15-213_lab0.html</link>
+  <link>https://lov3camille.top/posts/cmu_15-213_lab0/cmu_15-213_lab0.html</link>
   <description><![CDATA[ 
 
 
@@ -329,13 +329,13 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
  ]]></description>
   <category>c</category>
   <category>cmu_15_213</category>
-  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/cmu_15-213_lab0/cmu_15-213_lab0.html</guid>
+  <guid>https://lov3camille.top/posts/cmu_15-213_lab0/cmu_15-213_lab0.html</guid>
   <pubDate>Mon, 10 Oct 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>实现一个简易的C++ String类</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/camille_string/camille_string.html</link>
+  <link>https://lov3camille.top/posts/camille_string/camille_string.html</link>
   <description><![CDATA[ 
 
 
@@ -388,13 +388,13 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
 
  ]]></description>
   <category>cpp</category>
-  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/camille_string/camille_string.html</guid>
+  <guid>https://lov3camille.top/posts/camille_string/camille_string.html</guid>
   <pubDate>Fri, 23 Sep 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>实现一个简易Shell</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/camille_shell/camille_shell.html</link>
+  <link>https://lov3camille.top/posts/camille_shell/camille_shell.html</link>
   <description><![CDATA[ 
 
 
@@ -654,13 +654,13 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
 
  ]]></description>
   <category>c</category>
-  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/camille_shell/camille_shell.html</guid>
+  <guid>https://lov3camille.top/posts/camille_shell/camille_shell.html</guid>
   <pubDate>Sun, 11 Sep 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>这几年</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/new_beginnings/new_beginnings.html</link>
+  <link>https://lov3camille.top/posts/new_beginnings/new_beginnings.html</link>
   <description><![CDATA[ 
 
 
@@ -716,7 +716,7 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
 
  ]]></description>
   <category>life</category>
-  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/new_beginnings/new_beginnings.html</guid>
+  <guid>https://lov3camille.top/posts/new_beginnings/new_beginnings.html</guid>
   <pubDate>Sun, 03 Jul 2022 16:00:00 GMT</pubDate>
 </item>
 </channel>
