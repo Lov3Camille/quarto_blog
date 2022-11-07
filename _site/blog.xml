@@ -6,35 +6,48 @@
       version="2.0">
 <channel>
 <title>Love Camille</title>
-<link>https://lov3camille.top/blog.html</link>
-<atom:link href="https://lov3camille.top/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://quartopub.com/sites/lov3camille/love-camille/blog.html</link>
+<atom:link href="https://quartopub.com/sites/lov3camille/love-camille/blog.xml" rel="self" type="application/rss+xml"/>
 <description>This is Lov3Camille&#39;s personal Blog.</description>
 <generator>quarto-1.2.247</generator>
 <lastBuildDate>Sun, 06 Nov 2022 16:00:00 GMT</lastBuildDate>
 <item>
   <title>DRX夺冠有感</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/league_of_legends_s12/index.html</link>
+  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/league_of_legends_s12/index.html</link>
   <description><![CDATA[ 
 
 
 
 <section id="s12" class="level1">
 <h1>S12</h1>
-<p>关于最后总决赛，我不知道为什么大部分人都希望SKT夺冠，希望Faker重回巅峰，偏偏我希望DRX夺冠，因为我昨天看比赛时候的心情和2017年S7一样, 就像我在第一篇博客(https://lov3camille.quarto.pub/love-camille/posts/new_beginnings/new_beginnings.html#ambition)里讲的： &gt; 所以我觉得我的2017年过的并不失败，大概我心中住了一个Ambition吧。</p>
+<p>关于最后总决赛，我不知道为什么大部分人都希望SKT夺冠，希望Faker重回巅峰，偏偏我希望DRX夺冠，因为我昨天看比赛时候的心情和2017年S7一样, 就像我在第一篇博客里讲的：</p>
+<blockquote class="blockquote">
+<p><em>“所以我觉得我的2017年过的并不失败，大概我心中住了一个Ambition吧.”</em></p>
+</blockquote>
+<section id="deft" class="level2">
+<h2 class="anchored" data-anchor-id="deft">Deft</h2>
+<p>他和Faker同为麻浦高中的学生，同一年打职业，却在十年里辗转了七支队伍，未曾夺得一冠。</p>
+<p>Deft曾经也在EDG打过，正好那天的解说席上明凯也在，不知道同为追梦人，也同是队友，他心里是什么想法。</p>
+<p>或许他已经释然了，一辈子拿不到冠军其实才是常态，至少努力过就没什么遗憾了。</p>
+<p>赛后采访时Deft的一段话我觉得值得记录下来：</p>
+<blockquote class="blockquote">
+<p><em>“我唯一擅长的只有英雄联盟，如果我不能在我最擅长的事情上取得成功，那我根本不知道我的人生还有什么意义。”</em></p>
+</blockquote>
 
 
+</section>
 </section>
 
  ]]></description>
   <category>life</category>
-  <guid>https://lov3camille.top/posts/league_of_legends_s12/index.html</guid>
+  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/league_of_legends_s12/index.html</guid>
   <pubDate>Sun, 06 Nov 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>基础算法模板</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/basic_algorithms/index.html</link>
+  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/basic_algorithms/index.html</link>
   <description><![CDATA[ 
 
 
@@ -127,13 +140,13 @@
 
  ]]></description>
   <category>cpp</category>
-  <guid>https://lov3camille.top/posts/basic_algorithms/index.html</guid>
+  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/basic_algorithms/index.html</guid>
   <pubDate>Fri, 04 Nov 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>CMU 15-213 Lab0</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/cmu_15-213_lab0/index.html</link>
+  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/cmu_15-213_lab0/index.html</link>
   <description><![CDATA[ 
 
 
@@ -448,13 +461,13 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
  ]]></description>
   <category>c</category>
   <category>cmu_15_213</category>
-  <guid>https://lov3camille.top/posts/cmu_15-213_lab0/index.html</guid>
+  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/cmu_15-213_lab0/index.html</guid>
   <pubDate>Mon, 10 Oct 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>实现一个简易的C++ String类</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/camille_string/index.html</link>
+  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/camille_string/index.html</link>
   <description><![CDATA[ 
 
 
@@ -507,13 +520,13 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
 
  ]]></description>
   <category>cpp</category>
-  <guid>https://lov3camille.top/posts/camille_string/index.html</guid>
+  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/camille_string/index.html</guid>
   <pubDate>Fri, 23 Sep 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>实现一个简易Shell</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/camille_shell/index.html</link>
+  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/camille_shell/index.html</link>
   <description><![CDATA[ 
 
 
@@ -773,13 +786,13 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
 
  ]]></description>
   <category>c</category>
-  <guid>https://lov3camille.top/posts/camille_shell/index.html</guid>
+  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/camille_shell/index.html</guid>
   <pubDate>Sun, 11 Sep 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>这几年</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/new_beginnings/index.html</link>
+  <link>https://quartopub.com/sites/lov3camille/love-camille/posts/new_beginnings/index.html</link>
   <description><![CDATA[ 
 
 
@@ -835,7 +848,7 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
 
  ]]></description>
   <category>life</category>
-  <guid>https://lov3camille.top/posts/new_beginnings/index.html</guid>
+  <guid>https://quartopub.com/sites/lov3camille/love-camille/posts/new_beginnings/index.html</guid>
   <pubDate>Sun, 03 Jul 2022 16:00:00 GMT</pubDate>
 </item>
 </channel>
