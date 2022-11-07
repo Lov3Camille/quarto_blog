@@ -2,7 +2,7 @@
 title: 'CMU 15-213 Lab0'
 date: '2022-10-11'
 categories: ['c', 'cmu_15_213']
-description: 'CSAPP Lab0'
+description: ' '
 execute: 
   message: false
   warning: false

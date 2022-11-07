@@ -2,7 +2,7 @@
 title: '实现一个简易的C++ String类'
 date: '2022-09-24'
 categories: ['cpp']
-description: 'simple C++ String class Implementation '
+description: ' '
 execute: 
   message: false
   warning: false

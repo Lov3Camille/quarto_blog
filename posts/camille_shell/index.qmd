@@ -2,7 +2,7 @@
 title: '实现一个简易Shell'
 date: '2022-09-12'
 categories: ['c']
-description: 'simple shell'
+description: ' '
 execute: 
   message: false
   warning: false

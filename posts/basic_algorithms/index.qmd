@@ -2,7 +2,7 @@
 title: '基础算法模板'
 date: '2022-11-05'
 categories: ['cpp']
-description: 'Algorithms Template from AcWing'
+description: ' '
 execute: 
   message: false
   warning: false
