@@ -1,0 +1,24 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/league_of_legends_s12/index.html",
+      "/posts/basic_algorithms/index.html",
+      "/posts/cmu_15-213_lab0/index.html",
+      "/posts/camille_string/index.html",
+      "/posts/camille_shell/index.html",
+      "/posts/new_beginnings/index.html"
+    ]
+  },
+  {
+    "listing": "/archive.html",
+    "items": [
+      "/posts/league_of_legends_s12/index.html",
+      "/posts/basic_algorithms/index.html",
+      "/posts/cmu_15-213_lab0/index.html",
+      "/posts/camille_string/index.html",
+      "/posts/camille_shell/index.html",
+      "/posts/new_beginnings/index.html"
+    ]
+  }
+]
