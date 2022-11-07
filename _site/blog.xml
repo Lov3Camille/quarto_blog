@@ -10,11 +10,130 @@
 <atom:link href="https://lov3camille.top/blog.xml" rel="self" type="application/rss+xml"/>
 <description>This is Lov3Camille&#39;s personal Blog.</description>
 <generator>quarto-1.2.247</generator>
-<lastBuildDate>Mon, 10 Oct 2022 16:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 06 Nov 2022 16:00:00 GMT</lastBuildDate>
+<item>
+  <title>DRX夺冠有感</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/league_of_legends_s12/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="s12" class="level1">
+<h1>S12</h1>
+<p>关于最后总决赛，我不知道为什么大部分人都希望SKT夺冠，希望Faker重回巅峰，偏偏我希望DRX夺冠，因为我昨天看比赛时候的心情和2017年S7一样, 就像我在第一篇博客(https://lov3camille.quarto.pub/love-camille/posts/new_beginnings/new_beginnings.html#ambition)里讲的： &gt; 所以我觉得我的2017年过的并不失败，大概我心中住了一个Ambition吧。</p>
+
+
+</section>
+
+ ]]></description>
+  <category>life</category>
+  <guid>https://lov3camille.top/posts/league_of_legends_s12/index.html</guid>
+  <pubDate>Sun, 06 Nov 2022 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>基础算法模板</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/basic_algorithms/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="快速排序" class="level1">
+<h1>快速排序</h1>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;iostream&gt;</span></span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="at" style="color: #657422;">const</span> <span class="dt" style="color: #AD0000;">int</span> N <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1e6</span> <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="dt" style="color: #AD0000;">int</span> n<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-8"><span class="dt" style="color: #AD0000;">int</span> q<span class="op" style="color: #5E5E5E;">[</span>N<span class="op" style="color: #5E5E5E;">];</span></span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="dt" style="color: #AD0000;">void</span> quick_sort<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> q<span class="op" style="color: #5E5E5E;">[],</span> <span class="dt" style="color: #AD0000;">int</span> l<span class="op" style="color: #5E5E5E;">,</span> <span class="dt" style="color: #AD0000;">int</span> r<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-11">    <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>l <span class="op" style="color: #5E5E5E;">&gt;=</span> r<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-12">        <span class="cf" style="color: #003B4F;">return</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-13">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb1-14"></span>
+<span id="cb1-15">    <span class="dt" style="color: #AD0000;">int</span> x <span class="op" style="color: #5E5E5E;">=</span> q<span class="op" style="color: #5E5E5E;">[</span>l<span class="op" style="color: #5E5E5E;">],</span> i <span class="op" style="color: #5E5E5E;">=</span> l <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">,</span> j <span class="op" style="color: #5E5E5E;">=</span> r <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-16"></span>
+<span id="cb1-17">    <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>i <span class="op" style="color: #5E5E5E;">&lt;</span> j<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-18">        <span class="cf" style="color: #003B4F;">do</span> i<span class="op" style="color: #5E5E5E;">++;</span> <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">&lt;</span> x<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb1-19">        <span class="cf" style="color: #003B4F;">do</span> j<span class="op" style="color: #5E5E5E;">--;</span> <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">&gt;</span> x<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb1-20">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>i <span class="op" style="color: #5E5E5E;">&lt;</span> j<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-21">            swap<span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">],</span> q<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">]);</span></span>
+<span id="cb1-22">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb1-23">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb1-24"></span>
+<span id="cb1-25">    quick_sort<span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">,</span> l<span class="op" style="color: #5E5E5E;">,</span> j<span class="op" style="color: #5E5E5E;">);</span> </span>
+<span id="cb1-26">    quick_sort<span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">,</span> j <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">,</span> r<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb1-27"><span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb1-28"></span>
+<span id="cb1-29"><span class="dt" style="color: #AD0000;">int</span> main<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-30">    scanf<span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">%d</span><span class="st" style="color: #20794D;">"</span><span class="op" style="color: #5E5E5E;">,</span> <span class="op" style="color: #5E5E5E;">&amp;</span>n<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb1-31"></span>
+<span id="cb1-32">    <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&lt;</span> n<span class="op" style="color: #5E5E5E;">;</span> i<span class="op" style="color: #5E5E5E;">++)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-33">        scanf<span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">%d</span><span class="st" style="color: #20794D;">"</span><span class="op" style="color: #5E5E5E;">,</span> <span class="op" style="color: #5E5E5E;">&amp;</span>q<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]);</span></span>
+<span id="cb1-34">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb1-35"></span>
+<span id="cb1-36">    quick_sort<span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">,</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">,</span> n <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb1-37"></span>
+<span id="cb1-38">    <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> j <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> j <span class="op" style="color: #5E5E5E;">&lt;</span> n<span class="op" style="color: #5E5E5E;">;</span> j<span class="op" style="color: #5E5E5E;">++)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-39">        printf<span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">%d</span><span class="st" style="color: #20794D;">"</span><span class="op" style="color: #5E5E5E;">,</span> q<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">]);</span></span>
+<span id="cb1-40">    <span class="op" style="color: #5E5E5E;">};</span></span>
+<span id="cb1-41"><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
+</section>
+<section id="归并排序" class="level1">
+<h1>归并排序</h1>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;iostream&gt;</span></span>
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="at" style="color: #657422;">const</span> <span class="dt" style="color: #AD0000;">int</span> N <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1e6</span> <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-6"></span>
+<span id="cb2-7"><span class="dt" style="color: #AD0000;">int</span> n<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-8"><span class="dt" style="color: #AD0000;">int</span> q<span class="op" style="color: #5E5E5E;">[</span>N<span class="op" style="color: #5E5E5E;">],</span> tmp<span class="op" style="color: #5E5E5E;">[</span>N<span class="op" style="color: #5E5E5E;">];</span></span>
+<span id="cb2-9"></span>
+<span id="cb2-10"><span class="dt" style="color: #AD0000;">void</span> merge_sort<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> q<span class="op" style="color: #5E5E5E;">[],</span> <span class="dt" style="color: #AD0000;">int</span> l<span class="op" style="color: #5E5E5E;">,</span> <span class="dt" style="color: #AD0000;">int</span> r<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-11">    <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>l <span class="op" style="color: #5E5E5E;">&gt;=</span> r<span class="op" style="color: #5E5E5E;">)</span> <span class="cf" style="color: #003B4F;">return</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-12"></span>
+<span id="cb2-13">    <span class="dt" style="color: #AD0000;">int</span> mid <span class="op" style="color: #5E5E5E;">=</span> l <span class="op" style="color: #5E5E5E;">+</span> r <span class="op" style="color: #5E5E5E;">&gt;&gt;</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-14"></span>
+<span id="cb2-15">    merge_sort<span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">,</span> l<span class="op" style="color: #5E5E5E;">,</span> mid<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb2-16">    merge_sort<span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">,</span> mid <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">,</span> r<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb2-17"></span>
+<span id="cb2-18">    <span class="dt" style="color: #AD0000;">int</span> k <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">,</span> i <span class="op" style="color: #5E5E5E;">=</span> l<span class="op" style="color: #5E5E5E;">,</span> j <span class="op" style="color: #5E5E5E;">=</span> mid <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-19">    <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>i <span class="op" style="color: #5E5E5E;">&lt;=</span> mid <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> j <span class="op" style="color: #5E5E5E;">&lt;=</span> r<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-20">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">&lt;=</span> q<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">])</span> tmp<span class="op" style="color: #5E5E5E;">[</span>k<span class="op" style="color: #5E5E5E;">++]</span> <span class="op" style="color: #5E5E5E;">=</span> q<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">++];</span></span>
+<span id="cb2-21">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">&gt;</span> q<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">])</span> tmp<span class="op" style="color: #5E5E5E;">[</span>k<span class="op" style="color: #5E5E5E;">++]</span> <span class="op" style="color: #5E5E5E;">=</span> q<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">++];</span></span>
+<span id="cb2-22">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-23">    <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>i <span class="op" style="color: #5E5E5E;">&lt;=</span> mid<span class="op" style="color: #5E5E5E;">)</span> tmp<span class="op" style="color: #5E5E5E;">[</span>k<span class="op" style="color: #5E5E5E;">++]</span> <span class="op" style="color: #5E5E5E;">=</span> q<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">++];</span></span>
+<span id="cb2-24">    <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>j <span class="op" style="color: #5E5E5E;">&lt;=</span> r<span class="op" style="color: #5E5E5E;">)</span> tmp<span class="op" style="color: #5E5E5E;">[</span>k<span class="op" style="color: #5E5E5E;">++]</span> <span class="op" style="color: #5E5E5E;">=</span> q<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">++];</span></span>
+<span id="cb2-25"></span>
+<span id="cb2-26">    <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span>i <span class="op" style="color: #5E5E5E;">=</span> l<span class="op" style="color: #5E5E5E;">,</span> j <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&lt;=</span> r<span class="op" style="color: #5E5E5E;">;</span> i<span class="op" style="color: #5E5E5E;">++,</span> j<span class="op" style="color: #5E5E5E;">++)</span> q<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">=</span> tmp<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">];</span></span>
+<span id="cb2-27"><span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-28"></span>
+<span id="cb2-29"><span class="dt" style="color: #AD0000;">int</span> main<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-30">    scanf<span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">%d</span><span class="st" style="color: #20794D;">"</span><span class="op" style="color: #5E5E5E;">,</span> <span class="op" style="color: #5E5E5E;">&amp;</span>n<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb2-31">    <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&lt;</span> n<span class="op" style="color: #5E5E5E;">;</span> i<span class="op" style="color: #5E5E5E;">++)</span> scanf<span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">%d</span><span class="st" style="color: #20794D;">"</span><span class="op" style="color: #5E5E5E;">,</span> <span class="op" style="color: #5E5E5E;">&amp;</span>q<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]);</span></span>
+<span id="cb2-32"></span>
+<span id="cb2-33">    merge_sort<span class="op" style="color: #5E5E5E;">(</span>q<span class="op" style="color: #5E5E5E;">,</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">,</span> n <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb2-34"></span>
+<span id="cb2-35">    <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> j <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> j <span class="op" style="color: #5E5E5E;">&lt;</span> n<span class="op" style="color: #5E5E5E;">;</span> j<span class="op" style="color: #5E5E5E;">++)</span> printf<span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">%d</span><span class="st" style="color: #20794D;">"</span><span class="op" style="color: #5E5E5E;">,</span> q<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">]);</span></span>
+<span id="cb2-36"><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
+
+
+</section>
+
+ ]]></description>
+  <category>cpp</category>
+  <guid>https://lov3camille.top/posts/basic_algorithms/index.html</guid>
+  <pubDate>Fri, 04 Nov 2022 16:00:00 GMT</pubDate>
+</item>
 <item>
   <title>CMU 15-213 Lab0</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/cmu_15-213_lab0/cmu_15-213_lab0.html</link>
+  <link>https://lov3camille.top/posts/cmu_15-213_lab0/index.html</link>
   <description><![CDATA[ 
 
 
@@ -329,13 +448,13 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
  ]]></description>
   <category>c</category>
   <category>cmu_15_213</category>
-  <guid>https://lov3camille.top/posts/cmu_15-213_lab0/cmu_15-213_lab0.html</guid>
+  <guid>https://lov3camille.top/posts/cmu_15-213_lab0/index.html</guid>
   <pubDate>Mon, 10 Oct 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>实现一个简易的C++ String类</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/camille_string/camille_string.html</link>
+  <link>https://lov3camille.top/posts/camille_string/index.html</link>
   <description><![CDATA[ 
 
 
@@ -388,13 +507,13 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
 
  ]]></description>
   <category>cpp</category>
-  <guid>https://lov3camille.top/posts/camille_string/camille_string.html</guid>
+  <guid>https://lov3camille.top/posts/camille_string/index.html</guid>
   <pubDate>Fri, 23 Sep 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>实现一个简易Shell</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/camille_shell/camille_shell.html</link>
+  <link>https://lov3camille.top/posts/camille_shell/index.html</link>
   <description><![CDATA[ 
 
 
@@ -654,13 +773,13 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
 
  ]]></description>
   <category>c</category>
-  <guid>https://lov3camille.top/posts/camille_shell/camille_shell.html</guid>
+  <guid>https://lov3camille.top/posts/camille_shell/index.html</guid>
   <pubDate>Sun, 11 Sep 2022 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>这几年</title>
   <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/new_beginnings/new_beginnings.html</link>
+  <link>https://lov3camille.top/posts/new_beginnings/index.html</link>
   <description><![CDATA[ 
 
 
@@ -716,7 +835,7 @@ font-style: italic;">q</span><span class="co" style="color: #5E5E5E;"> The queue
 
  ]]></description>
   <category>life</category>
-  <guid>https://lov3camille.top/posts/new_beginnings/new_beginnings.html</guid>
+  <guid>https://lov3camille.top/posts/new_beginnings/index.html</guid>
   <pubDate>Sun, 03 Jul 2022 16:00:00 GMT</pubDate>
 </item>
 </channel>
