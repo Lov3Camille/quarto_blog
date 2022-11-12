@@ -23,7 +23,13 @@
        url('fonts/dancing-script-v24-latin/dancing-script-v24-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
 }
 /* LXGW WenKai */
-@import 'lxgw-wenkai-webfont/style.css';
+@font-face {
+  font-family: 'LXGW WenKai';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('fonts/LXGWWenKaiMono-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+}
 
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
