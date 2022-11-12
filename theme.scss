@@ -43,7 +43,7 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
-$primary:  #06436e !default;
+$primary:  #8e9497 !default;
 $code-color: $primary !default;
 $font-family-base: 'Gowun Batang', 'LXGW WenKai', 'Source Sans Pro',  'Lato', 'Merriweather', 'Roboto Regular', 'Cabin Regular' !default;
 $body-color: $gray-700 !default;
@@ -63,10 +63,24 @@ ol > li {
 
 h1 {
   font-family: $headings-font-family;
+  font-weight: 800;
 }
 
 h3.no-anchor.listing-title {
   font-family: $headings-font-family;
+  font-weight: 800;
+}
+
+.category {
+  font-weight: 800;
+}
+
+.listing-date {
+  font-weight: 800;
+}
+
+.listing-reading-time {
+  font-weight: 800;
 }
 
 .navbar-dark .navbar-brand {
