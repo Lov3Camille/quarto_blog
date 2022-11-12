@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 resources: 
-  - "/docs/CNAME"  
+  - "docs/CNAME"  
   
 format:
   html:
