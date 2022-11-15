@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Love Camille",
     "section": "",
-    "text": "All blog posts\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDRX夺冠有感\n\n\n\n\n\n\n\nlife\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n基础算法模板\n\n\n\n\n\n\n\ncpp\n\n\nalgorithms\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n5 min\n\n\n\n\n\n\n\n\nCMU 15-213 Lab0\n\n\n\n\n\n\n\nc\n\n\ncmu_15_213\n\n\n\n\n\n\n\n\n\n\n\nOct 11, 2022\n\n\n9 min\n\n\n\n\n\n\n\n\n实现一个简易的C++ String类\n\n\n\n\n\n\n\ncpp\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n实现一个简易Shell\n\n\n\n\n\n\n\nc\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2022\n\n\n6 min\n\n\n\n\n\n\n\n\n这几年\n\n\n\n\n\n\n\nlife\n\n\n\n\n离开深圳前一些想说的话\n\n\n\n\n\n\nJul 4, 2022\n\n\n0 min\n\n\n\n\n\n\nNo matching items"
+    "text": "All blog posts\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDRX夺冠有感\n\n\n\n\n\n\n\nlife\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n基础算法模板\n\n\n\n\n\n\n\ncpp\n\n\nalgorithms\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n6 min\n\n\n\n\n\n\n\n\nCMU 15-213 Lab0\n\n\n\n\n\n\n\nc\n\n\ncmu_15_213\n\n\n\n\n\n\n\n\n\n\n\nOct 11, 2022\n\n\n9 min\n\n\n\n\n\n\n\n\n实现一个简易的C++ String类\n\n\n\n\n\n\n\ncpp\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n实现一个简易Shell\n\n\n\n\n\n\n\nc\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2022\n\n\n6 min\n\n\n\n\n\n\n\n\n这几年\n\n\n\n\n\n\n\nlife\n\n\n\n\n离开深圳前一些想说的话\n\n\n\n\n\n\nJul 4, 2022\n\n\n0 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -40,6 +40,20 @@
     "title": "基础算法模板",
     "section": "浮点数二分",
     "text": "浮点数二分\n求一个数的平方根。\n#include <iostream>\n\nusing namespace std;\n\nint main() {\n    double x;\n    cin >> x;\n\n    double l = 0, r = x;\n\n    while (r - l > 1e-8) {\n        double mid = (l + r) / 2;\n        if (mid * mid > x) r = mid;\n        else l = mid; \n    }\n\n    printf(\"%f\\n\", l);\n}"
+  },
+  {
+    "objectID": "posts/basic_algorithms/index.html#加法",
+    "href": "posts/basic_algorithms/index.html#加法",
+    "title": "基础算法模板",
+    "section": "加法",
+    "text": "加法\n#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nconst int N = 1e6 + 10;\n\nvector<int> add(vector<int> &A, vector<int> &B) {\n    vector<int> C;\n    \n    int t = 0;\n\n    for (int i = 0; i < A.size() || i < B.size(); i++) {\n        if (i < A.size()) t += A[i];\n        if (i < B.size()) t += B[i];\n        C.push_back(t % 10);\n        t = t / 10;\n    }\n    if (t) C.push_back(t);\n    return C;\n}\n\nint main() {\n    string a, b;\n    vector<int> A, B;\n    cin >> a >> b;\n\n    for (int i = a.size() - 1; i >= 0; i--) A.push_back(a[i] - '0'); // convert char to int\n    for (int i = b.size() - 1; i >= 0; i--) B.push_back(b[i] - '0');\n\n    vector<int> C = add(A, B);\n\n    for (int i = C.size() - 1; i >= 0; i--) printf(\"%d\", C[i]);\n\n    return 0;\n}"
+  },
+  {
+    "objectID": "posts/basic_algorithms/index.html#减法",
+    "href": "posts/basic_algorithms/index.html#减法",
+    "title": "基础算法模板",
+    "section": "减法",
+    "text": "减法\n#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nconst int N = 1e6 + 10;\n\n// compare A and B\nbool cmp(vector<int> &A, vector<int> &B) {\n    if (A.size() != B.size()) return A.size() > B.size();\n    for (int i = 0; i < A.size(); i++) {\n        if (A[i] != B[i]) return A[i] > B[i];\n    }\n    return true;\n}\n\nvector<int> sub(vector<int> &A, vector<int> &B) {\n    vector<int> C;\n    for (int i = 0, t = 0; i < A.size(); i++) {\n        t = A[i] - t;\n        if (i < B.size()) t -= B[i];\n        C.push_back((t + 10) % 10);\n        if (t < 0) t = 1;\n        else t = 0;\n    }\n    while (C.size() > 1 && C.back() == 0) C.pop_back(); // remember to delete redundant zero\n    return C;\n}\n\nint main() {\n    string a, b;\n    vector<int> A, B;\n    cin >> a >> b;\n\n    for (int i = a.size() - 1; i >= 0; i--) A.push_back(a[i] - '0');\n    for (int i = b.size() - 1; i >= 0; i--) B.push_back(b[i] - '0');\n\n    if (cmp(A, B)) {\n        auto C = sub(A, B);\n        for (int i = C.size() - 1; i >= 0; i--) printf(\"%d\", C[i]);\n    } else {\n        auto C = sub(B, A);\n        printf(\"-\");\n        for (int i = C.size() - 1; i >= 0; i--) printf(\"%d\", C[i]);\n    }\n}"
   },
   {
     "objectID": "posts/cmu_15-213_lab0/index.html",
