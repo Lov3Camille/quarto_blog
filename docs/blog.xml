@@ -204,8 +204,8 @@
 <span id="cb4-18"><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
 </section>
 </section>
-<section id="高精度加减法" class="level1">
-<h1>高精度加减法</h1>
+<section id="高精度加减乘除法" class="level1">
+<h1>高精度加减乘除法</h1>
 <section id="加法" class="level2">
 <h2 class="anchored" data-anchor-id="加法">加法</h2>
 <div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;iostream&gt;</span></span>
@@ -293,6 +293,40 @@
 <span id="cb6-44">        <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> C<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i<span class="op" style="color: #5E5E5E;">--)</span> printf<span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">%d</span><span class="st" style="color: #20794D;">"</span><span class="op" style="color: #5E5E5E;">,</span> C<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]);</span></span>
 <span id="cb6-45">    <span class="op" style="color: #5E5E5E;">}</span></span>
 <span id="cb6-46"><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
+</section>
+<section id="乘法" class="level2">
+<h2 class="anchored" data-anchor-id="乘法">乘法</h2>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;iostream&gt;</span></span>
+<span id="cb7-2"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;vector&gt;</span></span>
+<span id="cb7-3"></span>
+<span id="cb7-4"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-5"></span>
+<span id="cb7-6">vector<span class="op" style="color: #5E5E5E;">&lt;</span><span class="dt" style="color: #AD0000;">int</span><span class="op" style="color: #5E5E5E;">&gt;</span> mul<span class="op" style="color: #5E5E5E;">(</span>vector<span class="op" style="color: #5E5E5E;">&lt;</span><span class="dt" style="color: #AD0000;">int</span><span class="op" style="color: #5E5E5E;">&gt;</span> <span class="op" style="color: #5E5E5E;">&amp;</span>A<span class="op" style="color: #5E5E5E;">,</span> <span class="dt" style="color: #AD0000;">int</span> b<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb7-7">    <span class="dt" style="color: #AD0000;">int</span> t <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-8">    vector<span class="op" style="color: #5E5E5E;">&lt;</span><span class="dt" style="color: #AD0000;">int</span><span class="op" style="color: #5E5E5E;">&gt;</span> C<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-9">    <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&lt;</span> A<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">||</span> t<span class="op" style="color: #5E5E5E;">;</span> i<span class="op" style="color: #5E5E5E;">++)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb7-10">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>i <span class="op" style="color: #5E5E5E;">&lt;</span> A<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">())</span> t <span class="op" style="color: #5E5E5E;">+=</span> A<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">*</span> b<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-11">        C<span class="op" style="color: #5E5E5E;">.</span>push_back<span class="op" style="color: #5E5E5E;">(</span>t <span class="op" style="color: #5E5E5E;">%</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb7-12">        t <span class="op" style="color: #5E5E5E;">/=</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-13">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb7-14">    <span class="cf" style="color: #003B4F;">return</span> C<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-15"><span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb7-16"></span>
+<span id="cb7-17"><span class="dt" style="color: #AD0000;">int</span> main<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb7-18">    string a<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-19">    vector<span class="op" style="color: #5E5E5E;">&lt;</span><span class="dt" style="color: #AD0000;">int</span><span class="op" style="color: #5E5E5E;">&gt;</span> A<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-20">    <span class="dt" style="color: #AD0000;">int</span> b<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-21"></span>
+<span id="cb7-22">    cin <span class="op" style="color: #5E5E5E;">&gt;&gt;</span> a <span class="op" style="color: #5E5E5E;">&gt;&gt;</span> b<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-23"></span>
+<span id="cb7-24">    <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> a<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i<span class="op" style="color: #5E5E5E;">--)</span> A<span class="op" style="color: #5E5E5E;">.</span>push_back<span class="op" style="color: #5E5E5E;">(</span>a<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">-</span> <span class="ch" style="color: #20794D;">'0'</span><span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb7-25"></span>
+<span id="cb7-26">    <span class="kw" style="color: #003B4F;">auto</span> C <span class="op" style="color: #5E5E5E;">=</span> mul<span class="op" style="color: #5E5E5E;">(</span>A<span class="op" style="color: #5E5E5E;">,</span> b<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb7-27"></span>
+<span id="cb7-28">    <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>C<span class="op" style="color: #5E5E5E;">[</span>C<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">)</span> cout <span class="op" style="color: #5E5E5E;">&lt;&lt;</span> <span class="dv" style="color: #AD0000;">0</span> <span class="op" style="color: #5E5E5E;">&lt;&lt;</span> endl<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-29"></span>
+<span id="cb7-30">    <span class="cf" style="color: #003B4F;">else</span> <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> C<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i<span class="op" style="color: #5E5E5E;">--)</span> printf<span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">%d</span><span class="st" style="color: #20794D;">"</span><span class="op" style="color: #5E5E5E;">,</span> C<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]);</span></span>
+<span id="cb7-31"><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
 
 
 </section>

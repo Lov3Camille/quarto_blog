@@ -2,12 +2,13 @@ project:
   type: website
   output-dir: docs
   resources: 
-    - docs/CNAME  
+    - CNAME  
   
 format:
   html:
     theme: 
-      light: theme.scss
+      light: theme-light.scss
+      dark: [theme-dark.scss, darkly.scss]
 
 website:
   title: "Love Camille" 
