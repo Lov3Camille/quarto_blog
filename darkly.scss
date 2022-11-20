@@ -18,7 +18,7 @@ $gray-800: #303030 !default;
 $gray-900: #222 !default;
 $black:    #000 !default;
 
-$blue:    #232629 !default;
+$dark-blue:    #232629 !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
@@ -37,7 +37,7 @@ $body-color:                $white !default;
     @return mix($body-bg, $body-color, $weight);
 }
 
-$primary:       $blue !default;
+$primary:       $dark-blue !default;
 $secondary:     body-mix(85%) !default;
 $success:       $green !default;
 $info:          $cyan !default;

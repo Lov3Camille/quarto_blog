@@ -17,7 +17,7 @@ You can find me on [Twitter](https://twitter.com/lov3camille_) or [GitHub](https
 Feel free to reach out to me via [mail](mailto:lov3camille@gmail.com) and subscribe to my email newsletter.
 
 
-<iframe id="beehiiv-form" src="https://embeds.beehiiv.com/9232d2a2-6e85-4beb-b8ed-1de94e9e4f01?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px"></iframe>
+<iframe src="https://embeds.beehiiv.com/883082d6-570e-4f11-89d1-059d97842041?slim=true" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent; height: 75px"></iframe>
 :::
 
 :::
