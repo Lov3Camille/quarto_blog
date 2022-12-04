@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Love Camille",
     "section": "",
-    "text": "All blog posts\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDRX夺冠有感\n\n\n\n\n\n\n\nlife\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n基础算法模板\n\n\n\n\n\n\n\ncpp\n\n\nalgorithms\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n7 min\n\n\n\n\n\n\n\n\nCMU 15-213 Lab0\n\n\n\n\n\n\n\nc\n\n\ncmu_15_213\n\n\n\n\n\n\n\n\n\n\n\nOct 11, 2022\n\n\n9 min\n\n\n\n\n\n\n\n\n实现一个简易的C++ String类\n\n\n\n\n\n\n\ncpp\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n实现一个简易Shell\n\n\n\n\n\n\n\nc\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2022\n\n\n6 min\n\n\n\n\n\n\n\n\n这几年\n\n\n\n\n\n\n\nlife\n\n\n\n\n离开深圳前一些想说的话\n\n\n\n\n\n\nJul 4, 2022\n\n\n0 min\n\n\n\n\n\n\nNo matching items"
+    "text": "All blog posts\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDRX夺冠有感\n\n\n\n\n\n\n\nlife\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n基础算法模板\n\n\n\n\n\n\n\ncpp\n\n\nalgorithms\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n8 min\n\n\n\n\n\n\n\n\nCMU 15-213 Lab0\n\n\n\n\n\n\n\nc\n\n\ncmu_15_213\n\n\n\n\n\n\n\n\n\n\n\nOct 11, 2022\n\n\n9 min\n\n\n\n\n\n\n\n\n实现一个简易的C++ String类\n\n\n\n\n\n\n\ncpp\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2022\n\n\n0 min\n\n\n\n\n\n\n\n\n实现一个简易Shell\n\n\n\n\n\n\n\nc\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2022\n\n\n6 min\n\n\n\n\n\n\n\n\n这几年\n\n\n\n\n\n\n\nlife\n\n\n\n\n离开深圳前一些想说的话\n\n\n\n\n\n\nJul 4, 2022\n\n\n0 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -61,6 +61,13 @@
     "title": "基础算法模板",
     "section": "乘法",
     "text": "乘法\n#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nvector<int> mul(vector<int> &A, int b) {\n    int t = 0;\n    vector<int> C;\n    for (int i = 0; i < A.size() || t; i++) {\n        if (i < A.size()) t += A[i] * b;\n        C.push_back(t % 10);\n        t /= 10;\n    }\n    return C;\n}\n\nint main() {\n    string a;\n    vector<int> A;\n    int b;\n\n    cin >> a >> b;\n\n    for (int i = a.size() - 1; i >= 0; i--) A.push_back(a[i] - '0');\n\n    auto C = mul(A, b);\n\n    if (C[C.size() - 1] == 0) cout << 0 << endl;\n\n    else for (int i = C.size() - 1; i >= 0; i--) printf(\"%d\", C[i]);\n}"
+  },
+  {
+    "objectID": "posts/basic_algorithms/index.html#除法",
+    "href": "posts/basic_algorithms/index.html#除法",
+    "title": "基础算法模板",
+    "section": "除法",
+    "text": "除法\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> div(vector<int> &A, int b, int &r) {\n    vector<int> C;\n    r = 0;\n\n    for (int i = A.size(); i >= 0; i--) {\n        r = r * 10 + A[i];\n        C.push_back(r / b);\n        r %= b;\n    }\n\n    reverse(C.begin(), C.end());\n\n    while (C.size() > 1 && C.back() == 0) C.pop_back();\n\n    return C;\n}\n\nint main() {\n    string a;\n    int b;\n    \n    cin >> a >> b;\n\n    vector<int> A;\n    for (int i = a.size() - 1; i >= 0; i--) A.push_back(a[i] - '0');\n\n    int r;\n    auto C = div(A, b, r);\n\n    for (int i = C.size() - 1; i >= 0; i--) printf(\"%d\", C[i]);\n\n    cout << endl << r << endl;\n}"
   },
   {
     "objectID": "posts/cmu_15-213_lab0/index.html",
