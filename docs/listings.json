@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/leetcode/index.html",
       "/posts/league_of_legends_s12/index.html",
       "/posts/basic_algorithms/index.html",
       "/posts/cmu_15-213_lab0/index.html",
@@ -13,6 +14,7 @@
   {
     "listing": "/archive.html",
     "items": [
+      "/posts/leetcode/index.html",
       "/posts/league_of_legends_s12/index.html",
       "/posts/basic_algorithms/index.html",
       "/posts/cmu_15-213_lab0/index.html",
