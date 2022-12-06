@@ -78,6 +78,28 @@
 <span id="cb2-26">        <span class="cf" style="color: #003B4F;">return</span> dummy<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
 <span id="cb2-27">    <span class="op" style="color: #5E5E5E;">}</span></span>
 <span id="cb2-28"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+</section>
+<section id="无重复字符的最长字串" class="level2">
+<h2 class="anchored" data-anchor-id="无重复字符的最长字串">无重复字符的最长字串</h2>
+<p>给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;iostream&gt;</span></span>
+<span id="cb3-2"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;unordered_map&gt;</span></span>
+<span id="cb3-3"></span>
+<span id="cb3-4"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-5"></span>
+<span id="cb3-6"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb3-7"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb3-8">    <span class="dt" style="color: #AD0000;">int</span> lengthOfLongestSubstring<span class="op" style="color: #5E5E5E;">(</span>string s<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb3-9">        unordered_map<span class="op" style="color: #5E5E5E;">&lt;</span><span class="dt" style="color: #AD0000;">char</span><span class="op" style="color: #5E5E5E;">,</span> <span class="dt" style="color: #AD0000;">int</span><span class="op" style="color: #5E5E5E;">&gt;</span> heap<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-10">        <span class="dt" style="color: #AD0000;">int</span> res <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-11">        <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">,</span> j <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&lt;</span> s<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">();</span> i<span class="op" style="color: #5E5E5E;">++)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb3-12">            heap<span class="op" style="color: #5E5E5E;">[</span>s<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]]++;</span></span>
+<span id="cb3-13">            <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>heap<span class="op" style="color: #5E5E5E;">[</span>s<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]]</span> <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">)</span> heap<span class="op" style="color: #5E5E5E;">[</span>s<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">++]]--;</span></span>
+<span id="cb3-14">            res <span class="op" style="color: #5E5E5E;">=</span> max<span class="op" style="color: #5E5E5E;">(</span>res<span class="op" style="color: #5E5E5E;">,</span> i <span class="op" style="color: #5E5E5E;">-</span> j <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb3-15">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb3-16">        <span class="cf" style="color: #003B4F;">return</span> res<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-17">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb3-18"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
 
 
 </section>
