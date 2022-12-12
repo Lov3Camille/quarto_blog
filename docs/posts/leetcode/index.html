@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.247">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -237,6 +237,7 @@ cookieconsent.run({
   <li><a href="#两数相加" id="toc-两数相加" class="nav-link" data-scroll-target="#两数相加">两数相加</a></li>
   <li><a href="#无重复字符的最长字串" id="toc-无重复字符的最长字串" class="nav-link" data-scroll-target="#无重复字符的最长字串">无重复字符的最长字串</a></li>
   <li><a href="#寻找两个正序数组的中位数" id="toc-寻找两个正序数组的中位数" class="nav-link" data-scroll-target="#寻找两个正序数组的中位数">寻找两个正序数组的中位数</a></li>
+  <li><a href="#最长回文子串" id="toc-最长回文子串" class="nav-link" data-scroll-target="#最长回文子串">最长回文子串</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -394,6 +395,30 @@ cookieconsent.run({
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="最长回文子串" class="level2">
+<h2 class="anchored" data-anchor-id="最长回文子串">最长回文子串</h2>
+<p>给你一个字符串 s，找到 s 中最长的回文子串。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    string longestPalindrome<span class="op">(</span>string s<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        string res<span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> s<span class="op">.</span>size<span class="op">();</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> l <span class="op">=</span> i <span class="op">-</span> <span class="dv">1</span><span class="op">,</span> r <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> <span class="op">(</span>l <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> r <span class="op">&lt;=</span> s<span class="op">.</span>size<span class="op">()</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> s<span class="op">[</span>l<span class="op">]</span> <span class="op">==</span> s<span class="op">[</span>r<span class="op">])</span> l<span class="op">--,</span> r<span class="op">++;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>res<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;</span> r <span class="op">-</span> l <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> res <span class="op">=</span> s<span class="op">.</span>substr<span class="op">(</span>l <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> r <span class="op">-</span> l <span class="op">-</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            l <span class="op">=</span> i<span class="op">,</span> r <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> <span class="op">(</span>l <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> r <span class="op">&lt;=</span> s<span class="op">.</span>size<span class="op">()</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> s<span class="op">[</span>l<span class="op">]</span> <span class="op">==</span> s<span class="op">[</span>r<span class="op">])</span> l<span class="op">--,</span> r<span class="op">++;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>res<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;</span> r <span class="op">-</span> l <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> res <span class="op">=</span> s<span class="op">.</span>substr<span class="op">(</span>l <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> r <span class="op">-</span> l <span class="op">-</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res<span class="op">;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
