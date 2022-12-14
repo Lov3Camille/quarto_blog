@@ -239,6 +239,7 @@ cookieconsent.run({
   <li><a href="#寻找两个正序数组的中位数" id="toc-寻找两个正序数组的中位数" class="nav-link" data-scroll-target="#寻找两个正序数组的中位数">寻找两个正序数组的中位数</a></li>
   <li><a href="#最长回文子串" id="toc-最长回文子串" class="nav-link" data-scroll-target="#最长回文子串">最长回文子串</a></li>
   <li><a href="#z字形变换" id="toc-z字形变换" class="nav-link" data-scroll-target="#z字形变换">Z字形变换</a></li>
+  <li><a href="#整数反转" id="toc-整数反转" class="nav-link" data-scroll-target="#整数反转">整数反转</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -445,6 +446,30 @@ cookieconsent.run({
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res<span class="op">;</span></span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="整数反转" class="level2">
+<h2 class="anchored" data-anchor-id="整数反转">整数反转</h2>
+<p>给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。</p>
+<p>如果反转后整数超过 32 位的有符号整数的范围&nbsp;[−231,&nbsp; 231&nbsp;− 1] ，就返回 0。</p>
+<p>假设环境不允许存储 64 位整数（有符号或无符号）。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;bits/stdc++.h&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> reverse<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> r <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>r <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> r <span class="op">&gt;</span> <span class="op">(</span>INT_MAX <span class="op">-</span> x <span class="op">%</span> <span class="dv">10</span><span class="op">)</span> <span class="op">/</span> <span class="dv">10</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>r <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> r <span class="op">&lt;</span> <span class="op">(</span>INT_MIN <span class="op">-</span> x <span class="op">%</span> <span class="dv">10</span><span class="op">)</span> <span class="op">/</span> <span class="dv">10</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            r <span class="op">=</span> r <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> x <span class="op">%</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>            x <span class="op">/=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> r<span class="op">;</span> </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

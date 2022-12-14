@@ -184,6 +184,30 @@
 <span id="cb6-19">        <span class="cf" style="color: #003B4F;">return</span> res<span class="op" style="color: #5E5E5E;">;</span></span>
 <span id="cb6-20">    <span class="op" style="color: #5E5E5E;">}</span></span>
 <span id="cb6-21"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+</section>
+<section id="整数反转" class="level2">
+<h2 class="anchored" data-anchor-id="整数反转">整数反转</h2>
+<p>给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。</p>
+<p>如果反转后整数超过 32 位的有符号整数的范围&nbsp;[−231,&nbsp; 231&nbsp;− 1] ，就返回 0。</p>
+<p>假设环境不允许存储 64 位整数（有符号或无符号）。</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;iostream&gt;</span></span>
+<span id="cb7-2"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;bits/stdc++.h&gt;</span></span>
+<span id="cb7-3"></span>
+<span id="cb7-4"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-5"></span>
+<span id="cb7-6"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb7-7"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb7-8">    <span class="dt" style="color: #AD0000;">int</span> reverse<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> x<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb7-9">        <span class="dt" style="color: #AD0000;">int</span> r <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-10">        <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>x<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb7-11">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>r <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">0</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="op" style="color: #5E5E5E;">(</span>INT_MAX <span class="op" style="color: #5E5E5E;">-</span> x <span class="op" style="color: #5E5E5E;">%</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">)</span> <span class="cf" style="color: #003B4F;">return</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-12">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>r <span class="op" style="color: #5E5E5E;">&lt;</span> <span class="dv" style="color: #AD0000;">0</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r <span class="op" style="color: #5E5E5E;">&lt;</span> <span class="op" style="color: #5E5E5E;">(</span>INT_MIN <span class="op" style="color: #5E5E5E;">-</span> x <span class="op" style="color: #5E5E5E;">%</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">)</span> <span class="cf" style="color: #003B4F;">return</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-13">            r <span class="op" style="color: #5E5E5E;">=</span> r <span class="op" style="color: #5E5E5E;">*</span> <span class="dv" style="color: #AD0000;">10</span> <span class="op" style="color: #5E5E5E;">+</span> x <span class="op" style="color: #5E5E5E;">%</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-14">            x <span class="op" style="color: #5E5E5E;">/=</span> <span class="dv" style="color: #AD0000;">10</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-15">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb7-16">        <span class="cf" style="color: #003B4F;">return</span> r<span class="op" style="color: #5E5E5E;">;</span> </span>
+<span id="cb7-17">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb7-18"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
 
 
 </section>
