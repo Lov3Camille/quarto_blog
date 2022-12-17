@@ -241,6 +241,7 @@ cookieconsent.run({
   <li><a href="#z字形变换" id="toc-z字形变换" class="nav-link" data-scroll-target="#z字形变换">Z字形变换</a></li>
   <li><a href="#整数反转" id="toc-整数反转" class="nav-link" data-scroll-target="#整数反转">整数反转</a></li>
   <li><a href="#字符串转换整数-atoi" id="toc-字符串转换整数-atoi" class="nav-link" data-scroll-target="#字符串转换整数-atoi">字符串转换整数 (atoi)</a></li>
+  <li><a href="#回文数" id="toc-回文数" class="nav-link" data-scroll-target="#回文数">回文数</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -506,13 +507,34 @@ cookieconsent.run({
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> x <span class="op">=</span> s<span class="op">[</span>k<span class="op">]</span> <span class="op">-</span> <span class="ch">'0'</span><span class="op">;</span></span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>minus <span class="op">==</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> res <span class="op">&gt;</span> <span class="op">(</span>INT_MAX <span class="op">-</span> x<span class="op">)</span> <span class="op">/</span> <span class="dv">10</span><span class="op">)</span> <span class="cf">return</span> INT_MAX<span class="op">;</span></span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>minus <span class="op">==</span> <span class="op">-</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> <span class="op">-</span>res <span class="op">&lt;</span> <span class="op">(</span>INT_MIN <span class="op">+</span> x<span class="op">)</span> <span class="op">/</span> <span class="dv">10</span><span class="op">)</span> <span class="cf">return</span> INT_MIN<span class="op">;</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>minus <span class="op">==</span> <span class="op">-</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> <span class="op">-</span>res <span class="op">*</span> <span class="dv">10</span> <span class="op">-</span> x <span class="op">==</span> INT_MIN<span class="op">)</span> <span class="cf">return</span> INT_MIN<span class="op">;</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>minus <span class="op">==</span> <span class="op">-</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> <span class="op">-</span>res <span class="op">*</span> <span class="dv">10</span> <span class="op">-</span> x <span class="op">==</span> INT_MIN<span class="op">)</span> <span class="cf">return</span> INT_MIN<span class="op">;</span> <span class="co">// different from above</span></span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>            res <span class="op">=</span> res <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> x<span class="op">;</span></span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>            k<span class="op">++;</span></span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res <span class="op">*</span> minus<span class="op">;</span></span>
 <span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="回文数" class="level2">
+<h2 class="anchored" data-anchor-id="回文数">回文数</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> isPalindrome<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>x <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> y <span class="op">=</span> x<span class="op">;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">long</span> <span class="dt">long</span> res <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>            res <span class="op">=</span> res <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> x <span class="op">%</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            x <span class="op">/=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res <span class="op">==</span> y<span class="op">;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
