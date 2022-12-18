@@ -1,0 +1,90 @@
+---
+title: 'LeetCode 周赛记录'
+date: '2022-12-18'
+categories: ['cpp', 'algorithms', 'LeetCode']
+description: ' '
+execute: 
+  message: false
+  warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+## 第324场周赛
+
+### 统计相似字符串对的数目
+
+给你一个下标从 0 开始的字符串数组 words 。
+
+如果两个字符串由相同的字符组成，则认为这两个字符串 相似 。
+
+例如，"abca" 和 "cba" 相似，因为它们都由字符 'a'、'b'、'c' 组成。
+然而，"abacba" 和 "bcfd" 不相似，因为它们不是相同字符组成的。
+请你找出满足字符串 words[i] 和 words[j] 相似的下标对 (i, j) ，并返回下标对的数目，其中 0 <= i < j <= word.length - 1 。
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Solution {
+public:
+    int similarPairs(vector<string>& words) {
+        int n = words.size();
+        int ans = 0;
+        unordered_map<string, int> mp;
+        for (int i = 0; i < n; i++) {
+            string s = words[i];
+            sort(s.begin(), s.end());
+            s.erase(unique(s.begin(), s.end()), s.end());
+            ans += mp[s];
+            mp[s]++;
+        }
+        return ans;
+    }
+};
+```
+### 使用质因数之和替换后可以取到的最小值
+
+给你一个正整数 n 。
+
+请你将 n 的值替换为 n 的 质因数 之和，重复这一过程。
+
+注意，如果 n 能够被某个质因数多次整除，则在求和时，应当包含这个质因数同样次数。
+返回 n 可以取到的最小值。
+
+```cpp
+#include <iostream>     
+#include <algorithm>    
+
+using namespace std;
+
+class Solution {
+public:
+    // you need to prove that it is a monotonically decreasing function.
+    int work(int n) {
+        int res = 0;
+
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                while (n % i == 0) n /= i, res += i;
+            }
+        }
+        if (n > 1) res += n;
+        return res;
+    }
+
+    int smallestValue(int n) {
+        while (true) {
+            int next = work(n);
+            if (next == n) break;
+            n = next;
+        }
+        return n;
+    }
+};
+```

@@ -10,7 +10,93 @@
 <atom:link href="https://lov3camille.top/blog.xml" rel="self" type="application/rss+xml"/>
 <description>This is Lov3Camille&#39;s personal Blog.</description>
 <generator>quarto-1.2.269</generator>
-<lastBuildDate>Sun, 04 Dec 2022 16:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 17 Dec 2022 16:00:00 GMT</lastBuildDate>
+<item>
+  <title>LeetCode 周赛记录</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/leetcode_weekly_competition/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="第324场周赛" class="level2">
+<h2 class="anchored" data-anchor-id="第324场周赛">第324场周赛</h2>
+<section id="统计相似字符串对的数目" class="level3">
+<h3 class="anchored" data-anchor-id="统计相似字符串对的数目">统计相似字符串对的数目</h3>
+<p>给你一个下标从 0 开始的字符串数组 words 。</p>
+<p>如果两个字符串由相同的字符组成，则认为这两个字符串 相似 。</p>
+<p>例如，“abca” 和 “cba” 相似，因为它们都由字符 ‘a’、‘b’、‘c’ 组成。 然而，“abacba” 和 “bcfd” 不相似，因为它们不是相同字符组成的。 请你找出满足字符串&nbsp;words[i] 和 words[j] 相似的下标对 (i, j) ，并返回下标对的数目，其中 0 &lt;= i &lt; j &lt;= word.length - 1 。</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;iostream&gt;</span></span>
+<span id="cb1-2"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;vector&gt;</span></span>
+<span id="cb1-3"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;unordered_map&gt;</span></span>
+<span id="cb1-4"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;algorithm&gt;</span></span>
+<span id="cb1-5"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;bits/stdc++.h&gt;</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-8"></span>
+<span id="cb1-9"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-10"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb1-11">    <span class="dt" style="color: #AD0000;">int</span> similarPairs<span class="op" style="color: #5E5E5E;">(</span>vector<span class="op" style="color: #5E5E5E;">&lt;</span>string<span class="op" style="color: #5E5E5E;">&gt;&amp;</span> words<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-12">        <span class="dt" style="color: #AD0000;">int</span> n <span class="op" style="color: #5E5E5E;">=</span> words<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">();</span></span>
+<span id="cb1-13">        <span class="dt" style="color: #AD0000;">int</span> ans <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-14">        unordered_map<span class="op" style="color: #5E5E5E;">&lt;</span>string<span class="op" style="color: #5E5E5E;">,</span> <span class="dt" style="color: #AD0000;">int</span><span class="op" style="color: #5E5E5E;">&gt;</span> mp<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-15">        <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&lt;</span> n<span class="op" style="color: #5E5E5E;">;</span> i<span class="op" style="color: #5E5E5E;">++)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-16">            string s <span class="op" style="color: #5E5E5E;">=</span> words<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">];</span></span>
+<span id="cb1-17">            sort<span class="op" style="color: #5E5E5E;">(</span>s<span class="op" style="color: #5E5E5E;">.</span>begin<span class="op" style="color: #5E5E5E;">(),</span> s<span class="op" style="color: #5E5E5E;">.</span>end<span class="op" style="color: #5E5E5E;">());</span></span>
+<span id="cb1-18">            s<span class="op" style="color: #5E5E5E;">.</span>erase<span class="op" style="color: #5E5E5E;">(</span>unique<span class="op" style="color: #5E5E5E;">(</span>s<span class="op" style="color: #5E5E5E;">.</span>begin<span class="op" style="color: #5E5E5E;">(),</span> s<span class="op" style="color: #5E5E5E;">.</span>end<span class="op" style="color: #5E5E5E;">()),</span> s<span class="op" style="color: #5E5E5E;">.</span>end<span class="op" style="color: #5E5E5E;">());</span></span>
+<span id="cb1-19">            ans <span class="op" style="color: #5E5E5E;">+=</span> mp<span class="op" style="color: #5E5E5E;">[</span>s<span class="op" style="color: #5E5E5E;">];</span></span>
+<span id="cb1-20">            mp<span class="op" style="color: #5E5E5E;">[</span>s<span class="op" style="color: #5E5E5E;">]++;</span></span>
+<span id="cb1-21">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb1-22">        <span class="cf" style="color: #003B4F;">return</span> ans<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-23">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb1-24"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+</section>
+<section id="使用质因数之和替换后可以取到的最小值" class="level3">
+<h3 class="anchored" data-anchor-id="使用质因数之和替换后可以取到的最小值">使用质因数之和替换后可以取到的最小值</h3>
+<p>给你一个正整数 n 。</p>
+<p>请你将 n 的值替换为 n 的 质因数 之和，重复这一过程。</p>
+<p>注意，如果 n 能够被某个质因数多次整除，则在求和时，应当包含这个质因数同样次数。 返回 n 可以取到的最小值。</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;iostream&gt;</span><span class="pp" style="color: #AD0000;">     </span></span>
+<span id="cb2-2"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;algorithm&gt;</span><span class="pp" style="color: #AD0000;">    </span></span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-5"></span>
+<span id="cb2-6"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-7"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb2-8">    <span class="co" style="color: #5E5E5E;">// you need to prove that it is a monotonically decreasing function.</span></span>
+<span id="cb2-9">    <span class="dt" style="color: #AD0000;">int</span> work<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> n<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-10">        <span class="dt" style="color: #AD0000;">int</span> res <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-11"></span>
+<span id="cb2-12">        <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">2</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">*</span> i <span class="op" style="color: #5E5E5E;">&lt;=</span> n<span class="op" style="color: #5E5E5E;">;</span> i<span class="op" style="color: #5E5E5E;">++)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-13">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>n <span class="op" style="color: #5E5E5E;">%</span> i <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-14">                <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>n <span class="op" style="color: #5E5E5E;">%</span> i <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">)</span> n <span class="op" style="color: #5E5E5E;">/=</span> i<span class="op" style="color: #5E5E5E;">,</span> res <span class="op" style="color: #5E5E5E;">+=</span> i<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-15">            <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-16">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-17">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>n <span class="op" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">)</span> res <span class="op" style="color: #5E5E5E;">+=</span> n<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-18">        <span class="cf" style="color: #003B4F;">return</span> res<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-19">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-20"></span>
+<span id="cb2-21">    <span class="dt" style="color: #AD0000;">int</span> smallestValue<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> n<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-22">        <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span><span class="kw" style="color: #003B4F;">true</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-23">            <span class="dt" style="color: #AD0000;">int</span> next <span class="op" style="color: #5E5E5E;">=</span> work<span class="op" style="color: #5E5E5E;">(</span>n<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb2-24">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>next <span class="op" style="color: #5E5E5E;">==</span> n<span class="op" style="color: #5E5E5E;">)</span> <span class="cf" style="color: #003B4F;">break</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-25">            n <span class="op" style="color: #5E5E5E;">=</span> next<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-26">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-27">        <span class="cf" style="color: #003B4F;">return</span> n<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-28">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-29"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>cpp</category>
+  <category>algorithms</category>
+  <category>LeetCode</category>
+  <guid>https://lov3camille.top/posts/leetcode_weekly_competition/index.html</guid>
+  <pubDate>Sat, 17 Dec 2022 16:00:00 GMT</pubDate>
+</item>
 <item>
   <title>LeetCode 刷题记录</title>
   <dc:creator>lov3camille</dc:creator>

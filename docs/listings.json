@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/leetcode_weekly_competition/index.html",
       "/posts/leetcode/index.html",
       "/posts/league_of_legends_s12/index.html",
       "/posts/basic_algorithms/index.html",
@@ -14,6 +15,7 @@
   {
     "listing": "/archive.html",
     "items": [
+      "/posts/leetcode_weekly_competition/index.html",
       "/posts/leetcode/index.html",
       "/posts/league_of_legends_s12/index.html",
       "/posts/basic_algorithms/index.html",
