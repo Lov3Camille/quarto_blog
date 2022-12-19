@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/klara_and_the_sun/index.html",
       "/posts/leetcode_weekly_competition/index.html",
       "/posts/leetcode/index.html",
       "/posts/league_of_legends_s12/index.html",
@@ -15,6 +16,7 @@
   {
     "listing": "/archive.html",
     "items": [
+      "/posts/klara_and_the_sun/index.html",
       "/posts/leetcode_weekly_competition/index.html",
       "/posts/leetcode/index.html",
       "/posts/league_of_legends_s12/index.html",
