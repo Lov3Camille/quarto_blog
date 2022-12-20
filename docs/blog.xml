@@ -425,6 +425,30 @@
 <span id="cb10-24">        <span class="cf" style="color: #003B4F;">return</span> f<span class="op" style="color: #5E5E5E;">[</span>n<span class="op" style="color: #5E5E5E;">][</span>m<span class="op" style="color: #5E5E5E;">];</span></span>
 <span id="cb10-25">    <span class="op" style="color: #5E5E5E;">}</span></span>
 <span id="cb10-26"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+</section>
+<section id="盛最多水的容器" class="level2">
+<h2 class="anchored" data-anchor-id="盛最多水的容器">盛最多水的容器</h2>
+<p>给定一个长度为 n 的整数数组&nbsp;height&nbsp;。有&nbsp;n&nbsp;条垂线，第 i 条线的两个端点是&nbsp;(i, 0)&nbsp;和&nbsp;(i, height[i])&nbsp;。</p>
+<p>找出其中的两条线，使得它们与&nbsp;x&nbsp;轴共同构成的容器可以容纳最多的水。</p>
+<p>返回容器可以储存的最大水量。</p>
+<p>说明：你不能倾斜容器。</p>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;iostream&gt;</span></span>
+<span id="cb11-2"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;vector&gt;</span></span>
+<span id="cb11-3"></span>
+<span id="cb11-4"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb11-5"></span>
+<span id="cb11-6"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb11-7"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb11-8">    <span class="dt" style="color: #AD0000;">int</span> maxArea<span class="op" style="color: #5E5E5E;">(</span>vector<span class="op" style="color: #5E5E5E;">&lt;</span><span class="dt" style="color: #AD0000;">int</span><span class="op" style="color: #5E5E5E;">&gt;&amp;</span> height<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb11-9">        <span class="dt" style="color: #AD0000;">int</span> res <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb11-10">        <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">,</span> j <span class="op" style="color: #5E5E5E;">=</span> height<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&lt;</span> j<span class="op" style="color: #5E5E5E;">;)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb11-11">            res <span class="op" style="color: #5E5E5E;">=</span> max<span class="op" style="color: #5E5E5E;">(</span>res<span class="op" style="color: #5E5E5E;">,</span> min<span class="op" style="color: #5E5E5E;">(</span>height<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">],</span> height<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">])</span> <span class="op" style="color: #5E5E5E;">*</span> <span class="op" style="color: #5E5E5E;">(</span>j <span class="op" style="color: #5E5E5E;">-</span> i<span class="op" style="color: #5E5E5E;">));</span></span>
+<span id="cb11-12">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>height<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">&gt;</span> height<span class="op" style="color: #5E5E5E;">[</span>j<span class="op" style="color: #5E5E5E;">])</span> j<span class="op" style="color: #5E5E5E;">--;</span></span>
+<span id="cb11-13">            <span class="cf" style="color: #003B4F;">else</span> i<span class="op" style="color: #5E5E5E;">++;</span></span>
+<span id="cb11-14">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb11-15">        <span class="cf" style="color: #003B4F;">return</span> res<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb11-16">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb11-17"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
 
 
 </section>
