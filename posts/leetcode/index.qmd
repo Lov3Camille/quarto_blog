@@ -458,3 +458,69 @@ public:
     }
 };
 ```
+
+## 最长公共前缀
+
+编写一个函数来查找字符串数组中的最长公共前缀。
+
+如果不存在公共前缀，返回空字符串 ""。
+
+```cpp
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        string res;
+        if (strs.empty()) return res;
+
+        for (int i = 0;; i++) {
+            char c = strs[0][i];
+            for (auto &str : strs) {
+                if (i >= str.size() || c != str[i]) {
+                    return res;
+                }
+            }
+            res += c;
+        }
+    }
+};
+```
+
+## 三数之和
+
+给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请
+
+你返回所有和为 0 且不重复的三元组。
+
+注意：答案中不可以包含重复的三元组。
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i++) {
+            if (i && nums[i] == nums[i - 1]) continue;
+            for (int j = i + 1, k = nums.size() - 1; j < k; j++) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+                while (j < k - 1 && nums[i] + nums[j] + nums[k - 1] >= 0) k--;
+                if (nums[i] + nums[j] + nums[k] == 0) {
+                    res.push_back({nums[i], nums[j], nums[k]});
+                }
+            }
+        }
+        return res;
+    }
+};
+```

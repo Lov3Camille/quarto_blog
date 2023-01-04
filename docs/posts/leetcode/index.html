@@ -246,6 +246,8 @@ cookieconsent.run({
   <li><a href="#盛最多水的容器" id="toc-盛最多水的容器" class="nav-link" data-scroll-target="#盛最多水的容器">盛最多水的容器</a></li>
   <li><a href="#整数转罗马数字" id="toc-整数转罗马数字" class="nav-link" data-scroll-target="#整数转罗马数字">整数转罗马数字</a></li>
   <li><a href="#罗马数字转整数" id="toc-罗马数字转整数" class="nav-link" data-scroll-target="#罗马数字转整数">罗马数字转整数</a></li>
+  <li><a href="#最长公共前缀" id="toc-最长公共前缀" class="nav-link" data-scroll-target="#最长公共前缀">最长公共前缀</a></li>
+  <li><a href="#三数之和" id="toc-三数之和" class="nav-link" data-scroll-target="#三数之和">三数之和</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -661,6 +663,63 @@ cookieconsent.run({
 <span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res<span class="op">;</span></span>
 <span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="最长公共前缀" class="level2">
+<h2 class="anchored" data-anchor-id="最长公共前缀">最长公共前缀</h2>
+<p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串 ““。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    string longestCommonPrefix<span class="op">(</span>vector<span class="op">&lt;</span>string<span class="op">&gt;&amp;</span> strs<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        string res<span class="op">;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>strs<span class="op">.</span>empty<span class="op">())</span> <span class="cf">return</span> res<span class="op">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>            <span class="dt">char</span> c <span class="op">=</span> strs<span class="op">[</span><span class="dv">0</span><span class="op">][</span>i<span class="op">];</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span> <span class="op">&amp;</span>str <span class="op">:</span> strs<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="op">(</span>i <span class="op">&gt;=</span> str<span class="op">.</span>size<span class="op">()</span> <span class="op">||</span> c <span class="op">!=</span> str<span class="op">[</span>i<span class="op">])</span> <span class="op">{</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> res<span class="op">;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>            res <span class="op">+=</span> c<span class="op">;</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="三数之和" class="level2">
+<h2 class="anchored" data-anchor-id="三数之和">三数之和</h2>
+<p>给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请</p>
+<p>你返回所有和为 0 且不重复的三元组。</p>
+<p>注意：答案中不可以包含重复的三元组。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> threeSum<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> nums<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> res<span class="op">;</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        sort<span class="op">(</span>nums<span class="op">.</span>begin<span class="op">(),</span> nums<span class="op">.</span>end<span class="op">());</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nums<span class="op">.</span>size<span class="op">();</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>i <span class="op">&amp;&amp;</span> nums<span class="op">[</span>i<span class="op">]</span> <span class="op">==</span> nums<span class="op">[</span>i <span class="op">-</span> <span class="dv">1</span><span class="op">])</span> <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> k <span class="op">=</span> nums<span class="op">.</span>size<span class="op">()</span> <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> j <span class="op">&lt;</span> k<span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="op">(</span>j <span class="op">&gt;</span> i <span class="op">+</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> nums<span class="op">[</span>j<span class="op">]</span> <span class="op">==</span> nums<span class="op">[</span>j <span class="op">-</span> <span class="dv">1</span><span class="op">])</span> <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">while</span> <span class="op">(</span>j <span class="op">&lt;</span> k <span class="op">-</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> nums<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>j<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>k <span class="op">-</span> <span class="dv">1</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="dv">0</span><span class="op">)</span> k<span class="op">--;</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="op">(</span>nums<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>j<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>k<span class="op">]</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>                    res<span class="op">.</span>push_back<span class="op">({</span>nums<span class="op">[</span>i<span class="op">],</span> nums<span class="op">[</span>j<span class="op">],</span> nums<span class="op">[</span>k<span class="op">]});</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res<span class="op">;</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
