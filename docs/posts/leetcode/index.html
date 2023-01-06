@@ -250,6 +250,8 @@ cookieconsent.run({
   <li><a href="#三数之和" id="toc-三数之和" class="nav-link" data-scroll-target="#三数之和">三数之和</a></li>
   <li><a href="#最接近的三数之和" id="toc-最接近的三数之和" class="nav-link" data-scroll-target="#最接近的三数之和">最接近的三数之和</a></li>
   <li><a href="#电话号码的字母组合" id="toc-电话号码的字母组合" class="nav-link" data-scroll-target="#电话号码的字母组合">电话号码的字母组合</a></li>
+  <li><a href="#四数之和" id="toc-四数之和" class="nav-link" data-scroll-target="#四数之和">四数之和</a></li>
+  <li><a href="#删除链表的倒数第-n-个结点" id="toc-删除链表的倒数第-n-个结点" class="nav-link" data-scroll-target="#删除链表的倒数第-n-个结点">删除链表的倒数第 N 个结点</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -790,6 +792,73 @@ cookieconsent.run({
 <span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
 <span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="四数之和" class="level2">
+<h2 class="anchored" data-anchor-id="四数之和">四数之和</h2>
+<p>给你一个由 n 个整数组成的数组&nbsp;nums ，和一个目标值 target 。请你找出并返回满足下述全部条件且不重复的四元组&nbsp;[nums[a], nums[b], nums[c], nums[d]]&nbsp;（若两个四元组元素一一对应，则认为两个四元组重复）：</p>
+<p>0 &lt;= a, b, c, d&nbsp;&lt; n a、b、c 和 d 互不相同 nums[a] + nums[b] + nums[c] + nums[d] == target 你可以按 任意顺序 返回答案 。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> fourSum<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> nums<span class="op">,</span> <span class="dt">int</span> target<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        sort<span class="op">(</span>nums<span class="op">.</span>begin<span class="op">(),</span> nums<span class="op">.</span>end<span class="op">());</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> l <span class="op">=</span> nums<span class="op">.</span>size<span class="op">();</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> res<span class="op">;</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> l<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>i <span class="op">&amp;&amp;</span> nums<span class="op">[</span>i<span class="op">]</span> <span class="op">==</span> nums<span class="op">[</span>i <span class="op">-</span> <span class="dv">1</span><span class="op">])</span> <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span> j <span class="op">&lt;</span> l<span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="op">(</span>j <span class="op">&gt;</span> i <span class="op">+</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> nums<span class="op">[</span>j<span class="op">]</span> <span class="op">==</span> nums<span class="op">[</span>j <span class="op">-</span> <span class="dv">1</span><span class="op">])</span> <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> k <span class="op">=</span> j <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> u <span class="op">=</span> l <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> k <span class="op">&lt;</span> u<span class="op">;</span> k<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="op">(</span>k <span class="op">&gt;</span> j <span class="op">+</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> nums<span class="op">[</span>k<span class="op">]</span> <span class="op">==</span> nums<span class="op">[</span>k <span class="op">-</span> <span class="dv">1</span><span class="op">])</span> <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">while</span> <span class="op">(</span>u <span class="op">-</span> <span class="dv">1</span> <span class="op">&gt;</span> k <span class="op">&amp;&amp;</span> nums<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>j<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>k<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>u <span class="op">-</span> <span class="dv">1</span><span class="op">]</span> <span class="op">&gt;=</span> target<span class="op">)</span> u<span class="op">--;</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="op">(</span>nums<span class="op">[</span>i<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>j<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>k<span class="op">]</span> <span class="op">+</span> nums<span class="op">[</span>u<span class="op">]</span> <span class="op">==</span> target<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>                        res<span class="op">.</span>push_back<span class="op">({</span>nums<span class="op">[</span>i<span class="op">],</span> nums<span class="op">[</span>j<span class="op">],</span> nums<span class="op">[</span>k<span class="op">],</span> nums<span class="op">[</span>u<span class="op">]});</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>                    <span class="op">}</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res<span class="op">;</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="删除链表的倒数第-n-个结点" class="level2">
+<h2 class="anchored" data-anchor-id="删除链表的倒数第-n-个结点">删除链表的倒数第 N 个结点</h2>
+<p>给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ListNode <span class="op">{</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> val<span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    ListNode <span class="op">*</span>next<span class="op">;</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">()</span> <span class="op">:</span> val<span class="op">(</span><span class="dv">0</span><span class="op">),</span> next<span class="op">(</span><span class="kw">nullptr</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">:</span> val<span class="op">(</span>x<span class="op">),</span> next<span class="op">(</span><span class="kw">nullptr</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> ListNode <span class="op">*</span>next<span class="op">)</span> <span class="op">:</span> val<span class="op">(</span>x<span class="op">),</span> next<span class="op">(</span>next<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">*</span> removeNthFromEnd<span class="op">(</span>ListNode<span class="op">*</span> head<span class="op">,</span> <span class="dt">int</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">auto</span> dummy <span class="op">=</span> <span class="kw">new</span> ListNode<span class="op">(-</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>        dummy<span class="op">-&gt;</span>next <span class="op">=</span> head<span class="op">;</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> k <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span> p <span class="op">=</span> dummy<span class="op">;</span> p<span class="op">;</span> p <span class="op">=</span> p<span class="op">-&gt;</span>next<span class="op">)</span> k<span class="op">++;</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">auto</span> p <span class="op">=</span> dummy<span class="op">;</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> k <span class="op">-</span> n <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> p <span class="op">=</span> p<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>        p<span class="op">-&gt;</span>next <span class="op">=</span> p<span class="op">-&gt;</span>next<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dummy<span class="op">-&gt;</span>next<span class="op">;</span> </span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

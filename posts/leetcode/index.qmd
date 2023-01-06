@@ -600,3 +600,80 @@ public:
     }
 };
 ```
+
+## 四数之和
+
+给你一个由 n 个整数组成的数组 nums ，和一个目标值 target 。请你找出并返回满足下述全部条件且不重复的四元组 [nums[a], nums[b], nums[c], nums[d]] （若两个四元组元素一一对应，则认为两个四元组重复）：
+
+0 <= a, b, c, d < n
+a、b、c 和 d 互不相同
+nums[a] + nums[b] + nums[c] + nums[d] == target
+你可以按 任意顺序 返回答案 。
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        sort(nums.begin(), nums.end());
+        int l = nums.size();
+        vector<vector<int>> res;
+        for (int i = 0; i < l; i++) {
+            if (i && nums[i] == nums[i - 1]) continue;
+            for (int j = i + 1; j < l; j++) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+                for (int k = j + 1, u = l - 1; k < u; k++) {
+                    if (k > j + 1 && nums[k] == nums[k - 1]) continue;
+                    while (u - 1 > k && nums[i] + nums[j] + nums[k] + nums[u - 1] >= target) u--;
+                    if (nums[i] + nums[j] + nums[k] + nums[u] == target) {
+                        res.push_back({nums[i], nums[j], nums[k], nums[u]});
+                    }
+                }
+            }
+        }
+        return res;
+    }
+};
+```
+
+## 删除链表的倒数第 N 个结点
+
+给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+ 
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        auto dummy = new ListNode(-1);
+        dummy->next = head;
+        
+        int k = 0;
+        for (auto p = dummy; p; p = p->next) k++;
+
+        auto p = dummy;
+        for (int i = 0; i < k - n - 1; i++) p = p->next;
+        p->next = p->next->next;
+
+        return dummy->next; 
+    }
+};
+```
