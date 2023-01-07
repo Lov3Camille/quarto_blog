@@ -12,6 +12,55 @@
 <generator>quarto-1.2.269</generator>
 <lastBuildDate>Fri, 06 Jan 2023 16:00:00 GMT</lastBuildDate>
 <item>
+  <title>LeetCode 刷题记录 21 - 30</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/leetcode_21-30/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="合并两个有序链表" class="level2">
+<h2 class="anchored" data-anchor-id="合并两个有序链表">21. 合并两个有序链表</h2>
+<p>将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><span class="kw" style="color: #003B4F;">struct</span> ListNode <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-2">    <span class="dt" style="color: #AD0000;">int</span> val<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-3">    ListNode <span class="op" style="color: #5E5E5E;">*</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-4">    ListNode<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">:</span> val<span class="op" style="color: #5E5E5E;">(</span><span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">),</span> next<span class="op" style="color: #5E5E5E;">(</span><span class="kw" style="color: #003B4F;">nullptr</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{}</span></span>
+<span id="cb1-5">    ListNode<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> x<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">:</span> val<span class="op" style="color: #5E5E5E;">(</span>x<span class="op" style="color: #5E5E5E;">),</span> next<span class="op" style="color: #5E5E5E;">(</span><span class="kw" style="color: #003B4F;">nullptr</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{}</span></span>
+<span id="cb1-6">    ListNode<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> x<span class="op" style="color: #5E5E5E;">,</span> ListNode <span class="op" style="color: #5E5E5E;">*</span>next<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">:</span> val<span class="op" style="color: #5E5E5E;">(</span>x<span class="op" style="color: #5E5E5E;">),</span> next<span class="op" style="color: #5E5E5E;">(</span>next<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{}</span></span>
+<span id="cb1-7"><span class="op" style="color: #5E5E5E;">};</span></span>
+<span id="cb1-8"> </span>
+<span id="cb1-9"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-10"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb1-11">    ListNode<span class="op" style="color: #5E5E5E;">*</span> mergeTwoLists<span class="op" style="color: #5E5E5E;">(</span>ListNode<span class="op" style="color: #5E5E5E;">*</span> l1<span class="op" style="color: #5E5E5E;">,</span> ListNode<span class="op" style="color: #5E5E5E;">*</span> l2<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-12">        <span class="kw" style="color: #003B4F;">auto</span> dummy <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">new</span> ListNode<span class="op" style="color: #5E5E5E;">(-</span><span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">),</span> tail <span class="op" style="color: #5E5E5E;">=</span> dummy<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-13">        <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>l1 <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> l2<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-14">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>l1<span class="op" style="color: #5E5E5E;">-&gt;</span>val <span class="op" style="color: #5E5E5E;">&gt;</span> l2<span class="op" style="color: #5E5E5E;">-&gt;</span>val<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-15">                tail <span class="op" style="color: #5E5E5E;">=</span> tail<span class="op" style="color: #5E5E5E;">-&gt;</span>next <span class="op" style="color: #5E5E5E;">=</span> l2<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-16">                l2 <span class="op" style="color: #5E5E5E;">=</span> l2<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-17">            <span class="op" style="color: #5E5E5E;">}</span> <span class="cf" style="color: #003B4F;">else</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb1-18">                tail <span class="op" style="color: #5E5E5E;">=</span> tail<span class="op" style="color: #5E5E5E;">-&gt;</span>next <span class="op" style="color: #5E5E5E;">=</span> l1<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-19">                l1 <span class="op" style="color: #5E5E5E;">=</span> l1<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-20">            <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb1-21">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb1-22">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>l1<span class="op" style="color: #5E5E5E;">)</span> tail<span class="op" style="color: #5E5E5E;">-&gt;</span>next <span class="op" style="color: #5E5E5E;">=</span> l1<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-23">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>l2<span class="op" style="color: #5E5E5E;">)</span> tail<span class="op" style="color: #5E5E5E;">-&gt;</span>next <span class="op" style="color: #5E5E5E;">=</span> l2<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-24"></span>
+<span id="cb1-25">        <span class="cf" style="color: #003B4F;">return</span> dummy<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb1-26">    <span class="op" style="color: #5E5E5E;">}</span>   </span>
+<span id="cb1-27"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+
+
+</section>
+
+ ]]></description>
+  <category>cpp</category>
+  <category>algorithms</category>
+  <category>LeetCode</category>
+  <guid>https://lov3camille.top/posts/leetcode_21-30/index.html</guid>
+  <pubDate>Fri, 06 Jan 2023 16:00:00 GMT</pubDate>
+</item>
+<item>
   <title>LeetCode 刷题记录 11 - 20</title>
   <dc:creator>lov3camille</dc:creator>
   <link>https://lov3camille.top/posts/leetcode_11-20/index.html</link>
@@ -336,56 +385,7 @@
   <category>algorithms</category>
   <category>LeetCode</category>
   <guid>https://lov3camille.top/posts/leetcode_11-20/index.html</guid>
-  <pubDate>Fri, 06 Jan 2023 16:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>LeetCode 刷题记录 21 - 30</title>
-  <dc:creator>lov3camille</dc:creator>
-  <link>https://lov3camille.top/posts/leetcode_21-30/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="合并两个有序链表" class="level2">
-<h2 class="anchored" data-anchor-id="合并两个有序链表">21. 合并两个有序链表</h2>
-<p>将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><span class="kw" style="color: #003B4F;">struct</span> ListNode <span class="op" style="color: #5E5E5E;">{</span></span>
-<span id="cb1-2">    <span class="dt" style="color: #AD0000;">int</span> val<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-3">    ListNode <span class="op" style="color: #5E5E5E;">*</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-4">    ListNode<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">:</span> val<span class="op" style="color: #5E5E5E;">(</span><span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">),</span> next<span class="op" style="color: #5E5E5E;">(</span><span class="kw" style="color: #003B4F;">nullptr</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{}</span></span>
-<span id="cb1-5">    ListNode<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> x<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">:</span> val<span class="op" style="color: #5E5E5E;">(</span>x<span class="op" style="color: #5E5E5E;">),</span> next<span class="op" style="color: #5E5E5E;">(</span><span class="kw" style="color: #003B4F;">nullptr</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{}</span></span>
-<span id="cb1-6">    ListNode<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> x<span class="op" style="color: #5E5E5E;">,</span> ListNode <span class="op" style="color: #5E5E5E;">*</span>next<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">:</span> val<span class="op" style="color: #5E5E5E;">(</span>x<span class="op" style="color: #5E5E5E;">),</span> next<span class="op" style="color: #5E5E5E;">(</span>next<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{}</span></span>
-<span id="cb1-7"><span class="op" style="color: #5E5E5E;">};</span></span>
-<span id="cb1-8"> </span>
-<span id="cb1-9"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
-<span id="cb1-10"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
-<span id="cb1-11">    ListNode<span class="op" style="color: #5E5E5E;">*</span> mergeTwoLists<span class="op" style="color: #5E5E5E;">(</span>ListNode<span class="op" style="color: #5E5E5E;">*</span> l1<span class="op" style="color: #5E5E5E;">,</span> ListNode<span class="op" style="color: #5E5E5E;">*</span> l2<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
-<span id="cb1-12">        <span class="kw" style="color: #003B4F;">auto</span> dummy <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">new</span> ListNode<span class="op" style="color: #5E5E5E;">(-</span><span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">),</span> tail <span class="op" style="color: #5E5E5E;">=</span> dummy<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-13">        <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>l1 <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> l2<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
-<span id="cb1-14">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>l1<span class="op" style="color: #5E5E5E;">-&gt;</span>val <span class="op" style="color: #5E5E5E;">&gt;</span> l2<span class="op" style="color: #5E5E5E;">-&gt;</span>val<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
-<span id="cb1-15">                tail <span class="op" style="color: #5E5E5E;">=</span> tail<span class="op" style="color: #5E5E5E;">-&gt;</span>next <span class="op" style="color: #5E5E5E;">=</span> l2<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-16">                l2 <span class="op" style="color: #5E5E5E;">=</span> l2<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-17">            <span class="op" style="color: #5E5E5E;">}</span> <span class="cf" style="color: #003B4F;">else</span> <span class="op" style="color: #5E5E5E;">{</span></span>
-<span id="cb1-18">                tail <span class="op" style="color: #5E5E5E;">=</span> tail<span class="op" style="color: #5E5E5E;">-&gt;</span>next <span class="op" style="color: #5E5E5E;">=</span> l1<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-19">                l1 <span class="op" style="color: #5E5E5E;">=</span> l1<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-20">            <span class="op" style="color: #5E5E5E;">}</span></span>
-<span id="cb1-21">        <span class="op" style="color: #5E5E5E;">}</span></span>
-<span id="cb1-22">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>l1<span class="op" style="color: #5E5E5E;">)</span> tail<span class="op" style="color: #5E5E5E;">-&gt;</span>next <span class="op" style="color: #5E5E5E;">=</span> l1<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-23">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>l2<span class="op" style="color: #5E5E5E;">)</span> tail<span class="op" style="color: #5E5E5E;">-&gt;</span>next <span class="op" style="color: #5E5E5E;">=</span> l2<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-24"></span>
-<span id="cb1-25">        <span class="cf" style="color: #003B4F;">return</span> dummy<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb1-26">    <span class="op" style="color: #5E5E5E;">}</span>   </span>
-<span id="cb1-27"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
-
-
-</section>
-
- ]]></description>
-  <category>cpp</category>
-  <category>algorithms</category>
-  <category>LeetCode</category>
-  <guid>https://lov3camille.top/posts/leetcode_21-30/index.html</guid>
-  <pubDate>Fri, 06 Jan 2023 16:00:00 GMT</pubDate>
+  <pubDate>Thu, 05 Jan 2023 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>&lt;克拉拉与太阳&gt;读后感</title>

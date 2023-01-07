@@ -2,8 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/leetcode_11-20/index.html",
       "/posts/leetcode_21-30/index.html",
+      "/posts/leetcode_11-20/index.html",
       "/posts/klara_and_the_sun/index.html",
       "/posts/leetcode_weekly_competition/index.html",
       "/posts/leetcode_1-10/index.html",
@@ -18,8 +18,8 @@
   {
     "listing": "/archive.html",
     "items": [
-      "/posts/leetcode_11-20/index.html",
       "/posts/leetcode_21-30/index.html",
+      "/posts/leetcode_11-20/index.html",
       "/posts/klara_and_the_sun/index.html",
       "/posts/leetcode_weekly_competition/index.html",
       "/posts/leetcode_1-10/index.html",
