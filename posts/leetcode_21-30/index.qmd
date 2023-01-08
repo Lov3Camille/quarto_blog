@@ -43,3 +43,77 @@ public:
     }   
 };
 ```
+
+## 22. 括号生成
+
+数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
+
+```cpp
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<string> res;
+    
+    vector<string> generateParenthesis(int n) {
+        dfs(n, 0, 0, "");
+        return res;
+    }
+
+    void dfs(int n, int lc, int rc, string path) {
+        if (lc == n && rc == n) res.push_back(path);
+        else {
+            if (lc < n) dfs(n, lc + 1, rc, path + "(");
+            if (rc < n && lc > rc) dfs(n, lc, rc + 1, path + ")");
+        }
+    }
+};
+```
+
+## 23. 合并K个升序链表
+
+给你一个链表数组，每个链表都已经按升序排列。
+
+请你将所有链表合并到一个升序链表中，返回合并后的链表。
+
+```cpp
+#include<vector>
+#include<queue>
+
+using namespace std;
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+ 
+class Solution {
+public:
+    struct Cmp {
+        bool operator() (ListNode* a, ListNode* b) {
+            return a->val > b->val;
+        }
+    };
+
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        priority_queue<ListNode*, vector<ListNode*>, Cmp> heap;
+        auto dummy = new ListNode(-1), tail = dummy;
+        for (auto& l : lists) if (l) heap.push(l);
+
+        while (heap.size()) {
+            ListNode* t = heap.top();
+            heap.pop();
+
+            tail = tail->next = t;
+            if (t->next) heap.push(t->next);
+        }
+        return dummy->next;
+    }
+};
+```

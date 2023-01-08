@@ -49,6 +49,73 @@
 <span id="cb1-25">        <span class="cf" style="color: #003B4F;">return</span> dummy<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
 <span id="cb1-26">    <span class="op" style="color: #5E5E5E;">}</span>   </span>
 <span id="cb1-27"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+</section>
+<section id="括号生成" class="level2">
+<h2 class="anchored" data-anchor-id="括号生成">22. 括号生成</h2>
+<p>数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;vector&gt;</span></span>
+<span id="cb2-2"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;string&gt;</span></span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-5"></span>
+<span id="cb2-6"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-7"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb2-8">    vector<span class="op" style="color: #5E5E5E;">&lt;</span>string<span class="op" style="color: #5E5E5E;">&gt;</span> res<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-9">    </span>
+<span id="cb2-10">    vector<span class="op" style="color: #5E5E5E;">&lt;</span>string<span class="op" style="color: #5E5E5E;">&gt;</span> generateParenthesis<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> n<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-11">        dfs<span class="op" style="color: #5E5E5E;">(</span>n<span class="op" style="color: #5E5E5E;">,</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">,</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">,</span> <span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb2-12">        <span class="cf" style="color: #003B4F;">return</span> res<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb2-13">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-14"></span>
+<span id="cb2-15">    <span class="dt" style="color: #AD0000;">void</span> dfs<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> n<span class="op" style="color: #5E5E5E;">,</span> <span class="dt" style="color: #AD0000;">int</span> lc<span class="op" style="color: #5E5E5E;">,</span> <span class="dt" style="color: #AD0000;">int</span> rc<span class="op" style="color: #5E5E5E;">,</span> string path<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-16">        <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>lc <span class="op" style="color: #5E5E5E;">==</span> n <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> rc <span class="op" style="color: #5E5E5E;">==</span> n<span class="op" style="color: #5E5E5E;">)</span> res<span class="op" style="color: #5E5E5E;">.</span>push_back<span class="op" style="color: #5E5E5E;">(</span>path<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb2-17">        <span class="cf" style="color: #003B4F;">else</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb2-18">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>lc <span class="op" style="color: #5E5E5E;">&lt;</span> n<span class="op" style="color: #5E5E5E;">)</span> dfs<span class="op" style="color: #5E5E5E;">(</span>n<span class="op" style="color: #5E5E5E;">,</span> lc <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">,</span> rc<span class="op" style="color: #5E5E5E;">,</span> path <span class="op" style="color: #5E5E5E;">+</span> <span class="st" style="color: #20794D;">"("</span><span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb2-19">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>rc <span class="op" style="color: #5E5E5E;">&lt;</span> n <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> lc <span class="op" style="color: #5E5E5E;">&gt;</span> rc<span class="op" style="color: #5E5E5E;">)</span> dfs<span class="op" style="color: #5E5E5E;">(</span>n<span class="op" style="color: #5E5E5E;">,</span> lc<span class="op" style="color: #5E5E5E;">,</span> rc <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">,</span> path <span class="op" style="color: #5E5E5E;">+</span> <span class="st" style="color: #20794D;">")"</span><span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb2-20">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-21">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb2-22"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+</section>
+<section id="合并k个升序链表" class="level2">
+<h2 class="anchored" data-anchor-id="合并k个升序链表">23. 合并K个升序链表</h2>
+<p>给你一个链表数组，每个链表都已经按升序排列。</p>
+<p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><span class="pp" style="color: #AD0000;">#include</span><span class="im" style="color: #00769E;">&lt;vector&gt;</span></span>
+<span id="cb3-2"><span class="pp" style="color: #AD0000;">#include</span><span class="im" style="color: #00769E;">&lt;queue&gt;</span></span>
+<span id="cb3-3"></span>
+<span id="cb3-4"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-5"></span>
+<span id="cb3-6"><span class="kw" style="color: #003B4F;">struct</span> ListNode <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb3-7">    <span class="dt" style="color: #AD0000;">int</span> val<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-8">    ListNode <span class="op" style="color: #5E5E5E;">*</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-9">    ListNode<span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">:</span> val<span class="op" style="color: #5E5E5E;">(</span><span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">),</span> next<span class="op" style="color: #5E5E5E;">(</span><span class="kw" style="color: #003B4F;">nullptr</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{}</span></span>
+<span id="cb3-10">    ListNode<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> x<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">:</span> val<span class="op" style="color: #5E5E5E;">(</span>x<span class="op" style="color: #5E5E5E;">),</span> next<span class="op" style="color: #5E5E5E;">(</span><span class="kw" style="color: #003B4F;">nullptr</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{}</span></span>
+<span id="cb3-11">    ListNode<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> x<span class="op" style="color: #5E5E5E;">,</span> ListNode <span class="op" style="color: #5E5E5E;">*</span>next<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">:</span> val<span class="op" style="color: #5E5E5E;">(</span>x<span class="op" style="color: #5E5E5E;">),</span> next<span class="op" style="color: #5E5E5E;">(</span>next<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{}</span></span>
+<span id="cb3-12"><span class="op" style="color: #5E5E5E;">};</span></span>
+<span id="cb3-13"> </span>
+<span id="cb3-14"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb3-15"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb3-16">    <span class="kw" style="color: #003B4F;">struct</span> Cmp <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb3-17">        <span class="dt" style="color: #AD0000;">bool</span> <span class="kw" style="color: #003B4F;">operator</span><span class="op" style="color: #5E5E5E;">()</span> <span class="op" style="color: #5E5E5E;">(</span>ListNode<span class="op" style="color: #5E5E5E;">*</span> a<span class="op" style="color: #5E5E5E;">,</span> ListNode<span class="op" style="color: #5E5E5E;">*</span> b<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb3-18">            <span class="cf" style="color: #003B4F;">return</span> a<span class="op" style="color: #5E5E5E;">-&gt;</span>val <span class="op" style="color: #5E5E5E;">&gt;</span> b<span class="op" style="color: #5E5E5E;">-&gt;</span>val<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-19">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb3-20">    <span class="op" style="color: #5E5E5E;">};</span></span>
+<span id="cb3-21"></span>
+<span id="cb3-22">    ListNode<span class="op" style="color: #5E5E5E;">*</span> mergeKLists<span class="op" style="color: #5E5E5E;">(</span>vector<span class="op" style="color: #5E5E5E;">&lt;</span>ListNode<span class="op" style="color: #5E5E5E;">*&gt;&amp;</span> lists<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb3-23">        priority_queue<span class="op" style="color: #5E5E5E;">&lt;</span>ListNode<span class="op" style="color: #5E5E5E;">*,</span> vector<span class="op" style="color: #5E5E5E;">&lt;</span>ListNode<span class="op" style="color: #5E5E5E;">*&gt;,</span> Cmp<span class="op" style="color: #5E5E5E;">&gt;</span> heap<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-24">        <span class="kw" style="color: #003B4F;">auto</span> dummy <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">new</span> ListNode<span class="op" style="color: #5E5E5E;">(-</span><span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">),</span> tail <span class="op" style="color: #5E5E5E;">=</span> dummy<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-25">        <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="kw" style="color: #003B4F;">auto</span><span class="op" style="color: #5E5E5E;">&amp;</span> l <span class="op" style="color: #5E5E5E;">:</span> lists<span class="op" style="color: #5E5E5E;">)</span> <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>l<span class="op" style="color: #5E5E5E;">)</span> heap<span class="op" style="color: #5E5E5E;">.</span>push<span class="op" style="color: #5E5E5E;">(</span>l<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb3-26"></span>
+<span id="cb3-27">        <span class="cf" style="color: #003B4F;">while</span> <span class="op" style="color: #5E5E5E;">(</span>heap<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">())</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb3-28">            ListNode<span class="op" style="color: #5E5E5E;">*</span> t <span class="op" style="color: #5E5E5E;">=</span> heap<span class="op" style="color: #5E5E5E;">.</span>top<span class="op" style="color: #5E5E5E;">();</span></span>
+<span id="cb3-29">            heap<span class="op" style="color: #5E5E5E;">.</span>pop<span class="op" style="color: #5E5E5E;">();</span></span>
+<span id="cb3-30"></span>
+<span id="cb3-31">            tail <span class="op" style="color: #5E5E5E;">=</span> tail<span class="op" style="color: #5E5E5E;">-&gt;</span>next <span class="op" style="color: #5E5E5E;">=</span> t<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-32">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>t<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">)</span> heap<span class="op" style="color: #5E5E5E;">.</span>push<span class="op" style="color: #5E5E5E;">(</span>t<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">);</span></span>
+<span id="cb3-33">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb3-34">        <span class="cf" style="color: #003B4F;">return</span> dummy<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb3-35">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb3-36"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
 
 
 </section>
@@ -591,7 +658,7 @@
 <span id="cb4-15">            <span class="dt" style="color: #AD0000;">int</span> max <span class="op" style="color: #5E5E5E;">=</span> heap<span class="op" style="color: #5E5E5E;">.</span>top<span class="op" style="color: #5E5E5E;">();</span></span>
 <span id="cb4-16">            sum <span class="op" style="color: #5E5E5E;">+=</span> max<span class="op" style="color: #5E5E5E;">;</span></span>
 <span id="cb4-17">            heap<span class="op" style="color: #5E5E5E;">.</span>pop<span class="op" style="color: #5E5E5E;">();</span></span>
-<span id="cb4-18">            heap<span class="op" style="color: #5E5E5E;">.</span>push<span class="op" style="color: #5E5E5E;">((</span>max <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">2</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">);</span> <span class="co" style="color: #5E5E5E;">// don;t use ceil() here;</span></span>
+<span id="cb4-18">            heap<span class="op" style="color: #5E5E5E;">.</span>push<span class="op" style="color: #5E5E5E;">((</span>max <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">2</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">);</span> <span class="co" style="color: #5E5E5E;">// don't use ceil() here;</span></span>
 <span id="cb4-19">        <span class="op" style="color: #5E5E5E;">}</span></span>
 <span id="cb4-20">        <span class="cf" style="color: #003B4F;">return</span> sum<span class="op" style="color: #5E5E5E;">;</span></span>
 <span id="cb4-21">    <span class="op" style="color: #5E5E5E;">}</span></span>
