@@ -1,0 +1,15 @@
+---
+title: '2022年观影记录'
+date: '2023-01-07'
+categories: ['movie', 'series']
+description: ' '
+execute: 
+  message: false
+  warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# 2022年看过的电影
+
+# 2022年看过的电视剧

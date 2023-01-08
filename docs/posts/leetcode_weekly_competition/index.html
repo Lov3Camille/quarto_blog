@@ -233,8 +233,13 @@ cookieconsent.run({
   <ul>
   <li><a href="#第324场周赛" id="toc-第324场周赛" class="nav-link active" data-scroll-target="#第324场周赛">第324场周赛</a>
   <ul class="collapse">
-  <li><a href="#统计相似字符串对的数目" id="toc-统计相似字符串对的数目" class="nav-link" data-scroll-target="#统计相似字符串对的数目">统计相似字符串对的数目</a></li>
-  <li><a href="#使用质因数之和替换后可以取到的最小值" id="toc-使用质因数之和替换后可以取到的最小值" class="nav-link" data-scroll-target="#使用质因数之和替换后可以取到的最小值">使用质因数之和替换后可以取到的最小值</a></li>
+  <li><a href="#统计相似字符串对的数目" id="toc-统计相似字符串对的数目" class="nav-link" data-scroll-target="#统计相似字符串对的数目">1. 统计相似字符串对的数目</a></li>
+  <li><a href="#使用质因数之和替换后可以取到的最小值" id="toc-使用质因数之和替换后可以取到的最小值" class="nav-link" data-scroll-target="#使用质因数之和替换后可以取到的最小值">2. 使用质因数之和替换后可以取到的最小值</a></li>
+  </ul></li>
+  <li><a href="#第327场周赛" id="toc-第327场周赛" class="nav-link" data-scroll-target="#第327场周赛">第327场周赛</a>
+  <ul class="collapse">
+  <li><a href="#正整数和负整数的最大计数" id="toc-正整数和负整数的最大计数" class="nav-link" data-scroll-target="#正整数和负整数的最大计数">1. 正整数和负整数的最大计数</a></li>
+  <li><a href="#执行-k-次操作后的最大分数" id="toc-执行-k-次操作后的最大分数" class="nav-link" data-scroll-target="#执行-k-次操作后的最大分数">2. 执行 K 次操作后的最大分数</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -279,7 +284,7 @@ cookieconsent.run({
 <section id="第324场周赛" class="level2">
 <h2 class="anchored" data-anchor-id="第324场周赛">第324场周赛</h2>
 <section id="统计相似字符串对的数目" class="level3">
-<h3 class="anchored" data-anchor-id="统计相似字符串对的数目">统计相似字符串对的数目</h3>
+<h3 class="anchored" data-anchor-id="统计相似字符串对的数目">1. 统计相似字符串对的数目</h3>
 <p>给你一个下标从 0 开始的字符串数组 words 。</p>
 <p>如果两个字符串由相同的字符组成，则认为这两个字符串 相似 。</p>
 <p>例如，“abca” 和 “cba” 相似，因为它们都由字符 ‘a’、‘b’、‘c’ 组成。 然而，“abacba” 和 “bcfd” 不相似，因为它们不是相同字符组成的。 请你找出满足字符串&nbsp;words[i] 和 words[j] 相似的下标对 (i, j) ，并返回下标对的数目，其中 0 &lt;= i &lt; j &lt;= word.length - 1 。</p>
@@ -309,7 +314,7 @@ cookieconsent.run({
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="使用质因数之和替换后可以取到的最小值" class="level3">
-<h3 class="anchored" data-anchor-id="使用质因数之和替换后可以取到的最小值">使用质因数之和替换后可以取到的最小值</h3>
+<h3 class="anchored" data-anchor-id="使用质因数之和替换后可以取到的最小值">2. 使用质因数之和替换后可以取到的最小值</h3>
 <p>给你一个正整数 n 。</p>
 <p>请你将 n 的值替换为 n 的 质因数 之和，重复这一过程。</p>
 <p>注意，如果 n 能够被某个质因数多次整除，则在求和时，应当包含这个质因数同样次数。 返回 n 可以取到的最小值。</p>
@@ -342,6 +347,64 @@ cookieconsent.run({
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n<span class="op">;</span></span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="第327场周赛" class="level2">
+<h2 class="anchored" data-anchor-id="第327场周赛">第327场周赛</h2>
+<section id="正整数和负整数的最大计数" class="level3">
+<h3 class="anchored" data-anchor-id="正整数和负整数的最大计数">1. 正整数和负整数的最大计数</h3>
+<p>给你一个按 非递减顺序 排列的数组 nums ，返回正整数数目和负整数数目中的最大值。</p>
+<p>换句话讲，如果 nums 中正整数的数目是 pos ，而负整数的数目是 neg ，返回 pos 和 neg二者中的最大值。 注意：0 既不是正整数也不是负整数。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> maximumCount<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> nums<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> neg <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> pos <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span><span class="op">&amp;</span> num <span class="op">:</span> nums<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>num <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                neg<span class="op">++;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>num <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                pos<span class="op">++;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max<span class="op">(</span>neg<span class="op">,</span> pos<span class="op">);</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="执行-k-次操作后的最大分数" class="level3">
+<h3 class="anchored" data-anchor-id="执行-k-次操作后的最大分数">2. 执行 K 次操作后的最大分数</h3>
+<p>给你一个下标从 0 开始的整数数组 nums 和一个整数 k 。你的 起始分数 为 0 。</p>
+<p>在一步 操作 中：</p>
+<p>选出一个满足 0 &lt;= i &lt; nums.length 的下标 i ， 将你的 分数 增加 nums[i] ，并且 将 nums[i] 替换为 ceil(nums[i] / 3) 。 返回在 恰好 执行 k 次操作后，你可能获得的最大分数。</p>
+<p>向上取整函数 ceil(val) 的结果是大于或等于 val 的最小整数。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;queue&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">long</span> <span class="dt">long</span> maxKelements<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> nums<span class="op">,</span> <span class="dt">int</span> k<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        priority_queue<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> heap<span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span><span class="op">&amp;</span> num <span class="op">:</span> nums<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            heap<span class="op">.</span>push<span class="op">(</span>num<span class="op">);</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">long</span> <span class="dt">long</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> k<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> max <span class="op">=</span> heap<span class="op">.</span>top<span class="op">();</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            sum <span class="op">+=</span> max<span class="op">;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            heap<span class="op">.</span>pop<span class="op">();</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            heap<span class="op">.</span>push<span class="op">((</span>max <span class="op">+</span> <span class="dv">2</span><span class="op">)</span> <span class="op">/</span> <span class="dv">3</span><span class="op">);</span> <span class="co">// don;t use ceil() here;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sum<span class="op">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

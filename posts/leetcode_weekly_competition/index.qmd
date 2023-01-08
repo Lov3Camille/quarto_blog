@@ -12,7 +12,7 @@ editor_options:
 
 ## 第324场周赛
 
-### 统计相似字符串对的数目
+### 1. 统计相似字符串对的数目
 
 给你一个下标从 0 开始的字符串数组 words 。
 
@@ -48,7 +48,7 @@ public:
     }
 };
 ```
-### 使用质因数之和替换后可以取到的最小值
+### 2. 使用质因数之和替换后可以取到的最小值
 
 给你一个正整数 n 。
 
@@ -85,6 +85,77 @@ public:
             n = next;
         }
         return n;
+    }
+};
+```
+
+## 第327场周赛
+
+### 1. 正整数和负整数的最大计数
+
+给你一个按 非递减顺序 排列的数组 nums ，返回正整数数目和负整数数目中的最大值。
+
+换句话讲，如果 nums 中正整数的数目是 pos ，而负整数的数目是 neg ，返回 pos 和 neg二者中的最大值。
+注意：0 既不是正整数也不是负整数。
+
+```cpp
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    int maximumCount(vector<int>& nums) {
+        int neg = 0;
+        int pos = 0;
+
+        for (auto& num : nums) {
+            if (num < 0) {
+                neg++;
+            } else if (num > 0) {
+                pos++;
+            }
+        }
+
+        return max(neg, pos);
+    }
+};
+```
+
+### 2. 执行 K 次操作后的最大分数
+
+给你一个下标从 0 开始的整数数组 nums 和一个整数 k 。你的 起始分数 为 0 。
+
+在一步 操作 中：
+
+选出一个满足 0 <= i < nums.length 的下标 i ，
+将你的 分数 增加 nums[i] ，并且
+将 nums[i] 替换为 ceil(nums[i] / 3) 。
+返回在 恰好 执行 k 次操作后，你可能获得的最大分数。
+
+向上取整函数 ceil(val) 的结果是大于或等于 val 的最小整数。
+
+```cpp
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+class Solution {
+public:
+    long long maxKelements(vector<int>& nums, int k) {
+        priority_queue<int> heap;
+        for (auto& num : nums) {
+            heap.push(num);
+        }
+        long long sum = 0;
+        for (int i = 0; i < k; i++) {
+            int max = heap.top();
+            sum += max;
+            heap.pop();
+            heap.push((max + 2) / 3); // don;t use ceil() here;
+        }
+        return sum;
     }
 };
 ```
