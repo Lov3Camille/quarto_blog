@@ -234,6 +234,8 @@ cookieconsent.run({
   <li><a href="#合并两个有序链表" id="toc-合并两个有序链表" class="nav-link active" data-scroll-target="#合并两个有序链表">21. 合并两个有序链表</a></li>
   <li><a href="#括号生成" id="toc-括号生成" class="nav-link" data-scroll-target="#括号生成">22. 括号生成</a></li>
   <li><a href="#合并k个升序链表" id="toc-合并k个升序链表" class="nav-link" data-scroll-target="#合并k个升序链表">23. 合并K个升序链表</a></li>
+  <li><a href="#两两交换链表中的节点" id="toc-两两交换链表中的节点" class="nav-link" data-scroll-target="#两两交换链表中的节点">24. 两两交换链表中的节点</a></li>
+  <li><a href="#k-个一组翻转链表" id="toc-k-个一组翻转链表" class="nav-link" data-scroll-target="#k-个一组翻转链表">25. K 个一组翻转链表</a></li>
   </ul>
 </nav>
     </div>
@@ -371,6 +373,76 @@ cookieconsent.run({
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dummy<span class="op">-&gt;</span>next<span class="op">;</span></span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="两两交换链表中的节点" class="level2">
+<h2 class="anchored" data-anchor-id="两两交换链表中的节点">24. 两两交换链表中的节点</h2>
+<p>给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ListNode <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> val<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    ListNode <span class="op">*</span>next<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">()</span> <span class="op">:</span> val<span class="op">(</span><span class="dv">0</span><span class="op">),</span> next<span class="op">(</span><span class="kw">nullptr</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">:</span> val<span class="op">(</span>x<span class="op">),</span> next<span class="op">(</span><span class="kw">nullptr</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> ListNode <span class="op">*</span>next<span class="op">)</span> <span class="op">:</span> val<span class="op">(</span>x<span class="op">),</span> next<span class="op">(</span>next<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">*</span> swapPairs<span class="op">(</span>ListNode<span class="op">*</span> head<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">auto</span> dummy <span class="op">=</span> <span class="kw">new</span> ListNode<span class="op">(-</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        dummy<span class="op">-&gt;</span>next <span class="op">=</span> head<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span> p <span class="op">=</span> dummy<span class="op">;</span> p<span class="op">-&gt;</span>next <span class="op">&amp;&amp;</span> p<span class="op">-&gt;</span>next<span class="op">-&gt;</span>next<span class="op">;)</span> <span class="op">{</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="kw">auto</span> a <span class="op">=</span> p<span class="op">-&gt;</span>next<span class="op">,</span> b <span class="op">=</span> a<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            p<span class="op">-&gt;</span>next <span class="op">=</span> b<span class="op">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            a<span class="op">-&gt;</span>next <span class="op">=</span> b<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            b<span class="op">-&gt;</span>next <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            p <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dummy<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>   </span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="k-个一组翻转链表" class="level2">
+<h2 class="anchored" data-anchor-id="k-个一组翻转链表">25. K 个一组翻转链表</h2>
+<p>给你链表的头节点 head ，每&nbsp;k&nbsp;个节点一组进行翻转，请你返回修改后的链表。</p>
+<p>k 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是&nbsp;k&nbsp;的整数倍，那么请将最后剩余的节点保持原有顺序。</p>
+<p>你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ListNode <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> val<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    ListNode <span class="op">*</span>next<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">()</span> <span class="op">:</span> val<span class="op">(</span><span class="dv">0</span><span class="op">),</span> next<span class="op">(</span><span class="kw">nullptr</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">:</span> val<span class="op">(</span>x<span class="op">),</span> next<span class="op">(</span><span class="kw">nullptr</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> ListNode <span class="op">*</span>next<span class="op">)</span> <span class="op">:</span> val<span class="op">(</span>x<span class="op">),</span> next<span class="op">(</span>next<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    ListNode<span class="op">*</span> reverseKGroup<span class="op">(</span>ListNode<span class="op">*</span> head<span class="op">,</span> <span class="dt">int</span> k<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">auto</span> dummy <span class="op">=</span> <span class="kw">new</span> ListNode<span class="op">(-</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        dummy<span class="op">-&gt;</span>next <span class="op">=</span> head<span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span> p <span class="op">=</span> dummy<span class="op">;;)</span> <span class="op">{</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="co">// check if length bigger or equals to k.</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            <span class="kw">auto</span> q <span class="op">=</span> p<span class="op">;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> k <span class="op">&amp;&amp;</span> q<span class="op">;</span> i<span class="op">++)</span> q <span class="op">=</span> q<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(!</span>q<span class="op">)</span> <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            <span class="co">// reverse k-len linked list.</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            <span class="kw">auto</span> a <span class="op">=</span> p<span class="op">-&gt;</span>next<span class="op">,</span> b <span class="op">=</span> a<span class="op">-&gt;</span>next<span class="op">;</span> </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> k <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                <span class="kw">auto</span> c <span class="op">=</span> b<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                b<span class="op">-&gt;</span>next <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                a <span class="op">=</span> b<span class="op">,</span> b <span class="op">=</span> c<span class="op">;</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">// change dummy head to next k-len linked list.</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>            <span class="kw">auto</span> d <span class="op">=</span> p<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>            p<span class="op">-&gt;</span>next <span class="op">=</span> a<span class="op">,</span> d<span class="op">-&gt;</span>next <span class="op">=</span> b<span class="op">;</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>            p <span class="op">=</span> d<span class="op">;</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dummy<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
