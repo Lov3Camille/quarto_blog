@@ -186,6 +186,44 @@
 <span id="cb5-33">        <span class="cf" style="color: #003B4F;">return</span> dummy<span class="op" style="color: #5E5E5E;">-&gt;</span>next<span class="op" style="color: #5E5E5E;">;</span></span>
 <span id="cb5-34">    <span class="op" style="color: #5E5E5E;">}</span></span>
 <span id="cb5-35"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+</section>
+<section id="删除有序数组中的重复项" class="level2">
+<h2 class="anchored" data-anchor-id="删除有序数组中的重复项">26. 删除有序数组中的重复项</h2>
+<p>给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。</p>
+<p>由于在某些语言中不能改变数组的长度，所以必须将结果放在数组nums的第一部分。更规范地说，如果在删除重复项之后有 k 个元素，那么&nbsp;nums&nbsp;的前 k 个元素应该保存最终结果。</p>
+<p>将最终结果插入&nbsp;nums 的前 k 个位置后返回 k 。</p>
+<p>不要使用额外的空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;vector&gt;</span></span>
+<span id="cb6-2"></span>
+<span id="cb6-3"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb6-4"></span>
+<span id="cb6-5"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb6-6"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb6-7">    <span class="dt" style="color: #AD0000;">int</span> removeDuplicates<span class="op" style="color: #5E5E5E;">(</span>vector<span class="op" style="color: #5E5E5E;">&lt;</span><span class="dt" style="color: #AD0000;">int</span><span class="op" style="color: #5E5E5E;">&gt;&amp;</span> nums<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb6-8">        <span class="dt" style="color: #AD0000;">int</span> k <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb6-9">        <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&lt;</span> nums<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">();</span> i<span class="op" style="color: #5E5E5E;">++)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb6-10">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(!</span>i <span class="op" style="color: #5E5E5E;">||</span> nums<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">!=</span> nums<span class="op" style="color: #5E5E5E;">[</span>i <span class="op" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">])</span> nums<span class="op" style="color: #5E5E5E;">[</span>k<span class="op" style="color: #5E5E5E;">++]</span> <span class="op" style="color: #5E5E5E;">=</span> nums<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">];</span></span>
+<span id="cb6-11">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb6-12">        <span class="cf" style="color: #003B4F;">return</span> k<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb6-13">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb6-14"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
+</section>
+<section id="移除元素" class="level2">
+<h2 class="anchored" data-anchor-id="移除元素">27. 移除元素</h2>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><span class="pp" style="color: #AD0000;">#include </span><span class="im" style="color: #00769E;">&lt;vector&gt;</span></span>
+<span id="cb7-2"></span>
+<span id="cb7-3"><span class="kw" style="color: #003B4F;">using</span> <span class="kw" style="color: #003B4F;">namespace</span> std<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-4"></span>
+<span id="cb7-5"><span class="kw" style="color: #003B4F;">class</span> Solution <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb7-6"><span class="kw" style="color: #003B4F;">public</span><span class="op" style="color: #5E5E5E;">:</span></span>
+<span id="cb7-7">    <span class="dt" style="color: #AD0000;">int</span> removeElement<span class="op" style="color: #5E5E5E;">(</span>vector<span class="op" style="color: #5E5E5E;">&lt;</span><span class="dt" style="color: #AD0000;">int</span><span class="op" style="color: #5E5E5E;">&gt;&amp;</span> nums<span class="op" style="color: #5E5E5E;">,</span> <span class="dt" style="color: #AD0000;">int</span> val<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb7-8">        <span class="dt" style="color: #AD0000;">int</span> k <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-9">        <span class="cf" style="color: #003B4F;">for</span> <span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> i <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">;</span> i <span class="op" style="color: #5E5E5E;">&lt;</span> nums<span class="op" style="color: #5E5E5E;">.</span>size<span class="op" style="color: #5E5E5E;">();</span> i<span class="op" style="color: #5E5E5E;">++)</span> <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="cb7-10">            <span class="cf" style="color: #003B4F;">if</span> <span class="op" style="color: #5E5E5E;">(</span>nums<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">]</span> <span class="op" style="color: #5E5E5E;">!=</span> val<span class="op" style="color: #5E5E5E;">)</span> nums<span class="op" style="color: #5E5E5E;">[</span>k<span class="op" style="color: #5E5E5E;">++]</span> <span class="op" style="color: #5E5E5E;">=</span> nums<span class="op" style="color: #5E5E5E;">[</span>i<span class="op" style="color: #5E5E5E;">];</span></span>
+<span id="cb7-11">        <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb7-12">        <span class="cf" style="color: #003B4F;">return</span> k<span class="op" style="color: #5E5E5E;">;</span></span>
+<span id="cb7-13">    <span class="op" style="color: #5E5E5E;">}</span></span>
+<span id="cb7-14"><span class="op" style="color: #5E5E5E;">};</span></span></code></pre></div>
 
 
 </section>

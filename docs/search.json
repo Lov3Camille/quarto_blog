@@ -196,6 +196,20 @@
     "text": "25. K 个一组翻转链表\n给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。\nk 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。\n你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。\nstruct ListNode {\n    int val;\n    ListNode *next;\n    ListNode() : val(0), next(nullptr) {}\n    ListNode(int x) : val(x), next(nullptr) {}\n    ListNode(int x, ListNode *next) : val(x), next(next) {}\n};\n\nclass Solution {\npublic:\n    ListNode* reverseKGroup(ListNode* head, int k) {\n        auto dummy = new ListNode(-1);\n        dummy->next = head;\n\n        for (auto p = dummy;;) {\n            // check if length bigger or equals to k.\n            auto q = p;\n            for (int i = 0; i < k && q; i++) q = q->next;\n            if (!q) break;\n            // reverse k-len linked list.\n            auto a = p->next, b = a->next; \n            for (int i = 0; i < k - 1; i++) {\n                auto c = b->next;\n                b->next = a;\n                a = b, b = c;\n            }\n            // change dummy head to next k-len linked list.\n            auto d = p->next;\n            p->next = a, d->next = b;\n            p = d;\n        }\n\n        return dummy->next;\n    }\n};"
   },
   {
+    "objectID": "posts/leetcode_21-30/index.html#删除有序数组中的重复项",
+    "href": "posts/leetcode_21-30/index.html#删除有序数组中的重复项",
+    "title": "LeetCode 刷题记录 21 - 30",
+    "section": "26. 删除有序数组中的重复项",
+    "text": "26. 删除有序数组中的重复项\n给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。\n由于在某些语言中不能改变数组的长度，所以必须将结果放在数组nums的第一部分。更规范地说，如果在删除重复项之后有 k 个元素，那么 nums 的前 k 个元素应该保存最终结果。\n将最终结果插入 nums 的前 k 个位置后返回 k 。\n不要使用额外的空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。\n#include <vector>\n\nusing namespace std;\n\nclass Solution {\npublic:\n    int removeDuplicates(vector<int>& nums) {\n        int k = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            if (!i || nums[i] != nums[i - 1]) nums[k++] = nums[i];\n        }\n        return k;\n    }\n};"
+  },
+  {
+    "objectID": "posts/leetcode_21-30/index.html#移除元素",
+    "href": "posts/leetcode_21-30/index.html#移除元素",
+    "title": "LeetCode 刷题记录 21 - 30",
+    "section": "27. 移除元素",
+    "text": "27. 移除元素\n#include <vector>\n\nusing namespace std;\n\nclass Solution {\npublic:\n    int removeElement(vector<int>& nums, int val) {\n        int k = 0;\n        for (int i = 0; i < nums.size(); i++) {\n            if (nums[i] != val) nums[k++] = nums[i];\n        }\n        return k;\n    }\n};"
+  },
+  {
     "objectID": "posts/camille_string/index.html",
     "href": "posts/camille_string/index.html",
     "title": "实现一个简易的C++ String类",
