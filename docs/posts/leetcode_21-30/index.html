@@ -239,6 +239,7 @@ cookieconsent.run({
   <li><a href="#删除有序数组中的重复项" id="toc-删除有序数组中的重复项" class="nav-link" data-scroll-target="#删除有序数组中的重复项">26. 删除有序数组中的重复项</a></li>
   <li><a href="#移除元素" id="toc-移除元素" class="nav-link" data-scroll-target="#移除元素">27. 移除元素</a></li>
   <li><a href="#找出字符串中第一个匹配项的下标" id="toc-找出字符串中第一个匹配项的下标" class="nav-link" data-scroll-target="#找出字符串中第一个匹配项的下标">28. 找出字符串中第一个匹配项的下标</a></li>
+  <li><a href="#两数相除" id="toc-两数相除" class="nav-link" data-scroll-target="#两数相除">29. 两数相除</a></li>
   </ul>
 </nav>
     </div>
@@ -517,6 +518,44 @@ cookieconsent.run({
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="两数相除" class="level2">
+<h2 class="anchored" data-anchor-id="两数相除">29. 两数相除</h2>
+<p>给你两个整数，被除数&nbsp;dividend&nbsp;和除数&nbsp;divisor。将两数相除，要求 不使用 乘法、除法和取余运算。</p>
+<p>整数除法应该向零截断，也就是截去（truncate）其小数部分。例如，8.345 将被截断为 8 ，-2.7335 将被截断至 -2 。</p>
+<p>返回被除数&nbsp;dividend&nbsp;除以除数&nbsp;divisor&nbsp;得到的 商 。</p>
+<p>注意：假设我们的环境只能存储 32 位 有符号整数，其数值范围是 [−231,&nbsp; 231&nbsp;− 1] 。本题中，如果商 严格大于 231&nbsp;− 1 ，则返回 231&nbsp;− 1 ；如果商 严格小于 -231 ，则返回 -231 。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;bits/stdc++.h&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> divide<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">typedef</span> <span class="dt">long</span> <span class="dt">long</span> ll<span class="op">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        vector<span class="op">&lt;</span>ll<span class="op">&gt;</span> exp<span class="op">;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        ll res <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">bool</span> is_minus <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>x <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> y <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">||</span> x <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> y <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> is_minus <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        ll a <span class="op">=</span> abs<span class="op">((</span>ll<span class="op">)</span>x<span class="op">),</span> b <span class="op">=</span> abs<span class="op">((</span>ll<span class="op">)</span>y<span class="op">);</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span>ll i <span class="op">=</span> b<span class="op">;</span> i <span class="op">&lt;=</span> a<span class="op">;</span> i <span class="op">=</span> i <span class="op">+</span> i<span class="op">)</span> exp<span class="op">.</span>push_back<span class="op">(</span>i<span class="op">);</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> exp<span class="op">.</span>size<span class="op">()</span> <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&gt;=</span> <span class="dv">0</span><span class="op">;</span> i<span class="op">--)</span> <span class="op">{</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>a <span class="op">&gt;=</span> exp<span class="op">[</span>i<span class="op">])</span> <span class="op">{</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>                a <span class="op">-=</span> exp<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>                res <span class="op">+=</span> <span class="dv">1</span><span class="bu">ll</span> <span class="op">&lt;&lt;</span> i<span class="op">;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>is_minus<span class="op">)</span> res <span class="op">=</span> <span class="op">-</span>res<span class="op">;</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>res <span class="op">&gt;</span> INT_MAX<span class="op">)</span> res <span class="op">=</span> INT_MAX<span class="op">;</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>res <span class="op">&lt;</span> INT_MIN<span class="op">)</span> res <span class="op">=</span> INT_MIN<span class="op">;</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res<span class="op">;</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Love Camille</title>
+<link>https://lov3camille.top/blog.html</link>
+<atom:link href="https://lov3camille.top/blog.xml" rel="self" type="application/rss+xml"/>
+<description>This is Lov3Camille&#39;s personal Blog.</description>
+<generator>quarto-1.2.269</generator>
+<lastBuildDate>Fri, 06 Jan 2023 16:00:00 GMT</lastBuildDate>
+<item>
+  <title>{B4F502887207:/posts/leetcode_21-30/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/leetcode_21-30/index.html</link>
+  <description>{B4F502887207:/posts/leetcode_21-30/index.html}</description>
+  <category>cpp</category>
+  <category>algorithms</category>
+  <category>LeetCode</category>
+  <guid>https://lov3camille.top/posts/leetcode_21-30/index.html</guid>
+  <pubDate>Fri, 06 Jan 2023 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/movie_record_2022/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/movie_record_2022/index.html</link>
+  <description>{B4F502887207:/posts/movie_record_2022/index.html}</description>
+  <category>movie</category>
+  <category>series</category>
+  <guid>https://lov3camille.top/posts/movie_record_2022/index.html</guid>
+  <pubDate>Fri, 06 Jan 2023 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/leetcode_11-20/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/leetcode_11-20/index.html</link>
+  <description>{B4F502887207:/posts/leetcode_11-20/index.html}</description>
+  <category>cpp</category>
+  <category>algorithms</category>
+  <category>LeetCode</category>
+  <guid>https://lov3camille.top/posts/leetcode_11-20/index.html</guid>
+  <pubDate>Thu, 05 Jan 2023 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/klara_and_the_sun/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/klara_and_the_sun/index.html</link>
+  <description>{B4F502887207:/posts/klara_and_the_sun/index.html}</description>
+  <category>reading</category>
+  <guid>https://lov3camille.top/posts/klara_and_the_sun/index.html</guid>
+  <pubDate>Sat, 17 Dec 2022 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/leetcode_weekly_competition/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/leetcode_weekly_competition/index.html</link>
+  <description>{B4F502887207:/posts/leetcode_weekly_competition/index.html}</description>
+  <category>cpp</category>
+  <category>algorithms</category>
+  <category>LeetCode</category>
+  <guid>https://lov3camille.top/posts/leetcode_weekly_competition/index.html</guid>
+  <pubDate>Sat, 17 Dec 2022 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/leetcode_1-10/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/leetcode_1-10/index.html</link>
+  <description>{B4F502887207:/posts/leetcode_1-10/index.html}</description>
+  <category>cpp</category>
+  <category>algorithms</category>
+  <category>LeetCode</category>
+  <guid>https://lov3camille.top/posts/leetcode_1-10/index.html</guid>
+  <pubDate>Sun, 04 Dec 2022 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/league_of_legends_s12/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/league_of_legends_s12/index.html</link>
+  <description>{B4F502887207:/posts/league_of_legends_s12/index.html}</description>
+  <category>life</category>
+  <guid>https://lov3camille.top/posts/league_of_legends_s12/index.html</guid>
+  <pubDate>Sun, 06 Nov 2022 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/basic_algorithms/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/basic_algorithms/index.html</link>
+  <description>{B4F502887207:/posts/basic_algorithms/index.html}</description>
+  <category>cpp</category>
+  <category>algorithms</category>
+  <guid>https://lov3camille.top/posts/basic_algorithms/index.html</guid>
+  <pubDate>Fri, 04 Nov 2022 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/cmu_15-213_lab0/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/cmu_15-213_lab0/index.html</link>
+  <description>{B4F502887207:/posts/cmu_15-213_lab0/index.html}</description>
+  <category>c</category>
+  <category>cmu_15_213</category>
+  <guid>https://lov3camille.top/posts/cmu_15-213_lab0/index.html</guid>
+  <pubDate>Mon, 10 Oct 2022 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/camille_string/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/camille_string/index.html</link>
+  <description>{B4F502887207:/posts/camille_string/index.html}</description>
+  <category>cpp</category>
+  <guid>https://lov3camille.top/posts/camille_string/index.html</guid>
+  <pubDate>Fri, 23 Sep 2022 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/camille_shell/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/camille_shell/index.html</link>
+  <description>{B4F502887207:/posts/camille_shell/index.html}</description>
+  <category>c</category>
+  <guid>https://lov3camille.top/posts/camille_shell/index.html</guid>
+  <pubDate>Sun, 11 Sep 2022 16:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/new_beginnings/index.html}</title>
+  <dc:creator>lov3camille</dc:creator>
+  <link>https://lov3camille.top/posts/new_beginnings/index.html</link>
+  <description>{B4F502887207:/posts/new_beginnings/index.html}</description>
+  <category>life</category>
+  <guid>https://lov3camille.top/posts/new_beginnings/index.html</guid>
+  <pubDate>Sun, 03 Jul 2022 16:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
